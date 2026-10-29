@@ -1,0 +1,30 @@
+[
+  {
+    "name": "nut_1",
+    "type": "fastener"
+  },
+  {
+    "name": "nut_2",
+    "type": "fastener"
+  },
+  {
+    "name": "nut_3",
+    "type": "fastener"
+  },
+  {
+    "name": "rod_1",
+    "type": "shaft"
+  },
+  {
+    "name": "bolt_1",
+    "type": "fastener"
+  },
+  {
+    "name": "l-bracket_1",
+    "type": "structure_frame"
+  },
+  {
+    "name": "plate_1",
+    "type": "structure_frame"
+  }
+]

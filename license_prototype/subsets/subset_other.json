@@ -1,0 +1,8 @@
+{
+  "machine": "Centrifugal Pump (different customer)",
+  "formulas": {
+    "ohms_law": "V = I*R",
+    "fault_current": "I_fault = V_fault/Z_fault"
+  },
+  "note": "a different customer's machine would get a completely different slice -- this one never sees the bottle-machine formulas at all"
+}

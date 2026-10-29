@@ -1,0 +1,117 @@
+{
+  "description": "150rpm gear system - full formula set (motor + per-gear-stage template + disturbance + combining). 'constants' are cyan-highlighted terms swept under BVS (Bounded Value Sweep); 'state_variables' evolve at runtime and are never swept.",
+  "total_formula_types": 11,
+  "categories": {
+    "motor": {
+      "label": "Tesla (DC Motor) Equations",
+      "count": 3,
+      "formulas": [
+        {
+          "id": "motor_1",
+          "label": "Voltage equation",
+          "formula": "V = iR + L(di/dt) + Ke*ω",
+          "constants": ["R", "L", "Ke"],
+          "state_variables": ["V", "i", "ω"]
+        },
+        {
+          "id": "motor_2",
+          "label": "Torque equation",
+          "formula": "T = Kt*i",
+          "constants": ["Kt"],
+          "state_variables": ["T", "i"]
+        },
+        {
+          "id": "motor_3",
+          "label": "Shaft balance",
+          "formula": "Jmotor*(dω/dt) = T - Tload - bω - Tstatic",
+          "constants": ["Jmotor", "b", "Tstatic"],
+          "state_variables": ["ω", "T", "Tload"]
+        }
+      ],
+      "note": "Cyan = constants under BVS (R, L, Ke, Kt, Jmotor, b, T_static). Everything else (V, i, ω, T, T_load) is a state variable, not swept."
+    },
+    "gear_template": {
+      "label": "Single Gear Stage Equations (repeated per gear stage)",
+      "count": 6,
+      "formulas": [
+        {
+          "id": "gear_1",
+          "label": "Speed relation",
+          "formula": "ωout = ωin / N",
+          "constants": ["N"],
+          "state_variables": ["ωout", "ωin"],
+          "implemented_in": "dynamic_gear_simulator.py (theta_gap definition inside _mesh_torque; not used by formula_chain_metal.run_formula_chain, which uses the equivalent RPM-chain ratio instead)"
+        },
+        {
+          "id": "gear_2",
+          "label": "Reflected torque",
+          "formula": "Tout = Tin * N * η",
+          "constants": ["N", "η"],
+          "state_variables": ["Tout", "Tin"],
+          "implemented_in": "dynamic_gear_simulator.py: _derivatives() (T_reaction_on_driving, inverted form T_in = T_out/(N*eta))"
+        },
+        {
+          "id": "gear_3",
+          "label": "Reflected inertia",
+          "formula": "Jreflected = Jgear * N^2",
+          "constants": ["Jgear", "N"],
+          "state_variables": ["Jreflected"],
+          "implemented_in": "dynamic_gear_simulator.py: build_gear_train() -> reflected_inertia_at_motor_kgm2 (generalized to cumulative N across multiple hops back to Yellow); informational output only, not used by the node-by-node integration, which tracks each node's own physical inertia"
+        },
+        {
+          "id": "gear_4",
+          "label": "Backlash (dead-zone)",
+          "formula": "θgap = θin - θout;  Tmesh = 0 if |θgap| < θbacklash",
+          "constants": ["θbacklash"],
+          "state_variables": ["θgap", "θin", "θout", "Tmesh"],
+          "implemented_in": "dynamic_gear_simulator.py: _mesh_torque(). New BVS constant: GEAR_BACKLASH_RAD."
+        },
+        {
+          "id": "gear_5",
+          "label": "Mesh stiffness / transmission error",
+          "formula": "Tmesh = kmesh * (θgap - θbacklash)",
+          "constants": ["kmesh", "θbacklash"],
+          "state_variables": ["Tmesh", "θgap"],
+          "implemented_in": "dynamic_gear_simulator.py: _mesh_torque(). New BVS constant: GEAR_MESH_STIFFNESS_NM_PER_RAD."
+        },
+        {
+          "id": "gear_6",
+          "label": "Shaft friction",
+          "formula": "Tfriction = bshaft * ω",
+          "constants": ["bshaft"],
+          "state_variables": ["Tfriction", "ω"],
+          "implemented_in": "dynamic_gear_simulator.py: _derivatives(). New BVS constant: GEAR_SHAFT_FRICTION_NM_S_PER_RAD."
+        }
+      ],
+      "note": "Cyan = constants under BVS (N, η, Jgear, θbacklash, kmesh, bshaft). ω, θ, T stay state variables. This template repeats once per gear stage in the chain. As of dynamic_gear_simulator.py, all six formulas are implemented as a real time-domain (RK4) simulation, exposed via POST /api/gearsystem/touch_sim_dynamic -- separate from formula_chain_metal.run_formula_chain(), the steady-state snapshot used by the BVS card-roulette sweep, which still ignores backlash/stiffness/reflected-inertia entirely (see FORMULA_DATABASE.md sec G and Open Item #2)."
+    },
+    "disturbance": {
+      "label": "External Disturbance",
+      "count": 1,
+      "formulas": [
+        {
+          "id": "disturb_1",
+          "label": "External disturbance (touch/screwdriver), injected at whichever gear node is touched",
+          "formula": "Tdisturb = ktouch * P",
+          "constants": ["ktouch"],
+          "state_variables": ["Tdisturb", "P"],
+          "notes": "P is the 0-10 pressure metric; ktouch is the force-per-unit-pressure constant (under BVS)."
+        }
+      ]
+    },
+    "combining": {
+      "label": "Combining Formula",
+      "count": 1,
+      "formulas": [
+        {
+          "id": "combine_1",
+          "label": "Total load felt by the motor (sums every gear stage's reflected effect back to the shaft; plugs into Tload in motor_3)",
+          "formula": "Tload = Σ(stage=1 to 4) [ (Tmesh,stage + Tfriction,stage) / Ncumulative,stage ]",
+          "constants": [],
+          "state_variables": ["Tload", "Tmesh,stage", "Tfriction,stage", "Ncumulative,stage"],
+          "notes": "No new cyan constants here - it just chains the per-gear outputs (already covered) back to one number."
+        }
+      ]
+    }
+  }
+}

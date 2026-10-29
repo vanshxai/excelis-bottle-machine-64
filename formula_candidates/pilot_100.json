@@ -1,0 +1,3879 @@
+[
+  {
+    "id": "euler_critical_load",
+    "equation": "F_cr = pi**2*E_mod*I_area/(K_eff*L_col)**2",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "F_cr": {
+        "unit": "newton",
+        "meaning": "critical buckling load"
+      },
+      "E_mod": {
+        "unit": "pascal",
+        "meaning": "Young's modulus"
+      },
+      "I_area": {
+        "unit": "meter**4",
+        "meaning": "smallest second moment of area"
+      },
+      "K_eff": {
+        "unit": "1",
+        "meaning": "effective length factor"
+      },
+      "L_col": {
+        "unit": "meter",
+        "meaning": "unsupported column length"
+      }
+    },
+    "source": {
+      "title": "Buckling",
+      "url": "https://en.wikipedia.org/wiki/Buckling",
+      "section": "Columns",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "euler_critical_stress",
+    "equation": "sigma_cr_col = pi**2*E_mod/lam_slender**2",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "sigma_cr_col": {
+        "unit": "pascal",
+        "meaning": "critical buckling stress"
+      },
+      "E_mod": {
+        "unit": "pascal",
+        "meaning": "Young's modulus"
+      },
+      "lam_slender": {
+        "unit": "1",
+        "meaning": "slenderness ratio l/r"
+      }
+    },
+    "source": {
+      "title": "Buckling",
+      "url": "https://en.wikipedia.org/wiki/Buckling",
+      "section": "Columns",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "rankine_gordon_load",
+    "equation": "F_max_rg = 1/(1/F_euler + 1/F_crush)",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "F_max_rg": {
+        "unit": "newton",
+        "meaning": "Rankine-Gordon buckling load"
+      },
+      "F_euler": {
+        "unit": "newton",
+        "meaning": "Euler critical load"
+      },
+      "F_crush": {
+        "unit": "newton",
+        "meaning": "crushing load"
+      }
+    },
+    "source": {
+      "title": "Buckling",
+      "url": "https://en.wikipedia.org/wiki/Buckling",
+      "section": "Columns",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "rearranged",
+    "note": "Page gives 1/Fmax = 1/Fe + 1/Fc; solved for Fmax.",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "plate_buckling_critical_stress",
+    "equation": "sigma_cr_plate = k_plate*pi**2*E_mod/(12*(1 - nu_poisson**2)*(b_plate/t_plate)**2)",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "sigma_cr_plate": {
+        "unit": "pascal",
+        "meaning": "plate critical stress"
+      },
+      "k_plate": {
+        "unit": "1",
+        "meaning": "buckling coefficient"
+      },
+      "E_mod": {
+        "unit": "pascal",
+        "meaning": "Young's modulus"
+      },
+      "nu_poisson": {
+        "unit": "1",
+        "meaning": "Poisson's ratio"
+      },
+      "b_plate": {
+        "unit": "meter",
+        "meaning": "plate width"
+      },
+      "t_plate": {
+        "unit": "meter",
+        "meaning": "plate thickness"
+      }
+    },
+    "source": {
+      "title": "Buckling",
+      "url": "https://en.wikipedia.org/wiki/Buckling",
+      "section": "Plate buckling",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "plate_buckling_line_load",
+    "equation": "N_cr_plate = k_plate*pi**2*E_mod*t_plate**3/(12*(1 - nu_poisson**2)*b_plate**2)",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "N_cr_plate": {
+        "unit": "newton/meter",
+        "meaning": "critical compressive load per unit width"
+      },
+      "k_plate": {
+        "unit": "1",
+        "meaning": "buckling coefficient"
+      },
+      "E_mod": {
+        "unit": "pascal",
+        "meaning": "Young's modulus"
+      },
+      "t_plate": {
+        "unit": "meter",
+        "meaning": "plate thickness"
+      },
+      "nu_poisson": {
+        "unit": "1",
+        "meaning": "Poisson's ratio"
+      },
+      "b_plate": {
+        "unit": "meter",
+        "meaning": "plate width"
+      }
+    },
+    "source": {
+      "title": "Buckling",
+      "url": "https://en.wikipedia.org/wiki/Buckling",
+      "section": "Plate buckling",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "Page labels this 'critical load'; dimensionally it is force per unit width.",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "plate_buckling_coefficient",
+    "equation": "k_plate = (m_half*b_plate/a_plate + a_plate/(m_half*b_plate))**2",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "k_plate": {
+        "unit": "1",
+        "meaning": "buckling coefficient"
+      },
+      "m_half": {
+        "unit": "1",
+        "meaning": "number of half sine waves lengthwise"
+      },
+      "b_plate": {
+        "unit": "meter",
+        "meaning": "plate width"
+      },
+      "a_plate": {
+        "unit": "meter",
+        "meaning": "plate length"
+      }
+    },
+    "source": {
+      "title": "Buckling",
+      "url": "https://en.wikipedia.org/wiki/Buckling",
+      "section": "Plate buckling",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "plate_effective_width",
+    "equation": "b_eff = b_plate*sqrt((sigma_cr_plate/sigma_yield)*(1 - 1.022*sqrt(sigma_cr_plate/sigma_yield)))",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "b_eff": {
+        "unit": "meter",
+        "meaning": "effective width"
+      },
+      "b_plate": {
+        "unit": "meter",
+        "meaning": "actual width"
+      },
+      "sigma_cr_plate": {
+        "unit": "pascal",
+        "meaning": "critical stress"
+      },
+      "sigma_yield": {
+        "unit": "pascal",
+        "meaning": "yield stress"
+      }
+    },
+    "source": {
+      "title": "Buckling",
+      "url": "https://en.wikipedia.org/wiki/Buckling",
+      "section": "Plate buckling",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "Source marks this as an approximation.",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "needs_review",
+    "review_reason": "Re-read against the page: the equation is printed exactly like this, but it goes imaginary as sigma_cr/sigma_y approaches 1 and differs from the usual Winter form (coefficient 0.22 outside the root). Do not approve until checked against a second source."
+  },
+  {
+    "id": "lateral_torsional_cb",
+    "equation": "Cb_ltb = 12.5*M_max_ltb/(2.5*M_max_ltb + 3*M_A_ltb + 4*M_B_ltb + 3*M_C_ltb)",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "Cb_ltb": {
+        "unit": "1",
+        "meaning": "moment gradient modification factor"
+      },
+      "M_max_ltb": {
+        "unit": "newton*meter",
+        "meaning": "max moment in segment"
+      },
+      "M_A_ltb": {
+        "unit": "newton*meter",
+        "meaning": "moment at quarter point"
+      },
+      "M_B_ltb": {
+        "unit": "newton*meter",
+        "meaning": "moment at centerline"
+      },
+      "M_C_ltb": {
+        "unit": "newton*meter",
+        "meaning": "moment at three-quarter point"
+      }
+    },
+    "source": {
+      "title": "Buckling",
+      "url": "https://en.wikipedia.org/wiki/Buckling",
+      "section": "Lateral-torsional buckling",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "self_buckling_height",
+    "equation": "h_crit = ((9*B_bessel**2/4)*E_mod*I_area/(rho_mat*g_grav*A_area))**(1/3)",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "h_crit": {
+        "unit": "meter",
+        "meaning": "critical self-buckling height"
+      },
+      "B_bessel": {
+        "unit": "1",
+        "meaning": "first zero of Bessel function (1.866)"
+      },
+      "E_mod": {
+        "unit": "pascal",
+        "meaning": "Young's modulus"
+      },
+      "I_area": {
+        "unit": "meter**4",
+        "meaning": "second moment of area"
+      },
+      "rho_mat": {
+        "unit": "kilogram/meter**3",
+        "meaning": "density"
+      },
+      "g_grav": {
+        "unit": "meter/second**2",
+        "meaning": "gravity"
+      },
+      "A_area": {
+        "unit": "meter**2",
+        "meaning": "cross-section area"
+      }
+    },
+    "source": {
+      "title": "Buckling",
+      "url": "https://en.wikipedia.org/wiki/Buckling",
+      "section": "Self-buckling",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "flexure_stress",
+    "equation": "sigma_bend = M_bend*z_dist/I_area",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "sigma_bend": {
+        "unit": "pascal",
+        "meaning": "bending stress"
+      },
+      "M_bend": {
+        "unit": "newton*meter",
+        "meaning": "bending moment"
+      },
+      "z_dist": {
+        "unit": "meter",
+        "meaning": "distance from neutral axis"
+      },
+      "I_area": {
+        "unit": "meter**4",
+        "meaning": "second moment of area"
+      }
+    },
+    "source": {
+      "title": "Euler-Bernoulli beam theory",
+      "url": "https://en.wikipedia.org/wiki/Euler%E2%80%93Bernoulli_beam_theory",
+      "section": "Simple or symmetrical bending",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "max_bending_stress_section",
+    "equation": "sigma_max_bend = M_bend/S_sec",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "sigma_max_bend": {
+        "unit": "pascal",
+        "meaning": "maximum bending stress"
+      },
+      "M_bend": {
+        "unit": "newton*meter",
+        "meaning": "bending moment"
+      },
+      "S_sec": {
+        "unit": "meter**3",
+        "meaning": "section modulus"
+      }
+    },
+    "source": {
+      "title": "Euler-Bernoulli beam theory",
+      "url": "https://en.wikipedia.org/wiki/Euler%E2%80%93Bernoulli_beam_theory",
+      "section": "Maximum stresses at a cross-section",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "beam_natural_freq_hinged",
+    "equation": "omega_n_beam = n_mode**2*pi**2/L_beam**2*sqrt(E_mod*I_area/mu_lin)",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "omega_n_beam": {
+        "unit": "1/second",
+        "meaning": "nth natural frequency (rad/s)"
+      },
+      "n_mode": {
+        "unit": "1",
+        "meaning": "mode number"
+      },
+      "L_beam": {
+        "unit": "meter",
+        "meaning": "beam length"
+      },
+      "E_mod": {
+        "unit": "pascal",
+        "meaning": "Young's modulus"
+      },
+      "I_area": {
+        "unit": "meter**4",
+        "meaning": "second moment of area"
+      },
+      "mu_lin": {
+        "unit": "kilogram/meter",
+        "meaning": "mass per unit length"
+      }
+    },
+    "source": {
+      "title": "Euler-Bernoulli beam theory",
+      "url": "https://en.wikipedia.org/wiki/Euler%E2%80%93Bernoulli_beam_theory",
+      "section": "Example: hinged-hinged beam",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "beam_natural_freq_cantilever_1",
+    "equation": "omega_1_cant = 3.5160/L_beam**2*sqrt(E_mod*I_area/mu_lin)",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "omega_1_cant": {
+        "unit": "1/second",
+        "meaning": "first natural frequency (rad/s)"
+      },
+      "L_beam": {
+        "unit": "meter",
+        "meaning": "beam length"
+      },
+      "E_mod": {
+        "unit": "pascal",
+        "meaning": "Young's modulus"
+      },
+      "I_area": {
+        "unit": "meter**4",
+        "meaning": "second moment of area"
+      },
+      "mu_lin": {
+        "unit": "kilogram/meter",
+        "meaning": "mass per unit length"
+      }
+    },
+    "source": {
+      "title": "Euler-Bernoulli beam theory",
+      "url": "https://en.wikipedia.org/wiki/Euler%E2%80%93Bernoulli_beam_theory",
+      "section": "Example: cantilevered beam",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "cantilever_end_load_deflection",
+    "equation": "delta_cant_end = F_load*L_beam**3/(3*E_mod*I_area)",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "delta_cant_end": {
+        "unit": "meter",
+        "meaning": "tip deflection"
+      },
+      "F_load": {
+        "unit": "newton",
+        "meaning": "tip force"
+      },
+      "L_beam": {
+        "unit": "meter",
+        "meaning": "length"
+      },
+      "E_mod": {
+        "unit": "pascal",
+        "meaning": "Young's modulus"
+      },
+      "I_area": {
+        "unit": "meter**4",
+        "meaning": "second moment of area"
+      }
+    },
+    "source": {
+      "title": "Deflection (engineering)",
+      "url": "https://en.wikipedia.org/wiki/Deflection_(engineering)",
+      "section": "Cantilever, end loaded",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "cantilever_end_load_slope",
+    "equation": "phi_cant_end = F_load*L_beam**2/(2*E_mod*I_area)",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "phi_cant_end": {
+        "unit": "1",
+        "meaning": "tip slope (rad)"
+      },
+      "F_load": {
+        "unit": "newton",
+        "meaning": "tip force"
+      },
+      "L_beam": {
+        "unit": "meter",
+        "meaning": "length"
+      },
+      "E_mod": {
+        "unit": "pascal",
+        "meaning": "Young's modulus"
+      },
+      "I_area": {
+        "unit": "meter**4",
+        "meaning": "second moment of area"
+      }
+    },
+    "source": {
+      "title": "Deflection (engineering)",
+      "url": "https://en.wikipedia.org/wiki/Deflection_(engineering)",
+      "section": "Cantilever, end loaded",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "cantilever_end_load_deflection_x",
+    "equation": "delta_cant_x = F_load*x_pos**2/(6*E_mod*I_area)*(3*L_beam - x_pos)",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "delta_cant_x": {
+        "unit": "meter",
+        "meaning": "deflection at x"
+      },
+      "F_load": {
+        "unit": "newton",
+        "meaning": "tip force"
+      },
+      "x_pos": {
+        "unit": "meter",
+        "meaning": "position"
+      },
+      "L_beam": {
+        "unit": "meter",
+        "meaning": "length"
+      },
+      "E_mod": {
+        "unit": "pascal",
+        "meaning": "Young's modulus"
+      },
+      "I_area": {
+        "unit": "meter**4",
+        "meaning": "second moment of area"
+      }
+    },
+    "source": {
+      "title": "Deflection (engineering)",
+      "url": "https://en.wikipedia.org/wiki/Deflection_(engineering)",
+      "section": "Cantilever, end loaded",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "cantilever_uniform_deflection",
+    "equation": "delta_cantu_end = q_load*L_beam**4/(8*E_mod*I_area)",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "delta_cantu_end": {
+        "unit": "meter",
+        "meaning": "tip deflection"
+      },
+      "q_load": {
+        "unit": "newton/meter",
+        "meaning": "uniform load"
+      },
+      "L_beam": {
+        "unit": "meter",
+        "meaning": "length"
+      },
+      "E_mod": {
+        "unit": "pascal",
+        "meaning": "Young's modulus"
+      },
+      "I_area": {
+        "unit": "meter**4",
+        "meaning": "second moment of area"
+      }
+    },
+    "source": {
+      "title": "Deflection (engineering)",
+      "url": "https://en.wikipedia.org/wiki/Deflection_(engineering)",
+      "section": "Cantilever, uniformly loaded",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "simple_center_load_deflection_x",
+    "equation": "delta_simple_x = F_load*x_pos/(48*E_mod*I_area)*(3*L_beam**2 - 4*x_pos**2)",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "delta_simple_x": {
+        "unit": "meter",
+        "meaning": "deflection at x (0<=x<=L/2)"
+      },
+      "F_load": {
+        "unit": "newton",
+        "meaning": "centre force"
+      },
+      "x_pos": {
+        "unit": "meter",
+        "meaning": "position"
+      },
+      "L_beam": {
+        "unit": "meter",
+        "meaning": "span"
+      },
+      "E_mod": {
+        "unit": "pascal",
+        "meaning": "Young's modulus"
+      },
+      "I_area": {
+        "unit": "meter**4",
+        "meaning": "second moment of area"
+      }
+    },
+    "source": {
+      "title": "Deflection (engineering)",
+      "url": "https://en.wikipedia.org/wiki/Deflection_(engineering)",
+      "section": "Simple beam, centre loaded",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "simple_offcenter_max_deflection",
+    "equation": "delta_simple_off_max = F_load*a_load*(L_beam**2 - a_load**2)**(3/2)/(9*sqrt(3)*L_beam*E_mod*I_area)",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "delta_simple_off_max": {
+        "unit": "meter",
+        "meaning": "maximum deflection"
+      },
+      "F_load": {
+        "unit": "newton",
+        "meaning": "force"
+      },
+      "a_load": {
+        "unit": "meter",
+        "meaning": "load distance from nearest support"
+      },
+      "L_beam": {
+        "unit": "meter",
+        "meaning": "span"
+      },
+      "E_mod": {
+        "unit": "pascal",
+        "meaning": "Young's modulus"
+      },
+      "I_area": {
+        "unit": "meter**4",
+        "meaning": "second moment of area"
+      }
+    },
+    "source": {
+      "title": "Deflection (engineering)",
+      "url": "https://en.wikipedia.org/wiki/Deflection_(engineering)",
+      "section": "Simple beam, off-centre loaded",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "simple_offcenter_max_location",
+    "equation": "x_max_off = sqrt((L_beam**2 - a_load**2)/3)",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "x_max_off": {
+        "unit": "meter",
+        "meaning": "location of max deflection from nearest support"
+      },
+      "L_beam": {
+        "unit": "meter",
+        "meaning": "span"
+      },
+      "a_load": {
+        "unit": "meter",
+        "meaning": "load distance from nearest support"
+      }
+    },
+    "source": {
+      "title": "Deflection (engineering)",
+      "url": "https://en.wikipedia.org/wiki/Deflection_(engineering)",
+      "section": "Simple beam, off-centre loaded",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "simple_center_load_moment",
+    "equation": "M_simple_x = F_load*x_pos/2",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "M_simple_x": {
+        "unit": "newton*meter",
+        "meaning": "bending moment for 0<=x<=L/2"
+      },
+      "F_load": {
+        "unit": "newton",
+        "meaning": "centre force"
+      },
+      "x_pos": {
+        "unit": "meter",
+        "meaning": "position"
+      }
+    },
+    "source": {
+      "title": "Euler-Bernoulli beam theory",
+      "url": "https://en.wikipedia.org/wiki/Euler%E2%80%93Bernoulli_beam_theory",
+      "section": "Three-point bending",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "second_moment_rectangle",
+    "equation": "I_rect = b_w*h_d**3/12",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "I_rect": {
+        "unit": "meter**4",
+        "meaning": "second moment about centroidal x-axis"
+      },
+      "b_w": {
+        "unit": "meter",
+        "meaning": "width"
+      },
+      "h_d": {
+        "unit": "meter",
+        "meaning": "height"
+      }
+    },
+    "source": {
+      "title": "List of second moments of area",
+      "url": "https://en.wikipedia.org/wiki/List_of_second_moments_of_area",
+      "section": "Rectangle",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "second_moment_circle",
+    "equation": "I_circ = pi*r_c**4/4",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "I_circ": {
+        "unit": "meter**4",
+        "meaning": "second moment"
+      },
+      "r_c": {
+        "unit": "meter",
+        "meaning": "radius"
+      }
+    },
+    "source": {
+      "title": "List of second moments of area",
+      "url": "https://en.wikipedia.org/wiki/List_of_second_moments_of_area",
+      "section": "Filled circle",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "polar_moment_circle",
+    "equation": "J_circ = pi*r_c**4/2",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "J_circ": {
+        "unit": "meter**4",
+        "meaning": "polar second moment"
+      },
+      "r_c": {
+        "unit": "meter",
+        "meaning": "radius"
+      }
+    },
+    "source": {
+      "title": "List of second moments of area",
+      "url": "https://en.wikipedia.org/wiki/List_of_second_moments_of_area",
+      "section": "Filled circle",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "second_moment_annulus",
+    "equation": "I_ann = pi*(r_out**4 - r_in**4)/4",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "I_ann": {
+        "unit": "meter**4",
+        "meaning": "second moment"
+      },
+      "r_out": {
+        "unit": "meter",
+        "meaning": "outer radius"
+      },
+      "r_in": {
+        "unit": "meter",
+        "meaning": "inner radius"
+      }
+    },
+    "source": {
+      "title": "List of second moments of area",
+      "url": "https://en.wikipedia.org/wiki/List_of_second_moments_of_area",
+      "section": "Annulus",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "parallel_axis_theorem",
+    "equation": "I_shift = I_cent + A_area*d_off**2",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "I_shift": {
+        "unit": "meter**4",
+        "meaning": "second moment about parallel axis"
+      },
+      "I_cent": {
+        "unit": "meter**4",
+        "meaning": "second moment about centroid"
+      },
+      "A_area": {
+        "unit": "meter**2",
+        "meaning": "area"
+      },
+      "d_off": {
+        "unit": "meter",
+        "meaning": "axis offset"
+      }
+    },
+    "source": {
+      "title": "List of second moments of area",
+      "url": "https://en.wikipedia.org/wiki/List_of_second_moments_of_area",
+      "section": "Parallel axis theorem",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "mohr_coulomb_shear_strength",
+    "equation": "tau_soil = sigma_n*tan(phi_fric) + c_coh",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "tau_soil": {
+        "unit": "pascal",
+        "meaning": "shear strength"
+      },
+      "sigma_n": {
+        "unit": "pascal",
+        "meaning": "normal stress"
+      },
+      "phi_fric": {
+        "unit": "1",
+        "meaning": "internal friction angle (rad)"
+      },
+      "c_coh": {
+        "unit": "pascal",
+        "meaning": "cohesion"
+      }
+    },
+    "source": {
+      "title": "Mohr-Coulomb theory",
+      "url": "https://en.wikipedia.org/wiki/Mohr%E2%80%93Coulomb_theory",
+      "section": "Mohr-Coulomb criterion",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "mohr_coulomb_principal_form",
+    "equation": "tau_m = sigma_m*sin(phi_fric) + c_coh*cos(phi_fric)",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "tau_m": {
+        "unit": "pascal",
+        "meaning": "(s1-s3)/2 max shear stress"
+      },
+      "sigma_m": {
+        "unit": "pascal",
+        "meaning": "(s1+s3)/2 mean normal stress"
+      },
+      "phi_fric": {
+        "unit": "1",
+        "meaning": "internal friction angle (rad)"
+      },
+      "c_coh": {
+        "unit": "pascal",
+        "meaning": "cohesion"
+      }
+    },
+    "source": {
+      "title": "Mohr-Coulomb theory",
+      "url": "https://en.wikipedia.org/wiki/Mohr%E2%80%93Coulomb_theory",
+      "section": "Principal stress form",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "terzaghi_strip_footing",
+    "equation": "q_ult_strip = c_coh*N_c + sigma_zD*N_q + 0.5*gamma_soil*B_found*N_gam",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "q_ult_strip": {
+        "unit": "pascal",
+        "meaning": "ultimate bearing capacity"
+      },
+      "c_coh": {
+        "unit": "pascal",
+        "meaning": "effective cohesion"
+      },
+      "N_c": {
+        "unit": "1",
+        "meaning": "bearing factor"
+      },
+      "sigma_zD": {
+        "unit": "pascal",
+        "meaning": "vertical effective stress at depth"
+      },
+      "N_q": {
+        "unit": "1",
+        "meaning": "bearing factor"
+      },
+      "gamma_soil": {
+        "unit": "newton/meter**3",
+        "meaning": "effective unit weight"
+      },
+      "B_found": {
+        "unit": "meter",
+        "meaning": "footing width"
+      },
+      "N_gam": {
+        "unit": "1",
+        "meaning": "bearing factor"
+      }
+    },
+    "source": {
+      "title": "Bearing capacity",
+      "url": "https://en.wikipedia.org/wiki/Bearing_capacity",
+      "section": "Terzaghi general shear",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "terzaghi_square_footing",
+    "equation": "q_ult_sq = 1.3*c_coh*N_c + sigma_zD*N_q + 0.4*gamma_soil*B_found*N_gam",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "q_ult_sq": {
+        "unit": "pascal",
+        "meaning": "ultimate bearing capacity"
+      },
+      "c_coh": {
+        "unit": "pascal",
+        "meaning": "effective cohesion"
+      },
+      "N_c": {
+        "unit": "1",
+        "meaning": "bearing factor"
+      },
+      "sigma_zD": {
+        "unit": "pascal",
+        "meaning": "vertical effective stress at depth"
+      },
+      "N_q": {
+        "unit": "1",
+        "meaning": "bearing factor"
+      },
+      "gamma_soil": {
+        "unit": "newton/meter**3",
+        "meaning": "effective unit weight"
+      },
+      "B_found": {
+        "unit": "meter",
+        "meaning": "footing width"
+      },
+      "N_gam": {
+        "unit": "1",
+        "meaning": "bearing factor"
+      }
+    },
+    "source": {
+      "title": "Bearing capacity",
+      "url": "https://en.wikipedia.org/wiki/Bearing_capacity",
+      "section": "Terzaghi general shear",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "terzaghi_circular_footing",
+    "equation": "q_ult_circ = 1.3*c_coh*N_c + sigma_zD*N_q + 0.3*gamma_soil*B_found*N_gam",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "q_ult_circ": {
+        "unit": "pascal",
+        "meaning": "ultimate bearing capacity"
+      },
+      "c_coh": {
+        "unit": "pascal",
+        "meaning": "effective cohesion"
+      },
+      "N_c": {
+        "unit": "1",
+        "meaning": "bearing factor"
+      },
+      "sigma_zD": {
+        "unit": "pascal",
+        "meaning": "vertical effective stress at depth"
+      },
+      "N_q": {
+        "unit": "1",
+        "meaning": "bearing factor"
+      },
+      "gamma_soil": {
+        "unit": "newton/meter**3",
+        "meaning": "effective unit weight"
+      },
+      "B_found": {
+        "unit": "meter",
+        "meaning": "footing diameter"
+      },
+      "N_gam": {
+        "unit": "1",
+        "meaning": "bearing factor"
+      }
+    },
+    "source": {
+      "title": "Bearing capacity",
+      "url": "https://en.wikipedia.org/wiki/Bearing_capacity",
+      "section": "Terzaghi general shear",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "bearing_nc_from_nq",
+    "equation": "N_c = (N_q - 1)/tan(phi_fric)",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "N_c": {
+        "unit": "1",
+        "meaning": "bearing factor"
+      },
+      "N_q": {
+        "unit": "1",
+        "meaning": "bearing factor"
+      },
+      "phi_fric": {
+        "unit": "1",
+        "meaning": "friction angle (rad), phi>0"
+      }
+    },
+    "source": {
+      "title": "Bearing capacity",
+      "url": "https://en.wikipedia.org/wiki/Bearing_capacity",
+      "section": "Bearing capacity factors",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "allowable_bearing_capacity",
+    "equation": "q_all = q_ult/FS_safety",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "q_all": {
+        "unit": "pascal",
+        "meaning": "allowable bearing capacity"
+      },
+      "q_ult": {
+        "unit": "pascal",
+        "meaning": "ultimate bearing capacity"
+      },
+      "FS_safety": {
+        "unit": "1",
+        "meaning": "factor of safety"
+      }
+    },
+    "source": {
+      "title": "Bearing capacity",
+      "url": "https://en.wikipedia.org/wiki/Bearing_capacity",
+      "section": "Factor of safety",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "bearing_n_gamma_coduto",
+    "equation": "N_gam = 2*(N_q + 1)*tan(phi_fric)/(1 + 0.4*sin(4*phi_fric))",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "N_gam": {
+        "unit": "1",
+        "meaning": "bearing factor"
+      },
+      "N_q": {
+        "unit": "1",
+        "meaning": "bearing factor"
+      },
+      "phi_fric": {
+        "unit": "1",
+        "meaning": "friction angle (rad)"
+      }
+    },
+    "source": {
+      "title": "Bearing capacity",
+      "url": "https://en.wikipedia.org/wiki/Bearing_capacity",
+      "section": "Bearing capacity factors",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "rocket_equation",
+    "equation": "dv_rocket = v_e*log(m_wet/m_dry)",
+    "discipline": "Aerospace Engineering",
+    "physics_domain": "aerospace",
+    "symbols": {
+      "dv_rocket": {
+        "unit": "meter/second",
+        "meaning": "delta-v"
+      },
+      "v_e": {
+        "unit": "meter/second",
+        "meaning": "effective exhaust velocity"
+      },
+      "m_wet": {
+        "unit": "kilogram",
+        "meaning": "initial mass"
+      },
+      "m_dry": {
+        "unit": "kilogram",
+        "meaning": "final mass"
+      }
+    },
+    "source": {
+      "title": "Tsiolkovsky rocket equation",
+      "url": "https://en.wikipedia.org/wiki/Tsiolkovsky_rocket_equation",
+      "section": "Derivation",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "rocket_wet_mass",
+    "equation": "m_wet_req = m_dry*exp(dv_rocket/v_e)",
+    "discipline": "Aerospace Engineering",
+    "physics_domain": "aerospace",
+    "symbols": {
+      "m_wet_req": {
+        "unit": "kilogram",
+        "meaning": "required initial mass"
+      },
+      "m_dry": {
+        "unit": "kilogram",
+        "meaning": "final mass"
+      },
+      "dv_rocket": {
+        "unit": "meter/second",
+        "meaning": "delta-v"
+      },
+      "v_e": {
+        "unit": "meter/second",
+        "meaning": "effective exhaust velocity"
+      }
+    },
+    "source": {
+      "title": "Tsiolkovsky rocket equation",
+      "url": "https://en.wikipedia.org/wiki/Tsiolkovsky_rocket_equation",
+      "section": "Derivation",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "rocket_propellant_to_dry_ratio",
+    "equation": "prop_ratio = exp(dv_rocket/v_e) - 1",
+    "discipline": "Aerospace Engineering",
+    "physics_domain": "aerospace",
+    "symbols": {
+      "prop_ratio": {
+        "unit": "1",
+        "meaning": "propellant mass / dry mass"
+      },
+      "dv_rocket": {
+        "unit": "meter/second",
+        "meaning": "delta-v"
+      },
+      "v_e": {
+        "unit": "meter/second",
+        "meaning": "effective exhaust velocity"
+      }
+    },
+    "source": {
+      "title": "Tsiolkovsky rocket equation",
+      "url": "https://en.wikipedia.org/wiki/Tsiolkovsky_rocket_equation",
+      "section": "Derivation",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "exhaust_velocity_from_isp",
+    "equation": "v_e = g0_std*Isp_s",
+    "discipline": "Aerospace Engineering",
+    "physics_domain": "aerospace",
+    "symbols": {
+      "v_e": {
+        "unit": "meter/second",
+        "meaning": "effective exhaust velocity"
+      },
+      "g0_std": {
+        "unit": "meter/second**2",
+        "meaning": "standard gravity 9.80665"
+      },
+      "Isp_s": {
+        "unit": "second",
+        "meaning": "specific impulse"
+      }
+    },
+    "source": {
+      "title": "Tsiolkovsky rocket equation",
+      "url": "https://en.wikipedia.org/wiki/Tsiolkovsky_rocket_equation",
+      "section": "Specific impulse",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "vis_viva_speed",
+    "equation": "v_orb = sqrt(mu_grav*(2/r_orb - 1/a_sma))",
+    "discipline": "Aerospace Engineering",
+    "physics_domain": "aerospace",
+    "symbols": {
+      "v_orb": {
+        "unit": "meter/second",
+        "meaning": "orbital speed"
+      },
+      "mu_grav": {
+        "unit": "meter**3/second**2",
+        "meaning": "GM"
+      },
+      "r_orb": {
+        "unit": "meter",
+        "meaning": "distance from central body"
+      },
+      "a_sma": {
+        "unit": "meter",
+        "meaning": "semi-major axis"
+      }
+    },
+    "source": {
+      "title": "Vis-viva equation",
+      "url": "https://en.wikipedia.org/wiki/Vis-viva_equation",
+      "section": "Vis-viva",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "rearranged",
+    "note": "Page gives v^2 = GM(2/r - 1/a); positive root taken.",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "specific_orbital_energy",
+    "equation": "eps_orb = v_orb**2/2 - mu_grav/r_orb",
+    "discipline": "Aerospace Engineering",
+    "physics_domain": "aerospace",
+    "symbols": {
+      "eps_orb": {
+        "unit": "meter**2/second**2",
+        "meaning": "specific orbital energy (J/kg)"
+      },
+      "v_orb": {
+        "unit": "meter/second",
+        "meaning": "orbital speed"
+      },
+      "mu_grav": {
+        "unit": "meter**3/second**2",
+        "meaning": "GM"
+      },
+      "r_orb": {
+        "unit": "meter",
+        "meaning": "orbital radius"
+      }
+    },
+    "source": {
+      "title": "Vis-viva equation",
+      "url": "https://en.wikipedia.org/wiki/Vis-viva_equation",
+      "section": "Energy",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "escape_speed",
+    "equation": "v_esc = sqrt(2*mu_grav/r_orb)",
+    "discipline": "Aerospace Engineering",
+    "physics_domain": "aerospace",
+    "symbols": {
+      "v_esc": {
+        "unit": "meter/second",
+        "meaning": "escape speed"
+      },
+      "mu_grav": {
+        "unit": "meter**3/second**2",
+        "meaning": "GM"
+      },
+      "r_orb": {
+        "unit": "meter",
+        "meaning": "distance from centre"
+      }
+    },
+    "source": {
+      "title": "Vis-viva equation",
+      "url": "https://en.wikipedia.org/wiki/Vis-viva_equation",
+      "section": "Escape velocity",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "specific_angular_momentum",
+    "equation": "h_ang = b_sma*sqrt(mu_grav/a_sma)",
+    "discipline": "Aerospace Engineering",
+    "physics_domain": "aerospace",
+    "symbols": {
+      "h_ang": {
+        "unit": "meter**2/second",
+        "meaning": "specific angular momentum"
+      },
+      "b_sma": {
+        "unit": "meter",
+        "meaning": "semi-minor axis"
+      },
+      "mu_grav": {
+        "unit": "meter**3/second**2",
+        "meaning": "GM"
+      },
+      "a_sma": {
+        "unit": "meter",
+        "meaning": "semi-major axis"
+      }
+    },
+    "source": {
+      "title": "Vis-viva equation",
+      "url": "https://en.wikipedia.org/wiki/Vis-viva_equation",
+      "section": "Angular momentum",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "hohmann_dv1",
+    "equation": "dv1 = sqrt(mu_grav/r1)*(sqrt(2*r2/(r1 + r2)) - 1)",
+    "discipline": "Aerospace Engineering",
+    "physics_domain": "aerospace",
+    "symbols": {
+      "dv1": {
+        "unit": "meter/second",
+        "meaning": "first burn"
+      },
+      "mu_grav": {
+        "unit": "meter**3/second**2",
+        "meaning": "GM"
+      },
+      "r1": {
+        "unit": "meter",
+        "meaning": "departure orbit radius"
+      },
+      "r2": {
+        "unit": "meter",
+        "meaning": "arrival orbit radius"
+      }
+    },
+    "source": {
+      "title": "Hohmann transfer orbit",
+      "url": "https://en.wikipedia.org/wiki/Hohmann_transfer_orbit",
+      "section": "Delta-v",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "hohmann_dv2",
+    "equation": "dv2 = sqrt(mu_grav/r2)*(1 - sqrt(2*r1/(r1 + r2)))",
+    "discipline": "Aerospace Engineering",
+    "physics_domain": "aerospace",
+    "symbols": {
+      "dv2": {
+        "unit": "meter/second",
+        "meaning": "second burn"
+      },
+      "mu_grav": {
+        "unit": "meter**3/second**2",
+        "meaning": "GM"
+      },
+      "r1": {
+        "unit": "meter",
+        "meaning": "departure orbit radius"
+      },
+      "r2": {
+        "unit": "meter",
+        "meaning": "arrival orbit radius"
+      }
+    },
+    "source": {
+      "title": "Hohmann transfer orbit",
+      "url": "https://en.wikipedia.org/wiki/Hohmann_transfer_orbit",
+      "section": "Delta-v",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "hohmann_transfer_time",
+    "equation": "t_hoh = pi*sqrt((r1 + r2)**3/(8*mu_grav))",
+    "discipline": "Aerospace Engineering",
+    "physics_domain": "aerospace",
+    "symbols": {
+      "t_hoh": {
+        "unit": "second",
+        "meaning": "transfer time"
+      },
+      "r1": {
+        "unit": "meter",
+        "meaning": "departure orbit radius"
+      },
+      "r2": {
+        "unit": "meter",
+        "meaning": "arrival orbit radius"
+      },
+      "mu_grav": {
+        "unit": "meter**3/second**2",
+        "meaning": "GM"
+      }
+    },
+    "source": {
+      "title": "Hohmann transfer orbit",
+      "url": "https://en.wikipedia.org/wiki/Hohmann_transfer_orbit",
+      "section": "Transfer time",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "induced_drag_coefficient",
+    "equation": "CDi = CL_w**2/(pi*AR_wing*e_span)",
+    "discipline": "Aerospace Engineering",
+    "physics_domain": "aerospace",
+    "symbols": {
+      "CDi": {
+        "unit": "1",
+        "meaning": "induced drag coefficient"
+      },
+      "CL_w": {
+        "unit": "1",
+        "meaning": "lift coefficient"
+      },
+      "AR_wing": {
+        "unit": "1",
+        "meaning": "aspect ratio"
+      },
+      "e_span": {
+        "unit": "1",
+        "meaning": "span efficiency factor"
+      }
+    },
+    "source": {
+      "title": "Lift-induced drag",
+      "url": "https://en.wikipedia.org/wiki/Lift-induced_drag",
+      "section": "Induced drag coefficient",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "induced_drag_force",
+    "equation": "Di_force = L_lift**2/(0.5*rho0_sl*V_eq**2*pi*b_span**2)",
+    "discipline": "Aerospace Engineering",
+    "physics_domain": "aerospace",
+    "symbols": {
+      "Di_force": {
+        "unit": "newton",
+        "meaning": "induced drag"
+      },
+      "L_lift": {
+        "unit": "newton",
+        "meaning": "lift"
+      },
+      "rho0_sl": {
+        "unit": "kilogram/meter**3",
+        "meaning": "sea-level density"
+      },
+      "V_eq": {
+        "unit": "meter/second",
+        "meaning": "equivalent airspeed"
+      },
+      "b_span": {
+        "unit": "meter",
+        "meaning": "wingspan"
+      }
+    },
+    "source": {
+      "title": "Lift-induced drag",
+      "url": "https://en.wikipedia.org/wiki/Lift-induced_drag",
+      "section": "Induced drag",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "aspect_ratio",
+    "equation": "AR_wing = b_span**2/S_ref",
+    "discipline": "Aerospace Engineering",
+    "physics_domain": "aerospace",
+    "symbols": {
+      "AR_wing": {
+        "unit": "1",
+        "meaning": "aspect ratio"
+      },
+      "b_span": {
+        "unit": "meter",
+        "meaning": "wingspan"
+      },
+      "S_ref": {
+        "unit": "meter**2",
+        "meaning": "wing area"
+      }
+    },
+    "source": {
+      "title": "Lift-induced drag",
+      "url": "https://en.wikipedia.org/wiki/Lift-induced_drag",
+      "section": "Aspect ratio",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "lift_coefficient_definition",
+    "equation": "CL_w = L_lift/(0.5*rho0_sl*V_eq**2*S_ref)",
+    "discipline": "Aerospace Engineering",
+    "physics_domain": "aerospace",
+    "symbols": {
+      "CL_w": {
+        "unit": "1",
+        "meaning": "lift coefficient"
+      },
+      "L_lift": {
+        "unit": "newton",
+        "meaning": "lift"
+      },
+      "rho0_sl": {
+        "unit": "kilogram/meter**3",
+        "meaning": "sea-level density"
+      },
+      "V_eq": {
+        "unit": "meter/second",
+        "meaning": "equivalent airspeed"
+      },
+      "S_ref": {
+        "unit": "meter**2",
+        "meaning": "wing area"
+      }
+    },
+    "source": {
+      "title": "Lift-induced drag",
+      "url": "https://en.wikipedia.org/wiki/Lift-induced_drag",
+      "section": "Lift coefficient",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "propeller_range_breguet",
+    "equation": "R_prop = eta_prop/(g0_std*c_p_sfc)*LD_ratio*log(W1_mass/W2_mass)",
+    "discipline": "Aerospace Engineering",
+    "physics_domain": "aerospace",
+    "symbols": {
+      "R_prop": {
+        "unit": "meter",
+        "meaning": "range"
+      },
+      "eta_prop": {
+        "unit": "1",
+        "meaning": "propulsive efficiency"
+      },
+      "g0_std": {
+        "unit": "meter/second**2",
+        "meaning": "gravity"
+      },
+      "c_p_sfc": {
+        "unit": "kilogram/joule",
+        "meaning": "power-specific fuel consumption"
+      },
+      "LD_ratio": {
+        "unit": "1",
+        "meaning": "lift-to-drag ratio"
+      },
+      "W1_mass": {
+        "unit": "kilogram",
+        "meaning": "initial mass"
+      },
+      "W2_mass": {
+        "unit": "kilogram",
+        "meaning": "final mass"
+      }
+    },
+    "source": {
+      "title": "Range (aeronautics)",
+      "url": "https://en.wikipedia.org/wiki/Range_(aeronautics)",
+      "section": "Propeller aircraft",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "jet_range_fixed_altitude",
+    "equation": "R_jet = 2*V1_speed/(g0_std*c_T_sfc)*LD_ratio*(1 - sqrt(W2_mass/W1_mass))",
+    "discipline": "Aerospace Engineering",
+    "physics_domain": "aerospace",
+    "symbols": {
+      "R_jet": {
+        "unit": "meter",
+        "meaning": "range"
+      },
+      "V1_speed": {
+        "unit": "meter/second",
+        "meaning": "initial speed"
+      },
+      "g0_std": {
+        "unit": "meter/second**2",
+        "meaning": "gravity"
+      },
+      "c_T_sfc": {
+        "unit": "second/meter",
+        "meaning": "thrust-specific fuel consumption (kg/N/s)"
+      },
+      "LD_ratio": {
+        "unit": "1",
+        "meaning": "lift-to-drag ratio"
+      },
+      "W1_mass": {
+        "unit": "kilogram",
+        "meaning": "initial mass"
+      },
+      "W2_mass": {
+        "unit": "kilogram",
+        "meaning": "final mass"
+      }
+    },
+    "source": {
+      "title": "Range (aeronautics)",
+      "url": "https://en.wikipedia.org/wiki/Range_(aeronautics)",
+      "section": "Jet aircraft, fixed altitude",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "electric_aircraft_range",
+    "equation": "R_elec = E_spec/g0_std*eta_tot*LD_ratio*(W_batt/W_tot)",
+    "discipline": "Aerospace Engineering",
+    "physics_domain": "aerospace",
+    "symbols": {
+      "R_elec": {
+        "unit": "meter",
+        "meaning": "range"
+      },
+      "E_spec": {
+        "unit": "joule/kilogram",
+        "meaning": "battery specific energy"
+      },
+      "g0_std": {
+        "unit": "meter/second**2",
+        "meaning": "gravity"
+      },
+      "eta_tot": {
+        "unit": "1",
+        "meaning": "total efficiency"
+      },
+      "LD_ratio": {
+        "unit": "1",
+        "meaning": "lift-to-drag ratio"
+      },
+      "W_batt": {
+        "unit": "kilogram",
+        "meaning": "battery mass"
+      },
+      "W_tot": {
+        "unit": "kilogram",
+        "meaning": "total mass"
+      }
+    },
+    "source": {
+      "title": "Range (aeronautics)",
+      "url": "https://en.wikipedia.org/wiki/Range_(aeronautics)",
+      "section": "Electric aircraft",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "wind_efficiency",
+    "equation": "eta_wind = (TAS - HW_avg)/TAS",
+    "discipline": "Aerospace Engineering",
+    "physics_domain": "aerospace",
+    "symbols": {
+      "eta_wind": {
+        "unit": "1",
+        "meaning": "wind efficiency"
+      },
+      "TAS": {
+        "unit": "meter/second",
+        "meaning": "true airspeed"
+      },
+      "HW_avg": {
+        "unit": "meter/second",
+        "meaning": "average headwind"
+      }
+    },
+    "source": {
+      "title": "Range (aeronautics)",
+      "url": "https://en.wikipedia.org/wiki/Range_(aeronautics)",
+      "section": "Operational efficiency",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "zn_p_only_kp",
+    "equation": "Kp_zn_p = 0.5*Ku_zn",
+    "discipline": "Control Engineering",
+    "physics_domain": "control_systems",
+    "symbols": {
+      "Kp_zn_p": {
+        "unit": "1",
+        "meaning": "P-only proportional gain"
+      },
+      "Ku_zn": {
+        "unit": "1",
+        "meaning": "ultimate gain"
+      }
+    },
+    "source": {
+      "title": "Ziegler-Nichols method",
+      "url": "https://en.wikipedia.org/wiki/Ziegler%E2%80%93Nichols_method",
+      "section": "Tuning table, P",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "zn_pi_kp",
+    "equation": "Kp_zn_pi = 0.45*Ku_zn",
+    "discipline": "Control Engineering",
+    "physics_domain": "control_systems",
+    "symbols": {
+      "Kp_zn_pi": {
+        "unit": "1",
+        "meaning": "PI proportional gain"
+      },
+      "Ku_zn": {
+        "unit": "1",
+        "meaning": "ultimate gain"
+      }
+    },
+    "source": {
+      "title": "Ziegler-Nichols method",
+      "url": "https://en.wikipedia.org/wiki/Ziegler%E2%80%93Nichols_method",
+      "section": "Tuning table, PI",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "zn_pi_ti",
+    "equation": "Ti_zn_pi = 0.833*Pu_zn",
+    "discipline": "Control Engineering",
+    "physics_domain": "control_systems",
+    "symbols": {
+      "Ti_zn_pi": {
+        "unit": "second",
+        "meaning": "PI integral time"
+      },
+      "Pu_zn": {
+        "unit": "second",
+        "meaning": "ultimate period"
+      }
+    },
+    "source": {
+      "title": "Ziegler-Nichols method",
+      "url": "https://en.wikipedia.org/wiki/Ziegler%E2%80%93Nichols_method",
+      "section": "Tuning table, PI",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "zn_pd_kp",
+    "equation": "Kp_zn_pd = 0.8*Ku_zn",
+    "discipline": "Control Engineering",
+    "physics_domain": "control_systems",
+    "symbols": {
+      "Kp_zn_pd": {
+        "unit": "1",
+        "meaning": "PD proportional gain"
+      },
+      "Ku_zn": {
+        "unit": "1",
+        "meaning": "ultimate gain"
+      }
+    },
+    "source": {
+      "title": "Ziegler-Nichols method",
+      "url": "https://en.wikipedia.org/wiki/Ziegler%E2%80%93Nichols_method",
+      "section": "Tuning table, PD",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "zn_pessen_kp",
+    "equation": "Kp_zn_pessen = 0.7*Ku_zn",
+    "discipline": "Control Engineering",
+    "physics_domain": "control_systems",
+    "symbols": {
+      "Kp_zn_pessen": {
+        "unit": "1",
+        "meaning": "Pessen integral rule proportional gain"
+      },
+      "Ku_zn": {
+        "unit": "1",
+        "meaning": "ultimate gain"
+      }
+    },
+    "source": {
+      "title": "Ziegler-Nichols method",
+      "url": "https://en.wikipedia.org/wiki/Ziegler%E2%80%93Nichols_method",
+      "section": "Tuning table, Pessen integral rule",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "zn_some_overshoot_kp",
+    "equation": "Kp_zn_so = 0.333*Ku_zn",
+    "discipline": "Control Engineering",
+    "physics_domain": "control_systems",
+    "symbols": {
+      "Kp_zn_so": {
+        "unit": "1",
+        "meaning": "some-overshoot proportional gain"
+      },
+      "Ku_zn": {
+        "unit": "1",
+        "meaning": "ultimate gain"
+      }
+    },
+    "source": {
+      "title": "Ziegler-Nichols method",
+      "url": "https://en.wikipedia.org/wiki/Ziegler%E2%80%93Nichols_method",
+      "section": "Tuning table, some overshoot",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "zn_no_overshoot_td",
+    "equation": "Td_zn_no = 0.333*Pu_zn",
+    "discipline": "Control Engineering",
+    "physics_domain": "control_systems",
+    "symbols": {
+      "Td_zn_no": {
+        "unit": "second",
+        "meaning": "no-overshoot derivative time"
+      },
+      "Pu_zn": {
+        "unit": "second",
+        "meaning": "ultimate period"
+      }
+    },
+    "source": {
+      "title": "Ziegler-Nichols method",
+      "url": "https://en.wikipedia.org/wiki/Ziegler%E2%80%93Nichols_method",
+      "section": "Tuning table, no overshoot",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "pid_integral_gain_from_ti",
+    "equation": "Ki_gain = Kp_gain/Ti_pid",
+    "discipline": "Control Engineering",
+    "physics_domain": "control_systems",
+    "symbols": {
+      "Ki_gain": {
+        "unit": "1/second",
+        "meaning": "integral gain"
+      },
+      "Kp_gain": {
+        "unit": "1",
+        "meaning": "proportional gain"
+      },
+      "Ti_pid": {
+        "unit": "second",
+        "meaning": "integral time"
+      }
+    },
+    "source": {
+      "title": "PID controller",
+      "url": "https://en.wikipedia.org/wiki/PID_controller",
+      "section": "Standard form",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "pid_derivative_gain_from_td",
+    "equation": "Kd_gain = Kp_gain*Td_pid",
+    "discipline": "Control Engineering",
+    "physics_domain": "control_systems",
+    "symbols": {
+      "Kd_gain": {
+        "unit": "second",
+        "meaning": "derivative gain"
+      },
+      "Kp_gain": {
+        "unit": "1",
+        "meaning": "proportional gain"
+      },
+      "Td_pid": {
+        "unit": "second",
+        "meaning": "derivative time"
+      }
+    },
+    "source": {
+      "title": "PID controller",
+      "url": "https://en.wikipedia.org/wiki/PID_controller",
+      "section": "Standard form",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "pid_laplace_transfer_function",
+    "equation": "L_pid_s = Kp_gain + Ki_gain/s_laplace + Kd_gain*s_laplace",
+    "discipline": "Control Engineering",
+    "physics_domain": "control_systems",
+    "symbols": {
+      "L_pid_s": {
+        "unit": "1",
+        "meaning": "controller transfer function"
+      },
+      "Kp_gain": {
+        "unit": "1",
+        "meaning": "proportional gain"
+      },
+      "Ki_gain": {
+        "unit": "1/second",
+        "meaning": "integral gain"
+      },
+      "s_laplace": {
+        "unit": "1/second",
+        "meaning": "complex frequency"
+      },
+      "Kd_gain": {
+        "unit": "second",
+        "meaning": "derivative gain"
+      }
+    },
+    "source": {
+      "title": "PID controller",
+      "url": "https://en.wikipedia.org/wiki/PID_controller",
+      "section": "Laplace transfer function",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "q_from_damping_ratio",
+    "equation": "Q_factor = 1/(2*zeta_damp)",
+    "discipline": "Control Engineering",
+    "physics_domain": "control_systems",
+    "symbols": {
+      "Q_factor": {
+        "unit": "1",
+        "meaning": "quality factor"
+      },
+      "zeta_damp": {
+        "unit": "1",
+        "meaning": "damping ratio"
+      }
+    },
+    "source": {
+      "title": "Damping ratio",
+      "url": "https://en.wikipedia.org/wiki/Damping_ratio",
+      "section": "Q factor and damping ratio",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "zeta_from_log_decrement",
+    "equation": "zeta_from_delta = delta_log/sqrt(delta_log**2 + (2*pi)**2)",
+    "discipline": "Control Engineering",
+    "physics_domain": "control_systems",
+    "symbols": {
+      "zeta_from_delta": {
+        "unit": "1",
+        "meaning": "damping ratio"
+      },
+      "delta_log": {
+        "unit": "1",
+        "meaning": "logarithmic decrement"
+      }
+    },
+    "source": {
+      "title": "Damping ratio",
+      "url": "https://en.wikipedia.org/wiki/Damping_ratio",
+      "section": "Logarithmic decrement",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "zeta_from_overshoot",
+    "equation": "zeta_from_po = -log(PO_frac)/sqrt(pi**2 + log(PO_frac)**2)",
+    "discipline": "Control Engineering",
+    "physics_domain": "control_systems",
+    "symbols": {
+      "zeta_from_po": {
+        "unit": "1",
+        "meaning": "damping ratio"
+      },
+      "PO_frac": {
+        "unit": "1",
+        "meaning": "fractional overshoot (PO/100)"
+      }
+    },
+    "source": {
+      "title": "Damping ratio",
+      "url": "https://en.wikipedia.org/wiki/Damping_ratio",
+      "section": "Percent overshoot",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "Page uses percent PO; written with PO_frac = PO/100.",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "damping_loss_factor",
+    "equation": "eta_loss = 2*zeta_damp*omega_freq/omega_n_sys",
+    "discipline": "Control Engineering",
+    "physics_domain": "control_systems",
+    "symbols": {
+      "eta_loss": {
+        "unit": "1",
+        "meaning": "loss factor"
+      },
+      "zeta_damp": {
+        "unit": "1",
+        "meaning": "damping ratio"
+      },
+      "omega_freq": {
+        "unit": "1/second",
+        "meaning": "frequency"
+      },
+      "omega_n_sys": {
+        "unit": "1/second",
+        "meaning": "natural frequency"
+      }
+    },
+    "source": {
+      "title": "Damping ratio",
+      "url": "https://en.wikipedia.org/wiki/Damping_ratio",
+      "section": "Loss factor",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "half_life_decay",
+    "equation": "t_half = log(2)/lam_decay",
+    "discipline": "Control Engineering",
+    "physics_domain": "control_systems",
+    "symbols": {
+      "t_half": {
+        "unit": "second",
+        "meaning": "half-life"
+      },
+      "lam_decay": {
+        "unit": "1/second",
+        "meaning": "decay rate"
+      }
+    },
+    "source": {
+      "title": "Damping ratio",
+      "url": "https://en.wikipedia.org/wiki/Damping_ratio",
+      "section": "Decay",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "one_pole_step_response",
+    "equation": "S_ol = A0_gain*(1 - exp(-t_time/tau_1))",
+    "discipline": "Control Engineering",
+    "physics_domain": "control_systems",
+    "symbols": {
+      "S_ol": {
+        "unit": "1",
+        "meaning": "open-loop step response"
+      },
+      "A0_gain": {
+        "unit": "1",
+        "meaning": "zero-frequency gain"
+      },
+      "t_time": {
+        "unit": "second",
+        "meaning": "time"
+      },
+      "tau_1": {
+        "unit": "second",
+        "meaning": "time constant"
+      }
+    },
+    "source": {
+      "title": "Step response",
+      "url": "https://en.wikipedia.org/wiki/Step_response",
+      "section": "One-pole system",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "one_pole_closed_loop_step_response",
+    "equation": "S_fb = A0_gain/(1 + beta_fb*A0_gain)*(1 - exp(-t_time*(1 + beta_fb*A0_gain)/tau_1))",
+    "discipline": "Control Engineering",
+    "physics_domain": "control_systems",
+    "symbols": {
+      "S_fb": {
+        "unit": "1",
+        "meaning": "closed-loop step response"
+      },
+      "A0_gain": {
+        "unit": "1",
+        "meaning": "open-loop gain"
+      },
+      "beta_fb": {
+        "unit": "1",
+        "meaning": "feedback factor"
+      },
+      "t_time": {
+        "unit": "second",
+        "meaning": "time"
+      },
+      "tau_1": {
+        "unit": "second",
+        "meaning": "time constant"
+      }
+    },
+    "source": {
+      "title": "Step response",
+      "url": "https://en.wikipedia.org/wiki/Step_response",
+      "section": "One-pole system",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "two_pole_settling_time",
+    "equation": "t_settle = log(1/Delta_tol)/rho_damp",
+    "discipline": "Control Engineering",
+    "physics_domain": "control_systems",
+    "symbols": {
+      "t_settle": {
+        "unit": "second",
+        "meaning": "settling time"
+      },
+      "Delta_tol": {
+        "unit": "1",
+        "meaning": "acceptable deviation"
+      },
+      "rho_damp": {
+        "unit": "1/second",
+        "meaning": "damping parameter"
+      }
+    },
+    "source": {
+      "title": "Step response",
+      "url": "https://en.wikipedia.org/wiki/Step_response",
+      "section": "Two-pole system",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "two_pole_max_overshoot",
+    "equation": "S_max_2p = 1 + exp(-pi*rho_damp/mu_osc)",
+    "discipline": "Control Engineering",
+    "physics_domain": "control_systems",
+    "symbols": {
+      "S_max_2p": {
+        "unit": "1",
+        "meaning": "peak of step response"
+      },
+      "rho_damp": {
+        "unit": "1/second",
+        "meaning": "damping parameter"
+      },
+      "mu_osc": {
+        "unit": "1/second",
+        "meaning": "oscillation frequency parameter"
+      }
+    },
+    "source": {
+      "title": "Step response",
+      "url": "https://en.wikipedia.org/wiki/Step_response",
+      "section": "Two-pole system",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "phase_margin_two_pole",
+    "equation": "phi_margin = atan(alpha_pole)",
+    "discipline": "Control Engineering",
+    "physics_domain": "control_systems",
+    "symbols": {
+      "phi_margin": {
+        "unit": "1",
+        "meaning": "phase margin (rad)"
+      },
+      "alpha_pole": {
+        "unit": "1",
+        "meaning": "pole ratio parameter"
+      }
+    },
+    "source": {
+      "title": "Step response",
+      "url": "https://en.wikipedia.org/wiki/Step_response",
+      "section": "Two-pole system",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "terminal_voltage",
+    "equation": "V_term = emf - I_cur*r_int",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "V_term": {
+        "unit": "volt",
+        "meaning": "terminal voltage"
+      },
+      "emf": {
+        "unit": "volt",
+        "meaning": "source emf"
+      },
+      "I_cur": {
+        "unit": "ampere",
+        "meaning": "current"
+      },
+      "r_int": {
+        "unit": "ohm",
+        "meaning": "internal resistance"
+      }
+    },
+    "source": {
+      "title": "Ch. 10 Key Equations (Direct-Current Circuits)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/10-key-equations",
+      "section": "Terminal voltage",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "series_resistance_two",
+    "equation": "R_series2 = R1_res + R2_res",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "R_series2": {
+        "unit": "ohm",
+        "meaning": "equivalent"
+      },
+      "R1_res": {
+        "unit": "ohm",
+        "meaning": "resistor 1"
+      },
+      "R2_res": {
+        "unit": "ohm",
+        "meaning": "resistor 2"
+      }
+    },
+    "source": {
+      "title": "Ch. 10 Key Equations (Direct-Current Circuits)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/10-key-equations",
+      "section": "Resistors in series",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "rearranged",
+    "note": "Page gives the N-resistor sum; two-resistor case.",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "parallel_resistance_two",
+    "equation": "R_par2 = 1/(1/R1_res + 1/R2_res)",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "R_par2": {
+        "unit": "ohm",
+        "meaning": "equivalent"
+      },
+      "R1_res": {
+        "unit": "ohm",
+        "meaning": "resistor 1"
+      },
+      "R2_res": {
+        "unit": "ohm",
+        "meaning": "resistor 2"
+      }
+    },
+    "source": {
+      "title": "Ch. 10 Key Equations (Direct-Current Circuits)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/10-key-equations",
+      "section": "Resistors in parallel",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "rearranged",
+    "note": "Page gives the N-resistor form; two-resistor case.",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "rc_charging_charge",
+    "equation": "q_chg = C_cap*emf*(1 - exp(-t_time/(R_res*C_cap)))",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "q_chg": {
+        "unit": "coulomb",
+        "meaning": "capacitor charge"
+      },
+      "C_cap": {
+        "unit": "farad",
+        "meaning": "capacitance"
+      },
+      "emf": {
+        "unit": "volt",
+        "meaning": "source emf"
+      },
+      "t_time": {
+        "unit": "second",
+        "meaning": "time"
+      },
+      "R_res": {
+        "unit": "ohm",
+        "meaning": "resistance"
+      }
+    },
+    "source": {
+      "title": "Ch. 10 Key Equations (Direct-Current Circuits)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/10-key-equations",
+      "section": "RC circuits",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "rc_charging_current",
+    "equation": "I_chg = emf/R_res*exp(-t_time/(R_res*C_cap))",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "I_chg": {
+        "unit": "ampere",
+        "meaning": "charging current"
+      },
+      "emf": {
+        "unit": "volt",
+        "meaning": "source emf"
+      },
+      "R_res": {
+        "unit": "ohm",
+        "meaning": "resistance"
+      },
+      "t_time": {
+        "unit": "second",
+        "meaning": "time"
+      },
+      "C_cap": {
+        "unit": "farad",
+        "meaning": "capacitance"
+      }
+    },
+    "source": {
+      "title": "Ch. 10 Key Equations (Direct-Current Circuits)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/10-key-equations",
+      "section": "RC circuits",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "rc_time_constant",
+    "equation": "tau_rc = R_res*C_cap",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "tau_rc": {
+        "unit": "second",
+        "meaning": "time constant"
+      },
+      "R_res": {
+        "unit": "ohm",
+        "meaning": "resistance"
+      },
+      "C_cap": {
+        "unit": "farad",
+        "meaning": "capacitance"
+      }
+    },
+    "source": {
+      "title": "Ch. 10 Key Equations (Direct-Current Circuits)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/10-key-equations",
+      "section": "RC circuits",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "parallel_plate_capacitor",
+    "equation": "C_pp = eps0*A_plate/d_gap",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "C_pp": {
+        "unit": "farad",
+        "meaning": "capacitance"
+      },
+      "eps0": {
+        "unit": "farad/meter",
+        "meaning": "permittivity of free space"
+      },
+      "A_plate": {
+        "unit": "meter**2",
+        "meaning": "plate area"
+      },
+      "d_gap": {
+        "unit": "meter",
+        "meaning": "plate separation"
+      }
+    },
+    "source": {
+      "title": "Ch. 8 Key Equations (Capacitance)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/8-key-equations",
+      "section": "Parallel-plate capacitor",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "spherical_capacitor",
+    "equation": "C_sph = 4*pi*eps0*R_in*R_out/(R_out - R_in)",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "C_sph": {
+        "unit": "farad",
+        "meaning": "capacitance"
+      },
+      "eps0": {
+        "unit": "farad/meter",
+        "meaning": "permittivity of free space"
+      },
+      "R_in": {
+        "unit": "meter",
+        "meaning": "inner radius"
+      },
+      "R_out": {
+        "unit": "meter",
+        "meaning": "outer radius"
+      }
+    },
+    "source": {
+      "title": "Ch. 8 Key Equations (Capacitance)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/8-key-equations",
+      "section": "Spherical capacitor",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "cylindrical_capacitor",
+    "equation": "C_cyl = 2*pi*eps0*l_cyl/log(R_out/R_in)",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "C_cyl": {
+        "unit": "farad",
+        "meaning": "capacitance"
+      },
+      "eps0": {
+        "unit": "farad/meter",
+        "meaning": "permittivity of free space"
+      },
+      "l_cyl": {
+        "unit": "meter",
+        "meaning": "length"
+      },
+      "R_out": {
+        "unit": "meter",
+        "meaning": "outer radius"
+      },
+      "R_in": {
+        "unit": "meter",
+        "meaning": "inner radius"
+      }
+    },
+    "source": {
+      "title": "Ch. 8 Key Equations (Capacitance)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/8-key-equations",
+      "section": "Cylindrical capacitor",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "series_capacitance_two",
+    "equation": "C_series2 = 1/(1/C1_cap + 1/C2_cap)",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "C_series2": {
+        "unit": "farad",
+        "meaning": "equivalent"
+      },
+      "C1_cap": {
+        "unit": "farad",
+        "meaning": "capacitor 1"
+      },
+      "C2_cap": {
+        "unit": "farad",
+        "meaning": "capacitor 2"
+      }
+    },
+    "source": {
+      "title": "Ch. 8 Key Equations (Capacitance)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/8-key-equations",
+      "section": "Series combination",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "rearranged",
+    "note": "Page gives the N-capacitor form; two-capacitor case.",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "capacitor_energy",
+    "equation": "U_cap = C_cap*V_cap**2/2",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "U_cap": {
+        "unit": "joule",
+        "meaning": "stored energy"
+      },
+      "C_cap": {
+        "unit": "farad",
+        "meaning": "capacitance"
+      },
+      "V_cap": {
+        "unit": "volt",
+        "meaning": "voltage"
+      }
+    },
+    "source": {
+      "title": "Ch. 8 Key Equations (Capacitance)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/8-key-equations",
+      "section": "Energy stored in a capacitor",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "dielectric_capacitance",
+    "equation": "C_diel = kappa_diel*C0_cap",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "C_diel": {
+        "unit": "farad",
+        "meaning": "capacitance with dielectric"
+      },
+      "kappa_diel": {
+        "unit": "1",
+        "meaning": "dielectric constant"
+      },
+      "C0_cap": {
+        "unit": "farad",
+        "meaning": "capacitance without dielectric"
+      }
+    },
+    "source": {
+      "title": "Ch. 8 Key Equations (Capacitance)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/8-key-equations",
+      "section": "Capacitor with a dielectric",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "conductor_resistance",
+    "equation": "R_cond = rho_res*L_cond/A_cond",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "R_cond": {
+        "unit": "ohm",
+        "meaning": "resistance"
+      },
+      "rho_res": {
+        "unit": "ohm*meter",
+        "meaning": "resistivity"
+      },
+      "L_cond": {
+        "unit": "meter",
+        "meaning": "length"
+      },
+      "A_cond": {
+        "unit": "meter**2",
+        "meaning": "cross-section area"
+      }
+    },
+    "source": {
+      "title": "Ch. 9 Key Equations (Current and Resistance)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/9-key-equations",
+      "section": "Resistance of a cylinder",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "power_resistor_voltage_form",
+    "equation": "P_res = V_R**2/R_res",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "P_res": {
+        "unit": "watt",
+        "meaning": "power"
+      },
+      "V_R": {
+        "unit": "volt",
+        "meaning": "voltage across resistor"
+      },
+      "R_res": {
+        "unit": "ohm",
+        "meaning": "resistance"
+      }
+    },
+    "source": {
+      "title": "Ch. 9 Key Equations (Current and Resistance)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/9-key-equations",
+      "section": "Electrical power",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "solenoid_inductance",
+    "equation": "L_sol = mu0*N_turns**2*A_sol/l_sol",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "L_sol": {
+        "unit": "henry",
+        "meaning": "self-inductance"
+      },
+      "mu0": {
+        "unit": "henry/meter",
+        "meaning": "permeability of free space"
+      },
+      "N_turns": {
+        "unit": "1",
+        "meaning": "turns"
+      },
+      "A_sol": {
+        "unit": "meter**2",
+        "meaning": "cross-section area"
+      },
+      "l_sol": {
+        "unit": "meter",
+        "meaning": "length"
+      }
+    },
+    "source": {
+      "title": "Ch. 14 Key Equations (Inductance)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/14-key-equations",
+      "section": "Solenoid self-inductance",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "toroid_inductance",
+    "equation": "L_tor = mu0*N_turns**2*h_tor*log(R_out/R_in)/(2*pi)",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "L_tor": {
+        "unit": "henry",
+        "meaning": "self-inductance"
+      },
+      "mu0": {
+        "unit": "henry/meter",
+        "meaning": "permeability of free space"
+      },
+      "N_turns": {
+        "unit": "1",
+        "meaning": "turns"
+      },
+      "h_tor": {
+        "unit": "meter",
+        "meaning": "height"
+      },
+      "R_out": {
+        "unit": "meter",
+        "meaning": "outer radius"
+      },
+      "R_in": {
+        "unit": "meter",
+        "meaning": "inner radius"
+      }
+    },
+    "source": {
+      "title": "Ch. 14 Key Equations (Inductance)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/14-key-equations",
+      "section": "Toroid self-inductance",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "inductor_energy",
+    "equation": "U_ind = L_ind*I_cur**2/2",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "U_ind": {
+        "unit": "joule",
+        "meaning": "stored energy"
+      },
+      "L_ind": {
+        "unit": "henry",
+        "meaning": "inductance"
+      },
+      "I_cur": {
+        "unit": "ampere",
+        "meaning": "current"
+      }
+    },
+    "source": {
+      "title": "Ch. 14 Key Equations (Inductance)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/14-key-equations",
+      "section": "Energy stored in an inductor",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "rl_current_rise",
+    "equation": "I_rl = emf/R_res*(1 - exp(-t_time/tau_rl))",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "I_rl": {
+        "unit": "ampere",
+        "meaning": "current"
+      },
+      "emf": {
+        "unit": "volt",
+        "meaning": "source emf"
+      },
+      "R_res": {
+        "unit": "ohm",
+        "meaning": "resistance"
+      },
+      "t_time": {
+        "unit": "second",
+        "meaning": "time"
+      },
+      "tau_rl": {
+        "unit": "second",
+        "meaning": "time constant"
+      }
+    },
+    "source": {
+      "title": "Ch. 14 Key Equations (Inductance)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/14-key-equations",
+      "section": "RL circuits",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "rl_time_constant",
+    "equation": "tau_rl = L_ind/R_res",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "tau_rl": {
+        "unit": "second",
+        "meaning": "time constant"
+      },
+      "L_ind": {
+        "unit": "henry",
+        "meaning": "inductance"
+      },
+      "R_res": {
+        "unit": "ohm",
+        "meaning": "resistance"
+      }
+    },
+    "source": {
+      "title": "Ch. 14 Key Equations (Inductance)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/14-key-equations",
+      "section": "RL circuits",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "lc_angular_frequency",
+    "equation": "omega_lc = 1/sqrt(L_ind*C_cap)",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "omega_lc": {
+        "unit": "1/second",
+        "meaning": "angular frequency"
+      },
+      "L_ind": {
+        "unit": "henry",
+        "meaning": "inductance"
+      },
+      "C_cap": {
+        "unit": "farad",
+        "meaning": "capacitance"
+      }
+    },
+    "source": {
+      "title": "Ch. 14 Key Equations (Inductance)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/14-key-equations",
+      "section": "LC oscillations",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "rlc_damped_frequency",
+    "equation": "omega_rlc = sqrt(1/(L_ind*C_cap) - (R_res/(2*L_ind))**2)",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "omega_rlc": {
+        "unit": "1/second",
+        "meaning": "damped angular frequency"
+      },
+      "L_ind": {
+        "unit": "henry",
+        "meaning": "inductance"
+      },
+      "C_cap": {
+        "unit": "farad",
+        "meaning": "capacitance"
+      },
+      "R_res": {
+        "unit": "ohm",
+        "meaning": "resistance"
+      }
+    },
+    "source": {
+      "title": "Ch. 14 Key Equations (Inductance)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/14-key-equations",
+      "section": "RLC oscillations",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "capacitive_reactance",
+    "equation": "Xc_react = 1/(omega_ac*C_cap)",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "Xc_react": {
+        "unit": "ohm",
+        "meaning": "capacitive reactance"
+      },
+      "omega_ac": {
+        "unit": "1/second",
+        "meaning": "angular frequency"
+      },
+      "C_cap": {
+        "unit": "farad",
+        "meaning": "capacitance"
+      }
+    },
+    "source": {
+      "title": "Ch. 15 Key Equations (Alternating-Current Circuits)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/15-key-equations",
+      "section": "Capacitor reactance",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "inductive_reactance",
+    "equation": "Xl_react = omega_ac*L_ind",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "Xl_react": {
+        "unit": "ohm",
+        "meaning": "inductive reactance"
+      },
+      "omega_ac": {
+        "unit": "1/second",
+        "meaning": "angular frequency"
+      },
+      "L_ind": {
+        "unit": "henry",
+        "meaning": "inductance"
+      }
+    },
+    "source": {
+      "title": "Ch. 15 Key Equations (Alternating-Current Circuits)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/15-key-equations",
+      "section": "Inductor reactance",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "series_rlc_impedance",
+    "equation": "Z_rlc = sqrt(R_res**2 + (Xl_react - Xc_react)**2)",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "Z_rlc": {
+        "unit": "ohm",
+        "meaning": "impedance"
+      },
+      "R_res": {
+        "unit": "ohm",
+        "meaning": "resistance"
+      },
+      "Xl_react": {
+        "unit": "ohm",
+        "meaning": "inductive reactance"
+      },
+      "Xc_react": {
+        "unit": "ohm",
+        "meaning": "capacitive reactance"
+      }
+    },
+    "source": {
+      "title": "Ch. 15 Key Equations (Alternating-Current Circuits)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/15-key-equations",
+      "section": "Series RLC",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "series_rlc_phase",
+    "equation": "phi_rlc = atan((Xl_react - Xc_react)/R_res)",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "phi_rlc": {
+        "unit": "1",
+        "meaning": "phase angle (rad)"
+      },
+      "Xl_react": {
+        "unit": "ohm",
+        "meaning": "inductive reactance"
+      },
+      "Xc_react": {
+        "unit": "ohm",
+        "meaning": "capacitive reactance"
+      },
+      "R_res": {
+        "unit": "ohm",
+        "meaning": "resistance"
+      }
+    },
+    "source": {
+      "title": "Ch. 15 Key Equations (Alternating-Current Circuits)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/15-key-equations",
+      "section": "Series RLC",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "rlc_quality_factor",
+    "equation": "Q_rlc = omega0_res*L_ind/R_res",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "Q_rlc": {
+        "unit": "1",
+        "meaning": "quality factor"
+      },
+      "omega0_res": {
+        "unit": "1/second",
+        "meaning": "resonant angular frequency"
+      },
+      "L_ind": {
+        "unit": "henry",
+        "meaning": "inductance"
+      },
+      "R_res": {
+        "unit": "ohm",
+        "meaning": "resistance"
+      }
+    },
+    "source": {
+      "title": "Ch. 15 Key Equations (Alternating-Current Circuits)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/15-key-equations",
+      "section": "Resonance",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "transformer_secondary_voltage",
+    "equation": "Vs_tr = Vp_tr*Ns_tr/Np_tr",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "Vs_tr": {
+        "unit": "volt",
+        "meaning": "secondary voltage"
+      },
+      "Vp_tr": {
+        "unit": "volt",
+        "meaning": "primary voltage"
+      },
+      "Ns_tr": {
+        "unit": "1",
+        "meaning": "secondary turns"
+      },
+      "Np_tr": {
+        "unit": "1",
+        "meaning": "primary turns"
+      }
+    },
+    "source": {
+      "title": "Ch. 15 Key Equations (Alternating-Current Circuits)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/15-key-equations",
+      "section": "Transformers",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "rearranged",
+    "note": "Page gives Vs/Vp = Ns/Np.",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": []
+    },
+    "status": "candidate"
+  }
+]

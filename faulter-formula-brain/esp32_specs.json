@@ -1,0 +1,89 @@
+{
+  "board": "ESP32 DevKit V1 (DOIT, 30-pin)",
+  "sources": [
+    "https://www.espboards.dev/esp32/esp32doit-devkit-v1/",
+    "https://mischianti.org/doit-esp32-dev-kit-v1-high-resolution-pinout-and-specs/",
+    "https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp-dev-kits-en-master-esp32.pdf"
+  ],
+  "note": "DOIT DevKit V1 is a third-party clone board (not an official Espressif reference board) but is the de-facto standard '30-pin ESP32 DevKit V1' referenced everywhere. Board-level dimensions/positions vary slightly by manufacturer batch -- marked 'estimated' below where sources disagreed. Chip-level facts (WROOM-32 module spec, crystal freq, GPIO numbering) come from Espressif's own ESP32-WROOM-32 datasheet and are marked 'confirmed'.",
+
+  "pcb_board": {
+    "length_mm": 51.8, "width_mm": 28.2, "thickness_mm": 1.6,
+    "confirmed": false, "note": "estimated -- mischianti.org measured SVG says 51.8x28.2mm, espboards.dev says 51.45x23.37mm; used the wider figure as it matches standard 2x15 0.1in header spacing better"
+  },
+  "esp32_chip": {
+    "package": "ESP32-WROOM-32", "length_mm": 18.0, "width_mm": 25.5, "height_mm": 3.1,
+    "position_from_board_origin_mm": {"x": 13.0, "y": 1.0},
+    "confirmed": true, "note": "WROOM-32 module footprint is a well-documented Espressif spec (18x25.5x3.1mm); position centered on DevKit board is estimated"
+  },
+  "crystal_oscillator": {
+    "frequency_MHz": 40, "package": "2-pin SMD (3.2x2.5mm typical)",
+    "confirmed": true, "note": "40MHz crystal is the Espressif-specified reference for ESP32; it is inside the WROOM-32 module can, not a separate visible board component -- shown separately here for visualization clarity only"
+  },
+  "ams1117_regulator": {
+    "part": "AMS1117-3.3", "package": "SOT-223", "length_mm": 6.5, "width_mm": 3.5,
+    "position_from_board_origin_mm": {"x": 4.0, "y": 24.0},
+    "confirmed": false, "note": "estimated -- AMS1117-3.3 is the near-universal LDO on this clone board family (widely documented across community teardowns), but exact part markings vary by manufacturer batch"
+  },
+  "usb_connector": {
+    "type": "Micro-USB", "length_mm": 7.5, "width_mm": 5.4,
+    "position_from_board_origin_mm": {"x": 10.0, "y": 26.0},
+    "confirmed": true, "note": "Micro-USB (not USB-C) is standard on this board family; position at one short edge is standard across all sources"
+  },
+  "wifi_antenna": {
+    "type": "PCB trace (meandering/serpentine), integrated in WROOM-32 module",
+    "position_from_board_origin_mm": {"x": 13.0, "y": 2.0},
+    "confirmed": true, "note": "ESP32-WROOM-32 uses an on-module PCB trace antenna at the module's top edge (Espressif datasheet); exact trace geometry is proprietary, shown here as a representative serpentine pattern"
+  },
+  "gpio_header_left": {
+    "pin_count": 15, "pitch_in": 0.1,
+    "position_from_board_origin_mm": {"x": 1.5, "y": 3.0},
+    "pins": ["3V3", "EN", "GPIO36", "GPIO39", "GPIO34", "GPIO35", "GPIO32", "GPIO33", "GPIO25", "GPIO26", "GPIO27", "GPIO14", "GPIO12", "GND", "GPIO13"],
+    "confirmed": true, "note": "standard DOIT DevKit V1 30-pin silkscreen order, cross-referenced across multiple pinout sites"
+  },
+  "gpio_header_right": {
+    "pin_count": 15, "pitch_in": 0.1,
+    "position_from_board_origin_mm": {"x": 26.7, "y": 3.0},
+    "pins": ["GND", "GPIO23", "GPIO22", "GPIO1", "GPIO3", "GPIO21", "GND", "GPIO19", "GPIO18", "GPIO5", "GPIO17", "GPIO16", "GPIO4", "GPIO0", "VIN"],
+    "confirmed": true, "note": "standard DOIT DevKit V1 30-pin silkscreen order, cross-referenced across multiple pinout sites"
+  },
+  "boot_button": {
+    "label": "BOOT (IO0)", "size_mm": {"length": 3.0, "width": 3.0},
+    "position_from_board_origin_mm": {"x": 21.0, "y": 25.0},
+    "confirmed": false, "note": "estimated position near USB end; function (pulls GPIO0 low to enter flash mode) is confirmed"
+  },
+  "enable_button": {
+    "label": "EN (reset)", "size_mm": {"length": 3.0, "width": 3.0},
+    "position_from_board_origin_mm": {"x": 3.0, "y": 25.0},
+    "confirmed": false, "note": "estimated position near USB end; function (chip reset) is confirmed"
+  },
+  "power_led": {
+    "label": "PWR (red)", "size_mm": {"length": 1.6, "width": 0.8},
+    "position_from_board_origin_mm": {"x": 8.0, "y": 22.0},
+    "confirmed": false, "note": "position estimated; presence of a power-on LED is standard across this board family"
+  },
+  "user_led": {
+    "label": "GPIO2 onboard LED (blue, varies by batch)", "size_mm": {"length": 1.6, "width": 0.8},
+    "position_from_board_origin_mm": {"x": 16.0, "y": 22.0},
+    "confirmed": true, "note": "GPIO2 onboard LED is a well-documented standard feature of this board family"
+  },
+  "decoupling_caps": {
+    "count_estimated": 4, "package": "0.1uF 0603 ceramic",
+    "positions_from_board_origin_mm": [
+      {"x": 6.0, "y": 20.0}, {"x": 9.0, "y": 20.0}, {"x": 20.0, "y": 4.0}, {"x": 23.0, "y": 4.0}
+    ],
+    "confirmed": false, "note": "estimated -- generic decoupling near regulator output and chip VDD pins, standard practice, exact placement not published"
+  },
+  "chip_electrical": {
+    "cpu_freq_MHz": {"value": 240, "confirmed": true},
+    "operating_voltage_V": {"value": 3.3, "confirmed": true},
+    "current_active_wifi_tx_mA": {"value": 240, "confirmed": true},
+    "current_modem_sleep_mA": {"value": 20, "confirmed": true},
+    "current_deep_sleep_uA": {"value": 10, "confirmed": true},
+    "max_junction_temp_C": {"value": 125, "confirmed": true},
+    "thermal_resistance_junction_ambient_C_per_W": {"value": 25, "confirmed": false},
+    "typical_gpio_current_mA": {"value": 2, "confirmed": false},
+    "typical_peripheral_current_mA": {"value": 1, "confirmed": false},
+    "note": "current/voltage/temp limits from Espressif ESP32 series datasheet; thermal resistance and the two 'typical_*' baseline currents are engineering-estimate defaults (unloaded pins/peripherals draw a small but non-zero current) used only when a query doesn't specify them, not separately published for WROOM-32"
+  }
+}

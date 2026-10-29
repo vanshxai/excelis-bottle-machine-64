@@ -1,0 +1,12 @@
+[
+  {"name": "Disk drive motor (INFM0162.B)", "type": "dc_motor"},
+  {"name": "Gripper belt motor (UP00501)", "type": "dc_motor"},
+  {"name": "Paddle wheel motor (UP00601)", "type": "dc_motor"},
+  {"name": "Slew ring bearing (PRT_02_50_AL_1)", "type": "bearing"},
+  {"name": "Gripper belt (Gates 540H100)", "type": "belt"},
+  {"name": "Roller chain drivetrain", "type": "chain"},
+  {"name": "Photoeye bracket (UB01101)", "type": "sensor"},
+  {"name": "Frame assembly (UF00601)", "type": "structure_frame"},
+  {"name": "DC motor drivers (BLE2D200-A x4, ble2d60-a x1)", "type": "driver_vfd"},
+  {"name": "Electrical panel (UE00201)", "type": "electrical_panel"}
+]

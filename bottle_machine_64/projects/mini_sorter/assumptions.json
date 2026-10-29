@@ -1,0 +1,6 @@
+[
+ "Each fault is simulated alone: one part carrying extra load at a time.",
+ "No losses are modelled between parts (transmission efficiency taken as 100%).",
+ "Round-part radii are measured from the bounding box of the part in the STEP file.",
+ "Shaft bearing friction acts at the shaft's measured radius."
+]

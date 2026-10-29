@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>STEP wireframe spike</title>
+<style>
+html,body{margin:0;height:100%;background:#0b0f14;color:#c9d6e4;font:13px ui-monospace,Menlo,monospace}
+#side{position:fixed;left:0;top:0;bottom:0;width:300px;overflow:auto;background:#10161d;border-right:1px solid #1c232d;padding:10px}
+#side h3{margin:0 0 8px;font-size:12px;color:#4fc3f7;font-weight:600}
+.row{padding:3px 6px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-radius:3px}
+.row:hover{background:#1a2430}.row.on{background:#23405a;color:#fff}
+.grp{color:#6d8199;margin-top:6px;font-size:11px}
+#cv{position:fixed;left:300px;right:0;top:0;bottom:0}
+#info{position:fixed;right:12px;top:10px;color:#6d8199}
+select{background:#0b0f14;color:#c9d6e4;border:1px solid #1c232d;padding:3px;margin-bottom:8px;width:100%}
+</style></head><body>
+<div id="side"><h3>PARTS (click to highlight)</h3>
+<select id="file"><option value="as1-oc-214.wire.json">as1-oc-214 (NIST assembly)</option><option value="servo_1143.wire.json">servo_1143</option></select>
+<div id="list"></div></div>
+<div id="cv"></div><div id="info"></div>
+<script src="vendor/three.min.js"></script>
+<script>
+const cv=document.getElementById('cv'),info=document.getElementById('info');
+const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(devicePixelRatio);cv.appendChild(renderer.domElement);
+const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(40,1,0.1,100000);
+let root=new THREE.Group();scene.add(root);
+const PAL=[0x4fc3f7,0x8a8fb8,0x5ec269,0xe0a940,0xd4537e,0x1d9e75,0xef9f27,0x7f77dd];
+let lines={},ctr=new THREE.Vector3(),dist=300,yaw=0.8,pitch=0.5;
+function resize(){const w=cv.clientWidth,h=cv.clientHeight;renderer.setSize(w,h);cam.aspect=w/h;cam.updateProjectionMatrix();}
+function place(){cam.position.set(ctr.x+dist*Math.cos(pitch)*Math.sin(yaw),ctr.y+dist*Math.sin(pitch),ctr.z+dist*Math.cos(pitch)*Math.cos(yaw));cam.lookAt(ctr);}
+function draw(){renderer.setClearColor(0x0b0f14);renderer.render(scene,cam);}
+addEventListener('resize',()=>{resize();place();draw()});
+let drag=null;
+cv.addEventListener('mousedown',e=>drag=[e.clientX,e.clientY]);
+addEventListener('mouseup',()=>drag=null);
+addEventListener('mousemove',e=>{if(!drag)return;yaw-=(e.clientX-drag[0])*0.01;pitch=Math.max(-1.5,Math.min(1.5,pitch+(e.clientY-drag[1])*0.01));drag=[e.clientX,e.clientY];place();draw();});
+cv.addEventListener('wheel',e=>{e.preventDefault();dist*=e.deltaY>0?1.1:0.9;place();draw();},{passive:false});
+function pick(id){for(const k in lines){lines[k].material.color.setHex(lines[k].userData.base);lines[k].material.opacity=id?0.25:1;lines[k].material.transparent=!!id;}
+ if(lines[id]){lines[id].material.color.setHex(0xffffff);lines[id].material.opacity=1;lines[id].material.transparent=false;}
+ document.querySelectorAll('.row').forEach(r=>r.classList.toggle('on',r.dataset.id===id));draw();}
+async function load(fn){
+ const d=await (await fetch(fn)).json();
+ scene.remove(root);root=new THREE.Group();scene.add(root);lines={};
+ const L=document.getElementById('list');L.innerHTML='';
+ const top={};d.parts.forEach(p=>{const g=p.path.slice(0,2).join(' / ')||'(root)';(top[g]=top[g]||[]).push(p);});
+ let gi=0;
+ for(const g in top){const h=document.createElement('div');h.className='grp';h.textContent=g;L.appendChild(h);
+  const col=PAL[gi++%PAL.length];
+  top[g].forEach(p=>{
+   const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.Float32BufferAttribute(p.edges,3));
+   const ls=new THREE.LineSegments(geo,new THREE.LineBasicMaterial({color:col}));ls.userData.base=col;root.add(ls);lines[p.id]=ls;
+   const r=document.createElement('div');r.className='row';r.dataset.id=p.id;r.textContent=p.name+'  ('+p.edge_count+')';r.onclick=()=>pick(p.id);L.appendChild(r);});}
+ const b=d.bounds_mm;ctr.set((b[0][0]+b[1][0])/2,(b[0][1]+b[1][1])/2,(b[0][2]+b[1][2])/2);
+ const span=Math.max(b[1][0]-b[0][0],b[1][1]-b[0][1],b[1][2]-b[0][2]);dist=span*2.2;
+ info.textContent=d.source+' - '+d.part_count+' parts, '+d.edge_total+' edges';
+ root.rotation.x=0;resize();place();draw();}
+document.getElementById('file').onchange=e=>load(e.target.value);
+resize();load('as1-oc-214.wire.json');
+</script></body></html>

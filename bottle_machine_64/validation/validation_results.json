@@ -1,0 +1,200 @@
+{
+ "data_used": {
+  "supply_V": 12.0,
+  "output_rpm": 150.0,
+  "idle_current_A": 0.022,
+  "teeth": {
+   "Yellow": [
+    9
+   ],
+   "Blue": [
+    27,
+    8
+   ],
+   "Green": [
+    27,
+    8
+   ],
+   "Red": [
+    27,
+    16
+   ]
+  },
+  "output_big_teeth_range": [
+   24,
+   40
+  ],
+  "module_mm_range": [
+   0.44828,
+   0.55172
+  ],
+  "mesh_efficiency_range": [
+   0.85,
+   0.97
+  ],
+  "friction_coeff_range": [
+   0.05,
+   0.2
+  ],
+  "armature_ohm_range": [
+   1.0,
+   10.0
+  ],
+  "normal_force_range_N": [
+   0.1,
+   15.0
+  ],
+  "current_per_nm_range_prototype": [
+   5.0,
+   12.5
+  ],
+  "bands_abs_A": {
+   "Yellow": [
+    0.091,
+    null
+   ],
+   "Blue": [
+    0.043,
+    0.09
+   ],
+   "Green": [
+    0.035,
+    0.042
+   ],
+   "Red": [
+    0.031,
+    0.034
+   ]
+  },
+  "noise_observed": "block-mean peak-vs-baseline swings of 20-40 mA with the motor running (live_state.py comment)"
+ },
+ "bands_delta_over_idle_mA": {
+  "Yellow": [
+   69.0,
+   null
+  ],
+  "Blue": [
+   21.0,
+   68.0
+  ],
+  "Green": [
+   13.0,
+   20.0
+  ],
+  "Red": [
+   9.0,
+   12.0
+  ]
+ },
+ "iterations": [
+  {
+   "model": "M0  prototype as built",
+   "change": "efficiency counted from the OUTPUT side (4,3,2,1 meshes); no gear-ratio reflection; lumped current-per-N*m",
+   "min_spread_factor": 18.9,
+   "at_eta": 0.97
+  },
+  {
+   "model": "M1  fix efficiency direction",
+   "change": "meshes counted from the MOTOR side (0,1,2,3); still no gear-ratio reflection",
+   "min_spread_factor": 10.59,
+   "at_eta": 0.85
+  },
+  {
+   "model": "M2  add gear-ratio reflection",
+   "change": "touch torque divided by the speed reduction from the motor to that shaft (big wheels)",
+   "min_spread_factor": 1.34,
+   "at_eta": 0.88
+  },
+  {
+   "model": "M3  allow touching either wheel of a compound gear",
+   "change": "each of Blue/Green/Red has a big and a small wheel; which one the finger hit is not known",
+   "min_spread_factor": 0.75,
+   "at_eta": 0.86
+  }
+ ],
+ "m3_feasible_sets": 1989,
+ "m3_plausible_sets": 1989,
+ "grid_size": 15912,
+ "representative_fit_m3": {
+  "Nout": 32,
+  "Ra": 5.5,
+  "eta": 0.91,
+  "wheels": [
+   1,
+   1,
+   1
+  ],
+  "module": 0.53724,
+  "Kt": 0.011065249237793505,
+  "Ft_lo": 0.5966757238151917,
+  "Ft_hi": 0.7955676317535891,
+  "spread": 0.7499999999999999
+ },
+ "touch_force_tangential_N_m3": 0.6889817795272315,
+ "m2_central": {
+  "eta": 0.88,
+  "Kt": 0.011802932520313074,
+  "spread": 1.3365,
+  "compromise_force_N": 0.2950276151358713
+ },
+ "prototype_dynamic_model_impact_A": {
+  "Yellow": -6.436,
+  "Blue": -11.85,
+  "Green": 7.691,
+  "Red": 10.029
+ },
+ "table": [
+  {
+   "gear": "Yellow",
+   "measured_band_mA": [
+    69.0,
+    null
+   ],
+   "prototype_at_2N_mA": 3.74,
+   "prototype_in_band": false,
+   "m2_big_wheels_mA": 60.4,
+   "m2_in_band": false,
+   "m3_small_wheels_mA": 150.5,
+   "m3_in_band": true
+  },
+  {
+   "gear": "Blue",
+   "measured_band_mA": [
+    21.0,
+    68.0
+   ],
+   "prototype_at_2N_mA": 12.83,
+   "prototype_in_band": false,
+   "m2_big_wheels_mA": 68.7,
+   "m2_in_band": false,
+   "m3_small_wheels_mA": 49.0,
+   "m3_in_band": true
+  },
+  {
+   "gear": "Green",
+   "measured_band_mA": [
+    13.0,
+    20.0
+   ],
+   "prototype_at_2N_mA": 14.67,
+   "prototype_in_band": true,
+   "m2_big_wheels_mA": 23.1,
+   "m2_in_band": false,
+   "m3_small_wheels_mA": 16.0,
+   "m3_in_band": true
+  },
+  {
+   "gear": "Red",
+   "measured_band_mA": [
+    9.0,
+    12.0
+   ],
+   "prototype_at_2N_mA": 16.76,
+   "prototype_in_band": false,
+   "m2_big_wheels_mA": 7.8,
+   "m2_in_band": false,
+   "m3_small_wheels_mA": 10.4,
+   "m3_in_band": true
+  }
+ ]
+}

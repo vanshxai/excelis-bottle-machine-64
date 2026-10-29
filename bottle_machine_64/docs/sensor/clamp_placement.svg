@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 560" width="1180" height="560" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1180" height="560" fill="#ffffff"/>
+  <text x="30" y="44" font-size="26" font-weight="700" fill="#1e1e1e">Where the SCT-013-005 clamp goes</text>
+  <text x="30" y="72" font-size="16" fill="#495057">On the power wire going INTO the driver. Never on the motor wires.</text>
+
+  <!-- power source -->
+  <rect x="30" y="150" width="190" height="150" rx="14" fill="#f1f3f5" stroke="#495057" stroke-width="2"/>
+  <text x="125" y="190" font-size="18" font-weight="700" fill="#1e1e1e" text-anchor="middle">Panel power</text>
+  <text x="125" y="214" font-size="14" fill="#495057" text-anchor="middle">from the breaker</text>
+  <text x="125" y="236" font-size="14" fill="#495057" text-anchor="middle">200-240 V AC</text>
+  <text x="125" y="272" font-size="13" fill="#c92a2a" text-anchor="middle">mains voltage: do not touch</text>
+
+  <!-- wires into the driver -->
+  <line x1="220" y1="190" x2="470" y2="190" stroke="#2f6fb0" stroke-width="8"/>
+  <line x1="220" y1="262" x2="470" y2="262" stroke="#8a5a2b" stroke-width="8"/>
+  <text x="236" y="178" font-size="14" fill="#2f6fb0">neutral wire (leave alone)</text>
+  <text x="236" y="288" font-size="14" fill="#8a5a2b">live wire</text>
+
+  <!-- clamp around the live wire -->
+  <rect x="330" y="222" width="76" height="80" rx="10" fill="#2b8ae0" stroke="#124e87" stroke-width="3"/>
+  <rect x="352" y="244" width="32" height="36" rx="4" fill="#ffffff" stroke="#124e87" stroke-width="2"/>
+  <line x1="352" y1="262" x2="384" y2="262" stroke="#8a5a2b" stroke-width="8"/>
+
+  <!-- driver -->
+  <rect x="470" y="130" width="230" height="170" rx="14" fill="#e5dbff" stroke="#6741d9" stroke-width="2"/>
+  <text x="585" y="188" font-size="20" font-weight="700" fill="#1e1e1e" text-anchor="middle">Motor driver</text>
+  <text x="585" y="214" font-size="14" fill="#495057" text-anchor="middle">the BLE2 box in the panel</text>
+  <text x="585" y="238" font-size="14" fill="#495057" text-anchor="middle">its input current follows</text>
+  <text x="585" y="256" font-size="14" fill="#495057" text-anchor="middle">how hard the motor works</text>
+
+  <!-- motor wires -->
+  <line x1="700" y1="170" x2="880" y2="170" stroke="#868e96" stroke-width="5"/>
+  <line x1="700" y1="215" x2="880" y2="215" stroke="#868e96" stroke-width="5"/>
+  <line x1="700" y1="260" x2="880" y2="260" stroke="#868e96" stroke-width="5"/>
+  <text x="790" y="158" font-size="14" fill="#495057" text-anchor="middle">U, V, W motor wires</text>
+  <g stroke="#c92a2a" stroke-width="5" stroke-linecap="round">
+    <line x1="770" y1="190" x2="810" y2="240"/><line x1="810" y1="190" x2="770" y2="240"/>
+  </g>
+  <text x="790" y="290" font-size="14" fill="#c92a2a" text-anchor="middle">no sensor here</text>
+
+  <circle cx="990" cy="215" r="78" fill="#dbe4ff" stroke="#3b5bdb" stroke-width="2"/>
+  <text x="990" y="210" font-size="20" font-weight="700" fill="#1e1e1e" text-anchor="middle">Motor</text>
+  <text x="990" y="234" font-size="14" fill="#495057" text-anchor="middle">+ gearhead</text>
+
+  <!-- clamp cable down to jack -->
+  <path d="M 368 302 C 368 350, 300 382, 240 402" fill="none" stroke="#1e1e1e" stroke-width="4"/>
+  <text x="392" y="326" font-size="15" font-weight="700" fill="#124e87">CLAMP: around ONE wire only</text>
+  <text x="392" y="344" font-size="14" fill="#495057">(its cable is 1 m long)</text>
+
+  <!-- 3.5 mm jack -->
+  <rect x="120" y="380" width="120" height="44" rx="8" fill="#1e1e1e"/>
+  <text x="180" y="408" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">3.5 mm plug</text>
+  <text x="30" y="458" font-size="14" fill="#495057">Plug: tip = signal (0-1 V AC), sleeve = ground, ring = not used</text>
+
+  <line x1="120" y1="402" x2="80" y2="402" stroke="#1e1e1e" stroke-width="4"/>
+  <line x1="240" y1="402" x2="470" y2="402" stroke="#1e1e1e" stroke-width="4"/>
+  <polygon points="470,402 456,394 456,410" fill="#1e1e1e"/>
+
+  <!-- reader -->
+  <rect x="470" y="350" width="330" height="110" rx="14" fill="#d3f9d8" stroke="#2b8a3e" stroke-width="2"/>
+  <text x="635" y="384" font-size="18" font-weight="700" fill="#1e1e1e" text-anchor="middle">First test: a multimeter on AC mV</text>
+  <text x="635" y="410" font-size="14" fill="#495057" text-anchor="middle">1 mV on the meter = 5 mA in the wire</text>
+  <text x="635" y="432" font-size="14" fill="#495057" text-anchor="middle">Load the motor by hand: does the number move?</text>
+
+  <rect x="840" y="350" width="310" height="110" rx="14" fill="#f1f3f5" stroke="#868e96" stroke-width="2" stroke-dasharray="7 6"/>
+  <text x="995" y="384" font-size="18" font-weight="700" fill="#1e1e1e" text-anchor="middle">Later: a reader board</text>
+  <text x="995" y="410" font-size="14" fill="#495057" text-anchor="middle">small ADC board + ESP32 on USB</text>
+  <text x="995" y="432" font-size="14" fill="#495057" text-anchor="middle">only if the first test says yes</text>
+  <line x1="800" y1="405" x2="840" y2="405" stroke="#868e96" stroke-width="3" stroke-dasharray="6 5"/>
+
+  <text x="30" y="520" font-size="14" fill="#c92a2a">Safety: the panel carries mains voltage. At a client or shop, their electrician places the clamp. You never touch bare terminals.</text>
+</svg>

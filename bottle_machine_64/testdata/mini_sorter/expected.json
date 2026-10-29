@@ -1,0 +1,37 @@
+{
+  "parts_total": 10,
+  "assemblies": {
+    "MS00200": [
+      "MS00201",
+      "MS00202",
+      "MS00203"
+    ],
+    "MS00300": [
+      "MS00301",
+      "MS00302",
+      "MS00303",
+      "MS00304",
+      "MS00305"
+    ]
+  },
+  "motors": {
+    "MS00201": "disk drive motor",
+    "MS00301": "belt drive motor"
+  },
+  "drive_chains": {
+    "MS00201": [
+      "MS00202",
+      "MS00203"
+    ],
+    "MS00301": [
+      "MS00302",
+      "MS00304",
+      "MS00303",
+      "MS00305"
+    ]
+  },
+  "no_motion": [
+    "MS00101",
+    "MS00401"
+  ]
+}

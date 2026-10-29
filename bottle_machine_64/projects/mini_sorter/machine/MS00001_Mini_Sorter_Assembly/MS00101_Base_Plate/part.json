@@ -1,0 +1,20 @@
+{
+ "part_number": "MS00101",
+ "description": "Base Plate",
+ "material": "Aluminum 6061",
+ "type": "static",
+ "type_label": "Fixed part (frame, plate, bracket)",
+ "role": "static",
+ "section": "MS00001",
+ "section_name": "Mini Sorter Assembly",
+ "parent": null,
+ "motor": null,
+ "chain": [
+  "MS00101"
+ ],
+ "step_instances": [
+  "MS00101"
+ ],
+ "values": {},
+ "effort": null
+}

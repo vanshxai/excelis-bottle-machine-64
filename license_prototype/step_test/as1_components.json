@@ -1,0 +1,32 @@
+{
+  "root_product": "as1",
+  "unique_part_types": 5,
+  "total_instances": 7,
+  "components": [
+    {
+      "name": "nut",
+      "type": "fastener",
+      "instances_found": 3
+    },
+    {
+      "name": "rod",
+      "type": "shaft",
+      "instances_found": 1
+    },
+    {
+      "name": "bolt",
+      "type": "fastener",
+      "instances_found": 1
+    },
+    {
+      "name": "l-bracket",
+      "type": "structure_frame",
+      "instances_found": 1
+    },
+    {
+      "name": "plate",
+      "type": "structure_frame",
+      "instances_found": 1
+    }
+  ]
+}

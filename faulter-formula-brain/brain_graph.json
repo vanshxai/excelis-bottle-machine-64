@@ -1,0 +1,4724 @@
+{
+  "nodes": [
+    "A",
+    "A_arrhenius",
+    "A_brush",
+    "A_cable",
+    "A_casting_surf",
+    "A_col",
+    "A_cond_area",
+    "A_cond_im",
+    "A_corr",
+    "A_cyl",
+    "A_hyd",
+    "A_illum",
+    "A_key",
+    "A_orifice",
+    "A_pv",
+    "A_rotor",
+    "Ai_core2",
+    "As_conc",
+    "Av_instr",
+    "Av_opamp",
+    "Aw_window",
+    "B",
+    "B_av_im",
+    "B_max",
+    "Bi_biot",
+    "Bm_trans",
+    "C",
+    "CD_gear",
+    "CF_crest",
+    "COP_carnot",
+    "COP_heatpump",
+    "COP_refrig",
+    "CR_chain",
+    "CR_corrosion",
+    "C_555",
+    "C_ah_batt",
+    "C_battery",
+    "C_bolt",
+    "C_derated",
+    "C_filt",
+    "C_filt_cap",
+    "C_load_cmos",
+    "C_load_gate",
+    "C_peukert",
+    "C_rate_batt",
+    "C_spring",
+    "C_taylor",
+    "Ca0_conc",
+    "Ca_cav",
+    "Ca_conc",
+    "Cd_drag",
+    "Cd_orifice",
+    "Cl_lift",
+    "Cl_max",
+    "Cm_chvorinov",
+    "Cmin_hx",
+    "Co_im",
+    "Cp",
+    "Cp_betz",
+    "Cp_betz_limit",
+    "Cs_fly",
+    "Cv_valve",
+    "D2_impeller",
+    "D_coil",
+    "D_comm",
+    "D_diff",
+    "D_disp",
+    "D_drag",
+    "D_duty",
+    "D_flyback",
+    "D_im",
+    "D_miner",
+    "D_pipe",
+    "D_rotor",
+    "D_vessel",
+    "D_workpiece",
+    "Dg_gear",
+    "DoD_batt",
+    "Dp_gear",
+    "E",
+    "E1",
+    "E2",
+    "E2s",
+    "E_batt_wh",
+    "E_fly",
+    "E_illum",
+    "E_mod",
+    "E_series",
+    "E_specific_batt",
+    "E_sync",
+    "E_t",
+    "Ea_arrhenius",
+    "F",
+    "F0_forced",
+    "F1_band",
+    "F2_band",
+    "F_ar",
+    "F_axial_clutch",
+    "F_axial_col",
+    "F_beam",
+    "F_bolt_preload",
+    "F_bolt_total",
+    "F_brake",
+    "F_buoy",
+    "F_butt",
+    "F_cm",
+    "F_cyl",
+    "F_ext_bolt",
+    "F_hyd",
+    "F_ip",
+    "F_key",
+    "F_lumen",
+    "F_lumen2",
+    "F_rivet",
+    "F_weld",
+    "Fa_bear",
+    "Fr_bear",
+    "Fw_gear",
+    "GBW_opamp",
+    "GR_gear",
+    "G_gibbs",
+    "G_irradiance",
+    "G_ol",
+    "G_rx",
+    "G_spring",
+    "G_tx",
+    "Gain_db",
+    "Gamma_refl",
+    "Gm_margin",
+    "H_aff",
+    "H_enthalpy",
+    "H_euler",
+    "H_fb",
+    "H_pump2",
+    "H_wall",
+    "I",
+    "I0_test_im",
+    "I1",
+    "I1_t",
+    "I2",
+    "I2_t",
+    "I_1ph",
+    "I_L",
+    "I_L3",
+    "I_ampacity",
+    "I_area",
+    "I_batt",
+    "I_cable",
+    "I_cpu",
+    "I_fault",
+    "I_fault_ka",
+    "I_gpio",
+    "I_ih_fanout",
+    "I_line_delta",
+    "I_line_star",
+    "I_load",
+    "I_max",
+    "I_oh_fanout",
+    "I_peripherals",
+    "I_peukert",
+    "I_ph",
+    "I_ph3",
+    "I_pull",
+    "I_rate_batt",
+    "I_total",
+    "I_wifi",
+    "Ia_big",
+    "Ia_sync",
+    "Ib_bjt",
+    "Ic_bjt",
+    "Id_diode",
+    "Id_mosfet",
+    "Ie_bjt",
+    "Is_diode",
+    "Isc_test_im",
+    "Iz_zener",
+    "J",
+    "J_agma",
+    "J_brush",
+    "J_cond_im",
+    "J_current_density_cable",
+    "J_fly",
+    "J_polar",
+    "KE",
+    "K_auto_save",
+    "K_bulk",
+    "K_dc_gain",
+    "K_minor",
+    "K_trans",
+    "Kd_pid",
+    "Ke",
+    "Kf_shaft",
+    "Ki_pid",
+    "Kp_pid",
+    "Kp_zn",
+    "Ks_service",
+    "Kt",
+    "Kt_stress",
+    "Ku_zn",
+    "Kv_dynamic",
+    "Kw_trans2",
+    "Kw_window_factor",
+    "L",
+    "L10",
+    "LMTD_hx",
+    "L_D_ratio",
+    "L_ant",
+    "L_beam",
+    "L_butt",
+    "L_cable_km",
+    "L_im",
+    "L_lift",
+    "L_pipe",
+    "L_rotor",
+    "L_weld",
+    "Lc_char",
+    "Le_col",
+    "Lspan_beam",
+    "MF_illum",
+    "MRR_machining",
+    "MVA_fault",
+    "M_bend",
+    "M_conc",
+    "M_max_udl",
+    "M_total_unbalance",
+    "Measured_val",
+    "Mp_overshoot",
+    "N",
+    "N1_sprocket",
+    "N1_t",
+    "N2_sprocket",
+    "N2_t",
+    "NM_high",
+    "NM_low",
+    "NPSH_avail",
+    "NTU_hx",
+    "N_aff",
+    "N_crit_shaft",
+    "N_cycles_batt",
+    "N_cycles_i",
+    "N_eq_cur",
+    "N_fanout",
+    "N_fl_im",
+    "N_flux",
+    "N_flyback",
+    "N_pump",
+    "N_pump2",
+    "N_r",
+    "N_rpm_stepper",
+    "N_s",
+    "N_segments",
+    "N_spindle",
+    "N_ss_pump",
+    "N_steps_rev",
+    "N_synch_fl",
+    "Na_spring",
+    "Nf_life",
+    "Ng_gear",
+    "Np_gear",
+    "Ns_pump",
+    "Nu_nusselt",
+    "P",
+    "P0_acc",
+    "P0_test_im",
+    "P1_gas",
+    "P2_gas",
+    "PL",
+    "PSM_relay",
+    "P_1ph",
+    "P_3ph",
+    "P_acc",
+    "P_ag",
+    "P_belt",
+    "P_chem",
+    "P_cu_t",
+    "P_depth",
+    "P_dev",
+    "P_dp_shock",
+    "P_dyn_cmos",
+    "P_engine_out",
+    "P_equiv_bear",
+    "P_euler",
+    "P_fw_im",
+    "P_hyd",
+    "P_hyd_power",
+    "P_i_t",
+    "P_ideal",
+    "P_in",
+    "P_in_3ph_im",
+    "P_in_t",
+    "P_internal",
+    "P_lamp",
+    "P_manometer",
+    "P_out",
+    "P_out_im",
+    "P_out_t",
+    "P_pump_hyd",
+    "P_pv",
+    "P_rcl",
+    "P_rx",
+    "P_scl",
+    "P_sync",
+    "P_total_hvac",
+    "P_tx",
+    "P_wind",
+    "Pa_rankine",
+    "Pf",
+    "Phi",
+    "Phi0",
+    "Phi_im",
+    "Phi_max_t",
+    "Pmax_sync",
+    "Pu_zn",
+    "Pv_vapor",
+    "Q",
+    "Q_1ph",
+    "Q_3ph",
+    "Q_aff",
+    "Q_cooling_load",
+    "Q_cyl",
+    "Q_dot_hx",
+    "Q_hyd",
+    "Q_in_rankine",
+    "Q_orifice",
+    "Q_pump",
+    "Q_pump2",
+    "Q_rated",
+    "Q_rating_transformer",
+    "Q_used",
+    "Qactual_hx",
+    "Qc_pfc",
+    "Qc_refrig",
+    "Qh_heatpump",
+    "Qmax_hx",
+    "R",
+    "R0",
+    "R01_t",
+    "R1",
+    "R1_bridge",
+    "R1_div",
+    "R2",
+    "R2_ac_im",
+    "R2_bridge",
+    "R2_deep",
+    "R2_div",
+    "R3_bridge",
+    "R4_bridge",
+    "RL_db",
+    "RPM",
+    "R_555a",
+    "R_555b",
+    "R_brake",
+    "R_cable_per_km",
+    "R_filt",
+    "R_gas",
+    "R_gas_const",
+    "R_ideal",
+    "R_int_batt",
+    "R_load",
+    "R_mean_clutch",
+    "R_output_impedance",
+    "R_pull",
+    "R_range_breguet",
+    "R_regulator",
+    "R_th",
+    "R_th_parallel",
+    "R_th_series",
+    "Ra_sync",
+    "Re_hyd",
+    "Rf_fouling",
+    "Rf_opamp",
+    "Rg_instr",
+    "Rin_opamp",
+    "Rm",
+    "Rz_zener",
+    "SCR_sync",
+    "SNR_db",
+    "S_1ph",
+    "S_3ph",
+    "S_base",
+    "S_entropy",
+    "S_sensor",
+    "S_slots_im",
+    "S_wing",
+    "Se_corrected",
+    "Se_endurance",
+    "Sf_life",
+    "SoC_batt",
+    "SpeedReg_dc",
+    "Sut_ultimate",
+    "T",
+    "T0_temp",
+    "T0_therm",
+    "T1_gas",
+    "TMS_relay",
+    "TR_transmis",
+    "T_amb",
+    "T_band",
+    "T_batt_amb",
+    "T_belt",
+    "T_brake",
+    "T_cell_pv",
+    "T_chip",
+    "T_cl",
+    "T_clk",
+    "T_clk_digital",
+    "T_clutch",
+    "T_cold_rad",
+    "T_final",
+    "T_hot_rad",
+    "T_ideal",
+    "T_im",
+    "T_kelvin",
+    "T_max_demag",
+    "T_max_im",
+    "T_nom",
+    "T_ph_im",
+    "T_pump",
+    "T_ref_pv",
+    "T_ripple",
+    "T_slack",
+    "T_start_delta",
+    "T_start_im",
+    "T_start_star",
+    "T_temp",
+    "T_thrust_jet",
+    "T_tool_life",
+    "Tc_carnot",
+    "Td_zn",
+    "Tf",
+    "Th_carnot",
+    "Ti_zn",
+    "True_val",
+    "UA_hx",
+    "UF_illum",
+    "U_overall_hx",
+    "V",
+    "V0_acc",
+    "V0_inlet",
+    "V0_test_im",
+    "V1",
+    "V1_t",
+    "V2_t",
+    "VA_auto",
+    "VD_cable",
+    "VR_sync_pct",
+    "VR_t",
+    "VSWR_rf",
+    "V_1ph",
+    "V_L",
+    "V_L3",
+    "V_acc",
+    "V_air",
+    "V_base",
+    "V_cruise",
+    "V_dd",
+    "V_dd_cmos",
+    "V_fault",
+    "V_fault_kv",
+    "V_high",
+    "V_ideal",
+    "V_ih_nm",
+    "V_il_nm",
+    "V_in",
+    "V_low",
+    "V_max_udl",
+    "V_nom_batt",
+    "V_oh_nm",
+    "V_ol_nm",
+    "V_out",
+    "V_peak_sine",
+    "V_ph3",
+    "V_pp_sine",
+    "V_rms_sine",
+    "V_sag",
+    "V_stall",
+    "V_swing_gate",
+    "V_sync",
+    "V_wind",
+    "Vc_cutting",
+    "Vc_cutting2",
+    "Vd_diode",
+    "Vdiv_in",
+    "Vdiv_out",
+    "Ve_exhaust",
+    "Vgs_mosfet",
+    "Vin_buck",
+    "Vin_flyback",
+    "Vin_instr",
+    "Vnoise_rms",
+    "Vol",
+    "Vol_casting",
+    "Vol_disp",
+    "Vout_boost",
+    "Vout_buck",
+    "Vout_flyback",
+    "Vout_instr",
+    "Vr_ripple",
+    "Vsc_test_im",
+    "Vsignal_rms",
+    "Vt_thermal",
+    "Vth_mosfet",
+    "Vu2_whirl",
+    "Vz_zener",
+    "W1_fuel",
+    "W2_fuel",
+    "W_aircraft",
+    "W_compressor",
+    "W_humidity_ratio",
+    "W_loss_corr",
+    "W_net_rankine",
+    "Wc_refrig",
+    "Ws_wahl",
+    "Wt_gear",
+    "X01_t",
+    "X1",
+    "X2",
+    "X2s",
+    "X_forced",
+    "X_radial",
+    "X_unbalance",
+    "Xs_sync",
+    "Y_lewis",
+    "Y_thrust",
+    "Z01_im",
+    "Z0_rf",
+    "ZL_rf",
+    "Z_base",
+    "Z_big",
+    "Z_cond",
+    "Z_fault",
+    "Z_pu",
+    "Z_qw",
+    "Z_section",
+    "a_conc",
+    "a_cond_wire",
+    "a_path",
+    "a_sn",
+    "a_wave",
+    "ac_im",
+    "alpha_batt",
+    "alpha_relay_const",
+    "alpha_temp",
+    "alpha_therm",
+    "alpha_volatility",
+    "b_conc",
+    "b_sn",
+    "beta_bjt",
+    "beta_cam",
+    "beta_temp_pv",
+    "c_crit_damp",
+    "c_damp",
+    "c_dist",
+    "c_light",
+    "cp_air_hvac",
+    "cp_hx",
+    "cycles",
+    "cycles_per_inst",
+    "d",
+    "dC_dx",
+    "dH_rxn",
+    "dInput_sensor",
+    "dL_therm",
+    "dOutput_sensor",
+    "dP_valve",
+    "dT1_hx",
+    "dT2_hx",
+    "dT_dt",
+    "dT_dx",
+    "dT_hvac",
+    "dT_hx",
+    "dU_rxn",
+    "dV_rxn",
+    "d_conc",
+    "d_cut",
+    "d_rivet",
+    "d_wire",
+    "delta_beam",
+    "delta_current_density_trans",
+    "delta_log",
+    "delta_shaft",
+    "delta_sync",
+    "delta_udl",
+    "dist_rf",
+    "e_err",
+    "eps_hx",
+    "eps_rad",
+    "epsilon_eng",
+    "epsilon_strain",
+    "epsilon_true",
+    "err_pct",
+    "ess_error",
+    "eta",
+    "eta_brayton",
+    "eta_carnot",
+    "eta_classA",
+    "eta_classB",
+    "eta_diesel",
+    "eta_im",
+    "eta_luminous",
+    "eta_mech_hyd",
+    "eta_otto",
+    "eta_overall_hyd",
+    "eta_partial_im",
+    "eta_pv",
+    "eta_pv_temp",
+    "eta_rankine_steam",
+    "eta_t",
+    "eta_vol",
+    "f",
+    "f_555",
+    "f_ac",
+    "f_clk_digital",
+    "f_cpu",
+    "f_crystal",
+    "f_darcy",
+    "f_feed",
+    "f_r",
+    "f_rf",
+    "f_ripple",
+    "f_step_rate",
+    "f_sw_cmos",
+    "f_trans",
+    "fc_conc",
+    "fc_rc",
+    "fy_conc",
+    "g_grav",
+    "g_im",
+    "gamma_gas",
+    "gamma_sg",
+    "gamma_soil",
+    "gm_mosfet",
+    "h1_hx",
+    "h2_hx",
+    "h_atm",
+    "h_cam",
+    "h_conv",
+    "h_fric_suction",
+    "h_hyd",
+    "h_manometer",
+    "h_suction",
+    "h_torricelli",
+    "h_vap",
+    "hl_major",
+    "hl_minor",
+    "k_bolt",
+    "k_cond",
+    "k_cycle",
+    "k_deepbar_im",
+    "k_demag",
+    "k_growth",
+    "k_gyr",
+    "k_member",
+    "k_mosfet",
+    "k_peukert",
+    "k_rate",
+    "k_relay_const",
+    "k_spring",
+    "k_stiff",
+    "k_thermal_cond",
+    "k_unbal",
+    "k_w_im",
+    "ka_rankine",
+    "ka_surf",
+    "kb_size",
+    "l_cond",
+    "lambda",
+    "lambda_slot_im",
+    "load_frac_im",
+    "m",
+    "m_batt",
+    "m_dot_air",
+    "m_dot_air_hvac",
+    "m_dot_fuel",
+    "m_dot_hx",
+    "m_gear",
+    "m_phases_im",
+    "m_sys",
+    "me_unbalance",
+    "mpy_const",
+    "mu",
+    "mu0",
+    "mu_band",
+    "mu_belt",
+    "mu_brake",
+    "mu_clutch",
+    "mu_visc",
+    "n_chvorinov",
+    "n_cycles_i",
+    "n_ideal",
+    "n_ideality",
+    "n_moles_gas",
+    "n_poles",
+    "n_poles_im",
+    "n_rivets",
+    "n_safety",
+    "n_surfaces",
+    "n_taylor",
+    "nu_poisson",
+    "omega",
+    "omega1_fly",
+    "omega2_fly",
+    "omega_mean_fly",
+    "omega_n",
+    "omega_n_2nd",
+    "omega_s",
+    "omega_t",
+    "p_chain",
+    "p_life",
+    "pf0_im",
+    "pf_1ph",
+    "pf_3ph",
+    "pf_im",
+    "phi_soil",
+    "q_fourier",
+    "q_rad",
+    "r",
+    "r_compression",
+    "r_freq_ratio",
+    "r_pressure_ratio",
+    "rc_cutoff_ratio",
+    "rho",
+    "rho_air",
+    "rho_air_wind",
+    "rho_conc",
+    "rho_corr",
+    "rho_fluid_b",
+    "rho_hyd",
+    "rho_manometer",
+    "s_fl_im",
+    "s_maxT",
+    "s_sev",
+    "s_slip",
+    "sfc_engine",
+    "sfc_engine2",
+    "sigma_1_transform",
+    "sigma_2_transform",
+    "sigma_a",
+    "sigma_agma",
+    "sigma_allow_col",
+    "sigma_bend",
+    "sigma_butt",
+    "sigma_eng",
+    "sigma_hoop",
+    "sigma_lewis",
+    "sigma_long",
+    "sigma_m",
+    "sigma_principal",
+    "sigma_sb",
+    "sigma_sphere",
+    "sigma_tan",
+    "sigma_true",
+    "sigma_vm",
+    "sigma_x",
+    "sigma_y",
+    "t_batt",
+    "t_butt",
+    "t_clk_to_q",
+    "t_corr",
+    "t_inst",
+    "t_pd_gate",
+    "t_peukert",
+    "t_relay",
+    "t_ripple",
+    "t_rxn",
+    "t_setup",
+    "t_solidify",
+    "t_time",
+    "t_vessel",
+    "t_weld",
+    "t_yoke",
+    "tau",
+    "tau_key",
+    "tau_m_shaft",
+    "tau_rivet",
+    "tau_spring",
+    "tau_thermal",
+    "tau_weld",
+    "tau_xy",
+    "theta_band_wrap",
+    "theta_cam",
+    "theta_step",
+    "theta_transform",
+    "theta_wrap",
+    "throat_weld",
+    "ts_settling",
+    "u2_impeller",
+    "u_pid",
+    "v_belt",
+    "v_cam",
+    "v_chain",
+    "v_comm",
+    "v_cyl",
+    "v_hyd",
+    "v_pitch_gear",
+    "v_torricelli",
+    "w_udl",
+    "x1_log",
+    "x2_log",
+    "x_liq",
+    "y_cam",
+    "y_vap",
+    "zeta_2nd",
+    "zeta_damp"
+  ],
+  "edges": [
+    {
+      "formula": "ohms_law",
+      "domain": "electrical",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I",
+        "R"
+      ],
+      "output": "V",
+      "equation": "V = I*R"
+    },
+    {
+      "formula": "back_emf",
+      "domain": "electrical",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I",
+        "R",
+        "V"
+      ],
+      "output": "E",
+      "equation": "E = -I*R + V"
+    },
+    {
+      "formula": "torque",
+      "domain": "mechanical",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I",
+        "Kt"
+      ],
+      "output": "T",
+      "equation": "T = I*Kt"
+    },
+    {
+      "formula": "power_electrical",
+      "domain": "electrical",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I",
+        "V"
+      ],
+      "output": "P",
+      "equation": "P = I*V"
+    },
+    {
+      "formula": "power_mechanical",
+      "domain": "mechanical",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "T",
+        "omega"
+      ],
+      "output": "P",
+      "equation": "P = T*omega"
+    },
+    {
+      "formula": "heat_generated",
+      "domain": "thermal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I",
+        "R"
+      ],
+      "output": "Q",
+      "equation": "Q = I**2*R"
+    },
+    {
+      "formula": "efficiency",
+      "domain": "electrical",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "P_in",
+        "P_out"
+      ],
+      "output": "eta",
+      "equation": "eta = P_out/P_in"
+    },
+    {
+      "formula": "angular_velocity",
+      "domain": "mechanical",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I",
+        "Ke",
+        "R",
+        "V"
+      ],
+      "output": "omega",
+      "equation": "omega = (-I*R + V)/Ke"
+    },
+    {
+      "formula": "bearing_friction_torque",
+      "domain": "mechanical",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "F",
+        "mu",
+        "r"
+      ],
+      "output": "Tf",
+      "equation": "Tf = F*mu*r"
+    },
+    {
+      "formula": "flux_density",
+      "domain": "magnetic",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I",
+        "L",
+        "N",
+        "mu0"
+      ],
+      "output": "B",
+      "equation": "B = I*N*mu0/L"
+    },
+    {
+      "formula": "rpm_conversion",
+      "domain": "mechanical",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "omega"
+      ],
+      "output": "RPM",
+      "equation": "RPM = 30*omega/pi"
+    },
+    {
+      "formula": "commutation_frequency",
+      "domain": "electrical",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "N_segments",
+        "RPM"
+      ],
+      "output": "f",
+      "equation": "f = N_segments*RPM/60"
+    },
+    {
+      "formula": "lorentz_force",
+      "domain": "magnetic",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "B",
+        "I",
+        "l_cond"
+      ],
+      "output": "F",
+      "equation": "F = B*I*l_cond"
+    },
+    {
+      "formula": "magnetic_flux",
+      "domain": "magnetic",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "A",
+        "B"
+      ],
+      "output": "Phi",
+      "equation": "Phi = A*B"
+    },
+    {
+      "formula": "reluctance",
+      "domain": "magnetic",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "A",
+        "L",
+        "mu"
+      ],
+      "output": "Rm",
+      "equation": "Rm = L/(A*mu)"
+    },
+    {
+      "formula": "cylinder_volume",
+      "domain": "design",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "L",
+        "r"
+      ],
+      "output": "Vol",
+      "equation": "Vol = pi*L*r**2"
+    },
+    {
+      "formula": "mass_from_volume",
+      "domain": "mechanical",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Vol",
+        "rho"
+      ],
+      "output": "m",
+      "equation": "m = Vol*rho"
+    },
+    {
+      "formula": "moment_of_inertia_cylinder",
+      "domain": "mechanical",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "m",
+        "r"
+      ],
+      "output": "J",
+      "equation": "J = m*r**2/2"
+    },
+    {
+      "formula": "kinetic_energy",
+      "domain": "mechanical",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "J",
+        "omega"
+      ],
+      "output": "KE",
+      "equation": "KE = J*omega**2/2"
+    },
+    {
+      "formula": "polar_moment",
+      "domain": "mechanical",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "d"
+      ],
+      "output": "J_polar",
+      "equation": "J_polar = pi*d**4/32"
+    },
+    {
+      "formula": "shear_stress",
+      "domain": "mechanical",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "J_polar",
+        "T",
+        "r"
+      ],
+      "output": "tau",
+      "equation": "tau = T*r/J_polar"
+    },
+    {
+      "formula": "bearing_power_loss",
+      "domain": "mechanical",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Tf",
+        "omega"
+      ],
+      "output": "Pf",
+      "equation": "Pf = Tf*omega"
+    },
+    {
+      "formula": "bearing_life_l10",
+      "domain": "mechanical",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "C",
+        "P",
+        "p_life"
+      ],
+      "output": "L10",
+      "equation": "L10 = 1000000*(C/P)**p_life"
+    },
+    {
+      "formula": "winding_torque_constant",
+      "domain": "design",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Phi",
+        "Z_cond",
+        "a_path",
+        "n_poles"
+      ],
+      "output": "Kt",
+      "equation": "Kt = Phi*Z_cond*n_poles/(2*pi*a_path)"
+    },
+    {
+      "formula": "rotor_shear_sizing",
+      "domain": "design",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "D_rotor",
+        "L_rotor",
+        "sigma_tan"
+      ],
+      "output": "T",
+      "equation": "T = pi*D_rotor**2*L_rotor*sigma_tan/2"
+    },
+    {
+      "formula": "shaft_torsion",
+      "domain": "mechanical",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "d",
+        "tau"
+      ],
+      "output": "T",
+      "equation": "T = pi*d**3*tau/16"
+    },
+    {
+      "formula": "commutator_peripheral_velocity",
+      "domain": "mechanical",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "D_comm",
+        "RPM"
+      ],
+      "output": "v_comm",
+      "equation": "v_comm = pi*D_comm*RPM/60"
+    },
+    {
+      "formula": "brush_current_density",
+      "domain": "electrical",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "A_brush",
+        "I"
+      ],
+      "output": "J_brush",
+      "equation": "J_brush = I/A_brush"
+    },
+    {
+      "formula": "stator_yoke_thickness",
+      "domain": "design",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "B_max",
+        "L_rotor",
+        "Phi"
+      ],
+      "output": "t_yoke",
+      "equation": "t_yoke = Phi/(2*B_max*L_rotor)"
+    },
+    {
+      "formula": "resistance_temperature",
+      "domain": "thermal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "R0",
+        "T0_temp",
+        "T_temp",
+        "alpha_temp"
+      ],
+      "output": "R",
+      "equation": "R = R0*(alpha_temp*(-T0_temp + T_temp) + 1)"
+    },
+    {
+      "formula": "flux_thermal_derating",
+      "domain": "thermal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Phi0",
+        "T0_temp",
+        "T_max_demag",
+        "T_temp",
+        "k_demag"
+      ],
+      "output": "Phi",
+      "equation": "Phi = Phi0*(-k_demag*(-T0_temp + T_temp)/(-T0_temp + T_max_demag) + 1)"
+    },
+    {
+      "formula": "thermal_rise_rc",
+      "domain": "thermal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "T_amb",
+        "T_final",
+        "t_time",
+        "tau_thermal"
+      ],
+      "output": "T_temp",
+      "equation": "T_temp = T_amb + (1 - exp(-t_time/tau_thermal))*(-T_amb + T_final)"
+    },
+    {
+      "formula": "severity_growth_asymptotic",
+      "domain": "fault_pattern",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "R0",
+        "s_sev"
+      ],
+      "output": "R",
+      "equation": "R = R0/(1 - s_sev)"
+    },
+    {
+      "formula": "severity_growth_linear",
+      "domain": "fault_pattern",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "R0",
+        "k_growth",
+        "s_sev"
+      ],
+      "output": "R",
+      "equation": "R = R0*(k_growth*s_sev + 1)"
+    },
+    {
+      "formula": "torque_ripple",
+      "domain": "fault_pattern",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "T_nom",
+        "k_unbal",
+        "omega_t",
+        "t_ripple"
+      ],
+      "output": "T_ripple",
+      "equation": "T_ripple = T_nom*(k_unbal*sin(omega_t*t_ripple) + 1)"
+    },
+    {
+      "formula": "supply_current",
+      "domain": "power",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I_cpu",
+        "I_gpio",
+        "I_peripherals",
+        "I_wifi"
+      ],
+      "output": "I_total",
+      "equation": "I_total = I_cpu + I_gpio + I_peripherals + I_wifi"
+    },
+    {
+      "formula": "voltage_drop",
+      "domain": "power",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I_total",
+        "R_regulator",
+        "V_in"
+      ],
+      "output": "V_out",
+      "equation": "V_out = -I_total*R_regulator + V_in"
+    },
+    {
+      "formula": "power_consumption",
+      "domain": "power",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I_total",
+        "V"
+      ],
+      "output": "P",
+      "equation": "P = I_total*V"
+    },
+    {
+      "formula": "battery_life",
+      "domain": "power",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "C_battery",
+        "I_total"
+      ],
+      "output": "t_batt",
+      "equation": "t_batt = C_battery/I_total"
+    },
+    {
+      "formula": "chip_temperature",
+      "domain": "thermal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "P",
+        "R_th",
+        "T_amb"
+      ],
+      "output": "T_chip",
+      "equation": "T_chip = P*R_th + T_amb"
+    },
+    {
+      "formula": "thermal_resistance",
+      "domain": "thermal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "P",
+        "T_amb",
+        "T_chip"
+      ],
+      "output": "R_th",
+      "equation": "R_th = (-T_amb + T_chip)/P"
+    },
+    {
+      "formula": "temperature_rise_rate",
+      "domain": "thermal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Cp",
+        "P",
+        "m"
+      ],
+      "output": "dT_dt",
+      "equation": "dT_dt = P/(Cp*m)"
+    },
+    {
+      "formula": "wavelength",
+      "domain": "rf",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "c_light",
+        "f_rf"
+      ],
+      "output": "lambda",
+      "equation": "lambda = c_light/f_rf"
+    },
+    {
+      "formula": "antenna_length_quarter_wave",
+      "domain": "rf",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "lambda"
+      ],
+      "output": "L_ant",
+      "equation": "L_ant = lambda/4"
+    },
+    {
+      "formula": "path_loss",
+      "domain": "rf",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "c_light",
+        "dist_rf",
+        "f_rf"
+      ],
+      "output": "PL",
+      "equation": "PL = 20*log(4*pi*dist_rf*f_rf/c_light)/log(10)"
+    },
+    {
+      "formula": "received_signal",
+      "domain": "rf",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "G_rx",
+        "G_tx",
+        "PL",
+        "P_tx"
+      ],
+      "output": "P_rx",
+      "equation": "P_rx = G_rx + G_tx - PL + P_tx"
+    },
+    {
+      "formula": "clock_period",
+      "domain": "timing",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "f_crystal"
+      ],
+      "output": "T_clk",
+      "equation": "T_clk = 1/f_crystal"
+    },
+    {
+      "formula": "cpu_cycles_per_second",
+      "domain": "timing",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "f_cpu"
+      ],
+      "output": "cycles",
+      "equation": "cycles = f_cpu"
+    },
+    {
+      "formula": "instruction_time",
+      "domain": "timing",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "cycles_per_inst",
+        "f_cpu"
+      ],
+      "output": "t_inst",
+      "equation": "t_inst = cycles_per_inst/f_cpu"
+    },
+    {
+      "formula": "gpio_current",
+      "domain": "gpio",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "R_load",
+        "V_high",
+        "V_low"
+      ],
+      "output": "I_gpio",
+      "equation": "I_gpio = (V_high - V_low)/R_load"
+    },
+    {
+      "formula": "drive_strength",
+      "domain": "gpio",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "R_output_impedance",
+        "V_dd"
+      ],
+      "output": "I_max",
+      "equation": "I_max = V_dd/R_output_impedance"
+    },
+    {
+      "formula": "pull_resistor_current",
+      "domain": "gpio",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "R_pull",
+        "V_dd"
+      ],
+      "output": "I_pull",
+      "equation": "I_pull = V_dd/R_pull"
+    },
+    {
+      "formula": "synchronous_speed",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "f_ac",
+        "n_poles_im"
+      ],
+      "output": "N_s",
+      "equation": "N_s = 120*f_ac/n_poles_im"
+    },
+    {
+      "formula": "slip",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "N_r",
+        "N_s"
+      ],
+      "output": "s_slip",
+      "equation": "s_slip = (-N_r + N_s)/N_s"
+    },
+    {
+      "formula": "rotor_speed_from_slip",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "N_s",
+        "s_slip"
+      ],
+      "output": "N_r",
+      "equation": "N_r = N_s*(1 - s_slip)"
+    },
+    {
+      "formula": "rotor_frequency",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "f_ac",
+        "s_slip"
+      ],
+      "output": "f_r",
+      "equation": "f_r = f_ac*s_slip"
+    },
+    {
+      "formula": "rotor_emf_running",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "E2",
+        "s_slip"
+      ],
+      "output": "E2s",
+      "equation": "E2s = E2*s_slip"
+    },
+    {
+      "formula": "rotor_reactance_running",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "X2",
+        "s_slip"
+      ],
+      "output": "X2s",
+      "equation": "X2s = X2*s_slip"
+    },
+    {
+      "formula": "rotor_current_im",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "E2",
+        "R2",
+        "X2",
+        "s_slip"
+      ],
+      "output": "I2",
+      "equation": "I2 = E2*s_slip/sqrt(R2**2 + X2**2*s_slip**2)"
+    },
+    {
+      "formula": "synchronous_angular_speed",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "N_s"
+      ],
+      "output": "omega_s",
+      "equation": "omega_s = pi*N_s/30"
+    },
+    {
+      "formula": "torque_equation_im",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "R1",
+        "R2",
+        "V1",
+        "X1",
+        "X2",
+        "omega_s",
+        "s_slip"
+      ],
+      "output": "T_im",
+      "equation": "T_im = 3*R2*V1**2/(omega_s*s_slip*((R1 + R2/s_slip)**2 + (X1 + X2)**2))"
+    },
+    {
+      "formula": "max_torque_slip",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "R1",
+        "R2",
+        "X1",
+        "X2"
+      ],
+      "output": "s_maxT",
+      "equation": "s_maxT = R2/sqrt(R1**2 + (X1 + X2)**2)"
+    },
+    {
+      "formula": "breakdown_torque_im",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "R1",
+        "V1",
+        "X1",
+        "X2",
+        "omega_s"
+      ],
+      "output": "T_max_im",
+      "equation": "T_max_im = 3*V1**2/(2*omega_s*(R1 + sqrt(R1**2 + (X1 + X2)**2)))"
+    },
+    {
+      "formula": "starting_torque_im",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "R1",
+        "R2",
+        "V1",
+        "X1",
+        "X2",
+        "omega_s"
+      ],
+      "output": "T_start_im",
+      "equation": "T_start_im = 3*R2*V1**2/(omega_s*((R1 + R2)**2 + (X1 + X2)**2))"
+    },
+    {
+      "formula": "air_gap_power",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I2",
+        "R2",
+        "s_slip"
+      ],
+      "output": "P_ag",
+      "equation": "P_ag = 3*I2**2*R2/s_slip"
+    },
+    {
+      "formula": "rotor_copper_loss_im",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "P_ag",
+        "s_slip"
+      ],
+      "output": "P_rcl",
+      "equation": "P_rcl = P_ag*s_slip"
+    },
+    {
+      "formula": "mech_power_developed",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "P_ag",
+        "s_slip"
+      ],
+      "output": "P_dev",
+      "equation": "P_dev = P_ag*(1 - s_slip)"
+    },
+    {
+      "formula": "output_power_im",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "P_dev",
+        "P_fw_im"
+      ],
+      "output": "P_out_im",
+      "equation": "P_out_im = P_dev - P_fw_im"
+    },
+    {
+      "formula": "stator_copper_loss_im",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I1",
+        "R1"
+      ],
+      "output": "P_scl",
+      "equation": "P_scl = 3*I1**2*R1"
+    },
+    {
+      "formula": "input_power_3phase_im",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I_L",
+        "V_L",
+        "pf_im"
+      ],
+      "output": "P_in_3ph_im",
+      "equation": "P_in_3ph_im = sqrt(3)*I_L*V_L*pf_im"
+    },
+    {
+      "formula": "power_factor_im",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I_L",
+        "P_in_3ph_im",
+        "V_L"
+      ],
+      "output": "pf_im",
+      "equation": "pf_im = sqrt(3)*P_in_3ph_im/(3*I_L*V_L)"
+    },
+    {
+      "formula": "efficiency_im",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "P_in_3ph_im",
+        "P_out_im"
+      ],
+      "output": "eta_im",
+      "equation": "eta_im = P_out_im/P_in_3ph_im"
+    },
+    {
+      "formula": "star_delta_current_ratio",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I_line_delta"
+      ],
+      "output": "I_line_star",
+      "equation": "I_line_star = I_line_delta/3"
+    },
+    {
+      "formula": "star_delta_torque_ratio",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "T_start_delta"
+      ],
+      "output": "T_start_star",
+      "equation": "T_start_star = T_start_delta/3"
+    },
+    {
+      "formula": "output_equation_im",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Co_im",
+        "D_im",
+        "L_im",
+        "N_s"
+      ],
+      "output": "P_out_im",
+      "equation": "P_out_im = Co_im*D_im**2*L_im*N_s"
+    },
+    {
+      "formula": "specific_magnetic_loading_im",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "D_im",
+        "L_im",
+        "Phi_im",
+        "n_poles_im"
+      ],
+      "output": "B_av_im",
+      "equation": "B_av_im = Phi_im*n_poles_im/(pi*D_im*L_im)"
+    },
+    {
+      "formula": "slot_pitch_im",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "D_im",
+        "S_slots_im"
+      ],
+      "output": "lambda_slot_im",
+      "equation": "lambda_slot_im = pi*D_im/S_slots_im"
+    },
+    {
+      "formula": "air_gap_length_im",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "D_im",
+        "L_im"
+      ],
+      "output": "g_im",
+      "equation": "g_im = 2*sqrt(D_im*L_im) + 1/5"
+    },
+    {
+      "formula": "turns_per_phase_im",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "E1",
+        "Phi_im",
+        "f_ac",
+        "k_w_im"
+      ],
+      "output": "T_ph_im",
+      "equation": "T_ph_im = 25*E1/(111*Phi_im*f_ac*k_w_im)"
+    },
+    {
+      "formula": "current_density_conductor_im",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "A_cond_im",
+        "I_ph"
+      ],
+      "output": "J_cond_im",
+      "equation": "J_cond_im = I_ph/A_cond_im"
+    },
+    {
+      "formula": "specific_electric_loading_im",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "D_im",
+        "I_ph",
+        "T_ph_im",
+        "m_phases_im"
+      ],
+      "output": "ac_im",
+      "equation": "ac_im = sqrt(2)*I_ph*T_ph_im*m_phases_im/(pi*D_im)"
+    },
+    {
+      "formula": "transformer_turns_ratio",
+      "domain": "transformer",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "N1_t",
+        "N2_t"
+      ],
+      "output": "K_trans",
+      "equation": "K_trans = N2_t/N1_t"
+    },
+    {
+      "formula": "transformer_voltage_ratio",
+      "domain": "transformer",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "V1_t",
+        "V2_t"
+      ],
+      "output": "K_trans",
+      "equation": "K_trans = V2_t/V1_t"
+    },
+    {
+      "formula": "transformer_current_ratio",
+      "domain": "transformer",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I1_t",
+        "I2_t"
+      ],
+      "output": "K_trans",
+      "equation": "K_trans = I1_t/I2_t"
+    },
+    {
+      "formula": "transformer_emf_equation",
+      "domain": "transformer",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "N1_t",
+        "Phi_max_t",
+        "f_ac"
+      ],
+      "output": "E_t",
+      "equation": "E_t = 111*N1_t*Phi_max_t*f_ac/25"
+    },
+    {
+      "formula": "transformer_voltage_regulation",
+      "domain": "transformer",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I2_t",
+        "R01_t",
+        "V2_t",
+        "X01_t",
+        "delta_sync"
+      ],
+      "output": "VR_t",
+      "equation": "VR_t = I2_t*(R01_t*cos(delta_sync) + X01_t*sin(delta_sync))/V2_t"
+    },
+    {
+      "formula": "transformer_copper_loss",
+      "domain": "transformer",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I1_t",
+        "R01_t"
+      ],
+      "output": "P_cu_t",
+      "equation": "P_cu_t = I1_t**2*R01_t"
+    },
+    {
+      "formula": "transformer_efficiency",
+      "domain": "transformer",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "P_cu_t",
+        "P_i_t",
+        "P_out_t"
+      ],
+      "output": "eta_t",
+      "equation": "eta_t = P_out_t/(P_cu_t + P_i_t + P_out_t)"
+    },
+    {
+      "formula": "transformer_input_power",
+      "domain": "transformer",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "P_cu_t",
+        "P_i_t",
+        "P_out_t"
+      ],
+      "output": "P_in_t",
+      "equation": "P_in_t = P_cu_t + P_i_t + P_out_t"
+    },
+    {
+      "formula": "synchronous_emf_equation",
+      "domain": "synchronous_machine",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "N1_t",
+        "Phi_im",
+        "f_ac",
+        "k_w_im"
+      ],
+      "output": "E_sync",
+      "equation": "E_sync = 111*N1_t*Phi_im*f_ac*k_w_im/25"
+    },
+    {
+      "formula": "synchronous_power_developed",
+      "domain": "synchronous_machine",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "E_sync",
+        "V_sync",
+        "Xs_sync",
+        "delta_sync"
+      ],
+      "output": "P_sync",
+      "equation": "P_sync = E_sync*V_sync*sin(delta_sync)/Xs_sync"
+    },
+    {
+      "formula": "synchronous_max_power",
+      "domain": "synchronous_machine",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "E_sync",
+        "V_sync",
+        "Xs_sync"
+      ],
+      "output": "Pmax_sync",
+      "equation": "Pmax_sync = E_sync*V_sync/Xs_sync"
+    },
+    {
+      "formula": "synchronous_armature_current",
+      "domain": "synchronous_machine",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "E_sync",
+        "Ra_sync",
+        "V_sync",
+        "Xs_sync"
+      ],
+      "output": "Ia_sync",
+      "equation": "Ia_sync = (E_sync - V_sync)/sqrt(Ra_sync**2 + Xs_sync**2)"
+    },
+    {
+      "formula": "three_phase_power",
+      "domain": "power_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I_L3",
+        "V_L3",
+        "pf_3ph"
+      ],
+      "output": "P_3ph",
+      "equation": "P_3ph = sqrt(3)*I_L3*V_L3*pf_3ph"
+    },
+    {
+      "formula": "three_phase_reactive_power",
+      "domain": "power_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I_L3",
+        "V_L3",
+        "pf_3ph"
+      ],
+      "output": "Q_3ph",
+      "equation": "Q_3ph = sqrt(3)*I_L3*V_L3*sqrt(1 - pf_3ph**2)"
+    },
+    {
+      "formula": "three_phase_apparent_power",
+      "domain": "power_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I_L3",
+        "V_L3"
+      ],
+      "output": "S_3ph",
+      "equation": "S_3ph = sqrt(3)*I_L3*V_L3"
+    },
+    {
+      "formula": "star_line_phase_voltage",
+      "domain": "power_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "V_ph3"
+      ],
+      "output": "V_L3",
+      "equation": "V_L3 = sqrt(3)*V_ph3"
+    },
+    {
+      "formula": "delta_line_phase_current",
+      "domain": "power_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I_ph3"
+      ],
+      "output": "I_L3",
+      "equation": "I_L3 = sqrt(3)*I_ph3"
+    },
+    {
+      "formula": "power_factor_correction_capacitor",
+      "domain": "power_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "P_3ph",
+        "delta_sync",
+        "pf_3ph"
+      ],
+      "output": "Qc_pfc",
+      "equation": "Qc_pfc = P_3ph*(-tan(delta_sync) + sqrt(1 - pf_3ph**2)/pf_3ph)"
+    },
+    {
+      "formula": "pascals_law",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "A_hyd",
+        "F_hyd"
+      ],
+      "output": "P_hyd",
+      "equation": "P_hyd = F_hyd/A_hyd"
+    },
+    {
+      "formula": "continuity_equation",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "A_hyd",
+        "v_hyd"
+      ],
+      "output": "Q_hyd",
+      "equation": "Q_hyd = A_hyd*v_hyd"
+    },
+    {
+      "formula": "bernoulli_head",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "P_hyd",
+        "g_grav",
+        "rho_hyd",
+        "v_hyd"
+      ],
+      "output": "h_hyd",
+      "equation": "h_hyd = P_hyd/(g_grav*rho_hyd) + v_hyd**2/(2*g_grav)"
+    },
+    {
+      "formula": "reynolds_number",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "D_pipe",
+        "mu_visc",
+        "rho_hyd",
+        "v_hyd"
+      ],
+      "output": "Re_hyd",
+      "equation": "Re_hyd = D_pipe*rho_hyd*v_hyd/mu_visc"
+    },
+    {
+      "formula": "darcy_weisbach_head_loss",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "D_pipe",
+        "L_pipe",
+        "f_darcy",
+        "g_grav",
+        "v_hyd"
+      ],
+      "output": "hl_major",
+      "equation": "hl_major = L_pipe*f_darcy*v_hyd**2/(2*D_pipe*g_grav)"
+    },
+    {
+      "formula": "minor_head_loss",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "K_minor",
+        "g_grav",
+        "v_hyd"
+      ],
+      "output": "hl_minor",
+      "equation": "hl_minor = K_minor*v_hyd**2/(2*g_grav)"
+    },
+    {
+      "formula": "pump_flow_rate",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "D_disp",
+        "N_pump"
+      ],
+      "output": "Q_pump",
+      "equation": "Q_pump = D_disp*N_pump"
+    },
+    {
+      "formula": "pump_volumetric_efficiency",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "D_disp",
+        "N_pump",
+        "Q_pump"
+      ],
+      "output": "eta_vol",
+      "equation": "eta_vol = Q_pump/(D_disp*N_pump)"
+    },
+    {
+      "formula": "pump_overall_efficiency",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "eta_mech_hyd",
+        "eta_vol"
+      ],
+      "output": "eta_overall_hyd",
+      "equation": "eta_overall_hyd = eta_mech_hyd*eta_vol"
+    },
+    {
+      "formula": "hydraulic_power",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "P_hyd",
+        "Q_hyd"
+      ],
+      "output": "P_hyd_power",
+      "equation": "P_hyd_power = P_hyd*Q_hyd"
+    },
+    {
+      "formula": "pump_torque",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "D_disp",
+        "P_hyd",
+        "eta_mech_hyd"
+      ],
+      "output": "T_pump",
+      "equation": "T_pump = D_disp*P_hyd/(2*pi*eta_mech_hyd)"
+    },
+    {
+      "formula": "valve_flow_coefficient",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Cv_valve",
+        "dP_valve"
+      ],
+      "output": "Q_hyd",
+      "equation": "Q_hyd = Cv_valve*sqrt(dP_valve)"
+    },
+    {
+      "formula": "cylinder_force",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "A_cyl",
+        "P_hyd"
+      ],
+      "output": "F_cyl",
+      "equation": "F_cyl = A_cyl*P_hyd"
+    },
+    {
+      "formula": "cylinder_speed",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "A_cyl",
+        "Q_cyl"
+      ],
+      "output": "v_cyl",
+      "equation": "v_cyl = Q_cyl/A_cyl"
+    },
+    {
+      "formula": "accumulator_gas_law",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "P0_acc",
+        "V0_acc",
+        "V_acc"
+      ],
+      "output": "P_acc",
+      "equation": "P_acc = P0_acc*V0_acc/V_acc"
+    },
+    {
+      "formula": "gear_module",
+      "domain": "mechanical_drives",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Dp_gear",
+        "Np_gear"
+      ],
+      "output": "m_gear",
+      "equation": "m_gear = Dp_gear/Np_gear"
+    },
+    {
+      "formula": "gear_ratio",
+      "domain": "mechanical_drives",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Ng_gear",
+        "Np_gear"
+      ],
+      "output": "GR_gear",
+      "equation": "GR_gear = Ng_gear/Np_gear"
+    },
+    {
+      "formula": "gear_center_distance",
+      "domain": "mechanical_drives",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Dg_gear",
+        "Dp_gear"
+      ],
+      "output": "CD_gear",
+      "equation": "CD_gear = Dg_gear/2 + Dp_gear/2"
+    },
+    {
+      "formula": "gear_pitch_line_velocity",
+      "domain": "mechanical_drives",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Dp_gear",
+        "N_pump"
+      ],
+      "output": "v_pitch_gear",
+      "equation": "v_pitch_gear = pi*Dp_gear*N_pump/60"
+    },
+    {
+      "formula": "lewis_bending_stress",
+      "domain": "mechanical_drives",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Fw_gear",
+        "Wt_gear",
+        "Y_lewis",
+        "m_gear"
+      ],
+      "output": "sigma_lewis",
+      "equation": "sigma_lewis = Wt_gear/(Fw_gear*Y_lewis*m_gear)"
+    },
+    {
+      "formula": "agma_bending_stress",
+      "domain": "mechanical_drives",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Fw_gear",
+        "J_agma",
+        "Ks_service",
+        "Kv_dynamic",
+        "Wt_gear",
+        "m_gear"
+      ],
+      "output": "sigma_agma",
+      "equation": "sigma_agma = Ks_service*Kv_dynamic*Wt_gear/(Fw_gear*J_agma*m_gear)"
+    },
+    {
+      "formula": "spring_rate",
+      "domain": "mechanical_drives",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "D_coil",
+        "G_spring",
+        "Na_spring",
+        "d_wire"
+      ],
+      "output": "k_spring",
+      "equation": "k_spring = G_spring*d_wire**4/(8*D_coil**3*Na_spring)"
+    },
+    {
+      "formula": "spring_index",
+      "domain": "mechanical_drives",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "D_coil",
+        "d_wire"
+      ],
+      "output": "C_spring",
+      "equation": "C_spring = D_coil/d_wire"
+    },
+    {
+      "formula": "wahl_stress_factor",
+      "domain": "mechanical_drives",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "C_spring"
+      ],
+      "output": "Ws_wahl",
+      "equation": "Ws_wahl = (4*C_spring - 1)/(4*C_spring - 4) + 123/(200*C_spring)"
+    },
+    {
+      "formula": "spring_shear_stress",
+      "domain": "mechanical_drives",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "D_coil",
+        "F_hyd",
+        "Ws_wahl",
+        "d_wire"
+      ],
+      "output": "tau_spring",
+      "equation": "tau_spring = 8*D_coil*F_hyd*Ws_wahl/(pi*d_wire**3)"
+    },
+    {
+      "formula": "belt_tension_ratio",
+      "domain": "mechanical_drives",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "T_slack",
+        "mu_belt",
+        "theta_wrap"
+      ],
+      "output": "T_belt",
+      "equation": "T_belt = T_slack*exp(mu_belt*theta_wrap)"
+    },
+    {
+      "formula": "belt_power_transmitted",
+      "domain": "mechanical_drives",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "T_belt",
+        "T_slack",
+        "v_belt"
+      ],
+      "output": "P_belt",
+      "equation": "P_belt = v_belt*(T_belt - T_slack)"
+    },
+    {
+      "formula": "chain_velocity",
+      "domain": "mechanical_drives",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "N1_sprocket",
+        "p_chain"
+      ],
+      "output": "v_chain",
+      "equation": "v_chain = N1_sprocket*p_chain/60"
+    },
+    {
+      "formula": "chain_sprocket_ratio",
+      "domain": "mechanical_drives",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "N1_sprocket",
+        "N2_sprocket"
+      ],
+      "output": "CR_chain",
+      "equation": "CR_chain = N2_sprocket/N1_sprocket"
+    },
+    {
+      "formula": "opamp_inverting_gain",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Rf_opamp",
+        "Rin_opamp"
+      ],
+      "output": "Av_opamp",
+      "equation": "Av_opamp = -Rf_opamp/Rin_opamp"
+    },
+    {
+      "formula": "opamp_noninverting_gain",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Rf_opamp",
+        "Rin_opamp"
+      ],
+      "output": "Av_opamp",
+      "equation": "Av_opamp = Rf_opamp/Rin_opamp + 1"
+    },
+    {
+      "formula": "opamp_bandwidth",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Av_opamp",
+        "fc_rc"
+      ],
+      "output": "GBW_opamp",
+      "equation": "GBW_opamp = Av_opamp*fc_rc"
+    },
+    {
+      "formula": "rc_cutoff_frequency",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "C_filt",
+        "R_filt"
+      ],
+      "output": "fc_rc",
+      "equation": "fc_rc = 1/(2*pi*C_filt*R_filt)"
+    },
+    {
+      "formula": "diode_shockley_equation",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Is_diode",
+        "Vd_diode",
+        "Vt_thermal",
+        "n_ideality"
+      ],
+      "output": "Id_diode",
+      "equation": "Id_diode = Is_diode*(exp(Vd_diode/(Vt_thermal*n_ideality)) - 1)"
+    },
+    {
+      "formula": "bjt_current_gain",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Ib_bjt",
+        "Ic_bjt"
+      ],
+      "output": "beta_bjt",
+      "equation": "beta_bjt = Ic_bjt/Ib_bjt"
+    },
+    {
+      "formula": "bjt_emitter_current",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Ib_bjt",
+        "Ic_bjt"
+      ],
+      "output": "Ie_bjt",
+      "equation": "Ie_bjt = Ib_bjt + Ic_bjt"
+    },
+    {
+      "formula": "mosfet_drain_current_saturation",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Vgs_mosfet",
+        "Vth_mosfet",
+        "k_mosfet"
+      ],
+      "output": "Id_mosfet",
+      "equation": "Id_mosfet = k_mosfet*(Vgs_mosfet - Vth_mosfet)**2"
+    },
+    {
+      "formula": "mosfet_transconductance",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Id_mosfet",
+        "k_mosfet"
+      ],
+      "output": "gm_mosfet",
+      "equation": "gm_mosfet = 2*sqrt(Id_mosfet*k_mosfet)"
+    },
+    {
+      "formula": "capacitor_ripple_voltage",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "C_filt_cap",
+        "I_load",
+        "f_ripple"
+      ],
+      "output": "Vr_ripple",
+      "equation": "Vr_ripple = I_load/(C_filt_cap*f_ripple)"
+    },
+    {
+      "formula": "buck_converter_ratio",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "D_duty",
+        "Vin_buck"
+      ],
+      "output": "Vout_buck",
+      "equation": "Vout_buck = D_duty*Vin_buck"
+    },
+    {
+      "formula": "boost_converter_ratio",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "D_duty",
+        "Vin_buck"
+      ],
+      "output": "Vout_boost",
+      "equation": "Vout_boost = Vin_buck/(1 - D_duty)"
+    },
+    {
+      "formula": "armature_reaction_demag_mmf",
+      "domain": "dc_motor_industrial",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Ia_big",
+        "Z_big",
+        "a_path",
+        "n_poles"
+      ],
+      "output": "F_ar",
+      "equation": "F_ar = Ia_big*Z_big/(2*a_path*n_poles)"
+    },
+    {
+      "formula": "compensating_winding_mmf",
+      "domain": "dc_motor_industrial",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "F_ar"
+      ],
+      "output": "F_cm",
+      "equation": "F_cm = F_ar"
+    },
+    {
+      "formula": "interpole_mmf",
+      "domain": "dc_motor_industrial",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "F_ar",
+        "Ia_big",
+        "Z_big",
+        "a_path",
+        "n_poles"
+      ],
+      "output": "F_ip",
+      "equation": "F_ip = F_ar + Ia_big*Z_big/(2*a_path*n_poles)"
+    },
+    {
+      "formula": "equalizer_ring_current",
+      "domain": "dc_motor_industrial",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Ia_big",
+        "n_poles"
+      ],
+      "output": "N_eq_cur",
+      "equation": "N_eq_cur = Ia_big/n_poles"
+    },
+    {
+      "formula": "series_motor_emf",
+      "domain": "dc_motor_industrial",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Ia_big",
+        "R",
+        "R_regulator",
+        "V"
+      ],
+      "output": "E_series",
+      "equation": "E_series = -Ia_big*(R + R_regulator) + V"
+    },
+    {
+      "formula": "shunt_motor_speed_regulation",
+      "domain": "dc_motor_industrial",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "omega",
+        "omega_s"
+      ],
+      "output": "SpeedReg_dc",
+      "equation": "SpeedReg_dc = (omega - omega_s)/omega_s"
+    },
+    {
+      "formula": "natural_frequency",
+      "domain": "universal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "k_stiff",
+        "m_sys"
+      ],
+      "output": "omega_n",
+      "equation": "omega_n = sqrt(k_stiff/m_sys)"
+    },
+    {
+      "formula": "damping_ratio",
+      "domain": "universal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "c_damp",
+        "k_stiff",
+        "m_sys"
+      ],
+      "output": "zeta_damp",
+      "equation": "zeta_damp = c_damp/(2*sqrt(k_stiff*m_sys))"
+    },
+    {
+      "formula": "goodman_fatigue_criterion",
+      "domain": "universal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Se_endurance",
+        "Sut_ultimate",
+        "sigma_a",
+        "sigma_m"
+      ],
+      "output": "n_safety",
+      "equation": "n_safety = 1/(sigma_m/Sut_ultimate + sigma_a/Se_endurance)"
+    },
+    {
+      "formula": "convection_heat_transfer",
+      "domain": "universal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "A",
+        "T_amb",
+        "T_temp",
+        "h_conv"
+      ],
+      "output": "Q",
+      "equation": "Q = A*h_conv*(-T_amb + T_temp)"
+    },
+    {
+      "formula": "nusselt_number",
+      "domain": "universal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Lc_char",
+        "h_conv",
+        "k_thermal_cond"
+      ],
+      "output": "Nu_nusselt",
+      "equation": "Nu_nusselt = Lc_char*h_conv/k_thermal_cond"
+    },
+    {
+      "formula": "biot_number",
+      "domain": "universal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Lc_char",
+        "h_conv",
+        "k_thermal_cond"
+      ],
+      "output": "Bi_biot",
+      "equation": "Bi_biot = Lc_char*h_conv/k_thermal_cond"
+    },
+    {
+      "formula": "pid_control_output",
+      "domain": "control_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Kd_pid",
+        "Ki_pid",
+        "Kp_pid",
+        "e_err",
+        "t_time"
+      ],
+      "output": "u_pid",
+      "equation": "u_pid = Kd_pid*e_err/t_time + Ki_pid*e_err*t_time + Kp_pid*e_err"
+    },
+    {
+      "formula": "second_order_overshoot",
+      "domain": "control_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "zeta_2nd"
+      ],
+      "output": "Mp_overshoot",
+      "equation": "Mp_overshoot = exp(-pi*zeta_2nd/sqrt(1 - zeta_2nd**2))"
+    },
+    {
+      "formula": "second_order_settling_time",
+      "domain": "control_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "omega_n_2nd",
+        "zeta_2nd"
+      ],
+      "output": "ts_settling",
+      "equation": "ts_settling = 4/(omega_n_2nd*zeta_2nd)"
+    },
+    {
+      "formula": "steady_state_error_ramp",
+      "domain": "control_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Kp_pid"
+      ],
+      "output": "ess_error",
+      "equation": "ess_error = 1/Kp_pid"
+    },
+    {
+      "formula": "no_load_power_factor_im",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I0_test_im",
+        "P0_test_im",
+        "V0_test_im"
+      ],
+      "output": "pf0_im",
+      "equation": "pf0_im = sqrt(3)*P0_test_im/(3*I0_test_im*V0_test_im)"
+    },
+    {
+      "formula": "blocked_rotor_impedance_im",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Isc_test_im",
+        "Vsc_test_im"
+      ],
+      "output": "Z01_im",
+      "equation": "Z01_im = sqrt(3)*Vsc_test_im/(3*Isc_test_im)"
+    },
+    {
+      "formula": "full_load_slip_im",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "N_fl_im",
+        "N_synch_fl"
+      ],
+      "output": "s_fl_im",
+      "equation": "s_fl_im = (-N_fl_im + N_synch_fl)/N_synch_fl"
+    },
+    {
+      "formula": "efficiency_partial_load_im",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "P_i_t",
+        "P_out_im",
+        "P_scl",
+        "load_frac_im"
+      ],
+      "output": "eta_partial_im",
+      "equation": "eta_partial_im = P_out_im*load_frac_im/(P_i_t + P_out_im*load_frac_im + P_scl*load_frac_im**2)"
+    },
+    {
+      "formula": "deep_bar_resistance_ratio_im",
+      "domain": "induction_motor",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "R2_ac_im",
+        "R2_deep"
+      ],
+      "output": "k_deepbar_im",
+      "equation": "k_deepbar_im = R2_deep/R2_ac_im"
+    },
+    {
+      "formula": "bending_stress",
+      "domain": "materials",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I_area",
+        "M_bend",
+        "c_dist"
+      ],
+      "output": "sigma_bend",
+      "equation": "sigma_bend = M_bend*c_dist/I_area"
+    },
+    {
+      "formula": "section_modulus",
+      "domain": "materials",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I_area",
+        "c_dist"
+      ],
+      "output": "Z_section",
+      "equation": "Z_section = I_area/c_dist"
+    },
+    {
+      "formula": "beam_deflection_center_load",
+      "domain": "materials",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "E_mod",
+        "F_beam",
+        "I_area",
+        "Lspan_beam"
+      ],
+      "output": "delta_beam",
+      "equation": "delta_beam = F_beam*Lspan_beam**3/(48*E_mod*I_area)"
+    },
+    {
+      "formula": "euler_buckling_load",
+      "domain": "materials",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "E_mod",
+        "I_area",
+        "Le_col"
+      ],
+      "output": "P_euler",
+      "equation": "P_euler = pi**2*E_mod*I_area/Le_col**2"
+    },
+    {
+      "formula": "radius_of_gyration",
+      "domain": "materials",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "A",
+        "I_area"
+      ],
+      "output": "k_gyr",
+      "equation": "k_gyr = sqrt(I_area/A)"
+    },
+    {
+      "formula": "von_mises_stress",
+      "domain": "materials",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "sigma_x",
+        "sigma_y",
+        "tau_xy"
+      ],
+      "output": "sigma_vm",
+      "equation": "sigma_vm = sqrt(sigma_x**2 - sigma_x*sigma_y + sigma_y**2 + 3*tau_xy**2)"
+    },
+    {
+      "formula": "stress_concentration",
+      "domain": "materials",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Kt_stress",
+        "sigma_bend"
+      ],
+      "output": "sigma_principal",
+      "equation": "sigma_principal = Kt_stress*sigma_bend"
+    },
+    {
+      "formula": "hookes_law",
+      "domain": "materials",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "E_mod",
+        "epsilon_strain"
+      ],
+      "output": "sigma_bend",
+      "equation": "sigma_bend = E_mod*epsilon_strain"
+    },
+    {
+      "formula": "poissons_ratio",
+      "domain": "materials",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "E_mod",
+        "epsilon_strain",
+        "sigma_bend"
+      ],
+      "output": "nu_poisson",
+      "equation": "nu_poisson = -E_mod*epsilon_strain/sigma_bend"
+    },
+    {
+      "formula": "thermal_expansion",
+      "domain": "materials",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Lspan_beam",
+        "T0_therm",
+        "T_temp",
+        "alpha_therm"
+      ],
+      "output": "dL_therm",
+      "equation": "dL_therm = Lspan_beam*alpha_therm*(-T0_therm + T_temp)"
+    },
+    {
+      "formula": "shaft_deflection_bending",
+      "domain": "materials",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "E_mod",
+        "F_beam",
+        "J_polar",
+        "Lspan_beam"
+      ],
+      "output": "delta_shaft",
+      "equation": "delta_shaft = F_beam*Lspan_beam**3/(48*E_mod*J_polar)"
+    },
+    {
+      "formula": "shaft_critical_speed",
+      "domain": "materials",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "k_stiff",
+        "m_sys"
+      ],
+      "output": "N_crit_shaft",
+      "equation": "N_crit_shaft = 30*sqrt(k_stiff/m_sys)/pi"
+    },
+    {
+      "formula": "asme_shaft_combined_stress",
+      "domain": "materials",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Kf_shaft",
+        "M_bend",
+        "T",
+        "d"
+      ],
+      "output": "tau_m_shaft",
+      "equation": "tau_m_shaft = 16*sqrt(Kf_shaft**2*M_bend**2 + T**2)/(pi*d**3)"
+    },
+    {
+      "formula": "key_shear_stress",
+      "domain": "materials",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "A_key",
+        "F_key"
+      ],
+      "output": "tau_key",
+      "equation": "tau_key = F_key/A_key"
+    },
+    {
+      "formula": "npsh_available",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "h_atm",
+        "h_fric_suction",
+        "h_suction",
+        "h_vap"
+      ],
+      "output": "NPSH_avail",
+      "equation": "NPSH_avail = h_atm - h_fric_suction - h_suction - h_vap"
+    },
+    {
+      "formula": "cavitation_number",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "P_hyd",
+        "h_vap",
+        "rho_hyd",
+        "v_hyd"
+      ],
+      "output": "Ca_cav",
+      "equation": "Ca_cav = 2*(P_hyd - h_vap)/(rho_hyd*v_hyd**2)"
+    },
+    {
+      "formula": "water_hammer_pressure",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "a_wave",
+        "rho_hyd",
+        "v_hyd"
+      ],
+      "output": "P_dp_shock",
+      "equation": "P_dp_shock = a_wave*rho_hyd*v_hyd"
+    },
+    {
+      "formula": "wave_speed_bulk_modulus",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "K_bulk",
+        "rho_hyd"
+      ],
+      "output": "a_wave",
+      "equation": "a_wave = sqrt(K_bulk/rho_hyd)"
+    },
+    {
+      "formula": "orifice_flow",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "A_orifice",
+        "Cd_orifice",
+        "g_grav",
+        "h_hyd"
+      ],
+      "output": "Q_orifice",
+      "equation": "Q_orifice = sqrt(2)*A_orifice*Cd_orifice*sqrt(g_grav*h_hyd)"
+    },
+    {
+      "formula": "pump_specific_speed",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "N_pump",
+        "Q_pump",
+        "h_hyd"
+      ],
+      "output": "N_ss_pump",
+      "equation": "N_ss_pump = N_pump*sqrt(Q_pump)/h_hyd**(3/4)"
+    },
+    {
+      "formula": "affinity_law_flow",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "N_aff",
+        "N_pump",
+        "Q_pump"
+      ],
+      "output": "Q_aff",
+      "equation": "Q_aff = N_aff*Q_pump/N_pump"
+    },
+    {
+      "formula": "affinity_law_head",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "N_aff",
+        "N_pump",
+        "h_hyd"
+      ],
+      "output": "H_aff",
+      "equation": "H_aff = N_aff**2*h_hyd/N_pump**2"
+    },
+    {
+      "formula": "torricellis_law",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "g_grav",
+        "h_torricelli"
+      ],
+      "output": "v_torricelli",
+      "equation": "v_torricelli = sqrt(2)*sqrt(g_grav*h_torricelli)"
+    },
+    {
+      "formula": "manometer_pressure",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "g_grav",
+        "h_manometer",
+        "rho_manometer"
+      ],
+      "output": "P_manometer",
+      "equation": "P_manometer = g_grav*h_manometer*rho_manometer"
+    },
+    {
+      "formula": "buoyancy_force",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Vol_disp",
+        "g_grav",
+        "rho_fluid_b"
+      ],
+      "output": "F_buoy",
+      "equation": "F_buoy = Vol_disp*g_grav*rho_fluid_b"
+    },
+    {
+      "formula": "hydrostatic_pressure",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "g_grav",
+        "h_hyd",
+        "rho_hyd"
+      ],
+      "output": "P_depth",
+      "equation": "P_depth = g_grav*h_hyd*rho_hyd"
+    },
+    {
+      "formula": "wheatstone_bridge_balance",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "R2_bridge",
+        "R3_bridge",
+        "R4_bridge"
+      ],
+      "output": "R1_bridge",
+      "equation": "R1_bridge = R2_bridge*R3_bridge/R4_bridge"
+    },
+    {
+      "formula": "voltage_divider",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "R1_div",
+        "R2_div",
+        "Vdiv_in"
+      ],
+      "output": "Vdiv_out",
+      "equation": "Vdiv_out = R2_div*Vdiv_in/(R1_div + R2_div)"
+    },
+    {
+      "formula": "555_timer_astable_frequency",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "C_555",
+        "R_555a",
+        "R_555b"
+      ],
+      "output": "f_555",
+      "equation": "f_555 = 36/(25*C_555*(R_555a + 2*R_555b))"
+    },
+    {
+      "formula": "instrumentation_amp_gain",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Rf_opamp",
+        "Rg_instr"
+      ],
+      "output": "Av_instr",
+      "equation": "Av_instr = 2*Rf_opamp/Rg_instr + 1"
+    },
+    {
+      "formula": "zener_regulator_current",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Rz_zener",
+        "Vdiv_in",
+        "Vz_zener"
+      ],
+      "output": "Iz_zener",
+      "equation": "Iz_zener = (Vdiv_in - Vz_zener)/Rz_zener"
+    },
+    {
+      "formula": "class_a_amplifier_efficiency",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [],
+      "output": "eta_classA",
+      "equation": "eta_classA = 1/4"
+    },
+    {
+      "formula": "class_b_amplifier_efficiency",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [],
+      "output": "eta_classB",
+      "equation": "eta_classB = pi/4"
+    },
+    {
+      "formula": "gate_propagation_delay",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "C_load_gate",
+        "I_max",
+        "V_swing_gate"
+      ],
+      "output": "t_pd_gate",
+      "equation": "t_pd_gate = C_load_gate*V_swing_gate/I_max"
+    },
+    {
+      "formula": "digital_clock_period",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "f_clk_digital"
+      ],
+      "output": "T_clk_digital",
+      "equation": "T_clk_digital = 1/f_clk_digital"
+    },
+    {
+      "formula": "cmos_dynamic_power",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "C_load_cmos",
+        "V_dd_cmos",
+        "f_sw_cmos"
+      ],
+      "output": "P_dyn_cmos",
+      "equation": "P_dyn_cmos = C_load_cmos*V_dd_cmos**2*f_sw_cmos"
+    },
+    {
+      "formula": "fouriers_law_conduction",
+      "domain": "universal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "A_cond_area",
+        "dT_dx",
+        "k_cond"
+      ],
+      "output": "q_fourier",
+      "equation": "q_fourier = -A_cond_area*dT_dx*k_cond"
+    },
+    {
+      "formula": "stefan_boltzmann_radiation",
+      "domain": "universal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "A",
+        "T_cold_rad",
+        "T_hot_rad",
+        "eps_rad",
+        "sigma_sb"
+      ],
+      "output": "q_rad",
+      "equation": "q_rad = A*eps_rad*sigma_sb*(-T_cold_rad**4 + T_hot_rad**4)"
+    },
+    {
+      "formula": "thermal_resistance_series",
+      "domain": "universal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "R_regulator",
+        "R_th"
+      ],
+      "output": "R_th_series",
+      "equation": "R_th_series = R_regulator + R_th"
+    },
+    {
+      "formula": "thermal_resistance_parallel",
+      "domain": "universal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "R_regulator",
+        "R_th"
+      ],
+      "output": "R_th_parallel",
+      "equation": "R_th_parallel = R_regulator*R_th/(R_regulator + R_th)"
+    },
+    {
+      "formula": "log_mean_temp_difference",
+      "domain": "universal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "dT1_hx",
+        "dT2_hx"
+      ],
+      "output": "LMTD_hx",
+      "equation": "LMTD_hx = (dT1_hx - dT2_hx)/log(dT1_hx/dT2_hx)"
+    },
+    {
+      "formula": "closed_loop_transfer_function",
+      "domain": "control_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "G_ol",
+        "H_fb"
+      ],
+      "output": "T_cl",
+      "equation": "T_cl = G_ol/(G_ol*H_fb + 1)"
+    },
+    {
+      "formula": "gain_margin_db",
+      "domain": "control_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "G_ol"
+      ],
+      "output": "Gm_margin",
+      "equation": "Gm_margin = -20*log(G_ol)/log(10)"
+    },
+    {
+      "formula": "dc_gain",
+      "domain": "control_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "G_ol",
+        "H_fb"
+      ],
+      "output": "K_dc_gain",
+      "equation": "K_dc_gain = G_ol/(G_ol*H_fb + 1)"
+    },
+    {
+      "formula": "autotransformer_saving",
+      "domain": "transformer",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "K_auto_save",
+        "P_in_t"
+      ],
+      "output": "VA_auto",
+      "equation": "VA_auto = K_auto_save*P_in_t"
+    },
+    {
+      "formula": "per_unit_impedance",
+      "domain": "transformer",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "S_base",
+        "V_base",
+        "Z_base"
+      ],
+      "output": "Z_pu",
+      "equation": "Z_pu = S_base*Z_base/V_base**2"
+    },
+    {
+      "formula": "synchronous_voltage_regulation_pct",
+      "domain": "synchronous_machine",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "E_sync",
+        "V_sync"
+      ],
+      "output": "VR_sync_pct",
+      "equation": "VR_sync_pct = 100*(E_sync - V_sync)/V_sync"
+    },
+    {
+      "formula": "short_circuit_ratio",
+      "domain": "synchronous_machine",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Xs_sync"
+      ],
+      "output": "SCR_sync",
+      "equation": "SCR_sync = 1/Xs_sync"
+    },
+    {
+      "formula": "peukerts_law",
+      "domain": "battery_chemistry",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "C_peukert",
+        "I_peukert",
+        "k_peukert"
+      ],
+      "output": "t_peukert",
+      "equation": "t_peukert = C_peukert/I_peukert**k_peukert"
+    },
+    {
+      "formula": "battery_voltage_sag",
+      "domain": "battery_chemistry",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I_batt",
+        "R_int_batt"
+      ],
+      "output": "V_sag",
+      "equation": "V_sag = I_batt*R_int_batt"
+    },
+    {
+      "formula": "battery_thermal_derating",
+      "domain": "battery_chemistry",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "C_battery",
+        "T_batt_amb",
+        "alpha_batt"
+      ],
+      "output": "C_derated",
+      "equation": "C_derated = C_battery*(-alpha_batt*(T_batt_amb - 25) + 1)"
+    },
+    {
+      "formula": "state_of_charge",
+      "domain": "battery_chemistry",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Q_rated",
+        "Q_used"
+      ],
+      "output": "SoC_batt",
+      "equation": "SoC_batt = 1 - Q_used/Q_rated"
+    },
+    {
+      "formula": "c_rate",
+      "domain": "battery_chemistry",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "C_ah_batt",
+        "I_rate_batt"
+      ],
+      "output": "C_rate_batt",
+      "equation": "C_rate_batt = I_rate_batt/C_ah_batt"
+    },
+    {
+      "formula": "battery_energy_wh",
+      "domain": "battery_chemistry",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "C_ah_batt",
+        "V_nom_batt"
+      ],
+      "output": "E_batt_wh",
+      "equation": "E_batt_wh = C_ah_batt*V_nom_batt"
+    },
+    {
+      "formula": "battery_specific_energy",
+      "domain": "battery_chemistry",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "E_batt_wh",
+        "m_batt"
+      ],
+      "output": "E_specific_batt",
+      "equation": "E_specific_batt = E_batt_wh/m_batt"
+    },
+    {
+      "formula": "battery_cycle_life",
+      "domain": "battery_chemistry",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "DoD_batt",
+        "k_cycle"
+      ],
+      "output": "N_cycles_batt",
+      "equation": "N_cycles_batt = k_cycle/DoD_batt"
+    },
+    {
+      "formula": "miners_rule",
+      "domain": "materials",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "N_cycles_i",
+        "n_cycles_i"
+      ],
+      "output": "D_miner",
+      "equation": "D_miner = n_cycles_i/N_cycles_i"
+    },
+    {
+      "formula": "sn_curve_life",
+      "domain": "materials",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Sf_life",
+        "a_sn",
+        "b_sn"
+      ],
+      "output": "Nf_life",
+      "equation": "Nf_life = (Sf_life/a_sn)**(1/b_sn)"
+    },
+    {
+      "formula": "marin_corrected_endurance",
+      "domain": "materials",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Se_endurance",
+        "ka_surf",
+        "kb_size"
+      ],
+      "output": "Se_corrected",
+      "equation": "Se_corrected = Se_endurance*ka_surf*kb_size"
+    },
+    {
+      "formula": "forced_vibration_amplitude",
+      "domain": "universal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "F0_forced",
+        "k_stiff",
+        "r_freq_ratio",
+        "zeta_damp"
+      ],
+      "output": "X_forced",
+      "equation": "X_forced = F0_forced/(k_stiff*sqrt(4*r_freq_ratio**2*zeta_damp**2 + (1 - r_freq_ratio**2)**2))"
+    },
+    {
+      "formula": "transmissibility_ratio",
+      "domain": "universal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "r_freq_ratio",
+        "zeta_damp"
+      ],
+      "output": "TR_transmis",
+      "equation": "TR_transmis = sqrt((4*r_freq_ratio**2*zeta_damp**2 + 1)/(4*r_freq_ratio**2*zeta_damp**2 + (1 - r_freq_ratio**2)**2))"
+    },
+    {
+      "formula": "logarithmic_decrement",
+      "domain": "universal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "x1_log",
+        "x2_log"
+      ],
+      "output": "delta_log",
+      "equation": "delta_log = log(x1_log/x2_log)"
+    },
+    {
+      "formula": "critical_damping_coefficient",
+      "domain": "universal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "k_stiff",
+        "m_sys"
+      ],
+      "output": "c_crit_damp",
+      "equation": "c_crit_damp = 2*sqrt(k_stiff*m_sys)"
+    },
+    {
+      "formula": "single_phase_real_power",
+      "domain": "power_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I_1ph",
+        "V_1ph",
+        "pf_1ph"
+      ],
+      "output": "P_1ph",
+      "equation": "P_1ph = I_1ph*V_1ph*pf_1ph"
+    },
+    {
+      "formula": "single_phase_reactive_power",
+      "domain": "power_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I_1ph",
+        "V_1ph",
+        "pf_1ph"
+      ],
+      "output": "Q_1ph",
+      "equation": "Q_1ph = I_1ph*V_1ph*sqrt(1 - pf_1ph**2)"
+    },
+    {
+      "formula": "single_phase_apparent_power",
+      "domain": "power_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I_1ph",
+        "V_1ph"
+      ],
+      "output": "S_1ph",
+      "equation": "S_1ph = I_1ph*V_1ph"
+    },
+    {
+      "formula": "sine_rms_value",
+      "domain": "power_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "V_peak_sine"
+      ],
+      "output": "V_rms_sine",
+      "equation": "V_rms_sine = sqrt(2)*V_peak_sine/2"
+    },
+    {
+      "formula": "sine_peak_to_peak",
+      "domain": "power_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "V_peak_sine"
+      ],
+      "output": "V_pp_sine",
+      "equation": "V_pp_sine = 2*V_peak_sine"
+    },
+    {
+      "formula": "crest_factor",
+      "domain": "power_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "V_peak_sine",
+        "V_rms_sine"
+      ],
+      "output": "CF_crest",
+      "equation": "CF_crest = V_peak_sine/V_rms_sine"
+    },
+    {
+      "formula": "digital_fanout",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I_ih_fanout",
+        "I_oh_fanout"
+      ],
+      "output": "N_fanout",
+      "equation": "N_fanout = I_oh_fanout/I_ih_fanout"
+    },
+    {
+      "formula": "noise_margin_high",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "V_ih_nm",
+        "V_oh_nm"
+      ],
+      "output": "NM_high",
+      "equation": "NM_high = -V_ih_nm + V_oh_nm"
+    },
+    {
+      "formula": "noise_margin_low",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "V_il_nm",
+        "V_ol_nm"
+      ],
+      "output": "NM_low",
+      "equation": "NM_low = V_il_nm - V_ol_nm"
+    },
+    {
+      "formula": "flip_flop_min_period",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "t_clk_to_q",
+        "t_setup"
+      ],
+      "output": "T_clk_digital",
+      "equation": "T_clk_digital = t_clk_to_q + t_setup"
+    },
+    {
+      "formula": "arrhenius_rate_constant",
+      "domain": "chemistry",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "A_arrhenius",
+        "Ea_arrhenius",
+        "R_gas",
+        "T_kelvin"
+      ],
+      "output": "k_rate",
+      "equation": "k_rate = A_arrhenius*exp(-Ea_arrhenius/(R_gas*T_kelvin))"
+    },
+    {
+      "formula": "principal_stress_transform",
+      "domain": "materials",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "sigma_x",
+        "sigma_y",
+        "tau_xy"
+      ],
+      "output": "sigma_1_transform",
+      "equation": "sigma_1_transform = sigma_x/2 + sigma_y/2 + sqrt(tau_xy**2 + (sigma_x/2 - sigma_y/2)**2)"
+    },
+    {
+      "formula": "principal_stress_transform_min",
+      "domain": "materials",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "sigma_x",
+        "sigma_y",
+        "tau_xy"
+      ],
+      "output": "sigma_2_transform",
+      "equation": "sigma_2_transform = sigma_x/2 + sigma_y/2 - sqrt(tau_xy**2 + (sigma_x/2 - sigma_y/2)**2)"
+    },
+    {
+      "formula": "principal_stress_angle",
+      "domain": "materials",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "sigma_x",
+        "sigma_y",
+        "tau_xy"
+      ],
+      "output": "theta_transform",
+      "equation": "theta_transform = atan(2*tau_xy/(sigma_x - sigma_y))/2"
+    },
+    {
+      "formula": "flyback_converter_ratio",
+      "domain": "electronics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "D_flyback",
+        "N_flyback",
+        "Vin_flyback"
+      ],
+      "output": "Vout_flyback",
+      "equation": "Vout_flyback = D_flyback*N_flyback*Vin_flyback/(1 - D_flyback)"
+    },
+    {
+      "formula": "reflection_coefficient",
+      "domain": "rf",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Z0_rf",
+        "ZL_rf"
+      ],
+      "output": "Gamma_refl",
+      "equation": "Gamma_refl = (-Z0_rf + ZL_rf)/(Z0_rf + ZL_rf)"
+    },
+    {
+      "formula": "vswr",
+      "domain": "rf",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Gamma_refl"
+      ],
+      "output": "VSWR_rf",
+      "equation": "VSWR_rf = (Gamma_refl + 1)/(1 - Gamma_refl)"
+    },
+    {
+      "formula": "return_loss_db",
+      "domain": "rf",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Gamma_refl"
+      ],
+      "output": "RL_db",
+      "equation": "RL_db = -20*log(Gamma_refl)/log(10)"
+    },
+    {
+      "formula": "quarter_wave_transformer",
+      "domain": "rf",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Z0_rf",
+        "ZL_rf"
+      ],
+      "output": "Z_qw",
+      "equation": "Z_qw = sqrt(Z0_rf*ZL_rf)"
+    },
+    {
+      "formula": "ziegler_nichols_kp",
+      "domain": "control_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Ku_zn"
+      ],
+      "output": "Kp_zn",
+      "equation": "Kp_zn = 3*Ku_zn/5"
+    },
+    {
+      "formula": "ziegler_nichols_ti",
+      "domain": "control_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Pu_zn"
+      ],
+      "output": "Ti_zn",
+      "equation": "Ti_zn = Pu_zn/2"
+    },
+    {
+      "formula": "ziegler_nichols_td",
+      "domain": "control_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Pu_zn"
+      ],
+      "output": "Td_zn",
+      "equation": "Td_zn = Pu_zn/8"
+    },
+    {
+      "formula": "heat_exchanger_effectiveness",
+      "domain": "universal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Qactual_hx",
+        "Qmax_hx"
+      ],
+      "output": "eps_hx",
+      "equation": "eps_hx = Qactual_hx/Qmax_hx"
+    },
+    {
+      "formula": "heat_exchanger_qmax",
+      "domain": "universal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Cmin_hx",
+        "T_cold_rad",
+        "T_hot_rad"
+      ],
+      "output": "Qmax_hx",
+      "equation": "Qmax_hx = Cmin_hx*(-T_cold_rad + T_hot_rad)"
+    },
+    {
+      "formula": "heat_exchanger_ntu",
+      "domain": "universal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Cmin_hx",
+        "UA_hx"
+      ],
+      "output": "NTU_hx",
+      "equation": "NTU_hx = UA_hx/Cmin_hx"
+    },
+    {
+      "formula": "pumping_power_required",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Q_hyd",
+        "eta_overall_hyd",
+        "g_grav",
+        "h_hyd",
+        "rho_hyd"
+      ],
+      "output": "P_pump_hyd",
+      "equation": "P_pump_hyd = Q_hyd*g_grav*h_hyd*rho_hyd/eta_overall_hyd"
+    },
+    {
+      "formula": "specific_gravity",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "rho_hyd"
+      ],
+      "output": "gamma_sg",
+      "equation": "gamma_sg = rho_hyd/1000"
+    },
+    {
+      "formula": "rotating_unbalance_response",
+      "domain": "universal",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "M_total_unbalance",
+        "me_unbalance",
+        "r_freq_ratio",
+        "zeta_damp"
+      ],
+      "output": "X_unbalance",
+      "equation": "X_unbalance = me_unbalance*r_freq_ratio**2/(M_total_unbalance*sqrt(4*r_freq_ratio**2*zeta_damp**2 + (1 - r_freq_ratio**2)**2))"
+    },
+    {
+      "formula": "concrete_moment_capacity",
+      "domain": "civil_structural",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "As_conc",
+        "a_conc",
+        "d_conc",
+        "fy_conc"
+      ],
+      "output": "M_conc",
+      "equation": "M_conc = As_conc*fy_conc*(-a_conc/2 + d_conc)"
+    },
+    {
+      "formula": "concrete_stress_block_depth",
+      "domain": "civil_structural",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "As_conc",
+        "b_conc",
+        "fc_conc",
+        "fy_conc"
+      ],
+      "output": "a_conc",
+      "equation": "a_conc = 20*As_conc*fy_conc/(17*b_conc*fc_conc)"
+    },
+    {
+      "formula": "reinforcement_ratio",
+      "domain": "civil_structural",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "As_conc",
+        "b_conc",
+        "d_conc"
+      ],
+      "output": "rho_conc",
+      "equation": "rho_conc = As_conc/(b_conc*d_conc)"
+    },
+    {
+      "formula": "rankine_active_pressure_coeff",
+      "domain": "civil_structural",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "phi_soil"
+      ],
+      "output": "ka_rankine",
+      "equation": "ka_rankine = (1 - sin(phi_soil))/(sin(phi_soil) + 1)"
+    },
+    {
+      "formula": "rankine_active_force",
+      "domain": "civil_structural",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "H_wall",
+        "gamma_soil",
+        "ka_rankine"
+      ],
+      "output": "Pa_rankine",
+      "equation": "Pa_rankine = H_wall**2*gamma_soil*ka_rankine/2"
+    },
+    {
+      "formula": "column_axial_stress",
+      "domain": "civil_structural",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "A_col",
+        "F_axial_col"
+      ],
+      "output": "sigma_allow_col",
+      "equation": "sigma_allow_col = F_axial_col/A_col"
+    },
+    {
+      "formula": "udl_max_moment",
+      "domain": "civil_structural",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "L_beam",
+        "w_udl"
+      ],
+      "output": "M_max_udl",
+      "equation": "M_max_udl = L_beam**2*w_udl/8"
+    },
+    {
+      "formula": "udl_max_shear",
+      "domain": "civil_structural",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "L_beam",
+        "w_udl"
+      ],
+      "output": "V_max_udl",
+      "equation": "V_max_udl = L_beam*w_udl/2"
+    },
+    {
+      "formula": "udl_max_deflection",
+      "domain": "civil_structural",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "E_mod",
+        "I_area",
+        "L_beam",
+        "w_udl"
+      ],
+      "output": "delta_udl",
+      "equation": "delta_udl = 5*L_beam**4*w_udl/(384*E_mod*I_area)"
+    },
+    {
+      "formula": "fillet_weld_stress",
+      "domain": "welding_joints",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "F_weld",
+        "L_weld",
+        "throat_weld"
+      ],
+      "output": "tau_weld",
+      "equation": "tau_weld = F_weld/(L_weld*throat_weld)"
+    },
+    {
+      "formula": "weld_throat_thickness",
+      "domain": "welding_joints",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "t_weld"
+      ],
+      "output": "throat_weld",
+      "equation": "throat_weld = 707*t_weld/1000"
+    },
+    {
+      "formula": "butt_weld_stress",
+      "domain": "welding_joints",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "F_butt",
+        "L_butt",
+        "t_butt"
+      ],
+      "output": "sigma_butt",
+      "equation": "sigma_butt = F_butt/(L_butt*t_butt)"
+    },
+    {
+      "formula": "rivet_shear_stress",
+      "domain": "welding_joints",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "F_rivet",
+        "d_rivet",
+        "n_rivets"
+      ],
+      "output": "tau_rivet",
+      "equation": "tau_rivet = 4*F_rivet/(pi*d_rivet**2*n_rivets)"
+    },
+    {
+      "formula": "bolt_joint_stiffness_ratio",
+      "domain": "welding_joints",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "k_bolt",
+        "k_member"
+      ],
+      "output": "C_bolt",
+      "equation": "C_bolt = k_bolt/(k_bolt + k_member)"
+    },
+    {
+      "formula": "bolt_total_load",
+      "domain": "welding_joints",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "C_bolt",
+        "F_bolt_preload",
+        "F_ext_bolt"
+      ],
+      "output": "F_bolt_total",
+      "equation": "F_bolt_total = C_bolt*F_ext_bolt + F_bolt_preload"
+    },
+    {
+      "formula": "bearing_equivalent_load",
+      "domain": "mechanical_drives",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Fa_bear",
+        "Fr_bear",
+        "X_radial",
+        "Y_thrust"
+      ],
+      "output": "P_equiv_bear",
+      "equation": "P_equiv_bear = Fa_bear*Y_thrust + Fr_bear*X_radial"
+    },
+    {
+      "formula": "clutch_torque_capacity",
+      "domain": "mechanical_drives",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "F_axial_clutch",
+        "R_mean_clutch",
+        "mu_clutch",
+        "n_surfaces"
+      ],
+      "output": "T_clutch",
+      "equation": "T_clutch = F_axial_clutch*R_mean_clutch*mu_clutch*n_surfaces"
+    },
+    {
+      "formula": "disc_brake_torque",
+      "domain": "mechanical_drives",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "F_brake",
+        "R_brake",
+        "mu_brake"
+      ],
+      "output": "T_brake",
+      "equation": "T_brake = F_brake*R_brake*mu_brake"
+    },
+    {
+      "formula": "band_brake_tension",
+      "domain": "mechanical_drives",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "F2_band",
+        "mu_band",
+        "theta_band_wrap"
+      ],
+      "output": "F1_band",
+      "equation": "F1_band = F2_band*exp(mu_band*theta_band_wrap)"
+    },
+    {
+      "formula": "band_brake_torque",
+      "domain": "mechanical_drives",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "F1_band",
+        "F2_band",
+        "R_brake"
+      ],
+      "output": "T_band",
+      "equation": "T_band = R_brake*(F1_band - F2_band)"
+    },
+    {
+      "formula": "flywheel_energy_fluctuation",
+      "domain": "mechanical_drives",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "J_fly",
+        "omega1_fly",
+        "omega2_fly"
+      ],
+      "output": "E_fly",
+      "equation": "E_fly = J_fly*(omega1_fly**2 - omega2_fly**2)/2"
+    },
+    {
+      "formula": "coefficient_of_fluctuation",
+      "domain": "mechanical_drives",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "omega1_fly",
+        "omega2_fly",
+        "omega_mean_fly"
+      ],
+      "output": "Cs_fly",
+      "equation": "Cs_fly = (omega1_fly - omega2_fly)/omega_mean_fly"
+    },
+    {
+      "formula": "cam_shm_displacement",
+      "domain": "mechanical_drives",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "beta_cam",
+        "h_cam",
+        "theta_cam"
+      ],
+      "output": "y_cam",
+      "equation": "y_cam = h_cam*(1 - cos(pi*theta_cam/beta_cam))/2"
+    },
+    {
+      "formula": "cam_shm_velocity",
+      "domain": "mechanical_drives",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "beta_cam",
+        "h_cam",
+        "theta_cam"
+      ],
+      "output": "v_cam",
+      "equation": "v_cam = pi*h_cam*sin(pi*theta_cam/beta_cam)/(2*beta_cam)"
+    },
+    {
+      "formula": "thin_cylinder_hoop_stress",
+      "domain": "pressure_vessels",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "D_vessel",
+        "P_internal",
+        "t_vessel"
+      ],
+      "output": "sigma_hoop",
+      "equation": "sigma_hoop = D_vessel*P_internal/(2*t_vessel)"
+    },
+    {
+      "formula": "thin_cylinder_longitudinal_stress",
+      "domain": "pressure_vessels",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "D_vessel",
+        "P_internal",
+        "t_vessel"
+      ],
+      "output": "sigma_long",
+      "equation": "sigma_long = D_vessel*P_internal/(4*t_vessel)"
+    },
+    {
+      "formula": "thin_sphere_stress",
+      "domain": "pressure_vessels",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "D_vessel",
+        "P_internal",
+        "t_vessel"
+      ],
+      "output": "sigma_sphere",
+      "equation": "sigma_sphere = D_vessel*P_internal/(4*t_vessel)"
+    },
+    {
+      "formula": "gibbs_free_energy",
+      "domain": "chemistry",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "H_enthalpy",
+        "S_entropy",
+        "T_kelvin"
+      ],
+      "output": "G_gibbs",
+      "equation": "G_gibbs = H_enthalpy - S_entropy*T_kelvin"
+    },
+    {
+      "formula": "enthalpy_from_internal_energy",
+      "domain": "chemistry",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "P_chem",
+        "dU_rxn",
+        "dV_rxn"
+      ],
+      "output": "dH_rxn",
+      "equation": "dH_rxn = P_chem*dV_rxn + dU_rxn"
+    },
+    {
+      "formula": "first_order_reaction",
+      "domain": "chemistry",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Ca0_conc",
+        "k_rate",
+        "t_rxn"
+      ],
+      "output": "Ca_conc",
+      "equation": "Ca_conc = Ca0_conc*exp(-k_rate*t_rxn)"
+    },
+    {
+      "formula": "ficks_law_diffusion",
+      "domain": "chemistry",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "D_diff",
+        "dC_dx"
+      ],
+      "output": "N_flux",
+      "equation": "N_flux = -D_diff*dC_dx"
+    },
+    {
+      "formula": "overall_heat_transfer_coeff",
+      "domain": "chemistry",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Rf_fouling",
+        "h1_hx",
+        "h2_hx"
+      ],
+      "output": "U_overall_hx",
+      "equation": "U_overall_hx = 1/(Rf_fouling + 1/h2_hx + 1/h1_hx)"
+    },
+    {
+      "formula": "relative_volatility",
+      "domain": "chemistry",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "x_liq",
+        "y_vap"
+      ],
+      "output": "alpha_volatility",
+      "equation": "alpha_volatility = y_vap*(1 - x_liq)/(x_liq*(1 - y_vap))"
+    },
+    {
+      "formula": "isentropic_compressor_work",
+      "domain": "chemistry",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "P1_gas",
+        "P2_gas",
+        "R_gas_const",
+        "T1_gas",
+        "gamma_gas",
+        "n_moles_gas"
+      ],
+      "output": "W_compressor",
+      "equation": "W_compressor = R_gas_const*T1_gas*gamma_gas*n_moles_gas*((P2_gas/P1_gas)**((gamma_gas - 1)/gamma_gas) - 1)/(gamma_gas - 1)"
+    },
+    {
+      "formula": "corrosion_rate_mpy",
+      "domain": "chemistry",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "A_corr",
+        "W_loss_corr",
+        "mpy_const",
+        "rho_corr",
+        "t_corr"
+      ],
+      "output": "CR_corrosion",
+      "equation": "CR_corrosion = W_loss_corr*mpy_const/(A_corr*rho_corr*t_corr)"
+    },
+    {
+      "formula": "ideal_gas_law",
+      "domain": "chemistry",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "R_ideal",
+        "T_ideal",
+        "V_ideal",
+        "n_ideal"
+      ],
+      "output": "P_ideal",
+      "equation": "P_ideal = R_ideal*T_ideal*n_ideal/V_ideal"
+    },
+    {
+      "formula": "sensible_heat_rate",
+      "domain": "chemistry",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "cp_hx",
+        "dT_hx",
+        "m_dot_hx"
+      ],
+      "output": "Q_dot_hx",
+      "equation": "Q_dot_hx = cp_hx*dT_hx*m_dot_hx"
+    },
+    {
+      "formula": "lift_equation",
+      "domain": "aerospace",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Cl_lift",
+        "S_wing",
+        "V_air",
+        "rho_air"
+      ],
+      "output": "L_lift",
+      "equation": "L_lift = Cl_lift*S_wing*V_air**2*rho_air/2"
+    },
+    {
+      "formula": "drag_equation",
+      "domain": "aerospace",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Cd_drag",
+        "S_wing",
+        "V_air",
+        "rho_air"
+      ],
+      "output": "D_drag",
+      "equation": "D_drag = Cd_drag*S_wing*V_air**2*rho_air/2"
+    },
+    {
+      "formula": "thrust_equation",
+      "domain": "aerospace",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "V0_inlet",
+        "Ve_exhaust",
+        "m_dot_air"
+      ],
+      "output": "T_thrust_jet",
+      "equation": "T_thrust_jet = m_dot_air*(-V0_inlet + Ve_exhaust)"
+    },
+    {
+      "formula": "breguet_range_equation",
+      "domain": "aerospace",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "L_D_ratio",
+        "V_cruise",
+        "W1_fuel",
+        "W2_fuel",
+        "sfc_engine"
+      ],
+      "output": "R_range_breguet",
+      "equation": "R_range_breguet = L_D_ratio*V_cruise*log(W1_fuel/W2_fuel)/sfc_engine"
+    },
+    {
+      "formula": "stall_speed",
+      "domain": "aerospace",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Cl_max",
+        "S_wing",
+        "W_aircraft",
+        "rho_air"
+      ],
+      "output": "V_stall",
+      "equation": "V_stall = sqrt(2)*sqrt(W_aircraft/(Cl_max*S_wing*rho_air))"
+    },
+    {
+      "formula": "coefficient_of_performance",
+      "domain": "hvac_refrigeration",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Qc_refrig",
+        "Wc_refrig"
+      ],
+      "output": "COP_refrig",
+      "equation": "COP_refrig = Qc_refrig/Wc_refrig"
+    },
+    {
+      "formula": "heat_pump_cop",
+      "domain": "hvac_refrigeration",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Qh_heatpump",
+        "Wc_refrig"
+      ],
+      "output": "COP_heatpump",
+      "equation": "COP_heatpump = Qh_heatpump/Wc_refrig"
+    },
+    {
+      "formula": "sensible_cooling_load",
+      "domain": "hvac_refrigeration",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "cp_air_hvac",
+        "dT_hvac",
+        "m_dot_air_hvac"
+      ],
+      "output": "Q_cooling_load",
+      "equation": "Q_cooling_load = cp_air_hvac*dT_hvac*m_dot_air_hvac"
+    },
+    {
+      "formula": "humidity_ratio",
+      "domain": "hvac_refrigeration",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "P_total_hvac",
+        "Pv_vapor"
+      ],
+      "output": "W_humidity_ratio",
+      "equation": "W_humidity_ratio = 311*Pv_vapor/(500*(P_total_hvac - Pv_vapor))"
+    },
+    {
+      "formula": "carnot_cop_refrigeration",
+      "domain": "hvac_refrigeration",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Tc_carnot",
+        "Th_carnot"
+      ],
+      "output": "COP_carnot",
+      "equation": "COP_carnot = Tc_carnot/(-Tc_carnot + Th_carnot)"
+    },
+    {
+      "formula": "solar_pv_power",
+      "domain": "renewable_energy",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "A_pv",
+        "G_irradiance",
+        "eta_pv"
+      ],
+      "output": "P_pv",
+      "equation": "P_pv = A_pv*G_irradiance*eta_pv"
+    },
+    {
+      "formula": "wind_turbine_power",
+      "domain": "renewable_energy",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "A_rotor",
+        "Cp_betz",
+        "V_wind",
+        "rho_air_wind"
+      ],
+      "output": "P_wind",
+      "equation": "P_wind = A_rotor*Cp_betz*V_wind**3*rho_air_wind/2"
+    },
+    {
+      "formula": "betz_limit",
+      "domain": "renewable_energy",
+      "source": "builtin (formulas.py)",
+      "inputs": [],
+      "output": "Cp_betz_limit",
+      "equation": "Cp_betz_limit = 16/27"
+    },
+    {
+      "formula": "pv_temperature_derating",
+      "domain": "renewable_energy",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "T_cell_pv",
+        "T_ref_pv",
+        "beta_temp_pv"
+      ],
+      "output": "eta_pv_temp",
+      "equation": "eta_pv_temp = -beta_temp_pv*(T_cell_pv - T_ref_pv) + 1"
+    },
+    {
+      "formula": "lumen_method_illuminance",
+      "domain": "illumination",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "A_illum",
+        "F_lumen",
+        "MF_illum",
+        "UF_illum"
+      ],
+      "output": "E_illum",
+      "equation": "E_illum = F_lumen*MF_illum*UF_illum/A_illum"
+    },
+    {
+      "formula": "luminous_efficacy",
+      "domain": "illumination",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "F_lumen2",
+        "P_lamp"
+      ],
+      "output": "eta_luminous",
+      "equation": "eta_luminous = F_lumen2/P_lamp"
+    },
+    {
+      "formula": "cable_ampacity",
+      "domain": "power_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "A_cable",
+        "J_current_density_cable"
+      ],
+      "output": "I_ampacity",
+      "equation": "I_ampacity = A_cable*J_current_density_cable"
+    },
+    {
+      "formula": "cable_voltage_drop",
+      "domain": "power_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I_cable",
+        "L_cable_km",
+        "R_cable_per_km"
+      ],
+      "output": "VD_cable",
+      "equation": "VD_cable = I_cable*L_cable_km*R_cable_per_km"
+    },
+    {
+      "formula": "fault_current",
+      "domain": "power_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "V_fault",
+        "Z_fault"
+      ],
+      "output": "I_fault",
+      "equation": "I_fault = V_fault/Z_fault"
+    },
+    {
+      "formula": "fault_mva",
+      "domain": "power_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "I_fault_ka",
+        "V_fault_kv"
+      ],
+      "output": "MVA_fault",
+      "equation": "MVA_fault = sqrt(3)*I_fault_ka*V_fault_kv"
+    },
+    {
+      "formula": "idmt_relay_time",
+      "domain": "power_systems",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "PSM_relay",
+        "TMS_relay",
+        "alpha_relay_const",
+        "k_relay_const"
+      ],
+      "output": "t_relay",
+      "equation": "t_relay = TMS_relay*k_relay_const/(PSM_relay**alpha_relay_const - 1)"
+    },
+    {
+      "formula": "cutting_speed",
+      "domain": "manufacturing",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "D_workpiece",
+        "N_spindle"
+      ],
+      "output": "Vc_cutting",
+      "equation": "Vc_cutting = pi*D_workpiece*N_spindle/1000"
+    },
+    {
+      "formula": "material_removal_rate",
+      "domain": "manufacturing",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Vc_cutting2",
+        "d_cut",
+        "f_feed"
+      ],
+      "output": "MRR_machining",
+      "equation": "MRR_machining = Vc_cutting2*d_cut*f_feed"
+    },
+    {
+      "formula": "chvorinov_rule",
+      "domain": "manufacturing",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "A_casting_surf",
+        "Cm_chvorinov",
+        "Vol_casting",
+        "n_chvorinov"
+      ],
+      "output": "t_solidify",
+      "equation": "t_solidify = Cm_chvorinov*(Vol_casting/A_casting_surf)**n_chvorinov"
+    },
+    {
+      "formula": "true_stress",
+      "domain": "manufacturing",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "epsilon_eng",
+        "sigma_eng"
+      ],
+      "output": "sigma_true",
+      "equation": "sigma_true = sigma_eng*(epsilon_eng + 1)"
+    },
+    {
+      "formula": "true_strain",
+      "domain": "manufacturing",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "epsilon_eng"
+      ],
+      "output": "epsilon_true",
+      "equation": "epsilon_true = log(epsilon_eng + 1)"
+    },
+    {
+      "formula": "taylor_tool_life",
+      "domain": "manufacturing",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "C_taylor",
+        "Vc_cutting",
+        "n_taylor"
+      ],
+      "output": "T_tool_life",
+      "equation": "T_tool_life = (C_taylor/Vc_cutting)**(1/n_taylor)"
+    },
+    {
+      "formula": "stepper_step_angle",
+      "domain": "electrical",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "N_steps_rev"
+      ],
+      "output": "theta_step",
+      "equation": "theta_step = 360/N_steps_rev"
+    },
+    {
+      "formula": "stepper_speed",
+      "domain": "electrical",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "N_steps_rev",
+        "f_step_rate"
+      ],
+      "output": "N_rpm_stepper",
+      "equation": "N_rpm_stepper = 60*f_step_rate/N_steps_rev"
+    },
+    {
+      "formula": "window_space_factor",
+      "domain": "transformer",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Aw_window",
+        "N1_t",
+        "a_cond_wire"
+      ],
+      "output": "Kw_window_factor",
+      "equation": "Kw_window_factor = N1_t*a_cond_wire/Aw_window"
+    },
+    {
+      "formula": "transformer_output_equation",
+      "domain": "transformer",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Ai_core2",
+        "Aw_window",
+        "Bm_trans",
+        "Kw_trans2",
+        "delta_current_density_trans",
+        "f_trans"
+      ],
+      "output": "Q_rating_transformer",
+      "equation": "Q_rating_transformer = 111*Ai_core2*Aw_window*Bm_trans*Kw_trans2*delta_current_density_trans*f_trans/50000"
+    },
+    {
+      "formula": "carnot_efficiency",
+      "domain": "thermodynamic_cycles",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Tc_carnot",
+        "Th_carnot"
+      ],
+      "output": "eta_carnot",
+      "equation": "eta_carnot = -Tc_carnot/Th_carnot + 1"
+    },
+    {
+      "formula": "otto_cycle_efficiency",
+      "domain": "thermodynamic_cycles",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "gamma_gas",
+        "r_compression"
+      ],
+      "output": "eta_otto",
+      "equation": "eta_otto = 1 - (1/r_compression)**(gamma_gas - 1)"
+    },
+    {
+      "formula": "diesel_cycle_efficiency",
+      "domain": "thermodynamic_cycles",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "gamma_gas",
+        "r_compression",
+        "rc_cutoff_ratio"
+      ],
+      "output": "eta_diesel",
+      "equation": "eta_diesel = 1 - (rc_cutoff_ratio**gamma_gas - 1)*(1/r_compression)**(gamma_gas - 1)/(gamma_gas*(rc_cutoff_ratio - 1))"
+    },
+    {
+      "formula": "brayton_cycle_efficiency",
+      "domain": "thermodynamic_cycles",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "gamma_gas",
+        "r_pressure_ratio"
+      ],
+      "output": "eta_brayton",
+      "equation": "eta_brayton = 1 - (1/r_pressure_ratio)**((gamma_gas - 1)/gamma_gas)"
+    },
+    {
+      "formula": "rankine_steam_cycle_efficiency",
+      "domain": "thermodynamic_cycles",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Q_in_rankine",
+        "W_net_rankine"
+      ],
+      "output": "eta_rankine_steam",
+      "equation": "eta_rankine_steam = W_net_rankine/Q_in_rankine"
+    },
+    {
+      "formula": "specific_fuel_consumption",
+      "domain": "thermodynamic_cycles",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "P_engine_out",
+        "m_dot_fuel"
+      ],
+      "output": "sfc_engine2",
+      "equation": "sfc_engine2 = m_dot_fuel/P_engine_out"
+    },
+    {
+      "formula": "sensor_sensitivity",
+      "domain": "instrumentation",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "dInput_sensor",
+        "dOutput_sensor"
+      ],
+      "output": "S_sensor",
+      "equation": "S_sensor = dOutput_sensor/dInput_sensor"
+    },
+    {
+      "formula": "measurement_error_pct",
+      "domain": "instrumentation",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Measured_val",
+        "True_val"
+      ],
+      "output": "err_pct",
+      "equation": "err_pct = 100*(Measured_val - True_val)/True_val"
+    },
+    {
+      "formula": "signal_to_noise_ratio_db",
+      "domain": "instrumentation",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Vnoise_rms",
+        "Vsignal_rms"
+      ],
+      "output": "SNR_db",
+      "equation": "SNR_db = 20*log(Vsignal_rms/Vnoise_rms)/log(10)"
+    },
+    {
+      "formula": "instrument_gain_db",
+      "domain": "instrumentation",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Vin_instr",
+        "Vout_instr"
+      ],
+      "output": "Gain_db",
+      "equation": "Gain_db = 20*log(Vout_instr/Vin_instr)/log(10)"
+    },
+    {
+      "formula": "specific_speed_pump",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "H_pump2",
+        "N_pump2",
+        "Q_pump2"
+      ],
+      "output": "Ns_pump",
+      "equation": "Ns_pump = N_pump2*sqrt(Q_pump2)/H_pump2**(3/4)"
+    },
+    {
+      "formula": "impeller_tip_speed",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "D2_impeller",
+        "N_pump2"
+      ],
+      "output": "u2_impeller",
+      "equation": "u2_impeller = pi*D2_impeller*N_pump2/60"
+    },
+    {
+      "formula": "euler_head_pump",
+      "domain": "hydraulics",
+      "source": "builtin (formulas.py)",
+      "inputs": [
+        "Vu2_whirl",
+        "g_grav",
+        "u2_impeller"
+      ],
+      "output": "H_euler",
+      "equation": "H_euler = Vu2_whirl*u2_impeller/g_grav"
+    }
+  ],
+  "domains": [
+    "aerospace",
+    "battery_chemistry",
+    "chemistry",
+    "civil_structural",
+    "control_systems",
+    "dc_motor_industrial",
+    "design",
+    "electrical",
+    "electronics",
+    "fault_pattern",
+    "gpio",
+    "hvac_refrigeration",
+    "hydraulics",
+    "illumination",
+    "induction_motor",
+    "instrumentation",
+    "magnetic",
+    "manufacturing",
+    "materials",
+    "mechanical",
+    "mechanical_drives",
+    "power",
+    "power_systems",
+    "pressure_vessels",
+    "renewable_energy",
+    "rf",
+    "synchronous_machine",
+    "thermal",
+    "thermodynamic_cycles",
+    "timing",
+    "transformer",
+    "universal",
+    "welding_joints"
+  ],
+  "node_count": 804,
+  "edge_count": 333
+}

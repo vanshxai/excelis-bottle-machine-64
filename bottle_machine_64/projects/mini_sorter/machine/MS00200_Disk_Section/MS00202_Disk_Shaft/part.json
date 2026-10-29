@@ -1,0 +1,43 @@
+{
+ "part_number": "MS00202",
+ "description": "Disk Shaft",
+ "material": "Steel 1018",
+ "type": "shaft",
+ "type_label": "Shaft",
+ "role": "active",
+ "section": "MS00200",
+ "section_name": "Disk Section",
+ "parent": "MS00201",
+ "motor": "MS00201",
+ "chain": [
+  "MS00202",
+  "MS00201"
+ ],
+ "step_instances": [
+  "MS00202"
+ ],
+ "values": {
+  "MU": {
+   "value": 0.002,
+   "unit": "dimensionless",
+   "source": "typed in by the user"
+  },
+  "R_SELF": {
+   "value": 0.007971,
+   "unit": "m",
+   "source": "measured from the STEP file (MS00202, round part)"
+  },
+  "R_MS00202": {
+   "value": 0.007971,
+   "unit": "m",
+   "source": "measured from the STEP file (MS00202, round part)"
+  }
+ },
+ "effort": {
+  "label": "Extra sideways load on the shaft's bearings",
+  "unit": "N",
+  "ok_max": 100.0,
+  "warning": 400.0,
+  "critical": 800.0
+ }
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "name": "body_1",
+    "type": "servo"
+  },
+  {
+    "name": "spline_1",
+    "type": "servo"
+  }
+]

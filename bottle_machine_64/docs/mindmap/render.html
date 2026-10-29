@@ -1,0 +1,34 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>render</title>
+<body style="font-family:sans-serif">
+<pre id="log">starting...</pre>
+<script>
+window.EXCALIDRAW_ASSET_PATH = "https://cdn.jsdelivr.net/npm/@excalidraw/excalidraw@0.17.6/dist/";
+const log = (m) => { document.getElementById("log").textContent += "\n" + m; };
+const style = document.createElement("style");
+style.textContent = `
+@font-face{font-family:Virgil;src:url(https://cdn.jsdelivr.net/npm/@excalidraw/excalidraw@0.17.6/dist/excalidraw-assets/Virgil.woff2)}
+@font-face{font-family:Cascadia;src:url(https://cdn.jsdelivr.net/npm/@excalidraw/excalidraw@0.17.6/dist/excalidraw-assets/Cascadia.woff2)}`;
+document.head.appendChild(style);
+</script>
+<script type="module">
+import X from "https://esm.sh/@excalidraw/excalidraw@0.17.6?deps=react@18.2.0,react-dom@18.2.0";
+const { exportToBlob, restoreElements } = X;
+const q = new URLSearchParams(location.search);
+const name = q.get("f");
+const scale = parseFloat(q.get("scale") || "1");
+try {
+  await Promise.all([document.fonts.load("20px Virgil"), document.fonts.load("14px Cascadia")]);
+  const doc = await (await fetch(name + ".excalidraw")).json();
+  log("loaded " + doc.elements.length + " elements");
+  const blob = await exportToBlob({
+    elements: restoreElements(doc.elements, null), appState: { exportBackground: true, viewBackgroundColor: "#ffffff", exportWithDarkMode: false },
+    files: {}, mimeType: "image/png", exportPadding: 60, getDimensions: (w, h) => ({ width: w * scale, height: h * scale, scale }),
+  });
+  log("blob " + blob.size);
+  await fetch(name + ".png", { method: "POST", body: blob });
+  log("DONE " + name);
+  window.__done = true;
+} catch (e) { log("ERROR " + e + "\n" + (e.stack || "")); window.__error = String(e); }
+</script>

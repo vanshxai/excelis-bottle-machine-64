@@ -1,0 +1,212 @@
+{
+  "machine": "Metal Internal Gearbox Rig -- BVS Constraint Registry",
+  "note": "Separate rig from the original plastic external gear chain (constraint_registry.json). This is the motor's own internal 4-stage compound metal gearbox, removed from the plastic chain and tested standalone, oiled. Topology confirmed by user's direct physical description and photo: Yellow (motor's own gear, absolute center) meshes Blue directly; Blue's small coaxial gear meshes Green; Green's small coaxial gear meshes Red; Red's small coaxial gear meshes the final Output gear, which extends a rotor rod exposed outside the plastic casing -- that exposed rod is where MOTOR_RPM_OUTPUT_METAL=150 was measured (read off the motor's label). We have no datasheet/credentials for this motor, and modeling its internal electrical design (winding resistance, torque constant) from first-principles formulas is not worth the time for what we actually need -- detecting which gear was touched. So the motor is collapsed to two directly-observable numbers (I_BASELINE_A, CURRENT_PER_NM) instead of the electrical unknowns (MOTOR_Ra_OHM/MOTOR_Kt_NM_PER_A) that current alone could never tell apart anyway (supply voltage IS now known -- see MOTOR_SUPPLY_VOLTAGE_V -- but Ra/Kt individually still aren't). The only touchable components are the four gears -- Yellow, Blue, Green, Red. Output is excluded: it sits inside the closed plastic cap once assembled and can never actually be touched. Tooth counts for Yellow, Blue, Green, and Red were physically counted by the user and confirmed 2026-07-31 (see measured_teeth_note) -- only TEETH_OUTPUT_BIG (the single gear inside the removable cap) remains unmeasured and is still searched via the card-roulette blind narrowing process. Real touch data (a screwdriver interfering with a spinning gear, not a static press) showed brief high-magnitude current spikes (<10ms) rather than a sustained shift -- an IMPACT response, not a steady-force response. Impact response depends on each gear's rotational inertia, which depends on material density and geometry (radius, width) -- MATERIAL_DENSITY_KG_M3 and GEAR_WIDTH_MM are added so each gear's mass/inertia can be computed, feeding a second, physically distinct signature (delta_I_per_impulse) alongside the original steady-force one (delta_I_per_N). 2026-07-31 update (see geometry_and_material_note): outer-diameter measurement pinned MODULE_MM to a narrow range, material was assumed steel (density + Young's modulus), face width and motor rotor size were engineering assumptions, and GEAR_MESH_STIFFNESS_NM_PER_RAD is no longer an independent swept unknown -- it's now derived per-stage from a tooth-as-cantilever-beam model (module, steel E, face width, driven gear's pitch radius) inside dynamic_gear_simulator.py.",
+  "measured_teeth_note": "User physically counted the gears 2026-07-31: Yellow = motor pinion, 9T (single gear, no coaxial small side). Blue = compound gear, 27T big / 8T small. Green = compound gear, 27T big / 8T small. Red = compound gear, 27T big / 16T small. Output = single gear inside the removable cap, center output -- tooth count NOT given, still unknown. Structure confirmed: 3 compound gears in the main housing (Blue/Green/Red) + 1 single gear in the removable cap (Output) = 4 mesh stages total, matching the topology already assumed. These 7 values are recorded twice by design, matching this file's existing pattern for known facts (e.g. MOTOR_RPM_OUTPUT_METAL/INTERNAL_STAGE_COUNT are hard_constraints AND separately hardcoded as Python literals in formula_chain_metal.py): once under hard_constraints as the authoritative human-readable record, and once under soft_constraints with min==max, which is the mechanism constraint_sampling.py/_sample_variant actually reads -- pinning them there means every sampled variant now gets the true value with zero changes needed to the sampling/roulette/dynamic-simulator code. Only TEETH_OUTPUT_BIG keeps a real range and is still being searched.",
+  "geometry_and_material_note": "User's 2026-07-31 hand-calculation inputs, each labeled by the user with its own confidence level -- kept distinct here rather than blurred into one 'known' bucket: (1) MEASURED (a real observation, but of a bucketed range, not a single value): outer diameter of the 27-tooth gears is 13-16mm. Module m = OD/(Z+2) (Z=27) -> m in [13/29, 16/29] = [0.44828, 0.55172] mm -- kept as a genuine range (not pinned to the 14.5mm midpoint the user used for their own by-hand arithmetic), since the OD measurement itself has that spread. (2) ASSUMED REPRESENTATIVE (a deliberate stand-in, explicitly not a per-unit measurement): material = steel, MATERIAL_DENSITY_KG_M3=7850 and MATERIAL_YOUNGS_MODULUS_PA=2.0e11 (200 GPa) -- user noted the real material could be steel OR brass ('all metal (steel/brass)') and picked steel as representative. Pinned (not ranged) to match the user's reference calculation; widen back into a range spanning steel-brass if the BVS should explore that uncertainty instead. GEAR_WIDTH_MM=4.0mm is similarly an assumed-typical value for this module class, not measured -- pinned for the same reason. MOTOR_ROTOR_RADIUS_MM=8.0 / MOTOR_ROTOR_LENGTH_MM=15.0 are assumed typical small can-motor dimensions, also not measured -- see dynamic_gear_simulator.py's rotor-inertia note. (3) DERIVED, not independently set: GEAR_MESH_STIFFNESS_NM_PER_RAD was removed from soft_constraints entirely (previously an unverified 0.05-5.0 placeholder) -- it's now computed per-stage inside dynamic_gear_simulator.py from a tooth-as-cantilever-beam bending model (module, Young's modulus, face width, and the driven gear's own pitch radius), so it moves whenever MODULE_MM/MATERIAL_YOUNGS_MODULUS_PA/GEAR_WIDTH_MM are re-sampled instead of being resampled on its own.",
+  "hard_constraints": {
+    "MOTOR_RPM_OUTPUT_METAL": 150,
+    "INTERNAL_STAGE_COUNT": 4,
+    "GEAR_MATERIAL": "metal_oiled",
+    "LUBRICATION": "oil_grease_present",
+    "FORCE_TOUCH_MIN_N": 0.1,
+    "FORCE_TOUCH_MAX_N": 15.0,
+    "MOTOR_SUPPLY_VOLTAGE_V": 12,
+    "TEETH_YELLOW": 9,
+    "TEETH_BLUE_BIG": 27,
+    "TEETH_BLUE_SMALL": 8,
+    "TEETH_GREEN_BIG": 27,
+    "TEETH_GREEN_SMALL": 8,
+    "TEETH_RED_BIG": 27,
+    "TEETH_RED_SMALL": 16,
+    "MATERIAL_DENSITY_KG_M3": 7850,
+    "MATERIAL_YOUNGS_MODULUS_PA": 200000000000,
+    "GEAR_WIDTH_MM": 4.0,
+    "MOTOR_ROTOR_RADIUS_MM": 8.0,
+    "MOTOR_ROTOR_LENGTH_MM": 15.0,
+    "GEAR_BACKLASH_RAD": 0.0165,
+    "ACS712_30A_NOISE_FLOOR_FILTERED_A": 0.0189,
+    "ACS712_30A_NOISE_FLOOR_UNFILTERED_A": 0.1197,
+    "I_BASELINE_A": 0.022
+  },
+  "motor_supply_voltage_note": "MOTOR_SUPPLY_VOLTAGE_V=12 was measured 2026-07-31 (the supply used during testing). Not consumed by run_formula_chain() or dynamic_gear_simulator.py -- neither has a motor electrical model (see the top-level note and dynamic_gear_simulator.py's docstring for why: Ra and Kt individually are still unknown, so voltage alone doesn't let V=iR+Ke*omega be solved). Recorded here for future use if those individually become known, or as a sanity bound on CURRENT_PER_NM/I_BASELINE_A (current draw at 12V should stay well under whatever this small motor's stall current is).",
+  "i_baseline_note": "I_BASELINE_A was a free/searched soft constraint (0.05-0.5A) until 2026-08-07 -- nothing in the card-roulette scoring function (guess_for_card, which only checks real touch DELTAS) ever validated it against a real measurement, and gearsystem150_app.py's live detector never reads it either (it only feeds the offline simulated-waveform chart). Live INA228 readings with the gear train attached, capless, unloaded, motor running (2026-08-06/07) held steady at 0.020-0.024A -- pinned here at the midpoint, 0.022A, same pattern as measured_teeth_note (hard_constraints for the authoritative record, soft_constraints min==max so no sampling/roulette code needs to change). Re-measure with _run_zero_calibrate() next time the sensor is connected and update both values if it's drifted -- this is a display/reference number only, detection itself uses its own live calibration.",
+  "acs712_noise_floor_note": "From Allegro's actual ACS712-30A datasheet spec (21mV p-p noise @ 185mV/A sensitivity, 2kHz bandwidth) -- a real datasheet fact, not a derived/assumed estimate, per the user 2026-07-31. Two numbers because the datasheet spec is itself filtered-vs-unfiltered: 0.0189A (18.9mA) filtered, 0.1197A (119.7mA) unfiltered. gearsystem150_app.py's _GEARSYSTEM_NOISE_FLOOR_MIN uses the unfiltered figure -- the ESP32 reader loop (_gearsystem_serial_reader_loop) stores each incoming CUR line as-is with no visible digital filtering/averaging on the Python side, so the conservative (larger) unfiltered noise number is the correct floor to avoid false-positive touch detections; the filtered number is kept here too in case the ESP32 firmware itself is later confirmed to filter.",
+  "soft_constraints": {
+    "TEETH_YELLOW": {
+      "min": 9,
+      "max": 9,
+      "measured": true
+    },
+    "TEETH_BLUE_BIG": {
+      "min": 27,
+      "max": 27,
+      "measured": true
+    },
+    "TEETH_BLUE_SMALL": {
+      "min": 8,
+      "max": 8,
+      "measured": true
+    },
+    "TEETH_GREEN_BIG": {
+      "min": 27,
+      "max": 27,
+      "measured": true
+    },
+    "TEETH_GREEN_SMALL": {
+      "min": 8,
+      "max": 8,
+      "measured": true
+    },
+    "TEETH_RED_BIG": {
+      "min": 27,
+      "max": 27,
+      "measured": true
+    },
+    "TEETH_RED_SMALL": {
+      "min": 16,
+      "max": 16,
+      "measured": true
+    },
+    "TEETH_OUTPUT_BIG": {
+      "min": 24,
+      "max": 40
+    },
+    "MODULE_MM": {
+      "min": 0.44828,
+      "max": 0.55172,
+      "measured": true,
+      "source": "back-solved from outer-diameter measurement (13-16mm bucket) on the 27-tooth gears via OD = m*(Z+2)"
+    },
+    "METAL_OILED_FRICTION_COEFF": {
+      "min": 0.05,
+      "max": 0.2
+    },
+    "GEAR_MESH_EFFICIENCY": {
+      "min": 0.85,
+      "max": 0.97
+    },
+    "I_BASELINE_A": {
+      "min": 0.022,
+      "max": 0.022,
+      "measured": true,
+      "source": "live INA228 idle reading, capless/unloaded, 2026-08-06/07 -- see i_baseline_note"
+    },
+    "CURRENT_PER_NM": {
+      "min": 5.0,
+      "max": 12.5
+    },
+    "MATERIAL_DENSITY_KG_M3": {
+      "min": 7850,
+      "max": 7850,
+      "assumed": true,
+      "source": "representative steel density, user-selected 2026-07-31 -- actual material could be steel or brass (unconfirmed)"
+    },
+    "GEAR_WIDTH_MM": {
+      "min": 4.0,
+      "max": 4.0,
+      "assumed": true,
+      "source": "typical value for this module class, not measured -- user 2026-07-31"
+    },
+    "CURRENT_PER_IMPULSE": {
+      "min": 0.5,
+      "max": 5.0
+    },
+    "GEAR_BACKLASH_RAD": {
+      "min": 0.0165,
+      "max": 0.0165,
+      "measured": false,
+      "source": "calculated 2026-07-31 from ISO-style backlash allowance (0.05-0.1x module), supersedes the earlier 0.001-0.02 placeholder range"
+    },
+    "GEAR_SHAFT_FRICTION_NM_S_PER_RAD": {
+      "min": 0.000001,
+      "max": 0.0001
+    },
+    "MATERIAL_YOUNGS_MODULUS_PA": {
+      "min": 200000000000,
+      "max": 200000000000,
+      "assumed": true,
+      "source": "steel E=200GPa, representative material choice, user 2026-07-31 -- see geometry_and_material_note"
+    },
+    "MOTOR_ROTOR_RADIUS_MM": {
+      "min": 8.0,
+      "max": 8.0,
+      "assumed": true,
+      "source": "typical small can-motor rotor dimension, not measured -- user 2026-07-31"
+    },
+    "MOTOR_ROTOR_LENGTH_MM": {
+      "min": 15.0,
+      "max": 15.0,
+      "assumed": true,
+      "source": "typical small can-motor rotor dimension, not measured -- user 2026-07-31"
+    },
+    "MOTOR_Ra_OHM": {
+      "min": 1.0,
+      "max": 10.0,
+      "estimated": true,
+      "source": "Stage 0 placeholder for the dynamic-motor migration -- see motor_electrical_placeholders_note. No datasheet exists for this motor; typical order-of-magnitude range for a small ~12V brushed DC gearmotor's armature winding. Not read by any code yet -- zero effect on the simulator."
+    },
+    "MOTOR_La_H": {
+      "min": 0.0001,
+      "max": 0.01,
+      "estimated": true,
+      "source": "Stage 0 placeholder -- see motor_electrical_placeholders_note. Typical order-of-magnitude range for a small DC motor's armature inductance (tens of uH to low mH); the least-constrained of the five, pending an LCR-meter measurement or later waveform-based calibration. Not read by any code yet -- zero effect on the simulator."
+    },
+    "MOTOR_Kt_NM_PER_A": {
+      "min": 0.02,
+      "max": 0.3,
+      "estimated": true,
+      "unknown_motor_parameter": true,
+      "source": "UNKNOWN MOTOR PARAMETER -- no valid derivation currently exists (Stage 2.6, 2026-08-09). RETRACTED: this range and the verified twin's stored value (0.14524) were originally (Stage 0) anchored on 1/CURRENT_PER_NM, treating CURRENT_PER_NM -- a touch-point-referenced, gear-train-lumped empirical current gain (see gear_train.py's own docstring: 'A per Nm of torque at the touch point, replacing 1/Kt') -- as if it were the motor's intrinsic armature-referenced torque constant. The Stage 2.5 physical-consistency audit found this to be a category error: no gear-ratio reflection exists between CURRENT_PER_NM's touch-point reference frame and Kt's required armature/Yellow-shaft reference frame, and CURRENT_PER_NM was built specifically to stand in for Kt because Kt was unknown -- reusing it to define Kt is circular. CURRENT_PER_NM must never again be used, directly or indirectly, to derive or estimate this field; it remains exclusively part of the legacy touch-current model (physics/current_model.py::torque_to_current). The min/max/twin value below are UNCHANGED, stale leftovers from the retracted derivation -- they carry no physical meaning and must not be read as a measurement, an estimate, or a default. See MOTOR_PARAMETER_IDENTIFICATION.md for the practical measurement methods needed to give this field a real value before Stage 3. Still not read by any code that affects simulator output."
+    },
+    "MOTOR_Ke_V_S_PER_RAD": {
+      "min": 0.02,
+      "max": 0.3,
+      "assumed": true,
+      "unknown_motor_parameter": true,
+      "source": "UNKNOWN MOTOR PARAMETER -- no valid derivation currently exists (Stage 2.6, 2026-08-09). RETRACTED: this was originally (Stage 0) set equal to MOTOR_Kt_NM_PER_A via the standard SI identity Ke=Kt for an ideal DC motor -- that identity itself is valid, but it inherits MOTOR_Kt_NM_PER_A's now-retracted CURRENT_PER_NM-derived value (see that field's own source note and the Stage 2.5 audit). CURRENT_PER_NM must never again be used, even indirectly through Kt, to derive or estimate this field. The min/max/twin value below are UNCHANGED, stale leftovers from the retracted derivation -- they carry no physical meaning and must not be read as a measurement, an estimate, or a default. (Ke*omega at this twin's verified Yellow speed produces a result many times the 12V supply -- see the Stage 2.5 audit -- which is evidence this stored number is wrong, not evidence of an unusual motor.) See MOTOR_PARAMETER_IDENTIFICATION.md for the practical measurement methods needed to give this field a real value before Stage 3. Still read by physics/electrical.py -- that module (Stage 1/2, experimental, not consumed by detection) is unaffected by this documentation change since its numeric value is untouched."
+    },
+    "MOTOR_T_STATIC_NM": {
+      "min": 0.0001,
+      "max": 0.005,
+      "estimated": true,
+      "source": "Stage 0 placeholder -- see motor_electrical_placeholders_note. No measurement exists (a breakaway-torque bench test would be needed); order of magnitude chosen small relative to typical touch-induced torques (F_TOUCH_N=0.5N at a few-mm touch radius implies roughly 0.001 Nm). Not read by any code yet -- zero effect on the simulator."
+    }
+  },
+  "motor_electrical_placeholders_note": "Stage 0 of the ideal-motor -> dynamic-motor migration (physics audit + impact-analysis review, 2026-08-08/09): MOTOR_Ra_OHM, MOTOR_La_H, MOTOR_Kt_NM_PER_A, MOTOR_Ke_V_S_PER_RAD, and MOTOR_T_STATIC_NM are added here as PLACEHOLDERS ONLY. None of gear_train.py, signature/dynamic.py, or physics/current_model.py reads any of these five names -- confirmed by direct trace, not just by omission from dependency_links. They exist so the eventual dynamic-motor implementation has a schema-level home to read from, and so they're already visible/editable on the waveform-validation page (which builds its constants form generically from whatever keys are in the twin) ahead of any equation needing them. Rotor inertia is NOT duplicated here -- MOTOR_ROTOR_RADIUS_MM/MOTOR_ROTOR_LENGTH_MM already exist and already feed motor.motor_rotor_inertia_kgm2() (itself currently dead code for the same prescribed-speed reason the physics audit identified); the eventual migration reactivates that existing pair rather than adding a sixth new constant. All five are 'estimated' or 'assumed', never measured -- see each field's own source note.",
+  "dynamic_simulator_note": "GEAR_BACKLASH_RAD and GEAR_SHAFT_FRICTION_NM_S_PER_RAD are consumed only by dynamic_gear_simulator.py (the time-domain gear_1..gear_6 model) -- run_formula_chain() and the card-roulette sweep never read them, so their values don't affect sweep/scoring results. GEAR_SHAFT_FRICTION_NM_S_PER_RAD remains an order-of-magnitude engineering placeholder (the user's 2026-07-31 data explicitly left b_shaft, b0, and motor inductance L as pure assumptions with no derivation) -- narrow it once a real touch transient is recorded at a sample rate that can resolve mesh-stiffness ringing (kHz-range, well above the ACS712 reader's current polling rate). GEAR_MESH_STIFFNESS_NM_PER_RAD is no longer listed here -- see geometry_and_material_note for why it's derived, not swept.",
+  "dependency_links": [
+    "TEETH_OUTPUT_BIG changes -> RPM_red (and everything upstream of it: RPM_green/blue/yellow) recalculates -- the one remaining tooth-count unknown still searched by the roulette",
+    "TEETH_YELLOW, TEETH_BLUE_BIG, TEETH_BLUE_SMALL, TEETH_GREEN_BIG, TEETH_GREEN_SMALL, TEETH_RED_BIG, TEETH_RED_SMALL are now measured/fixed (see measured_teeth_note) -- they no longer vary between sampled variants, so every twin now shares the same RPM chain shape except for whatever TEETH_OUTPUT_BIG contributes",
+    "MODULE_MM changes -> pitch diameter of every gear, hence torque/delta_I at every touch point, AND (dynamic simulator only) every stage's derived GEAR_MESH_STIFFNESS_NM_PER_RAD, recalculates",
+    "CURRENT_PER_NM changes -> all steady-force current signatures recalculate",
+    "GEAR_MESH_EFFICIENCY changes -> torque transfer chain recalculates",
+    "MATERIAL_DENSITY_KG_M3, GEAR_WIDTH_MM, MODULE_MM changes -> each gear's mass and rotational inertia recalculate, hence the impact-response sensitivity",
+    "MATERIAL_YOUNGS_MODULUS_PA, GEAR_WIDTH_MM, MODULE_MM changes -> (dynamic simulator only) the derived per-stage GEAR_MESH_STIFFNESS_NM_PER_RAD recalculates via the tooth-cantilever-beam model",
+    "MOTOR_ROTOR_RADIUS_MM, MOTOR_ROTOR_LENGTH_MM, MATERIAL_DENSITY_KG_M3 changes -> (dynamic simulator only) Yellow's total inertia (pinion + rotor) recalculates",
+    "CURRENT_PER_IMPULSE changes -> all impact-response current signatures recalculate",
+    "MOTOR_Ra_OHM, MOTOR_La_H, MOTOR_Kt_NM_PER_A, MOTOR_Ke_V_S_PER_RAD, MOTOR_T_STATIC_NM changes -> currently NOTHING recalculates; these are Stage 0 placeholders not yet read by any code -- see motor_electrical_placeholders_note"
+  ],
+  "validation_rule": "The gear ratio chain, worked backward from the known output RPM (150, at the exposed rod/Output gear's shaft) through Red, Green, Blue to Yellow (the motor's own shaft), must produce physically consistent RPM at every stage (finite, non-zero, within a sane bound relative to 150). Any variant producing impossible RPM values is invalid and discarded before scoring. There is no power-conservation check anymore -- that check existed only to validate the old V/Ra/Kt electrical model, which no longer exists here.",
+  "touch_points": [
+    {
+      "id": 1,
+      "name": "Yellow",
+      "surface": "metal_oiled"
+    },
+    {
+      "id": 2,
+      "name": "Blue",
+      "surface": "metal_oiled"
+    },
+    {
+      "id": 3,
+      "name": "Green",
+      "surface": "metal_oiled"
+    },
+    {
+      "id": 4,
+      "name": "Red",
+      "surface": "metal_oiled"
+    }
+  ]
+}

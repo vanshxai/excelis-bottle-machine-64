@@ -1,0 +1,49 @@
+{
+ "part_number": "MS00203",
+ "description": "Rotary Disk, 180mm",
+ "material": "Aluminum 6061",
+ "type": "rotary_disk",
+ "type_label": "Rotating disk",
+ "role": "passive",
+ "section": "MS00200",
+ "section_name": "Disk Section",
+ "parent": "MS00202",
+ "motor": "MS00201",
+ "chain": [
+  "MS00203",
+  "MS00202",
+  "MS00201"
+ ],
+ "step_instances": [
+  "MS00203"
+ ],
+ "values": {
+  "MU": {
+   "value": 0.3,
+   "unit": "dimensionless",
+   "source": "typed in by the user"
+  },
+  "R_SELF": {
+   "value": 0.08996299999999999,
+   "unit": "m",
+   "source": "measured from the STEP file (MS00203, round part)"
+  },
+  "R_MS00203": {
+   "value": 0.08996299999999999,
+   "unit": "m",
+   "source": "measured from the STEP file (MS00203, round part)"
+  },
+  "R_MS00202": {
+   "value": 0.007971,
+   "unit": "m",
+   "source": "measured from the STEP file (MS00202, round part)"
+  }
+ },
+ "effort": {
+  "label": "Extra force pressing against the disk's rim",
+  "unit": "N",
+  "ok_max": 5.0,
+  "warning": 20.0,
+  "critical": 40.0
+ }
+}

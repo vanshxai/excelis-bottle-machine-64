@@ -1,0 +1,366 @@
+{
+ "tolerance_A": 0.02,
+ "style": {
+  "fine": {
+   "label": "Fine",
+   "color": "#5ec269",
+   "rule": "load is at or below the level you called fine"
+  },
+  "elevated": {
+   "label": "Elevated",
+   "color": "#e8cf5a",
+   "rule": "load is above fine but below your warning level"
+  },
+  "warning": {
+   "label": "Warning",
+   "color": "#e0a940",
+   "rule": "load has reached your warning level"
+  },
+  "critical": {
+   "label": "Critical",
+   "color": "#e5534b",
+   "rule": "load has reached your critical level"
+  }
+ },
+ "reading": "extra current over the motor's normal running current; a change smaller than tolerance_A is treated as noise",
+ "motors": {
+  "MS00301": {
+   "normal_A": 0.9,
+   "description": "Belt Drive Motor, brushless gearmotor",
+   "parts": [
+    {
+     "part": "MS00305",
+     "description": "Flipper Arm",
+     "section": "Belt Section",
+     "effort_label": "Extra force a bottle puts on the belt through the flipper",
+     "unit": "N",
+     "detectable": true,
+     "max_modelled_delta_A": 0.46120199999999995,
+     "bands": [
+      {
+       "band": "fine",
+       "effort": [
+        0.0,
+        5.0
+       ],
+       "delta_A": [
+        0.0,
+        0.04612019999999999
+       ]
+      },
+      {
+       "band": "elevated",
+       "effort": [
+        5.0,
+        20.0
+       ],
+       "delta_A": [
+        0.04612019999999999,
+        0.18448079999999997
+       ]
+      },
+      {
+       "band": "warning",
+       "effort": [
+        20.0,
+        40.0
+       ],
+       "delta_A": [
+        0.18448079999999997,
+        0.36896159999999995
+       ]
+      },
+      {
+       "band": "critical",
+       "effort": [
+        40.0,
+        50.0
+       ],
+       "delta_A": [
+        0.36896159999999995,
+        0.46120199999999995
+       ]
+      }
+     ]
+    },
+    {
+     "part": "MS00304",
+     "description": "Timing Belt",
+     "section": "Belt Section",
+     "effort_label": "Extra pull in the belt",
+     "unit": "N",
+     "detectable": true,
+     "max_modelled_delta_A": 0.9224039999999999,
+     "bands": [
+      {
+       "band": "fine",
+       "effort": [
+        0.0,
+        15.0
+       ],
+       "delta_A": [
+        0.0,
+        0.1383606
+       ]
+      },
+      {
+       "band": "elevated",
+       "effort": [
+        15.0,
+        40.0
+       ],
+       "delta_A": [
+        0.1383606,
+        0.36896159999999995
+       ]
+      },
+      {
+       "band": "warning",
+       "effort": [
+        40.0,
+        80.0
+       ],
+       "delta_A": [
+        0.36896159999999995,
+        0.7379231999999999
+       ]
+      },
+      {
+       "band": "critical",
+       "effort": [
+        80.0,
+        100.0
+       ],
+       "delta_A": [
+        0.7379231999999999,
+        0.9224039999999999
+       ]
+      }
+     ]
+    },
+    {
+     "part": "MS00303",
+     "description": "Idler Pulley",
+     "section": "Belt Section",
+     "effort_label": "Extra drag turning the idler pulley",
+     "unit": "N*m",
+     "detectable": true,
+     "max_modelled_delta_A": 0.2625,
+     "bands": [
+      {
+       "band": "fine",
+       "effort": [
+        0.0,
+        0.05
+       ],
+       "delta_A": [
+        0.0,
+        0.020999999999999998
+       ]
+      },
+      {
+       "band": "elevated",
+       "effort": [
+        0.05,
+        0.2
+       ],
+       "delta_A": [
+        0.020999999999999998,
+        0.08399999999999999
+       ]
+      },
+      {
+       "band": "warning",
+       "effort": [
+        0.2,
+        0.5
+       ],
+       "delta_A": [
+        0.08399999999999999,
+        0.20999999999999996
+       ]
+      },
+      {
+       "band": "critical",
+       "effort": [
+        0.5,
+        0.625
+       ],
+       "delta_A": [
+        0.20999999999999996,
+        0.2625
+       ]
+      }
+     ]
+    }
+   ],
+   "current_ladder": [
+    {
+     "delta_A": [
+      0.02,
+      0.2625
+     ],
+     "parts": [
+      "MS00305",
+      "MS00304",
+      "MS00303"
+     ],
+     "area": "Belt Section",
+     "kind": "area"
+    },
+    {
+     "delta_A": [
+      0.2625,
+      0.46120199999999995
+     ],
+     "parts": [
+      "MS00305",
+      "MS00304"
+     ],
+     "area": "Belt Section",
+     "kind": "area"
+    },
+    {
+     "delta_A": [
+      0.46120199999999995,
+      0.9224039999999999
+     ],
+     "parts": [
+      "MS00304"
+     ],
+     "area": "Timing Belt",
+     "kind": "part"
+    }
+   ]
+  },
+  "MS00201": {
+   "normal_A": 1.1,
+   "description": "Disk Drive Motor, DC gearmotor 90VDC",
+   "parts": [
+    {
+     "part": "MS00203",
+     "description": "Rotary Disk, 180mm",
+     "section": "Disk Section",
+     "effort_label": "Extra force pressing against the disk's rim",
+     "unit": "N",
+     "detectable": true,
+     "max_modelled_delta_A": 0.26391800442477864,
+     "bands": [
+      {
+       "band": "fine",
+       "effort": [
+        0.0,
+        5.0
+       ],
+       "delta_A": [
+        0.0,
+        0.02639180044247787
+       ]
+      },
+      {
+       "band": "elevated",
+       "effort": [
+        5.0,
+        20.0
+       ],
+       "delta_A": [
+        0.02639180044247787,
+        0.10556720176991148
+       ]
+      },
+      {
+       "band": "warning",
+       "effort": [
+        20.0,
+        40.0
+       ],
+       "delta_A": [
+        0.10556720176991148,
+        0.21113440353982296
+       ]
+      },
+      {
+       "band": "critical",
+       "effort": [
+        40.0,
+        50.0
+       ],
+       "delta_A": [
+        0.21113440353982296,
+        0.26391800442477864
+       ]
+      }
+     ]
+    },
+    {
+     "part": "MS00202",
+     "description": "Disk Shaft",
+     "section": "Disk Section",
+     "effort_label": "Extra sideways load on the shaft's bearings",
+     "unit": "N",
+     "detectable": false,
+     "max_modelled_delta_A": 0.00311786017699115,
+     "bands": [
+      {
+       "band": "fine",
+       "effort": [
+        0.0,
+        100.0
+       ],
+       "delta_A": [
+        0.0,
+        0.00031178601769911505
+       ]
+      },
+      {
+       "band": "elevated",
+       "effort": [
+        100.0,
+        400.0
+       ],
+       "delta_A": [
+        0.00031178601769911505,
+        0.0012471440707964602
+       ]
+      },
+      {
+       "band": "warning",
+       "effort": [
+        400.0,
+        800.0
+       ],
+       "delta_A": [
+        0.0012471440707964602,
+        0.0024942881415929204
+       ]
+      },
+      {
+       "band": "critical",
+       "effort": [
+        800.0,
+        1000.0
+       ],
+       "delta_A": [
+        0.0024942881415929204,
+        0.00311786017699115
+       ]
+      }
+     ]
+    }
+   ],
+   "current_ladder": [
+    {
+     "delta_A": [
+      0.02,
+      0.26391800442477864
+     ],
+     "parts": [
+      "MS00203"
+     ],
+     "area": "Rotary Disk, 180mm",
+     "kind": "part"
+    }
+   ]
+  }
+ }
+}

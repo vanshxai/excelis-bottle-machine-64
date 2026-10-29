@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bottle Unscrambler — Digital Twin (schematic)</title>
+<style>
+  :root{
+    --bg:#070a0f; --panel:rgba(13,19,28,.88); --line:#1d2836;
+    --txt:#c9d6e4; --dim:#6d8199; --accent:#4fc3f7;
+    --red:#ff5252; --blk:#8a8f98; --grn:#5ec269; --amb:#e0a940; --blu:#5b8fd6; --org:#e0793c;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--txt);
+    font:13px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  #stage{position:fixed;inset:0}
+  .panel{position:fixed;background:var(--panel);border:1px solid var(--line);
+    border-radius:8px;backdrop-filter:blur(12px);z-index:10}
+  h1{font-size:14px;font-weight:600;letter-spacing:.04em;color:#fff}
+  h1 small{display:block;font-size:10.5px;font-weight:400;color:var(--dim);margin-top:3px}
+  h2{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 7px;padding-bottom:5px;border-bottom:1px solid var(--line)}
+
+  #left{top:14px;left:14px;width:322px;padding:14px;max-height:calc(100vh - 28px);overflow-y:auto}
+  #left .oem{margin-top:10px;font-size:11px;color:var(--dim)}
+  #left .oem b{color:var(--txt);font-weight:500}
+  .facts{display:grid;grid-template-columns:1fr auto;gap:3px 10px;font-size:11.5px;margin-top:8px}
+  .facts .k{color:var(--dim)}
+  .facts .v{text-align:right;color:#fff;font-variant-numeric:tabular-nums}
+  .note{margin-top:11px;padding:9px 10px;background:#12202e;border:1px solid var(--line);
+    border-radius:6px;font-size:10.5px;color:var(--dim);line-height:1.5}
+  .note b{color:var(--txt)}
+  .motionkey{display:grid;grid-template-columns:16px 1fr;gap:4px 7px;font-size:10.5px;margin-top:9px}
+  .motionkey span{color:var(--dim)}
+  .motionkey b{color:var(--accent);text-align:center}
+
+  #right{top:14px;right:14px;width:366px;max-height:calc(100vh - 190px);
+    padding:14px;overflow-y:auto}
+  #right::-webkit-scrollbar,#detail::-webkit-scrollbar,#left::-webkit-scrollbar{width:7px}
+  #right::-webkit-scrollbar-thumb,#detail::-webkit-scrollbar-thumb,#left::-webkit-scrollbar-thumb{background:#22303f;border-radius:4px}
+  .grp{margin-bottom:13px}
+  .grp .gname{font-size:10.5px;color:var(--dim);letter-spacing:.03em;margin:0 0 3px 2px}
+  .row{display:grid;grid-template-columns:14px 1fr 16px auto;gap:7px;align-items:center;padding:4px 5px;
+    border-radius:4px;cursor:pointer;font-size:11.5px}
+  .row:hover{background:#16202c}
+  .row.sel{background:#16202c;box-shadow:inset 2px 0 0 var(--accent)}
+  .row .dot{width:8px;height:8px;border-radius:50%;justify-self:center}
+  .row .k{color:var(--txt);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .row .m{color:var(--accent);text-align:center;font-size:11px}
+  .row .v{color:var(--dim);font-size:10px;white-space:nowrap}
+
+  #detail{bottom:14px;left:14px;width:calc(100vw - 412px);max-width:700px;
+    padding:12px 14px;max-height:27vh;overflow-y:auto}
+  .hint{color:var(--dim);font-size:11px}
+  .dtitle{color:#fff;font-size:12.5px;font-weight:600;margin-bottom:2px}
+  .did{color:var(--accent);font-size:10.5px;margin-bottom:8px}
+  .dspec{font-size:11.5px;line-height:1.6}
+  .dmotion{margin-top:7px;font-size:11px;color:var(--txt)}
+  .dmotion b{color:var(--accent)}
+  .conf{display:inline-block;font-size:9px;letter-spacing:.08em;text-transform:uppercase;
+    padding:2px 6px;border-radius:3px;margin-top:8px}
+  .conf.hi{background:#12352a;color:#5ec269}
+  .conf.mid{background:#332a12;color:var(--amb)}
+  .conf.est{background:#1c2433;color:var(--dim)}
+
+  #ctl{bottom:14px;right:14px;width:366px;padding:11px 14px}
+  .btns{display:flex;gap:6px;flex-wrap:wrap}
+  button{flex:1;min-width:58px;background:#16202c;color:var(--txt);border:1px solid var(--line);
+    border-radius:5px;padding:6px 4px;font:inherit;font-size:10.5px;cursor:pointer}
+  button:hover{border-color:var(--accent);color:#fff}
+  button.on{background:var(--accent);color:#05080d;border-color:var(--accent);font-weight:600}
+  .leg{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:10px;font-size:10px;color:var(--dim)}
+  .leg i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+
+  @media (max-width:1150px){
+    #left,#right,#ctl{width:262px}
+    #detail{width:calc(100vw - 300px);max-height:24vh}
+    #left .oem{display:none}
+    body{font-size:11px}
+  }
+  @media (max-width:820px){
+    #left{max-height:40vh}
+    #right{max-height:34vh}
+    #detail{display:none}
+  }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+
+<div class="panel" id="left">
+  <h1>Bottle Unscrambler<small>Rotary-disk, 36" — Excelis</small></h1>
+  <div class="oem">Frame: <b>UF00601</b> &nbsp;·&nbsp; Disk: <b>UD03601</b></div>
+  <div class="facts">
+    <div class="k">Disk diameter</div><div class="v">36 in (0.914 m)</div>
+    <div class="k">Disk speed</div><div class="v">14 RPM (nameplate)</div>
+    <div class="k">Confirmed motors</div><div class="v">3</div>
+    <div class="k">Driver boards (panel)</div><div class="v">5</div>
+    <div class="k">Confirmed sensors</div><div class="v">1 (fiber photoeye)</div>
+    <div class="k">Source photos</div><div class="v">82</div>
+  </div>
+  <div class="note">
+    <b>Schematic, traced from the real exploded-view render — not a CAD import.</b>
+    The eDrawings <code>eModel</code> binary has no extractable mesh or component-name
+    text, so shapes here are rebuilt by reading the actual exploded-assembly photo
+    (leg count, ring stack, cage-frame bar count) and the part spec text (36" disk,
+    1-1/2" sq tube frame, gear ratios), not invented primitives. Disk diameter and
+    speed are nameplate values; frame/cage proportions are read off the render;
+    everything else is estimated. Click any part for its confidence level.
+  </div>
+  <div class="motionkey">
+    <b>↻</b><span>continuous rotation — motor-driven</span>
+    <b>⇄</b><span>belt/chain loop — translates product</span>
+    <b>↕</b><span>reciprocates — passive (spring/contact), no motor</span>
+    <b>–</b><span>static structure</span>
+    <b>?</b><span>motion type not confirmed</span>
+  </div>
+</div>
+
+<div class="panel" id="right"><div id="groups"></div></div>
+
+<div class="panel" id="detail">
+  <h2>Component detail</h2>
+  <div id="detailbody" class="hint">Click a part in the 3D view, or a row on the
+    right, to see its ID, spec, motion, and how confident this model is about it.</div>
+</div>
+
+<div class="panel" id="ctl">
+  <h2>View</h2>
+  <div class="btns">
+    <button id="bPlay" class="on">❚❚ Pause</button>
+    <button id="bExp">Explode</button>
+    <button id="bHome">Reset</button>
+  </div>
+  <div class="leg">
+    <span><i style="background:var(--red)"></i>motor (confirmed)</span>
+    <span><i style="background:var(--blk)"></i>motor (confirmed)</span>
+    <span><i style="background:var(--grn)"></i>sensor / matched driver</span>
+    <span><i style="background:var(--amb)"></i>unresolved / unmatched</span>
+    <span><i style="background:var(--org)"></i>passive mechanism</span>
+    <span><i style="background:var(--blu)"></i>electrical panel</span>
+    <span><i style="background:#8fa"></i>structure (wireframe)</span>
+  </div>
+</div>
+
+<script src="vendor/three.min.js"></script>
+<script src="vendor/OrbitControls.js"></script>
+<script>
+(function(){
+"use strict";
+
+const COLOR = {
+  frame:0x5a6d82, disk:0x8fd9c4, red:0xff5252, blk:0x8a8f98, grn:0x5ec269,
+  amb:0xe0a940, org:0xe0793c, blu:0x5b8fd6, wire:0x4a6a82, wire2:0x3a5570
+};
+const MOTION_ICON = {rot:'↻', loop:'⇄', recip:'↕', static:'–', unknown:'?'};
+
+// ---------- geometry helpers ----------
+function edges(geo, color, pos){
+  const m = new THREE.LineSegments(new THREE.EdgesGeometry(geo), new THREE.LineBasicMaterial({color: color!==undefined?color:COLOR.wire}));
+  if(pos) m.position.set(pos[0],pos[1],pos[2]);
+  return m;
+}
+function solid(geo, colorHex){
+  return new THREE.Mesh(geo, new THREE.MeshStandardMaterial({color:colorHex, roughness:0.45, metalness:0.25}));
+}
+// a thin "tube" segment between two points (used for the extruded-aluminum frame)
+function tubeBetween(a, b, thick, color){
+  const start = new THREE.Vector3(...a), end = new THREE.Vector3(...b);
+  const dir = new THREE.Vector3().subVectors(end, start);
+  const len = dir.length();
+  const geo = new THREE.BoxGeometry(thick, thick, len);
+  const seg = edges(geo, color || COLOR.frame);
+  seg.position.copy(start).addScaledVector(dir, 0.5);
+  seg.quaternion.setFromUnitVectors(new THREE.Vector3(0,0,1), dir.clone().normalize());
+  return seg;
+}
+
+// ---------- the frame: real 6-leg splayed tube stand, read off the exploded render ----------
+// (top rail rectangle + a lower X-braced rectangle partway down + 6 angled legs on feet,
+//  matching the leg cluster clearly visible at the bottom of IMG_4127)
+function buildFrame(L, W, Htop, thick){
+  const g = new THREE.Group();
+  const hx = L/2, hz = W/2;
+  const topY = Htop, midY = Htop*0.42, footSpread = 1.18; // legs splay outward toward the floor
+
+  // top rail rectangle + one mid cross tie
+  const topCorners = [[-hx,topY,-hz],[hx,topY,-hz],[hx,topY,hz],[-hx,topY,hz]];
+  for(let i=0;i<4;i++) g.add(tubeBetween(topCorners[i], topCorners[(i+1)%4], thick));
+  g.add(tubeBetween([0,topY,-hz],[0,topY,hz], thick*0.85, COLOR.wire2));
+  g.add(tubeBetween([-hx,topY,0],[hx,topY,0], thick*0.85, COLOR.wire2));
+
+  // lower brace rectangle (slightly larger footprint on the way down) + X bracing
+  const midHx = hx*1.06, midHz = hz*1.06;
+  const midCorners = [[-midHx,midY,-midHz],[midHx,midY,-midHz],[midHx,midY,midHz],[-midHx,midY,midHz]];
+  for(let i=0;i<4;i++) g.add(tubeBetween(midCorners[i], midCorners[(i+1)%4], thick*0.85, COLOR.wire2));
+  g.add(tubeBetween([-midHx,midY,-midHz],[midHx,midY,midHz], thick*0.6, COLOR.wire2));
+  g.add(tubeBetween([midHx,midY,-midHz],[-midHx,midY,midHz], thick*0.6, COLOR.wire2));
+
+  // 6 legs: 2 rows (front/back) x 3 columns (near / mid / far along length), splayed to feet
+  const legXs = [-hx, 0, hx];
+  [-1,1].forEach(side=>{
+    legXs.forEach(lx=>{
+      const top = [lx, topY, side*hz];
+      const foot = [lx*footSpread, 0, side*hz*footSpread*1.05];
+      g.add(tubeBetween(top, foot, thick*0.8));
+      const footPad = edges(new THREE.CylinderGeometry(0.035,0.045,0.02,10), COLOR.wire, foot);
+      g.add(footPad);
+    });
+  });
+  return g;
+}
+
+// ---------- disk stack: base + slew ring bearing + lower/upper disk plates + guide wall ----------
+function buildDiskStack(radius){
+  const g = new THREE.Group();
+  g.add(edges(new THREE.TorusGeometry(radius*0.86, 0.028, 8, 48), COLOR.wire)); // slew ring bearing (below deck)
+  g.children[0].position.y = -0.05;
+  g.children[0].rotation.x = Math.PI/2;
+  g.add(edges(new THREE.CylinderGeometry(radius*0.995, radius*0.995, 0.02, 56), COLOR.disk, [0,0,0]));     // base plate
+  g.add(edges(new THREE.CylinderGeometry(radius*0.97, radius*0.97, 0.018, 56), COLOR.disk, [0,0.025,0]));  // lower main disk
+  g.add(edges(new THREE.CylinderGeometry(radius*0.62, radius*0.62, 0.016, 40), COLOR.disk, [0,0.045,0]));  // center/upper plate (large-bottle disk)
+  const wall = edges(new THREE.CylinderGeometry(radius*0.995, radius*0.995, 0.10, 56, 1, true), COLOR.disk, [0,0.11,0]); // outer guide wall/ring
+  g.add(wall);
+  return g;
+}
+
+// ---------- component data (drives BOTH the 3D scene and the side panels) ----------
+const DECK = 1.0;      // deck (disk) height above floor
+const DISK_R = 0.4572; // 36" — the one confirmed real dimension
+const BASE_RPM = 1680; // inferred DC-motor input speed shared across the BLM/INFM gearmotor family (14 RPM x 120:1) — NOT on a nameplate, flagged as estimated wherever used
+
+const parts = [
+  // ---- structure ----
+  {id:'UF00601', name:'Frame Assembly, Unscrambler', group:'Frame', kind:'frameAsm', motion:'static',
+   pos:[0.25, 0, 0], dims:[2.3, DECK, 1.15, 0.045],
+   spec:'1-1/2" sq aluminum extrusion tube, 6 splayed legs on leveling feet, top rail rectangle + a lower X-braced rectangle. Shape traced from the real exploded-view leg cluster, not a generic box.',
+   conf:'mid'},
+
+  // ---- disk assembly ----
+  {id:'UD03601', name:'Unscrambler Disk, 36"', group:'Disk assembly', kind:'diskStack', motion:'rot', rpm:14, spinAxis:'y',
+   pos:[-0.65, DECK, 0], radius:DISK_R,
+   spec:'Root rotary element: base plate + lower main disk + center/upper plate + outer guide wall, riding on the slew-ring bearing. 4-layer stack read from the ring cluster in the exploded render.',
+   conf:'hi'},
+  {id:'INFM0162.B', name:'Disk drive motor', group:'Disk assembly', kind:'motor', color:'red', motion:'rot', rpm:14,
+   pos:[-1.02, DECK+0.10, 0.32], axis:'x',
+   spec:'"33A-GB/H; 90DC; 1/8HP; 120:1; 14RPM" — 90V DC gearmotor. 14 RPM is the nameplate output speed = the disk\'s actual rotation rate. Drives the disk via UB01001 mount bracket.',
+   conf:'hi'},
+  {id:'INFM0385.A', name:'Companion part (unlabeled)', group:'Disk assembly', kind:'box', color:'amb', motion:'unknown',
+   pos:[-0.87, DECK+0.10, 0.32], size:[0.10,0.10,0.14],
+   spec:'Sits in-line directly behind the disk motor in the exploded render. Best read: a brake, encoder, or gearbox adapter bolted to INFM0162.B — not a separate motor. Config Properties not yet checked.',
+   conf:'mid'},
+  {id:'UB01101', name:'Photoeye Bracket, Fiber Optic', group:'Disk assembly', kind:'sensor', color:'grn', motion:'static',
+   pos:[-0.24, DECK+0.09, 0.42],
+   spec:'The one confirmed sensor on the whole machine — fiber-optic photoeye, presumably bottle presence/count at the disk rim.',
+   conf:'hi'},
+  {id:'UD01401', name:'Disk-to-Gripper Transfer Plate', group:'Disk assembly', kind:'box', color:'wire', motion:'static',
+   pos:[-0.30, DECK+0.06, -0.10], size:[0.22,0.03,0.30],
+   spec:'Confirms the mechanical link between the disk and the Gripper Belt subsystem — where bottles leave the disk.',
+   conf:'hi'},
+
+  // ---- paddle wheel ----
+  {id:'UX01300', name:'Paddle Wheel Assembly', group:'Paddle wheel', kind:'paddle', color:'wire', motion:'rot', rpm:Math.round(BASE_RPM/15), spinAxis:'x',
+   pos:[-0.30, DECK+0.12, 0.15],
+   spec:'Vaned wheel near the disk rim, assists feeding bottles toward the gripper-belt transfer point. Rotation ratio is real (motor 15:1); absolute RPM assumes the same base motor speed as the disk motor — not nameplate-confirmed for this unit.',
+   conf:'mid'},
+  {id:'UP00601', name:'Paddle wheel motor', group:'Paddle wheel', kind:'motor', color:'blk', motion:'rot', rpm:Math.round(BASE_RPM/15), axis:'x',
+   pos:[-0.30, DECK+0.12, 0.34],
+   spec:'"GearMotor; 1/12 HP; 15:1 Ratio; BLM460SHP-GFV; GFV4G15AS" — smallest of the 3 motors. Visually black/dark, distinct from the 2 red motors — confirmed in IMG_4129.',
+   conf:'hi'},
+  {id:'UM00201', name:'Handwheel; 6243K49', group:'Paddle wheel', kind:'wheel', color:'wire', motion:'static',
+   pos:[-0.18, DECK+0.12, 0.34],
+   spec:'Manual adjustment handwheel, sits beside the Paddle Wheel Asm in the tree — turned by hand during setup, not part of running motion.',
+   conf:'mid'},
+
+  // ---- gripper belt subframe ----
+  {id:'US00101', name:'Gripper Belt Sub Frame ASM', group:'Gripper belt', kind:'gcage', color:'wire', motion:'loop',
+   pos:[0.55, DECK, 0], size:[1.15,0.34,0.45],
+   spec:'Belt/chain-driven bottle-gripping conveyor: a vertical-bar cage frame (8 uprights, matching the real render) carrying 2 parallel timing belts + roller chain. Bottles ride the loop from the disk transfer point to the far end.',
+   conf:'mid'},
+  {id:'UP00501', name:'Gripper belt motor', group:'Gripper belt', kind:'motor', color:'red', motion:'rot', rpm:Math.round(BASE_RPM/10), axis:'x',
+   pos:[1.15, DECK+0.10, 0.16],
+   spec:'"GearMotor, Parallel Shaft" — 1/4 HP, 10:1 ratio, BLM6200SHP-GFV / GFV6G10AS. Mounted in US05601 Motor Mount. Shaft-speed ratio real; belt surface speed depends on an unread pulley pitch diameter, so it isn\'t computed here.',
+   conf:'hi'},
+  {id:'US00501', name:'Gripper Width Adj. Assembly', group:'Gripper belt', kind:'crank', color:'wire', motion:'static',
+   pos:[0.35, DECK+0.10, -0.30],
+   spec:'Manual bottle-width changeover — handwheel + sliding blocks + threaded rods + sprockets. This is what the "4th motor-shaped" cluster in the exploded render turned out to be. Adjusted by hand, not driven during a run.',
+   conf:'hi'},
+  {id:'US05901', name:'Knocker Roller Asm Mounted', group:'Gripper belt', kind:'roller', color:'wire', motion:'unknown',
+   pos:[0.55, DECK+0.10, 0.24],
+   spec:'Roller/knocker mechanism with its own weldment + plastic roller housing. No dedicated motor found in the tree — likely either a free idler turned by bottle/belt contact, or chain-linked to the gripper-belt drivetrain. Not resolved.',
+   conf:'est'},
+
+  // ---- bottle orientor (passive) ----
+  {id:'UY00101', name:'Bottle Orientor Assembly', group:'Orientor / knockdown', kind:'orientor', color:'org', motion:'recip',
+   pos:[-1.05, DECK+0.10, -0.30], size:[0.1,0.14,0.02],
+   spec:'Spring-loaded plunger + arm + hook. Purely mechanical, popped by bottle contact and spring-returned — moves every cycle with zero motor behind it. Spring fatigue/breakage is a real long-term failure mode.',
+   conf:'hi'},
+  {id:'UY02201', name:'Knock Down Wheel Asm', group:'Orientor / knockdown', kind:'wheel', color:'org', motion:'unknown',
+   pos:[-0.05, DECK+0.10, -0.44],
+   spec:'Small mechanical wheel/bracket assembly. Whether it spins freely (idler) or is driven wasn\'t resolvable from the tree.',
+   conf:'est'},
+
+  // ---- electrical panel ----
+  {id:'UE00201', name:'Electrical Panel Assembly', group:'Electrical panel', kind:'panel', color:'blu', motion:'static',
+   pos:[0.15, 0.55, -0.65], size:[0.5,0.55,0.06],
+   spec:'Saginaw enclosures (SCE-8C12ELJ + 2× SCE-16148ELJSS), digital counter/timer, 2 push buttons, conduit fittings.',
+   conf:'hi'},
+  {id:'BLE2D200-A #1', name:'DC Motor Driver → disk', group:'Electrical panel', kind:'driver', color:'grn', motion:'static',
+   pos:[0.02,0.65,-0.63], spec:'Matched: drives INFM0162.B, the disk motor.', conf:'hi'},
+  {id:'BLE2D200-A #2', name:'DC Motor Driver → gripper belt', group:'Electrical panel', kind:'driver', color:'grn', motion:'static',
+   pos:[0.10,0.65,-0.63], spec:'Matched: drives UP00501, the gripper belt motor.', conf:'hi'},
+  {id:'ble2d60-a', name:'DC Motor Driver → paddle wheel', group:'Electrical panel', kind:'driver', color:'grn', motion:'static',
+   pos:[0.18,0.65,-0.63], spec:'Matched: smallest driver ↔ smallest motor (paddle wheel, 1/12HP).', conf:'mid'},
+  {id:'BLE2D200-A #3', name:'DC Motor Driver — unmatched', group:'Electrical panel', kind:'driver', color:'amb', motion:'unknown',
+   pos:[0.26,0.65,-0.63], spec:'No confirmed motor anywhere in the tree or the exploded render. Best guesses: spare/redundant channel, or a non-rotating actuator (e.g. a solenoid on the Orientor or Knock Down Wheel).', conf:'est'},
+  {id:'BLE2D200-A #4', name:'DC Motor Driver — unmatched', group:'Electrical panel', kind:'driver', color:'amb', motion:'unknown',
+   pos:[0.34,0.65,-0.63], spec:'Same as #3 — second unmatched driver. Resolving these needs the vendor wiring diagram/quotation, or the machine running on video.', conf:'est'},
+];
+
+// explode directions, computed from each part's own position relative to a per-cluster anchor
+// (keeps the "blow apart" motion radiating outward the way the real exploded render does)
+const CLUSTER_ANCHOR = {
+  'Frame':[0.25,0,0], 'Disk assembly':[-0.65,DECK,0], 'Paddle wheel':[-0.30,DECK+0.12,0.2],
+  'Gripper belt':[0.7,DECK+0.05,0], 'Orientor / knockdown':[-0.5,DECK+0.1,-0.35],
+  'Electrical panel':[0.15,0.6,-0.63]
+};
+parts.forEach(p=>{
+  const a = CLUSTER_ANCHOR[p.group] || [0,DECK,0];
+  const dx=p.pos[0]-a[0], dy=p.pos[1]-a[1], dz=p.pos[2]-a[2];
+  const len = Math.hypot(dx,dy,dz) || 1;
+  const k = p.group==='Frame' ? 0.6 : 0.55 + 0.4/len;
+  p.explode = [dx*k*1.6, Math.abs(dy)*1.2 + 0.25, dz*k*1.6];
+});
+
+// ---------- three.js boilerplate ----------
+const stage = document.getElementById('stage');
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x070a0f);
+scene.fog = new THREE.Fog(0x070a0f, 6, 16);
+
+const camera = new THREE.PerspectiveCamera(45, innerWidth/innerHeight, 0.05, 100);
+camera.position.set(2.7, 2.2, 3.1);
+
+const renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.setSize(innerWidth, innerHeight);
+stage.appendChild(renderer.domElement);
+
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.target.set(0, DECK*0.6, 0);
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
+controls.update();
+
+scene.add(new THREE.AmbientLight(0x8899aa, 0.9));
+const key = new THREE.DirectionalLight(0xffffff, 0.9);
+key.position.set(3,5,2); scene.add(key);
+const rim = new THREE.DirectionalLight(0x4fc3f7, 0.3);
+rim.position.set(-3,2,-4); scene.add(rim);
+
+const grid = new THREE.GridHelper(6, 24, 0x1d2836, 0x131c26);
+scene.add(grid);
+
+const root = new THREE.Group();
+scene.add(root);
+
+// the structural frame is built once, standalone (it isn't a per-part "group" entry)
+const frameData = parts.find(p=>p.id==='UF00601');
+const frameObj = buildFrame(frameData.dims[0], frameData.dims[2], frameData.dims[1], frameData.dims[3]);
+frameObj.position.set(frameData.pos[0], frameData.pos[1], frameData.pos[2]);
+frameObj.userData.part = frameData;
+frameObj.userData.home = frameObj.position.clone();
+frameObj.userData.explode = new THREE.Vector3(0,-0.5,0);
+root.add(frameObj);
+frameData.obj = frameObj;
+
+const colHex = {red:COLOR.red, blk:COLOR.blk, grn:COLOR.grn, amb:COLOR.amb, org:COLOR.org, blu:COLOR.blu, wire:COLOR.wire};
+
+parts.forEach(p=>{
+  if(p.id==='UF00601') return; // built above
+  const g = new THREE.Group();
+  g.userData.part = p;
+  g.position.set(p.pos[0], p.pos[1], p.pos[2]);
+  let mesh;
+
+  switch(p.kind){
+    case 'diskStack': {
+      g.add(buildDiskStack(p.radius));
+      mesh = null;
+      break;
+    }
+    case 'motor': {
+      const c = colHex[p.color];
+      const body = solid(new THREE.CylinderGeometry(0.055,0.055,0.16,16), c);
+      body.rotation.z = Math.PI/2;
+      g.add(body);
+      const box = edges(new THREE.BoxGeometry(0.09,0.09,0.09), c, [-0.11,0,0]);
+      g.add(box);
+      // shaft stub pointing toward what it drives
+      const shaft = edges(new THREE.CylinderGeometry(0.012,0.012,0.06,8), c, [0.11,0,0]);
+      shaft.rotation.z = Math.PI/2;
+      g.add(shaft);
+      mesh = null;
+      break;
+    }
+    case 'box': {
+      mesh = edges(new THREE.BoxGeometry(p.size[0],p.size[1],p.size[2]), colHex[p.color]||COLOR.wire);
+      break;
+    }
+    case 'sensor': {
+      mesh = new THREE.Mesh(new THREE.ConeGeometry(0.025,0.06,10), new THREE.MeshStandardMaterial({color:COLOR.grn, emissive:0x0b3320, emissiveIntensity:0.6}));
+      mesh.rotation.x = Math.PI;
+      break;
+    }
+    case 'paddle': {
+      // hub + blades built in the Y-Z plane so they spin about local X — matching the
+      // horizontal-shaft motor (UP00601) that actually drives this wheel
+      const hub = edges(new THREE.CylinderGeometry(0.02,0.02,0.05,8), COLOR.wire);
+      hub.rotation.z = Math.PI/2;
+      g.add(hub);
+      for(let i=0;i<5;i++){
+        const ang = i*(Math.PI*2/5);
+        const blade = edges(new THREE.BoxGeometry(0.005,0.15,0.03), COLOR.wire);
+        blade.position.set(0, Math.cos(ang)*0.085, Math.sin(ang)*0.085);
+        blade.rotation.x = ang;
+        g.add(blade);
+      }
+      mesh = null;
+      break;
+    }
+    case 'wheel': {
+      mesh = edges(new THREE.TorusGeometry(0.045,0.008,6,16), colHex[p.color]||COLOR.wire);
+      mesh.rotation.x = Math.PI/2;
+      break;
+    }
+    case 'gcage': {
+      // vertical-bar cage frame (matches the ~8-upright cage clearly visible in the exploded render)
+      const [Lg,Hg,Wg] = p.size;
+      const bars = 8;
+      for(let i=0;i<bars;i++){
+        const x = -Lg/2 + (Lg/(bars-1))*i;
+        g.add(tubeBetween([x,-Hg/2,-Wg/2],[x,Hg/2,-Wg/2], 0.018, COLOR.wire));
+        g.add(tubeBetween([x,-Hg/2,Wg/2],[x,Hg/2,Wg/2], 0.018, COLOR.wire));
+      }
+      g.add(tubeBetween([-Lg/2,Hg/2,-Wg/2],[Lg/2,Hg/2,-Wg/2], 0.02, COLOR.wire2));
+      g.add(tubeBetween([-Lg/2,Hg/2,Wg/2],[Lg/2,Hg/2,Wg/2], 0.02, COLOR.wire2));
+      g.add(tubeBetween([-Lg/2,-Hg/2,-Wg/2],[Lg/2,-Hg/2,-Wg/2], 0.02, COLOR.wire2));
+      g.add(tubeBetween([-Lg/2,-Hg/2,Wg/2],[Lg/2,-Hg/2,Wg/2], 0.02, COLOR.wire2));
+      // 2 pulleys + the belt loop the "loop" motion animates dashes along
+      const p1 = edges(new THREE.TorusGeometry(0.05,0.01,6,16), COLOR.disk, [-Lg/2,0,0]);
+      p1.rotation.y = Math.PI/2;
+      const p2 = edges(new THREE.TorusGeometry(0.05,0.01,6,16), COLOR.disk, [Lg/2,0,0]);
+      p2.rotation.y = Math.PI/2;
+      g.add(p1,p2);
+      const beltPts = [
+        new THREE.Vector3(-Lg/2,0.06,0), new THREE.Vector3(Lg/2,0.06,0),
+        new THREE.Vector3(-Lg/2,-0.06,0), new THREE.Vector3(Lg/2,-0.06,0)
+      ];
+      g.add(new THREE.LineSegments(new THREE.BufferGeometry().setFromPoints(beltPts), new THREE.LineBasicMaterial({color:COLOR.disk})));
+      // moving dash markers -> animated in the render loop for the "loop" motion type
+      const dashGeo = new THREE.BufferGeometry();
+      const N = 10;
+      const positions = new Float32Array(N*3);
+      dashGeo.setAttribute('position', new THREE.BufferAttribute(positions,3));
+      const dashes = new THREE.Points(dashGeo, new THREE.PointsMaterial({color:0xffe08a, size:0.03}));
+      dashes.userData.isLoopDash = true;
+      dashes.userData.Lg = Lg;
+      g.add(dashes);
+      mesh = null;
+      break;
+    }
+    case 'crank': {
+      const wheel = edges(new THREE.TorusGeometry(0.05,0.009,6,16), COLOR.wire);
+      wheel.rotation.x = Math.PI/2;
+      g.add(wheel);
+      const shaft = edges(new THREE.CylinderGeometry(0.008,0.008,0.35,6), COLOR.wire, [0.2,0,0]);
+      shaft.rotation.z = Math.PI/2;
+      g.add(shaft);
+      mesh = null;
+      break;
+    }
+    case 'roller': {
+      mesh = edges(new THREE.CylinderGeometry(0.04,0.04,0.3,12), colHex[p.color]||COLOR.wire);
+      mesh.rotation.z = Math.PI/2;
+      break;
+    }
+    case 'orientor': {
+      const plate = edges(new THREE.BoxGeometry(p.size[0],p.size[1],p.size[2]), colHex[p.color]);
+      g.add(plate);
+      const spring = edges(new THREE.CylinderGeometry(0.012,0.012,0.1,8,4,true), colHex[p.color], [0.08,0,0]);
+      spring.rotation.z = Math.PI/2;
+      g.add(spring);
+      mesh = null;
+      break;
+    }
+    case 'panel': {
+      mesh = edges(new THREE.BoxGeometry(p.size[0],p.size[1],p.size[2]), colHex[p.color]);
+      const face = new THREE.Mesh(new THREE.PlaneGeometry(p.size[0]*0.94,p.size[1]*0.94),
+        new THREE.MeshBasicMaterial({color:0x0c141d, transparent:true, opacity:0.5, side:THREE.DoubleSide}));
+      face.position.z = p.size[2]/2+0.001;
+      g.add(face);
+      break;
+    }
+    case 'driver': {
+      mesh = solid(new THREE.BoxGeometry(0.055,0.09,0.02), colHex[p.color]);
+      break;
+    }
+  }
+  if(mesh) g.add(mesh);
+  g.userData.explode = new THREE.Vector3(p.explode[0],p.explode[1],p.explode[2]);
+  g.userData.home = g.position.clone();
+  root.add(g);
+  p.obj = g;
+});
+
+// ---------- interaction ----------
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+let selected = null;
+
+function partAtPointer(clientX, clientY){
+  const r = renderer.domElement.getBoundingClientRect();
+  mouse.x = ((clientX-r.left)/r.width)*2-1;
+  mouse.y = -((clientY-r.top)/r.height)*2+1;
+  raycaster.setFromCamera(mouse, camera);
+  const hits = raycaster.intersectObjects(root.children, true);
+  if(!hits.length) return null;
+  let o = hits[0].object;
+  while(o && !o.userData.part) o = o.parent;
+  return o;
+}
+
+renderer.domElement.addEventListener('click', (e)=>{
+  const g = partAtPointer(e.clientX, e.clientY);
+  select(g ? g.userData.part : null);
+});
+
+function motionLabel(p){
+  if(p.motion==='rot') return 'Rotates continuously' + (p.rpm ? ' — ~'+p.rpm+' RPM' + (p.id.indexOf('INFM')===0 || p.id==='UD03601' ? ' (nameplate)' : ' (estimated, same-family base speed)') : '');
+  if(p.motion==='loop') return 'Belt/chain loop — translates bottles along the conveyor path';
+  if(p.motion==='recip') return 'Reciprocates every cycle — passive (spring + bottle contact), no motor';
+  if(p.motion==='static') return 'Static — no motion during a run' + (p.name.indexOf('Adj')>-1 || p.name.indexOf('Handwheel')>-1 ? ' (manually adjusted during changeover only)' : '');
+  return 'Motion type not resolved from available data';
+}
+
+function select(p){
+  selected = p;
+  document.querySelectorAll('.row').forEach(r=>r.classList.toggle('sel', p && r.dataset.id===p.id));
+  const body = document.getElementById('detailbody');
+  if(!p){ body.className='hint'; body.textContent='Click a part in the 3D view, or a row on the right, to see its ID, spec, motion, and how confident this model is about it.'; return; }
+  const confClass = p.conf==='hi' ? 'hi' : (p.conf==='mid' ? 'mid' : 'est');
+  const confLabel = p.conf==='hi' ? 'text + visual confirmed' : (p.conf==='mid' ? 'partially confirmed' : 'estimated / inferred');
+  body.className='';
+  body.innerHTML = '<div class="dtitle">'+p.name+'</div><div class="did">'+p.id+' &middot; '+p.group+'</div>'+
+    '<div class="dspec">'+p.spec+'</div>'+
+    '<div class="dmotion"><b>'+MOTION_ICON[p.motion]+' Motion:</b> '+motionLabel(p)+'</div>'+
+    '<span class="conf '+confClass+'">'+confLabel+'</span>';
+}
+
+// ---------- right-hand grouped list ----------
+const groupsEl = document.getElementById('groups');
+const byGroup = {};
+parts.forEach(p=>{ (byGroup[p.group] = byGroup[p.group]||[]).push(p); });
+const dotColor = {red:'var(--red)',blk:'var(--blk)',grn:'var(--grn)',amb:'var(--amb)',org:'var(--org)',blu:'var(--blu)',wire:'#4a6a82'};
+Object.keys(byGroup).forEach(gname=>{
+  const wrap = document.createElement('div'); wrap.className='grp';
+  const h = document.createElement('div'); h.className='gname'; h.textContent = gname.toUpperCase();
+  wrap.appendChild(h);
+  byGroup[gname].forEach(p=>{
+    const row = document.createElement('div'); row.className='row'; row.dataset.id = p.id;
+    const dot = document.createElement('div'); dot.className='dot';
+    dot.style.background = dotColor[p.color] || (p.kind==='diskStack' ? '#8fd9c4' : dotColor.wire);
+    const k = document.createElement('div'); k.className='k'; k.textContent = p.name;
+    const m = document.createElement('div'); m.className='m'; m.textContent = MOTION_ICON[p.motion];
+    m.title = motionLabel(p);
+    const v = document.createElement('div'); v.className='v'; v.textContent = p.id.split(' ')[0];
+    row.append(dot,k,m,v);
+    row.addEventListener('click', ()=>{ select(p); focusOn(p.obj); });
+    wrap.appendChild(row);
+  });
+  groupsEl.appendChild(wrap);
+});
+
+function focusOn(obj){
+  const wp = new THREE.Vector3(); obj.getWorldPosition(wp);
+  const start = controls.target.clone();
+  const t0 = performance.now();
+  function step(t){
+    const k = Math.min(1,(t-t0)/450);
+    controls.target.lerpVectors(start, wp, k);
+    controls.update();
+    if(k<1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// ---------- view controls ----------
+let playing = true;
+document.getElementById('bPlay').addEventListener('click', function(){
+  playing = !playing;
+  this.classList.toggle('on', playing);
+  this.textContent = playing ? '❚❚ Pause' : '▶ Play';
+});
+let exploded = false;
+document.getElementById('bExp').addEventListener('click', function(){
+  exploded = !exploded;
+  this.classList.toggle('on', exploded);
+  parts.forEach(p=>{
+    const to = exploded ? p.obj.userData.home.clone().add(p.obj.userData.explode) : p.obj.userData.home.clone();
+    tweenTo(p.obj, to);
+  });
+});
+document.getElementById('bHome').addEventListener('click', ()=>{
+  camera.position.set(2.7,2.2,3.1);
+  controls.target.set(0,DECK*0.6,0);
+  controls.update();
+  select(null);
+  if(exploded){
+    exploded = false;
+    document.getElementById('bExp').classList.remove('on');
+    parts.forEach(p=> tweenTo(p.obj, p.obj.userData.home.clone()));
+  }
+});
+function tweenTo(obj, to){
+  const from = obj.position.clone();
+  const t0 = performance.now();
+  (function step(t){
+    const k = Math.min(1,(t-t0)/500);
+    const e = k<0.5 ? 2*k*k : -1+(4-2*k)*k; // ease in-out
+    obj.position.lerpVectors(from, to, e);
+    if(k<1) requestAnimationFrame(step);
+  })(t0);
+}
+
+// ---------- resize + animate ----------
+addEventListener('resize', ()=>{
+  camera.aspect = innerWidth/innerHeight; camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+
+// rotation rates are proportional to each part's real/estimated RPM (scaled up for visibility,
+// but the RATIOS between disk/paddle/gripper are the real gear-ratio-derived ratios)
+const SPEED_SCALE = 0.006;
+// motors themselves are plain symmetric cylinders -- spinning one about its own shaft
+// axis is visually a no-op, and the earlier version wrongly spun them about world-Y
+// (making a horizontal-shaft motor swing sideways like a pendulum, not turn on its shaft).
+// The real, visible motion is in what each motor DRIVES: the disk, the paddle wheel,
+// and the belt loop -- so only those animate here.
+const rotators = parts.filter(p=>p.motion==='rot' && p.kind!=='motor');
+const loopCages = parts.filter(p=>p.kind==='gcage');
+const reciprocators = parts.filter(p=>p.motion==='recip');
+
+let t = 0;
+function animate(now){
+  requestAnimationFrame(animate);
+  if(playing){
+    t += 1;
+    rotators.forEach(p=>{ p.obj.rotation[p.spinAxis||'y'] = t * SPEED_SCALE * (p.rpm||10); });
+    loopCages.forEach(p=>{
+      const dash = p.obj.children.find(c=>c.userData.isLoopDash);
+      if(!dash) return;
+      const Lg = dash.userData.Lg;
+      const arr = dash.geometry.attributes.position.array;
+      const N = arr.length/3;
+      for(let i=0;i<N;i++){
+        const phase = ((t*0.01 + i/N) % 1);
+        const onTop = phase < 0.5;
+        const local = onTop ? phase*2 : (phase-0.5)*2;
+        arr[i*3]   = -Lg/2 + Lg*local;
+        arr[i*3+1] = onTop ? 0.06 : -0.06;
+        arr[i*3+2] = 0;
+      }
+      dash.geometry.attributes.position.needsUpdate = true;
+    });
+    reciprocators.forEach(p=>{
+      const s = (Math.sin(t*0.02)+1)/2; // 0..1 pop-and-return
+      p.obj.position.x = p.obj.userData.home.x + (exploded ? p.obj.userData.explode.x : 0) + s*0.05;
+    });
+  }
+  controls.update();
+  renderer.render(scene, camera);
+}
+requestAnimationFrame(animate);
+
+})();
+</script>
+</body>
+</html>

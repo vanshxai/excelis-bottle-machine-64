@@ -1,0 +1,44 @@
+[
+  {
+    "id": "ring_buckling_pressure_fluid",
+    "equation": "q_cr_ring = 3*E_mod*I_ring/R_ring**2",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "q_cr_ring": {
+        "unit": "pascal",
+        "meaning": "critical buckling pressure"
+      },
+      "E_mod": {
+        "unit": "pascal",
+        "meaning": "Young's modulus"
+      },
+      "I_ring": {
+        "unit": "meter**4",
+        "meaning": "second moment of ring section"
+      },
+      "R_ring": {
+        "unit": "meter",
+        "meaning": "mean radius"
+      }
+    },
+    "source": {
+      "title": "Buckling",
+      "url": "https://en.wikipedia.org/wiki/Buckling",
+      "section": "Thin-walled rings",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "Extracted as printed by the page summary; dimension check is expected to reject it (needs R^3 or line-load units). Re-read the page before any fix.",
+    "checks": {
+      "parses": true,
+      "dimensions": false,
+      "possible_duplicates": []
+    },
+    "status": "candidate",
+    "rejected_because": [
+      "dimension check: left side is {Dimension(mass): 1, Dimension(length): -1, Dimension(time): -2} but right side is {Dimension(mass): 1, Dimension(length): 1, Dimension(time): -2}"
+    ]
+  }
+]

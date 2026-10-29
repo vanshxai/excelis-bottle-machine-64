@@ -1,0 +1,27 @@
+{
+ "part_number": "MS00301",
+ "description": "Belt Drive Motor, brushless gearmotor",
+ "material": "",
+ "type": "motor_bldc",
+ "type_label": "Brushless gearmotor",
+ "role": "source",
+ "section": "MS00300",
+ "section_name": "Belt Section",
+ "parent": null,
+ "motor": "MS00301",
+ "chain": [
+  "MS00301"
+ ],
+ "step_instances": [
+  "MS00301"
+ ],
+ "values": {},
+ "effort": null,
+ "motor_model": {
+  "T_rated": 5.0,
+  "I_rated": 2.4,
+  "I_noload": 0.3,
+  "I_normal": 0.9,
+  "Kt": 2.380952380952381
+ }
+}

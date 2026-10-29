@@ -1,0 +1,20 @@
+{
+ "part_number": "MS00401",
+ "description": "Photoeye Bracket",
+ "material": "Steel 1018",
+ "type": "static",
+ "type_label": "Fixed part (frame, plate, bracket)",
+ "role": "static",
+ "section": "MS00001",
+ "section_name": "Mini Sorter Assembly",
+ "parent": null,
+ "motor": null,
+ "chain": [
+  "MS00401"
+ ],
+ "step_instances": [
+  "MS00401"
+ ],
+ "values": {},
+ "effort": null
+}

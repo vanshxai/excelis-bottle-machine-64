@@ -1,0 +1,70 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "twin",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8777",
+        "--directory",
+        "twin"
+      ],
+      "port": 8777
+    },
+    {
+      "name": "bottle_twin",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8779",
+        "--directory",
+        "bottle_twin"
+      ],
+      "port": 8779
+    },
+    {
+      "name": "spike-viewer",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8791",
+        "--directory",
+        "bottle_machine_64/spike"
+      ],
+      "port": 8791
+    },
+    {
+      "name": "builder-trial",
+      "runtimeExecutable": "bottle_machine_64/.venv/bin/python",
+      "runtimeArgs": [
+        "bottle_machine_64/app/server.py"
+      ],
+      "port": 8792
+    },
+    {
+      "name": "mindmap-render",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "bottle_machine_64/docs/mindmap/render_server.py",
+        "8795"
+      ],
+      "port": 8795
+    },
+    {
+      "name": "code-report",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8796",
+        "--directory",
+        "code_report"
+      ],
+      "port": 8796
+    }
+  ]
+}

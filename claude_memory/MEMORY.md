@@ -1,0 +1,5 @@
+- [Excelis digital twin project](excelis-digital-twin-project.md) — twins of real OEM machines, computed by driving the Yanthros Formula Brain; watch the port-5051 collision and the shared-symbol trap.
+- [Yanthros product architecture](project_yanthros_product_architecture.md) — core engine → per-machine software packet → exe; licensing decisions, dashboard, Zinaata/Dorus locations, git/GitHub gotchas.
+- [CEO-brief + operator roles](feedback_ceo_brief_and_operator_roles.md) — user wants 1-3 sentence replies, runs pipelines himself while Claude builds/publishes, wants check-ins before major steps.
+- [Formula candidates staging](project_formula_candidates_staging.md) — cited-formula pilot (100) staged outside the engine; source + check rules, results.
+- [Part archetype architecture](project_part_archetype_architecture.md) — backend = library of part patterns, each with plain-language UI + parametrized code module; per-machine program is proprietary, no shipped tests.

@@ -1,0 +1,45 @@
+{
+ "part_number": "MS00303",
+ "description": "Idler Pulley",
+ "material": "Aluminum 6061",
+ "type": "idler_pulley",
+ "type_label": "Idler pulley",
+ "role": "passive",
+ "section": "MS00300",
+ "section_name": "Belt Section",
+ "parent": "MS00304",
+ "motor": "MS00301",
+ "chain": [
+  "MS00303",
+  "MS00304",
+  "MS00302",
+  "MS00301"
+ ],
+ "step_instances": [
+  "MS00303"
+ ],
+ "values": {
+  "R_SELF": {
+   "value": 0.021962,
+   "unit": "m",
+   "source": "measured from the STEP file (MS00303, round part)"
+  },
+  "R_MS00303": {
+   "value": 0.021962,
+   "unit": "m",
+   "source": "measured from the STEP file (MS00303, round part)"
+  },
+  "R_MS00302": {
+   "value": 0.021962,
+   "unit": "m",
+   "source": "measured from the STEP file (MS00302, round part)"
+  }
+ },
+ "effort": {
+  "label": "Extra drag turning the idler pulley",
+  "unit": "N*m",
+  "ok_max": 0.05,
+  "warning": 0.2,
+  "critical": 0.5
+ }
+}

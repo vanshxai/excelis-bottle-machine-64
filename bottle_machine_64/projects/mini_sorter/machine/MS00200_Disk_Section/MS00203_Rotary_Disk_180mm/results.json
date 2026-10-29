@@ -1,0 +1,157 @@
+{
+ "part_number": "MS00203",
+ "motor": "MS00201",
+ "effort_label": "Extra force pressing against the disk's rim",
+ "effort_unit": "N",
+ "levels": {
+  "ok_max": {
+   "effort": 5.0,
+   "motor_torque_Nm": 0.1349445,
+   "delta_current_A": 0.02639180044247787
+  },
+  "warning": {
+   "effort": 20.0,
+   "motor_torque_Nm": 0.539778,
+   "delta_current_A": 0.10556720176991148
+  },
+  "critical": {
+   "effort": 40.0,
+   "motor_torque_Nm": 1.079556,
+   "delta_current_A": 0.21113440353982296
+  }
+ },
+ "sweep": [
+  {
+   "effort": 0.0,
+   "motor_torque_Nm": 0.0,
+   "delta_current_A": 0.0
+  },
+  {
+   "effort": 2.0,
+   "motor_torque_Nm": 0.05397779999999999,
+   "delta_current_A": 0.010556720176991148
+  },
+  {
+   "effort": 4.0,
+   "motor_torque_Nm": 0.10795559999999998,
+   "delta_current_A": 0.021113440353982296
+  },
+  {
+   "effort": 6.0,
+   "motor_torque_Nm": 0.16193339999999995,
+   "delta_current_A": 0.031670160530973435
+  },
+  {
+   "effort": 8.0,
+   "motor_torque_Nm": 0.21591119999999997,
+   "delta_current_A": 0.04222688070796459
+  },
+  {
+   "effort": 10.0,
+   "motor_torque_Nm": 0.269889,
+   "delta_current_A": 0.05278360088495574
+  },
+  {
+   "effort": 12.0,
+   "motor_torque_Nm": 0.3238667999999999,
+   "delta_current_A": 0.06334032106194687
+  },
+  {
+   "effort": 14.0,
+   "motor_torque_Nm": 0.3778445999999999,
+   "delta_current_A": 0.07389704123893803
+  },
+  {
+   "effort": 16.0,
+   "motor_torque_Nm": 0.43182239999999994,
+   "delta_current_A": 0.08445376141592918
+  },
+  {
+   "effort": 18.0,
+   "motor_torque_Nm": 0.4858001999999999,
+   "delta_current_A": 0.09501048159292032
+  },
+  {
+   "effort": 20.0,
+   "motor_torque_Nm": 0.539778,
+   "delta_current_A": 0.10556720176991148
+  },
+  {
+   "effort": 22.0,
+   "motor_torque_Nm": 0.5937557999999998,
+   "delta_current_A": 0.1161239219469026
+  },
+  {
+   "effort": 24.0,
+   "motor_torque_Nm": 0.6477335999999998,
+   "delta_current_A": 0.12668064212389374
+  },
+  {
+   "effort": 26.0,
+   "motor_torque_Nm": 0.7017113999999999,
+   "delta_current_A": 0.1372373623008849
+  },
+  {
+   "effort": 28.0,
+   "motor_torque_Nm": 0.7556891999999998,
+   "delta_current_A": 0.14779408247787607
+  },
+  {
+   "effort": 30.0,
+   "motor_torque_Nm": 0.8096669999999998,
+   "delta_current_A": 0.1583508026548672
+  },
+  {
+   "effort": 32.0,
+   "motor_torque_Nm": 0.8636447999999999,
+   "delta_current_A": 0.16890752283185836
+  },
+  {
+   "effort": 34.0,
+   "motor_torque_Nm": 0.9176225999999998,
+   "delta_current_A": 0.1794642430088495
+  },
+  {
+   "effort": 36.0,
+   "motor_torque_Nm": 0.9716003999999998,
+   "delta_current_A": 0.19002096318584064
+  },
+  {
+   "effort": 38.0,
+   "motor_torque_Nm": 1.0255781999999998,
+   "delta_current_A": 0.2005776833628318
+  },
+  {
+   "effort": 40.0,
+   "motor_torque_Nm": 1.079556,
+   "delta_current_A": 0.21113440353982296
+  },
+  {
+   "effort": 42.0,
+   "motor_torque_Nm": 1.1335337999999997,
+   "delta_current_A": 0.22169112371681407
+  },
+  {
+   "effort": 44.0,
+   "motor_torque_Nm": 1.1875115999999997,
+   "delta_current_A": 0.2322478438938052
+  },
+  {
+   "effort": 46.0,
+   "motor_torque_Nm": 1.2414893999999999,
+   "delta_current_A": 0.2428045640707964
+  },
+  {
+   "effort": 48.0,
+   "motor_torque_Nm": 1.2954671999999996,
+   "delta_current_A": 0.2533612842477875
+  },
+  {
+   "effort": 50.0,
+   "motor_torque_Nm": 1.3494449999999996,
+   "delta_current_A": 0.26391800442477864
+  }
+ ],
+ "detectable_at_critical": true,
+ "critical_over_tolerance": 10.556720176991147
+}

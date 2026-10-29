@@ -1,0 +1,34 @@
+{
+ "part_number": "MS00304",
+ "description": "Timing Belt",
+ "material": "Rubber",
+ "type": "belt",
+ "type_label": "Belt",
+ "role": "passive",
+ "section": "MS00300",
+ "section_name": "Belt Section",
+ "parent": "MS00302",
+ "motor": "MS00301",
+ "chain": [
+  "MS00304",
+  "MS00302",
+  "MS00301"
+ ],
+ "step_instances": [
+  "MS00304"
+ ],
+ "values": {
+  "R_MS00302": {
+   "value": 0.021962,
+   "unit": "m",
+   "source": "measured from the STEP file (MS00302, round part)"
+  }
+ },
+ "effort": {
+  "label": "Extra pull in the belt",
+  "unit": "N",
+  "ok_max": 15.0,
+  "warning": 40.0,
+  "critical": 80.0
+ }
+}

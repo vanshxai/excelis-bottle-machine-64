@@ -1,0 +1,212 @@
+{
+ "motors": {
+  "MS00301": {
+   "T_rated": 5.0,
+   "I_rated": 2.4,
+   "I_noload": 0.3,
+   "I_normal": 0.9,
+   "Kt": 2.380952380952381
+  },
+  "MS00201": {
+   "T_rated": 11.3,
+   "I_rated": 2.61,
+   "I_noload": 0.4,
+   "I_normal": 1.1,
+   "Kt": 5.113122171945702
+  }
+ },
+ "settings": {
+  "tolerance_A": 0.02
+ },
+ "parts": {
+  "MS00401": {
+   "type": "static",
+   "role": "static",
+   "section": "MS00001",
+   "section_name": "Mini Sorter Assembly",
+   "motor": null,
+   "chain": [
+    "MS00401"
+   ],
+   "dir": "machine/MS00001_Mini_Sorter_Assembly/MS00401_Photoeye_Bracket",
+   "description": "Photoeye Bracket",
+   "step_instances": [
+    "MS00401"
+   ]
+  },
+  "MS00305": {
+   "type": "flipper_arm",
+   "role": "passive",
+   "section": "MS00300",
+   "section_name": "Belt Section",
+   "motor": "MS00301",
+   "chain": [
+    "MS00305",
+    "MS00304",
+    "MS00302",
+    "MS00301"
+   ],
+   "dir": "machine/MS00300_Belt_Section/MS00305_Flipper_Arm",
+   "description": "Flipper Arm",
+   "step_instances": [
+    "MS00305"
+   ]
+  },
+  "MS00304": {
+   "type": "belt",
+   "role": "passive",
+   "section": "MS00300",
+   "section_name": "Belt Section",
+   "motor": "MS00301",
+   "chain": [
+    "MS00304",
+    "MS00302",
+    "MS00301"
+   ],
+   "dir": "machine/MS00300_Belt_Section/MS00304_Timing_Belt",
+   "description": "Timing Belt",
+   "step_instances": [
+    "MS00304"
+   ]
+  },
+  "MS00303": {
+   "type": "idler_pulley",
+   "role": "passive",
+   "section": "MS00300",
+   "section_name": "Belt Section",
+   "motor": "MS00301",
+   "chain": [
+    "MS00303",
+    "MS00304",
+    "MS00302",
+    "MS00301"
+   ],
+   "dir": "machine/MS00300_Belt_Section/MS00303_Idler_Pulley",
+   "description": "Idler Pulley",
+   "step_instances": [
+    "MS00303"
+   ]
+  },
+  "MS00302": {
+   "type": "drive_pulley",
+   "role": "active",
+   "section": "MS00300",
+   "section_name": "Belt Section",
+   "motor": "MS00301",
+   "chain": [
+    "MS00302",
+    "MS00301"
+   ],
+   "dir": "machine/MS00300_Belt_Section/MS00302_Drive_Pulley",
+   "description": "Drive Pulley",
+   "step_instances": [
+    "MS00302"
+   ]
+  },
+  "MS00301": {
+   "type": "motor_bldc",
+   "role": "source",
+   "section": "MS00300",
+   "section_name": "Belt Section",
+   "motor": "MS00301",
+   "chain": [
+    "MS00301"
+   ],
+   "dir": "machine/MS00300_Belt_Section/MS00301_Belt_Drive_Motor_brushless_gearmotor",
+   "description": "Belt Drive Motor, brushless gearmotor",
+   "step_instances": [
+    "MS00301"
+   ]
+  },
+  "MS00203": {
+   "type": "rotary_disk",
+   "role": "passive",
+   "section": "MS00200",
+   "section_name": "Disk Section",
+   "motor": "MS00201",
+   "chain": [
+    "MS00203",
+    "MS00202",
+    "MS00201"
+   ],
+   "dir": "machine/MS00200_Disk_Section/MS00203_Rotary_Disk_180mm",
+   "description": "Rotary Disk, 180mm",
+   "step_instances": [
+    "MS00203"
+   ]
+  },
+  "MS00202": {
+   "type": "shaft",
+   "role": "active",
+   "section": "MS00200",
+   "section_name": "Disk Section",
+   "motor": "MS00201",
+   "chain": [
+    "MS00202",
+    "MS00201"
+   ],
+   "dir": "machine/MS00200_Disk_Section/MS00202_Disk_Shaft",
+   "description": "Disk Shaft",
+   "step_instances": [
+    "MS00202"
+   ]
+  },
+  "MS00201": {
+   "type": "motor_dc",
+   "role": "source",
+   "section": "MS00200",
+   "section_name": "Disk Section",
+   "motor": "MS00201",
+   "chain": [
+    "MS00201"
+   ],
+   "dir": "machine/MS00200_Disk_Section/MS00201_Disk_Drive_Motor_DC_gearmotor_90VDC",
+   "description": "Disk Drive Motor, DC gearmotor 90VDC",
+   "step_instances": [
+    "MS00201"
+   ]
+  },
+  "MS00101": {
+   "type": "static",
+   "role": "static",
+   "section": "MS00001",
+   "section_name": "Mini Sorter Assembly",
+   "motor": null,
+   "chain": [
+    "MS00101"
+   ],
+   "dir": "machine/MS00001_Mini_Sorter_Assembly/MS00101_Base_Plate",
+   "description": "Base Plate",
+   "step_instances": [
+    "MS00101"
+   ]
+  }
+ },
+ "sections": {
+  "MS00001": {
+   "name": "Mini Sorter Assembly",
+   "parts": [
+    "MS00401",
+    "MS00101"
+   ]
+  },
+  "MS00300": {
+   "name": "Belt Section",
+   "parts": [
+    "MS00305",
+    "MS00304",
+    "MS00303",
+    "MS00302",
+    "MS00301"
+   ]
+  },
+  "MS00200": {
+   "name": "Disk Section",
+   "parts": [
+    "MS00203",
+    "MS00202",
+    "MS00201"
+   ]
+  }
+ }
+}

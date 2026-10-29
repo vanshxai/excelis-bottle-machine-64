@@ -1,0 +1,130 @@
+[
+  {
+    "id": "section_modulus",
+    "equation": "S_sec = I_area/c_fiber",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "S_sec": {
+        "unit": "meter**3",
+        "meaning": "section modulus"
+      },
+      "I_area": {
+        "unit": "meter**4",
+        "meaning": "second moment of area"
+      },
+      "c_fiber": {
+        "unit": "meter",
+        "meaning": "distance to extreme fibre"
+      }
+    },
+    "source": {
+      "title": "Euler-Bernoulli beam theory",
+      "url": "https://en.wikipedia.org/wiki/Euler%E2%80%93Bernoulli_beam_theory",
+      "section": "Maximum stresses at a cross-section",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": [
+        "same name as engine formula 'section_modulus'"
+      ]
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "simple_center_load_deflection",
+    "equation": "delta_simple_mid = F_load*L_beam**3/(48*E_mod*I_area)",
+    "discipline": "Civil & Structural Engineering",
+    "physics_domain": "civil_structural",
+    "symbols": {
+      "delta_simple_mid": {
+        "unit": "meter",
+        "meaning": "midspan deflection"
+      },
+      "F_load": {
+        "unit": "newton",
+        "meaning": "centre force"
+      },
+      "L_beam": {
+        "unit": "meter",
+        "meaning": "span"
+      },
+      "E_mod": {
+        "unit": "pascal",
+        "meaning": "Young's modulus"
+      },
+      "I_area": {
+        "unit": "meter**4",
+        "meaning": "second moment of area"
+      }
+    },
+    "source": {
+      "title": "Deflection (engineering)",
+      "url": "https://en.wikipedia.org/wiki/Deflection_(engineering)",
+      "section": "Simple beam, centre loaded",
+      "license": "Wikipedia (CC BY-SA 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": [
+        "same shape as engine 'beam_deflection_center_load'",
+        "same shape as engine 'shaft_deflection_bending'"
+      ]
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "resistivity_temperature",
+    "equation": "rho_T = rho0_res*(1 + alpha_T*(T_K - T0_K))",
+    "discipline": "Electrical Engineering",
+    "physics_domain": "electrical",
+    "symbols": {
+      "rho_T": {
+        "unit": "ohm*meter",
+        "meaning": "resistivity at T"
+      },
+      "rho0_res": {
+        "unit": "ohm*meter",
+        "meaning": "reference resistivity"
+      },
+      "alpha_T": {
+        "unit": "1/kelvin",
+        "meaning": "temperature coefficient"
+      },
+      "T_K": {
+        "unit": "kelvin",
+        "meaning": "temperature"
+      },
+      "T0_K": {
+        "unit": "kelvin",
+        "meaning": "reference temperature"
+      }
+    },
+    "source": {
+      "title": "Ch. 9 Key Equations (Current and Resistance)",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/9-key-equations",
+      "section": "Resistivity and temperature",
+      "license": "OpenStax University Physics Vol. 2 (CC BY 4.0)",
+      "accessed": "2026-09-21"
+    },
+    "form_vs_source": "literal",
+    "note": "",
+    "checks": {
+      "parses": true,
+      "dimensions": true,
+      "possible_duplicates": [
+        "same shape as engine 'resistance_temperature'"
+      ]
+    },
+    "status": "candidate"
+  }
+]

@@ -1,0 +1,8 @@
+.venv/
+.venv_gen/
+__pycache__/
+.DS_Store
+*.exe
+*.pem
+!license_prototype/keys/issuer_public.pem
+bottle_machine_64/spike/ext/

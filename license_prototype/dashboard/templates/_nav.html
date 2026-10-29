@@ -1,0 +1,37 @@
+<script>try{if(localStorage.getItem('navc')==='1')document.documentElement.classList.add('nav-collapsed')}catch(e){}</script>
+<aside class="sidenav">
+  <div class="brand">
+    <div class="full"><b>YANTHROS <span>CORE</span></b><small>offline engine console</small></div>
+    <div class="mini">Y<span>C</span></div>
+  </div>
+
+  <nav>
+    <div class="group">Engine</div>
+    <a href="/" class="{{ 'on' if active == 'dashboard' }}" title="Dashboard">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1.5" y="1.5" width="5" height="5" rx="1"/><rect x="9.5" y="1.5" width="5" height="5" rx="1"/><rect x="1.5" y="9.5" width="5" height="5" rx="1"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/></svg>
+      <span class="label">Dashboard</span></a>
+    <a href="/graph" class="{{ 'on' if active == 'graph' }}" title="Graph Explorer">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="3.5" cy="12" r="1.8"/><circle cx="12.5" cy="12" r="1.8"/><circle cx="8" cy="3.5" r="1.8"/><path d="M4.4 10.4 7.1 5.2M11.6 10.4 8.9 5.2M5.3 12h5.4"/></svg>
+      <span class="label">Graph Explorer</span></a>
+    <a href="/solver" class="{{ 'on' if active == 'solver' }}" title="Solver">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="3" cy="8" r="1.8"/><circle cx="13" cy="8" r="1.8"/><path d="M4.8 8h6.4M9 5.8 11.2 8 9 10.2"/></svg>
+      <span class="label">Solver</span></a>
+  </nav>
+
+  <button class="toggle" id="navtoggle" title="Collapse sidebar">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m10 3-5 5 5 5"/></svg>
+    <span class="label">Collapse</span>
+  </button>
+
+  <div class="foot">
+    <div><span class="dot"></span><span class="txt">engine live</span></div>
+    <div class="sub txt">{{ nav_stats.formulas }} formulas<br>{{ nav_stats.domains }} physics domains</div>
+  </div>
+</aside>
+<script>
+document.getElementById('navtoggle').onclick = function () {
+  var c = document.documentElement.classList.toggle('nav-collapsed');
+  try { localStorage.setItem('navc', c ? '1' : '0'); } catch (e) {}
+  window.dispatchEvent(new Event('resize'));
+};
+</script>

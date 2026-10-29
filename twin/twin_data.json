@@ -1,0 +1,4306 @@
+{
+  "machine": {
+    "name": "Servo Piston Filler / Depositor",
+    "manufacturer": "Volumetric Technologies (an Excelis Packaging Automation company)",
+    "category": "Liquid Filling Machines > Piston Fillers > Servo Series",
+    "source_url": "https://volumetrictechnologies.com/piston-filler-machines/servo-series-filler-depositor",
+    "oem_published": {
+      "accuracy": "+/- 0.25% of 1% on homogeneous products",
+      "deposit_volume": "0.05 oz - 156.64 oz",
+      "heads": "1 - 24",
+      "speed": "up to 90 cycles/min",
+      "particulate": "up to 4 in diameter",
+      "materials": "316L / 304 stainless, USDA/FDA contact surfaces",
+      "power": "120 / 220 / 480 V + clean compressed air",
+      "control": "servo drive + touchscreen HMI, PLC in UL-listed panel",
+      "feedback": "load cell feedback control",
+      "cycle_profile": "soft start, fast fill, soft end"
+    }
+  },
+  "inputs": {
+    "V_disp_pf": {
+      "value": 0.00094635,
+      "unit": "m^3",
+      "confidence": "oem",
+      "note": "32 US fl oz nominal deposit, inside the published 0.05-156.64 oz range"
+    },
+    "dS_pos_pf": {
+      "value": 2.5e-05,
+      "unit": "m",
+      "confidence": "estimated",
+      "note": "servo positional repeatability: C5 screw lead grade + preload backlash + following error"
+    },
+    "dD_bore_pf": {
+      "value": 1.27e-05,
+      "unit": "m",
+      "confidence": "estimated",
+      "note": "bore machining tolerance, half of a 0.001 in band"
+    },
+    "e_spec_pf": {
+      "value": 0.25,
+      "unit": "%",
+      "confidence": "oem",
+      "note": "the published accuracy the machine must hold -- drives the whole geometry"
+    },
+    "gdot_max_pf": {
+      "value": 2000.0,
+      "unit": "1/s",
+      "confidence": "estimated",
+      "note": "wall shear ceiling before shear-sensitive product degrades"
+    },
+    "eta_vol_pf": {
+      "value": 0.985,
+      "unit": "-",
+      "confidence": "estimated",
+      "note": "volumetric efficiency: valve leak-back + product compressibility"
+    },
+    "D_rod_pf": {
+      "value": 0.032,
+      "unit": "m",
+      "confidence": "estimated",
+      "note": "piston rod diameter"
+    },
+    "Le_rod_pf": {
+      "value": 0.4,
+      "unit": "m",
+      "confidence": "estimated",
+      "note": "rod effective buckling length"
+    },
+    "E_rod_pf": {
+      "value": 193000000000.0,
+      "unit": "Pa",
+      "confidence": "material",
+      "note": "elastic modulus, 316L stainless (OEM-confirmed material)"
+    },
+    "m_piston_pf": {
+      "value": 4.5,
+      "unit": "kg",
+      "confidence": "estimated",
+      "note": "piston + rod + carriage moving mass"
+    },
+    "K_pl_pf": {
+      "value": 15.0,
+      "unit": "Pa*s^n",
+      "confidence": "estimated",
+      "note": "power-law consistency index, pasta sauce"
+    },
+    "n_pl_pf": {
+      "value": 0.4,
+      "unit": "-",
+      "confidence": "estimated",
+      "note": "flow behaviour index (<1 = shear-thinning)"
+    },
+    "rho_prod_pf": {
+      "value": 1100.0,
+      "unit": "kg/m^3",
+      "confidence": "estimated",
+      "note": "product density"
+    },
+    "L_nz_pf": {
+      "value": 0.15,
+      "unit": "m",
+      "confidence": "estimated",
+      "note": "nozzle + valve passage length"
+    },
+    "D_in_pf": {
+      "value": 0.06,
+      "unit": "m",
+      "confidence": "estimated",
+      "note": "hopper-to-cylinder inlet port bore"
+    },
+    "L_in_pf": {
+      "value": 0.15,
+      "unit": "m",
+      "confidence": "estimated",
+      "note": "inlet drop-tube length"
+    },
+    "P_atm_pf": {
+      "value": 101325.0,
+      "unit": "Pa",
+      "confidence": "material",
+      "note": "atmospheric pressure -- the ceiling on suction driving force"
+    },
+    "mu_seal_pf": {
+      "value": 0.12,
+      "unit": "-",
+      "confidence": "material",
+      "note": "PTFE-on-steel friction coefficient (OEM lists PTFE seals)"
+    },
+    "P_seal_pf": {
+      "value": 350000.0,
+      "unit": "Pa",
+      "confidence": "estimated",
+      "note": "seal contact pressure"
+    },
+    "w_seal_pf": {
+      "value": 0.008,
+      "unit": "m",
+      "confidence": "estimated",
+      "note": "seal contact width"
+    },
+    "p_lead_pf": {
+      "value": 0.01,
+      "unit": "m/rev",
+      "confidence": "estimated",
+      "note": "ball screw lead"
+    },
+    "eta_screw_pf": {
+      "value": 0.9,
+      "unit": "-",
+      "confidence": "material",
+      "note": "ball screw efficiency (typical 85-95%)"
+    },
+    "D_screw_pf": {
+      "value": 0.025,
+      "unit": "m",
+      "confidence": "estimated",
+      "note": "screw shaft diameter"
+    },
+    "L_screw_pf": {
+      "value": 0.4,
+      "unit": "m",
+      "confidence": "estimated",
+      "note": "screw shaft length"
+    },
+    "rho_steel_pf": {
+      "value": 7850.0,
+      "unit": "kg/m^3",
+      "confidence": "material",
+      "note": "steel density"
+    },
+    "J_rotor_pf": {
+      "value": 4.2e-05,
+      "unit": "kg*m^2",
+      "confidence": "estimated",
+      "note": "servo rotor inertia, ~400 W frame"
+    },
+    "N_enc_pf": {
+      "value": 131072.0,
+      "unit": "cnt/rev",
+      "confidence": "estimated",
+      "note": "17-bit absolute encoder"
+    },
+    "eta_motor_pf": {
+      "value": 0.9,
+      "unit": "-",
+      "confidence": "estimated",
+      "note": "servo motor efficiency"
+    },
+    "Rth_motor_pf": {
+      "value": 1.2,
+      "unit": "C/W",
+      "confidence": "estimated",
+      "note": "motor thermal resistance to ambient"
+    },
+    "e_valve_pf": {
+      "value": 0.1,
+      "unit": "%",
+      "confidence": "estimated",
+      "note": "valve cut-off repeatability -- dominant term"
+    },
+    "e_thermal_pf": {
+      "value": 0.08,
+      "unit": "%",
+      "confidence": "estimated",
+      "note": "product thermal expansion during run"
+    },
+    "e_loadcell_pf": {
+      "value": 0.05,
+      "unit": "%",
+      "confidence": "estimated",
+      "note": "load-cell feedback error (OEM lists load cell feedback)"
+    },
+    "n_cycles_pf": {
+      "value": 40.0,
+      "unit": "1/min",
+      "confidence": "estimated",
+      "note": "cycle rate for a 32 oz deposit (OEM ceiling is 90/min at small fills)"
+    },
+    "f_disch_pf": {
+      "value": 0.4,
+      "unit": "-",
+      "confidence": "estimated",
+      "note": "fraction of cycle spent on the discharge stroke"
+    },
+    "n_heads_pf": {
+      "value": 4.0,
+      "unit": "-",
+      "confidence": "oem",
+      "note": "4 heads, inside the published 1-24 head range"
+    },
+    "D_hop_pf": {
+      "value": 0.61,
+      "unit": "m",
+      "confidence": "estimated",
+      "note": "24 in hopper diameter"
+    },
+    "H_cone_pf": {
+      "value": 0.45,
+      "unit": "m",
+      "confidence": "estimated",
+      "note": "hopper cone height"
+    },
+    "H_cyl_pf": {
+      "value": 0.3,
+      "unit": "m",
+      "confidence": "estimated",
+      "note": "hopper straight-wall height"
+    },
+    "g_pf": {
+      "value": 9.80665,
+      "unit": "m/s^2",
+      "confidence": "material",
+      "note": "standard gravity"
+    },
+    "D_cont_pf": {
+      "value": 0.1,
+      "unit": "m",
+      "confidence": "estimated",
+      "note": "32 oz jar outside diameter (standard part)"
+    },
+    "H_cont_pf": {
+      "value": 0.142,
+      "unit": "m",
+      "confidence": "estimated",
+      "note": "32 oz jar height (standard part)"
+    },
+    "H_belt_pf": {
+      "value": 0.9,
+      "unit": "m",
+      "confidence": "estimated",
+      "note": "conveyor surface height -- ergonomic standard, not a fill parameter"
+    },
+    "clr_cont_pf": {
+      "value": 0.05,
+      "unit": "m",
+      "confidence": "estimated",
+      "note": "clearance between adjacent containers"
+    },
+    "V_line_pf": {
+      "value": 480.0,
+      "unit": "V",
+      "confidence": "oem",
+      "note": "480 V 3-phase (OEM lists 120/220/480 V)"
+    },
+    "pf_pf": {
+      "value": 0.85,
+      "unit": "-",
+      "confidence": "estimated",
+      "note": "drive power factor"
+    },
+    "eta_drive_pf": {
+      "value": 0.92,
+      "unit": "-",
+      "confidence": "estimated",
+      "note": "servo drive/amplifier efficiency"
+    }
+  },
+  "outputs": {
+    "D_bore_pf": {
+      "value": 0.09530453,
+      "unit": "m",
+      "label": "DERIVED optimal bore (min RSS geometric error)",
+      "confidence": 0.98,
+      "path": [
+        "pf_optimal_bore"
+      ],
+      "trace": [
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        }
+      ]
+    },
+    "S_stroke_pf": {
+      "value": 0.13265842,
+      "unit": "m",
+      "label": "DERIVED stroke for the nominal deposit",
+      "confidence": 0.9135,
+      "path": [
+        "pf_optimal_bore",
+        "pf_piston_bore_area",
+        "pf_stroke_required"
+      ],
+      "trace": [
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_piston_bore_area",
+          "equation": "A_piston_pf = pi*D_bore_pf**2/4",
+          "output": "A_piston_pf",
+          "value": 0.00713373
+        },
+        {
+          "formula": "pf_stroke_required",
+          "equation": "S_stroke_pf = V_disp_pf/A_piston_pf",
+          "output": "S_stroke_pf",
+          "value": 0.13265842
+        }
+      ]
+    },
+    "D_nz_pf": {
+      "value": 0.02536493,
+      "unit": "m",
+      "label": "DERIVED nozzle bore (shear ceiling)",
+      "confidence": 0.8943,
+      "path": [
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_net_fill_volume",
+        "pf_peak_flow",
+        "pf_nozzle_from_shear_limit"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_peak_flow",
+          "equation": "Q_pk_pf = 1.5*V_net_pf/t_disch_pf",
+          "output": "Q_pk_pf",
+          "value": 0.00233039
+        },
+        {
+          "formula": "pf_nozzle_from_shear_limit",
+          "equation": "D_nz_pf = 2*(Q_pk_pf*(3*n_pl_pf + 1)/(gdot_max_pf*n_pl_pf))**(1/3)/pi**(1/3)",
+          "output": "D_nz_pf",
+          "value": 0.02536493
+        }
+      ]
+    },
+    "S_min_pf": {
+      "value": 0.01207156,
+      "unit": "m",
+      "label": "Minimum stroke still holding the spec",
+      "confidence": 0.8739,
+      "path": [
+        "pf_fixed_error_terms",
+        "pf_geometric_error_budget",
+        "pf_optimal_bore",
+        "pf_bore_tolerance_error",
+        "pf_min_stroke_allowance",
+        "pf_minimum_stroke"
+      ],
+      "trace": [
+        {
+          "formula": "pf_fixed_error_terms",
+          "equation": "e_fixed_pf = sqrt(e_loadcell_pf**2 + e_thermal_pf**2 + e_valve_pf**2)",
+          "output": "e_fixed_pf",
+          "value": 0.13747727
+        },
+        {
+          "formula": "pf_geometric_error_budget",
+          "equation": "e_geo_pf = sqrt(-e_fixed_pf**2 + e_spec_pf**2)",
+          "output": "e_geo_pf",
+          "value": 0.20880613
+        },
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_bore_tolerance_error",
+          "equation": "e_bore_pf = 200*dD_bore_pf/D_bore_pf",
+          "output": "e_bore_pf",
+          "value": 0.02665141
+        },
+        {
+          "formula": "pf_min_stroke_allowance",
+          "equation": "e_smin_pf = sqrt(-e_bore_pf**2 + e_geo_pf**2)",
+          "output": "e_smin_pf",
+          "value": 0.20709829
+        },
+        {
+          "formula": "pf_minimum_stroke",
+          "equation": "S_min_pf = 100*dS_pos_pf/e_smin_pf",
+          "output": "S_min_pf",
+          "value": 0.01207156
+        }
+      ]
+    },
+    "V_min_pf": {
+      "value": 8.612e-05,
+      "unit": "m^3",
+      "label": "Smallest deposit this cylinder can hold to spec",
+      "confidence": 0.8203,
+      "path": [
+        "pf_optimal_bore",
+        "pf_piston_bore_area",
+        "pf_fixed_error_terms",
+        "pf_geometric_error_budget",
+        "pf_bore_tolerance_error",
+        "pf_min_stroke_allowance",
+        "pf_minimum_stroke",
+        "pf_minimum_volume"
+      ],
+      "trace": [
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_piston_bore_area",
+          "equation": "A_piston_pf = pi*D_bore_pf**2/4",
+          "output": "A_piston_pf",
+          "value": 0.00713373
+        },
+        {
+          "formula": "pf_fixed_error_terms",
+          "equation": "e_fixed_pf = sqrt(e_loadcell_pf**2 + e_thermal_pf**2 + e_valve_pf**2)",
+          "output": "e_fixed_pf",
+          "value": 0.13747727
+        },
+        {
+          "formula": "pf_geometric_error_budget",
+          "equation": "e_geo_pf = sqrt(-e_fixed_pf**2 + e_spec_pf**2)",
+          "output": "e_geo_pf",
+          "value": 0.20880613
+        },
+        {
+          "formula": "pf_bore_tolerance_error",
+          "equation": "e_bore_pf = 200*dD_bore_pf/D_bore_pf",
+          "output": "e_bore_pf",
+          "value": 0.02665141
+        },
+        {
+          "formula": "pf_min_stroke_allowance",
+          "equation": "e_smin_pf = sqrt(-e_bore_pf**2 + e_geo_pf**2)",
+          "output": "e_smin_pf",
+          "value": 0.20709829
+        },
+        {
+          "formula": "pf_minimum_stroke",
+          "equation": "S_min_pf = 100*dS_pos_pf/e_smin_pf",
+          "output": "S_min_pf",
+          "value": 0.01207156
+        },
+        {
+          "formula": "pf_minimum_volume",
+          "equation": "V_min_pf = A_piston_pf*S_min_pf",
+          "output": "V_min_pf",
+          "value": 8.612e-05
+        }
+      ]
+    },
+    "TD_pf": {
+      "value": 10.98933306,
+      "unit": ":1",
+      "label": "Turndown ratio on one cylinder",
+      "confidence": 0.8078,
+      "path": [
+        "pf_optimal_bore",
+        "pf_piston_bore_area",
+        "pf_stroke_required",
+        "pf_fixed_error_terms",
+        "pf_geometric_error_budget",
+        "pf_bore_tolerance_error",
+        "pf_min_stroke_allowance",
+        "pf_minimum_stroke",
+        "pf_turndown_ratio"
+      ],
+      "trace": [
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_piston_bore_area",
+          "equation": "A_piston_pf = pi*D_bore_pf**2/4",
+          "output": "A_piston_pf",
+          "value": 0.00713373
+        },
+        {
+          "formula": "pf_stroke_required",
+          "equation": "S_stroke_pf = V_disp_pf/A_piston_pf",
+          "output": "S_stroke_pf",
+          "value": 0.13265842
+        },
+        {
+          "formula": "pf_fixed_error_terms",
+          "equation": "e_fixed_pf = sqrt(e_loadcell_pf**2 + e_thermal_pf**2 + e_valve_pf**2)",
+          "output": "e_fixed_pf",
+          "value": 0.13747727
+        },
+        {
+          "formula": "pf_geometric_error_budget",
+          "equation": "e_geo_pf = sqrt(-e_fixed_pf**2 + e_spec_pf**2)",
+          "output": "e_geo_pf",
+          "value": 0.20880613
+        },
+        {
+          "formula": "pf_bore_tolerance_error",
+          "equation": "e_bore_pf = 200*dD_bore_pf/D_bore_pf",
+          "output": "e_bore_pf",
+          "value": 0.02665141
+        },
+        {
+          "formula": "pf_min_stroke_allowance",
+          "equation": "e_smin_pf = sqrt(-e_bore_pf**2 + e_geo_pf**2)",
+          "output": "e_smin_pf",
+          "value": 0.20709829
+        },
+        {
+          "formula": "pf_minimum_stroke",
+          "equation": "S_min_pf = 100*dS_pos_pf/e_smin_pf",
+          "output": "S_min_pf",
+          "value": 0.01207156
+        },
+        {
+          "formula": "pf_turndown_ratio",
+          "equation": "TD_pf = S_stroke_pf/S_min_pf",
+          "output": "TD_pf",
+          "value": 10.98933306
+        }
+      ]
+    },
+    "A_piston_pf": {
+      "value": 0.00713373,
+      "unit": "m^2",
+      "label": "Piston bore area",
+      "confidence": 0.9412,
+      "path": [
+        "pf_optimal_bore",
+        "pf_piston_bore_area"
+      ],
+      "trace": [
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_piston_bore_area",
+          "equation": "A_piston_pf = pi*D_bore_pf**2/4",
+          "output": "A_piston_pf",
+          "value": 0.00713373
+        }
+      ]
+    },
+    "V_net_pf": {
+      "value": 0.00093215,
+      "unit": "m^3",
+      "label": "Net delivered volume per cycle",
+      "confidence": 0.98,
+      "path": [
+        "pf_net_fill_volume"
+      ],
+      "trace": [
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        }
+      ]
+    },
+    "m_fill_pf": {
+      "value": 1.02537022,
+      "unit": "kg",
+      "label": "Delivered mass per cycle",
+      "confidence": 0.9508,
+      "path": [
+        "pf_net_fill_volume",
+        "pf_fill_mass"
+      ],
+      "trace": [
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_fill_mass",
+          "equation": "m_fill_pf = V_net_pf*rho_prod_pf",
+          "output": "m_fill_pf",
+          "value": 1.02537022
+        }
+      ]
+    },
+    "t_cycle_pf": {
+      "value": 1.5,
+      "unit": "s",
+      "label": "Full cycle time",
+      "confidence": 0.98,
+      "path": [
+        "pf_cycle_time"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        }
+      ]
+    },
+    "t_disch_pf": {
+      "value": 0.6,
+      "unit": "s",
+      "label": "Discharge stroke time",
+      "confidence": 0.9508,
+      "path": [
+        "pf_cycle_time",
+        "pf_discharge_time"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        }
+      ]
+    },
+    "Q_pf": {
+      "value": 0.00155359,
+      "unit": "m^3/s",
+      "label": "Mean flow rate over discharge stroke",
+      "confidence": 0.9086,
+      "path": [
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_net_fill_volume",
+        "pf_flow_rate"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_flow_rate",
+          "equation": "Q_pf = V_net_pf/t_disch_pf",
+          "output": "Q_pf",
+          "value": 0.00155359
+        }
+      ]
+    },
+    "v_pk_pf": {
+      "value": 0.33164606,
+      "unit": "m/s",
+      "label": "Peak piston velocity",
+      "confidence": 0.8598,
+      "path": [
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_optimal_bore",
+        "pf_piston_bore_area",
+        "pf_stroke_required",
+        "pf_peak_velocity"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_piston_bore_area",
+          "equation": "A_piston_pf = pi*D_bore_pf**2/4",
+          "output": "A_piston_pf",
+          "value": 0.00713373
+        },
+        {
+          "formula": "pf_stroke_required",
+          "equation": "S_stroke_pf = V_disp_pf/A_piston_pf",
+          "output": "S_stroke_pf",
+          "value": 0.13265842
+        },
+        {
+          "formula": "pf_peak_velocity",
+          "equation": "v_pk_pf = 1.5*S_stroke_pf/t_disch_pf",
+          "output": "v_pk_pf",
+          "value": 0.33164606
+        }
+      ]
+    },
+    "a_pk_pf": {
+      "value": 1.65823028,
+      "unit": "m/s^2",
+      "label": "Peak piston acceleration",
+      "confidence": 0.8598,
+      "path": [
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_optimal_bore",
+        "pf_piston_bore_area",
+        "pf_stroke_required",
+        "pf_peak_acceleration"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_piston_bore_area",
+          "equation": "A_piston_pf = pi*D_bore_pf**2/4",
+          "output": "A_piston_pf",
+          "value": 0.00713373
+        },
+        {
+          "formula": "pf_stroke_required",
+          "equation": "S_stroke_pf = V_disp_pf/A_piston_pf",
+          "output": "S_stroke_pf",
+          "value": 0.13265842
+        },
+        {
+          "formula": "pf_peak_acceleration",
+          "equation": "a_pk_pf = 4.5*S_stroke_pf/t_disch_pf**2",
+          "output": "a_pk_pf",
+          "value": 1.65823028
+        }
+      ]
+    },
+    "v_nz_pf": {
+      "value": 3.07453657,
+      "unit": "m/s",
+      "label": "Nozzle exit velocity at mean flow",
+      "confidence": 0.7605,
+      "path": [
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_net_fill_volume",
+        "pf_peak_flow",
+        "pf_nozzle_from_shear_limit",
+        "pf_nozzle_area",
+        "pf_flow_rate",
+        "pf_nozzle_velocity"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_peak_flow",
+          "equation": "Q_pk_pf = 1.5*V_net_pf/t_disch_pf",
+          "output": "Q_pk_pf",
+          "value": 0.00233039
+        },
+        {
+          "formula": "pf_nozzle_from_shear_limit",
+          "equation": "D_nz_pf = 2*(Q_pk_pf*(3*n_pl_pf + 1)/(gdot_max_pf*n_pl_pf))**(1/3)/pi**(1/3)",
+          "output": "D_nz_pf",
+          "value": 0.02536493
+        },
+        {
+          "formula": "pf_nozzle_area",
+          "equation": "A_nz_pf = pi*D_nz_pf**2/4",
+          "output": "A_nz_pf",
+          "value": 0.00050531
+        },
+        {
+          "formula": "pf_flow_rate",
+          "equation": "Q_pf = V_net_pf/t_disch_pf",
+          "output": "Q_pf",
+          "value": 0.00155359
+        },
+        {
+          "formula": "pf_nozzle_velocity",
+          "equation": "v_nz_pf = Q_pf/A_nz_pf",
+          "output": "v_nz_pf",
+          "value": 3.07453657
+        }
+      ]
+    },
+    "gdot_w_pf": {
+      "value": 1333.33333333,
+      "unit": "1/s",
+      "label": "True wall shear rate, Rabinowitsch-corrected",
+      "confidence": 0.8038,
+      "path": [
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_net_fill_volume",
+        "pf_peak_flow",
+        "pf_nozzle_from_shear_limit",
+        "pf_flow_rate",
+        "pf_apparent_wall_shear_rate",
+        "pf_rabinowitsch_correction"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_peak_flow",
+          "equation": "Q_pk_pf = 1.5*V_net_pf/t_disch_pf",
+          "output": "Q_pk_pf",
+          "value": 0.00233039
+        },
+        {
+          "formula": "pf_nozzle_from_shear_limit",
+          "equation": "D_nz_pf = 2*(Q_pk_pf*(3*n_pl_pf + 1)/(gdot_max_pf*n_pl_pf))**(1/3)/pi**(1/3)",
+          "output": "D_nz_pf",
+          "value": 0.02536493
+        },
+        {
+          "formula": "pf_flow_rate",
+          "equation": "Q_pf = V_net_pf/t_disch_pf",
+          "output": "Q_pf",
+          "value": 0.00155359
+        },
+        {
+          "formula": "pf_apparent_wall_shear_rate",
+          "equation": "gdot_app_pf = 32*Q_pf/(pi*D_nz_pf**3)",
+          "output": "gdot_app_pf",
+          "value": 969.6969697
+        },
+        {
+          "formula": "pf_rabinowitsch_correction",
+          "equation": "gdot_w_pf = gdot_app_pf*(3*n_pl_pf + 1)/(4*n_pl_pf)",
+          "output": "gdot_w_pf",
+          "value": 1333.33333333
+        }
+      ]
+    },
+    "tau_w_pf": {
+      "value": 266.72686084,
+      "unit": "Pa",
+      "label": "Wall shear stress at the nozzle",
+      "confidence": 0.8114,
+      "path": [
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_net_fill_volume",
+        "pf_peak_flow",
+        "pf_nozzle_from_shear_limit",
+        "pf_flow_rate",
+        "pf_apparent_wall_shear_rate",
+        "pf_rabinowitsch_correction",
+        "pf_power_law_wall_stress"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_peak_flow",
+          "equation": "Q_pk_pf = 1.5*V_net_pf/t_disch_pf",
+          "output": "Q_pk_pf",
+          "value": 0.00233039
+        },
+        {
+          "formula": "pf_nozzle_from_shear_limit",
+          "equation": "D_nz_pf = 2*(Q_pk_pf*(3*n_pl_pf + 1)/(gdot_max_pf*n_pl_pf))**(1/3)/pi**(1/3)",
+          "output": "D_nz_pf",
+          "value": 0.02536493
+        },
+        {
+          "formula": "pf_flow_rate",
+          "equation": "Q_pf = V_net_pf/t_disch_pf",
+          "output": "Q_pf",
+          "value": 0.00155359
+        },
+        {
+          "formula": "pf_apparent_wall_shear_rate",
+          "equation": "gdot_app_pf = 32*Q_pf/(pi*D_nz_pf**3)",
+          "output": "gdot_app_pf",
+          "value": 969.6969697
+        },
+        {
+          "formula": "pf_rabinowitsch_correction",
+          "equation": "gdot_w_pf = gdot_app_pf*(3*n_pl_pf + 1)/(4*n_pl_pf)",
+          "output": "gdot_w_pf",
+          "value": 1333.33333333
+        },
+        {
+          "formula": "pf_power_law_wall_stress",
+          "equation": "tau_w_pf = K_pl_pf*gdot_w_pf**n_pl_pf",
+          "output": "tau_w_pf",
+          "value": 266.72686084
+        }
+      ]
+    },
+    "mu_app_pf": {
+      "value": 0.20004515,
+      "unit": "Pa*s",
+      "label": "Apparent viscosity at operating shear rate",
+      "confidence": 0.6871,
+      "path": [
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_net_fill_volume",
+        "pf_peak_flow",
+        "pf_nozzle_from_shear_limit",
+        "pf_flow_rate",
+        "pf_apparent_wall_shear_rate",
+        "pf_rabinowitsch_correction",
+        "pf_power_law_wall_stress",
+        "pf_apparent_viscosity"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_peak_flow",
+          "equation": "Q_pk_pf = 1.5*V_net_pf/t_disch_pf",
+          "output": "Q_pk_pf",
+          "value": 0.00233039
+        },
+        {
+          "formula": "pf_nozzle_from_shear_limit",
+          "equation": "D_nz_pf = 2*(Q_pk_pf*(3*n_pl_pf + 1)/(gdot_max_pf*n_pl_pf))**(1/3)/pi**(1/3)",
+          "output": "D_nz_pf",
+          "value": 0.02536493
+        },
+        {
+          "formula": "pf_flow_rate",
+          "equation": "Q_pf = V_net_pf/t_disch_pf",
+          "output": "Q_pf",
+          "value": 0.00155359
+        },
+        {
+          "formula": "pf_apparent_wall_shear_rate",
+          "equation": "gdot_app_pf = 32*Q_pf/(pi*D_nz_pf**3)",
+          "output": "gdot_app_pf",
+          "value": 969.6969697
+        },
+        {
+          "formula": "pf_rabinowitsch_correction",
+          "equation": "gdot_w_pf = gdot_app_pf*(3*n_pl_pf + 1)/(4*n_pl_pf)",
+          "output": "gdot_w_pf",
+          "value": 1333.33333333
+        },
+        {
+          "formula": "pf_power_law_wall_stress",
+          "equation": "tau_w_pf = K_pl_pf*gdot_w_pf**n_pl_pf",
+          "output": "tau_w_pf",
+          "value": 266.72686084
+        },
+        {
+          "formula": "pf_apparent_viscosity",
+          "equation": "mu_app_pf = tau_w_pf/gdot_w_pf",
+          "output": "mu_app_pf",
+          "value": 0.20004515
+        }
+      ]
+    },
+    "dP_nz_pf": {
+      "value": 6309.34670276,
+      "unit": "Pa",
+      "label": "Nozzle pressure drop at mean flow",
+      "confidence": 0.7673,
+      "path": [
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_net_fill_volume",
+        "pf_peak_flow",
+        "pf_nozzle_from_shear_limit",
+        "pf_flow_rate",
+        "pf_apparent_wall_shear_rate",
+        "pf_rabinowitsch_correction",
+        "pf_power_law_wall_stress",
+        "pf_nozzle_pressure_drop"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_peak_flow",
+          "equation": "Q_pk_pf = 1.5*V_net_pf/t_disch_pf",
+          "output": "Q_pk_pf",
+          "value": 0.00233039
+        },
+        {
+          "formula": "pf_nozzle_from_shear_limit",
+          "equation": "D_nz_pf = 2*(Q_pk_pf*(3*n_pl_pf + 1)/(gdot_max_pf*n_pl_pf))**(1/3)/pi**(1/3)",
+          "output": "D_nz_pf",
+          "value": 0.02536493
+        },
+        {
+          "formula": "pf_flow_rate",
+          "equation": "Q_pf = V_net_pf/t_disch_pf",
+          "output": "Q_pf",
+          "value": 0.00155359
+        },
+        {
+          "formula": "pf_apparent_wall_shear_rate",
+          "equation": "gdot_app_pf = 32*Q_pf/(pi*D_nz_pf**3)",
+          "output": "gdot_app_pf",
+          "value": 969.6969697
+        },
+        {
+          "formula": "pf_rabinowitsch_correction",
+          "equation": "gdot_w_pf = gdot_app_pf*(3*n_pl_pf + 1)/(4*n_pl_pf)",
+          "output": "gdot_w_pf",
+          "value": 1333.33333333
+        },
+        {
+          "formula": "pf_power_law_wall_stress",
+          "equation": "tau_w_pf = K_pl_pf*gdot_w_pf**n_pl_pf",
+          "output": "tau_w_pf",
+          "value": 266.72686084
+        },
+        {
+          "formula": "pf_nozzle_pressure_drop",
+          "equation": "dP_nz_pf = 4*L_nz_pf*tau_w_pf/D_nz_pf",
+          "output": "dP_nz_pf",
+          "value": 6309.34670276
+        }
+      ]
+    },
+    "Re_gen_pf": {
+      "value": 311.87118027,
+      "unit": "-",
+      "label": "Generalized Reynolds number (Metzner-Reed)",
+      "confidence": 0.8082,
+      "path": [
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_net_fill_volume",
+        "pf_peak_flow",
+        "pf_nozzle_from_shear_limit",
+        "pf_nozzle_area",
+        "pf_flow_rate",
+        "pf_nozzle_velocity",
+        "pf_generalized_reynolds"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_peak_flow",
+          "equation": "Q_pk_pf = 1.5*V_net_pf/t_disch_pf",
+          "output": "Q_pk_pf",
+          "value": 0.00233039
+        },
+        {
+          "formula": "pf_nozzle_from_shear_limit",
+          "equation": "D_nz_pf = 2*(Q_pk_pf*(3*n_pl_pf + 1)/(gdot_max_pf*n_pl_pf))**(1/3)/pi**(1/3)",
+          "output": "D_nz_pf",
+          "value": 0.02536493
+        },
+        {
+          "formula": "pf_nozzle_area",
+          "equation": "A_nz_pf = pi*D_nz_pf**2/4",
+          "output": "A_nz_pf",
+          "value": 0.00050531
+        },
+        {
+          "formula": "pf_flow_rate",
+          "equation": "Q_pf = V_net_pf/t_disch_pf",
+          "output": "Q_pf",
+          "value": 0.00155359
+        },
+        {
+          "formula": "pf_nozzle_velocity",
+          "equation": "v_nz_pf = Q_pf/A_nz_pf",
+          "output": "v_nz_pf",
+          "value": 3.07453657
+        },
+        {
+          "formula": "pf_generalized_reynolds",
+          "equation": "Re_gen_pf = 8**(1 - n_pl_pf)*D_nz_pf**n_pl_pf*rho_prod_pf*v_nz_pf**(2 - n_pl_pf)/(K_pl_pf*((3*n_pl_pf + 1)/(4*n_pl_pf))**n_pl_pf)",
+          "output": "Re_gen_pf",
+          "value": 311.87118027
+        }
+      ]
+    },
+    "F_press_pf": {
+      "value": 45.00920593,
+      "unit": "N",
+      "label": "Thrust to overcome nozzle pressure",
+      "confidence": 0.7122,
+      "path": [
+        "pf_optimal_bore",
+        "pf_piston_bore_area",
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_net_fill_volume",
+        "pf_peak_flow",
+        "pf_nozzle_from_shear_limit",
+        "pf_flow_rate",
+        "pf_apparent_wall_shear_rate",
+        "pf_rabinowitsch_correction",
+        "pf_power_law_wall_stress",
+        "pf_nozzle_pressure_drop",
+        "pf_pressure_force"
+      ],
+      "trace": [
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_piston_bore_area",
+          "equation": "A_piston_pf = pi*D_bore_pf**2/4",
+          "output": "A_piston_pf",
+          "value": 0.00713373
+        },
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_peak_flow",
+          "equation": "Q_pk_pf = 1.5*V_net_pf/t_disch_pf",
+          "output": "Q_pk_pf",
+          "value": 0.00233039
+        },
+        {
+          "formula": "pf_nozzle_from_shear_limit",
+          "equation": "D_nz_pf = 2*(Q_pk_pf*(3*n_pl_pf + 1)/(gdot_max_pf*n_pl_pf))**(1/3)/pi**(1/3)",
+          "output": "D_nz_pf",
+          "value": 0.02536493
+        },
+        {
+          "formula": "pf_flow_rate",
+          "equation": "Q_pf = V_net_pf/t_disch_pf",
+          "output": "Q_pf",
+          "value": 0.00155359
+        },
+        {
+          "formula": "pf_apparent_wall_shear_rate",
+          "equation": "gdot_app_pf = 32*Q_pf/(pi*D_nz_pf**3)",
+          "output": "gdot_app_pf",
+          "value": 969.6969697
+        },
+        {
+          "formula": "pf_rabinowitsch_correction",
+          "equation": "gdot_w_pf = gdot_app_pf*(3*n_pl_pf + 1)/(4*n_pl_pf)",
+          "output": "gdot_w_pf",
+          "value": 1333.33333333
+        },
+        {
+          "formula": "pf_power_law_wall_stress",
+          "equation": "tau_w_pf = K_pl_pf*gdot_w_pf**n_pl_pf",
+          "output": "tau_w_pf",
+          "value": 266.72686084
+        },
+        {
+          "formula": "pf_nozzle_pressure_drop",
+          "equation": "dP_nz_pf = 4*L_nz_pf*tau_w_pf/D_nz_pf",
+          "output": "dP_nz_pf",
+          "value": 6309.34670276
+        },
+        {
+          "formula": "pf_pressure_force",
+          "equation": "F_press_pf = A_piston_pf*dP_nz_pf",
+          "output": "F_press_pf",
+          "value": 45.00920593
+        }
+      ]
+    },
+    "F_seal_pf": {
+      "value": 100.60109051,
+      "unit": "N",
+      "label": "Thrust to overcome seal friction",
+      "confidence": 0.9556,
+      "path": [
+        "pf_optimal_bore",
+        "pf_seal_friction_force"
+      ],
+      "trace": [
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_seal_friction_force",
+          "equation": "F_seal_pf = pi*D_bore_pf*P_seal_pf*mu_seal_pf*w_seal_pf",
+          "output": "F_seal_pf",
+          "value": 100.60109051
+        }
+      ]
+    },
+    "F_inertia_pf": {
+      "value": 7.46203626,
+      "unit": "N",
+      "label": "Thrust to accelerate the piston",
+      "confidence": 0.8406,
+      "path": [
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_optimal_bore",
+        "pf_piston_bore_area",
+        "pf_stroke_required",
+        "pf_peak_acceleration",
+        "pf_inertia_force"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_piston_bore_area",
+          "equation": "A_piston_pf = pi*D_bore_pf**2/4",
+          "output": "A_piston_pf",
+          "value": 0.00713373
+        },
+        {
+          "formula": "pf_stroke_required",
+          "equation": "S_stroke_pf = V_disp_pf/A_piston_pf",
+          "output": "S_stroke_pf",
+          "value": 0.13265842
+        },
+        {
+          "formula": "pf_peak_acceleration",
+          "equation": "a_pk_pf = 4.5*S_stroke_pf/t_disch_pf**2",
+          "output": "a_pk_pf",
+          "value": 1.65823028
+        },
+        {
+          "formula": "pf_inertia_force",
+          "equation": "F_inertia_pf = a_pk_pf*m_piston_pf",
+          "output": "F_inertia_pf",
+          "value": 7.46203626
+        }
+      ]
+    },
+    "F_thrust_pf": {
+      "value": 153.0723327,
+      "unit": "N",
+      "label": "Total piston thrust",
+      "confidence": 0.6832,
+      "path": [
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_optimal_bore",
+        "pf_piston_bore_area",
+        "pf_stroke_required",
+        "pf_peak_acceleration",
+        "pf_inertia_force",
+        "pf_seal_friction_force",
+        "pf_net_fill_volume",
+        "pf_peak_flow",
+        "pf_nozzle_from_shear_limit",
+        "pf_flow_rate",
+        "pf_apparent_wall_shear_rate",
+        "pf_rabinowitsch_correction",
+        "pf_power_law_wall_stress",
+        "pf_nozzle_pressure_drop",
+        "pf_pressure_force",
+        "pf_total_thrust"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_piston_bore_area",
+          "equation": "A_piston_pf = pi*D_bore_pf**2/4",
+          "output": "A_piston_pf",
+          "value": 0.00713373
+        },
+        {
+          "formula": "pf_stroke_required",
+          "equation": "S_stroke_pf = V_disp_pf/A_piston_pf",
+          "output": "S_stroke_pf",
+          "value": 0.13265842
+        },
+        {
+          "formula": "pf_peak_acceleration",
+          "equation": "a_pk_pf = 4.5*S_stroke_pf/t_disch_pf**2",
+          "output": "a_pk_pf",
+          "value": 1.65823028
+        },
+        {
+          "formula": "pf_inertia_force",
+          "equation": "F_inertia_pf = a_pk_pf*m_piston_pf",
+          "output": "F_inertia_pf",
+          "value": 7.46203626
+        },
+        {
+          "formula": "pf_seal_friction_force",
+          "equation": "F_seal_pf = pi*D_bore_pf*P_seal_pf*mu_seal_pf*w_seal_pf",
+          "output": "F_seal_pf",
+          "value": 100.60109051
+        },
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_peak_flow",
+          "equation": "Q_pk_pf = 1.5*V_net_pf/t_disch_pf",
+          "output": "Q_pk_pf",
+          "value": 0.00233039
+        },
+        {
+          "formula": "pf_nozzle_from_shear_limit",
+          "equation": "D_nz_pf = 2*(Q_pk_pf*(3*n_pl_pf + 1)/(gdot_max_pf*n_pl_pf))**(1/3)/pi**(1/3)",
+          "output": "D_nz_pf",
+          "value": 0.02536493
+        },
+        {
+          "formula": "pf_flow_rate",
+          "equation": "Q_pf = V_net_pf/t_disch_pf",
+          "output": "Q_pf",
+          "value": 0.00155359
+        },
+        {
+          "formula": "pf_apparent_wall_shear_rate",
+          "equation": "gdot_app_pf = 32*Q_pf/(pi*D_nz_pf**3)",
+          "output": "gdot_app_pf",
+          "value": 969.6969697
+        },
+        {
+          "formula": "pf_rabinowitsch_correction",
+          "equation": "gdot_w_pf = gdot_app_pf*(3*n_pl_pf + 1)/(4*n_pl_pf)",
+          "output": "gdot_w_pf",
+          "value": 1333.33333333
+        },
+        {
+          "formula": "pf_power_law_wall_stress",
+          "equation": "tau_w_pf = K_pl_pf*gdot_w_pf**n_pl_pf",
+          "output": "tau_w_pf",
+          "value": 266.72686084
+        },
+        {
+          "formula": "pf_nozzle_pressure_drop",
+          "equation": "dP_nz_pf = 4*L_nz_pf*tau_w_pf/D_nz_pf",
+          "output": "dP_nz_pf",
+          "value": 6309.34670276
+        },
+        {
+          "formula": "pf_pressure_force",
+          "equation": "F_press_pf = A_piston_pf*dP_nz_pf",
+          "output": "F_press_pf",
+          "value": 45.00920593
+        },
+        {
+          "formula": "pf_total_thrust",
+          "equation": "F_thrust_pf = F_inertia_pf + F_press_pf + F_seal_pf",
+          "output": "F_thrust_pf",
+          "value": 153.0723327
+        }
+      ]
+    },
+    "T_screw_pf": {
+      "value": 0.27069132,
+      "unit": "N*m",
+      "label": "Motor torque to hold thrust through the screw",
+      "confidence": 0.7162,
+      "path": [
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_optimal_bore",
+        "pf_piston_bore_area",
+        "pf_stroke_required",
+        "pf_peak_acceleration",
+        "pf_inertia_force",
+        "pf_seal_friction_force",
+        "pf_net_fill_volume",
+        "pf_peak_flow",
+        "pf_nozzle_from_shear_limit",
+        "pf_flow_rate",
+        "pf_apparent_wall_shear_rate",
+        "pf_rabinowitsch_correction",
+        "pf_power_law_wall_stress",
+        "pf_nozzle_pressure_drop",
+        "pf_pressure_force",
+        "pf_total_thrust",
+        "pf_ballscrew_torque"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_piston_bore_area",
+          "equation": "A_piston_pf = pi*D_bore_pf**2/4",
+          "output": "A_piston_pf",
+          "value": 0.00713373
+        },
+        {
+          "formula": "pf_stroke_required",
+          "equation": "S_stroke_pf = V_disp_pf/A_piston_pf",
+          "output": "S_stroke_pf",
+          "value": 0.13265842
+        },
+        {
+          "formula": "pf_peak_acceleration",
+          "equation": "a_pk_pf = 4.5*S_stroke_pf/t_disch_pf**2",
+          "output": "a_pk_pf",
+          "value": 1.65823028
+        },
+        {
+          "formula": "pf_inertia_force",
+          "equation": "F_inertia_pf = a_pk_pf*m_piston_pf",
+          "output": "F_inertia_pf",
+          "value": 7.46203626
+        },
+        {
+          "formula": "pf_seal_friction_force",
+          "equation": "F_seal_pf = pi*D_bore_pf*P_seal_pf*mu_seal_pf*w_seal_pf",
+          "output": "F_seal_pf",
+          "value": 100.60109051
+        },
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_peak_flow",
+          "equation": "Q_pk_pf = 1.5*V_net_pf/t_disch_pf",
+          "output": "Q_pk_pf",
+          "value": 0.00233039
+        },
+        {
+          "formula": "pf_nozzle_from_shear_limit",
+          "equation": "D_nz_pf = 2*(Q_pk_pf*(3*n_pl_pf + 1)/(gdot_max_pf*n_pl_pf))**(1/3)/pi**(1/3)",
+          "output": "D_nz_pf",
+          "value": 0.02536493
+        },
+        {
+          "formula": "pf_flow_rate",
+          "equation": "Q_pf = V_net_pf/t_disch_pf",
+          "output": "Q_pf",
+          "value": 0.00155359
+        },
+        {
+          "formula": "pf_apparent_wall_shear_rate",
+          "equation": "gdot_app_pf = 32*Q_pf/(pi*D_nz_pf**3)",
+          "output": "gdot_app_pf",
+          "value": 969.6969697
+        },
+        {
+          "formula": "pf_rabinowitsch_correction",
+          "equation": "gdot_w_pf = gdot_app_pf*(3*n_pl_pf + 1)/(4*n_pl_pf)",
+          "output": "gdot_w_pf",
+          "value": 1333.33333333
+        },
+        {
+          "formula": "pf_power_law_wall_stress",
+          "equation": "tau_w_pf = K_pl_pf*gdot_w_pf**n_pl_pf",
+          "output": "tau_w_pf",
+          "value": 266.72686084
+        },
+        {
+          "formula": "pf_nozzle_pressure_drop",
+          "equation": "dP_nz_pf = 4*L_nz_pf*tau_w_pf/D_nz_pf",
+          "output": "dP_nz_pf",
+          "value": 6309.34670276
+        },
+        {
+          "formula": "pf_pressure_force",
+          "equation": "F_press_pf = A_piston_pf*dP_nz_pf",
+          "output": "F_press_pf",
+          "value": 45.00920593
+        },
+        {
+          "formula": "pf_total_thrust",
+          "equation": "F_thrust_pf = F_inertia_pf + F_press_pf + F_seal_pf",
+          "output": "F_thrust_pf",
+          "value": 153.0723327
+        },
+        {
+          "formula": "pf_ballscrew_torque",
+          "equation": "T_screw_pf = F_thrust_pf*p_lead_pf/(2*pi*eta_screw_pf)",
+          "output": "T_screw_pf",
+          "value": 0.27069132
+        }
+      ]
+    },
+    "T_acc_pf": {
+      "value": 0.18109847,
+      "unit": "N*m",
+      "label": "Motor torque to accelerate rotating inertia",
+      "confidence": 0.792,
+      "path": [
+        "pf_reflected_load_inertia",
+        "pf_screw_inertia",
+        "pf_total_inertia",
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_optimal_bore",
+        "pf_piston_bore_area",
+        "pf_stroke_required",
+        "pf_peak_acceleration",
+        "pf_screw_angular_accel",
+        "pf_accel_torque"
+      ],
+      "trace": [
+        {
+          "formula": "pf_reflected_load_inertia",
+          "equation": "J_load_pf = m_piston_pf*p_lead_pf**2/(4*pi**2)",
+          "output": "J_load_pf",
+          "value": 1.14e-05
+        },
+        {
+          "formula": "pf_screw_inertia",
+          "equation": "J_screw_pf = pi*D_screw_pf**4*L_screw_pf*rho_steel_pf/32",
+          "output": "J_screw_pf",
+          "value": 0.00012042
+        },
+        {
+          "formula": "pf_total_inertia",
+          "equation": "J_tot_pf = J_load_pf + J_rotor_pf + J_screw_pf",
+          "output": "J_tot_pf",
+          "value": 0.00017382
+        },
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_piston_bore_area",
+          "equation": "A_piston_pf = pi*D_bore_pf**2/4",
+          "output": "A_piston_pf",
+          "value": 0.00713373
+        },
+        {
+          "formula": "pf_stroke_required",
+          "equation": "S_stroke_pf = V_disp_pf/A_piston_pf",
+          "output": "S_stroke_pf",
+          "value": 0.13265842
+        },
+        {
+          "formula": "pf_peak_acceleration",
+          "equation": "a_pk_pf = 4.5*S_stroke_pf/t_disch_pf**2",
+          "output": "a_pk_pf",
+          "value": 1.65823028
+        },
+        {
+          "formula": "pf_screw_angular_accel",
+          "equation": "alpha_pf = 2*pi*a_pk_pf/p_lead_pf",
+          "output": "alpha_pf",
+          "value": 1041.89681315
+        },
+        {
+          "formula": "pf_accel_torque",
+          "equation": "T_acc_pf = J_tot_pf*alpha_pf",
+          "output": "T_acc_pf",
+          "value": 0.18109847
+        }
+      ]
+    },
+    "T_pk_pf": {
+      "value": 0.45178978,
+      "unit": "N*m",
+      "label": "Peak motor torque",
+      "confidence": 0.5917,
+      "path": [
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_optimal_bore",
+        "pf_piston_bore_area",
+        "pf_stroke_required",
+        "pf_peak_acceleration",
+        "pf_inertia_force",
+        "pf_seal_friction_force",
+        "pf_net_fill_volume",
+        "pf_peak_flow",
+        "pf_nozzle_from_shear_limit",
+        "pf_flow_rate",
+        "pf_apparent_wall_shear_rate",
+        "pf_rabinowitsch_correction",
+        "pf_power_law_wall_stress",
+        "pf_nozzle_pressure_drop",
+        "pf_pressure_force",
+        "pf_total_thrust",
+        "pf_ballscrew_torque",
+        "pf_reflected_load_inertia",
+        "pf_screw_inertia",
+        "pf_total_inertia",
+        "pf_screw_angular_accel",
+        "pf_accel_torque",
+        "pf_peak_motor_torque"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_piston_bore_area",
+          "equation": "A_piston_pf = pi*D_bore_pf**2/4",
+          "output": "A_piston_pf",
+          "value": 0.00713373
+        },
+        {
+          "formula": "pf_stroke_required",
+          "equation": "S_stroke_pf = V_disp_pf/A_piston_pf",
+          "output": "S_stroke_pf",
+          "value": 0.13265842
+        },
+        {
+          "formula": "pf_peak_acceleration",
+          "equation": "a_pk_pf = 4.5*S_stroke_pf/t_disch_pf**2",
+          "output": "a_pk_pf",
+          "value": 1.65823028
+        },
+        {
+          "formula": "pf_inertia_force",
+          "equation": "F_inertia_pf = a_pk_pf*m_piston_pf",
+          "output": "F_inertia_pf",
+          "value": 7.46203626
+        },
+        {
+          "formula": "pf_seal_friction_force",
+          "equation": "F_seal_pf = pi*D_bore_pf*P_seal_pf*mu_seal_pf*w_seal_pf",
+          "output": "F_seal_pf",
+          "value": 100.60109051
+        },
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_peak_flow",
+          "equation": "Q_pk_pf = 1.5*V_net_pf/t_disch_pf",
+          "output": "Q_pk_pf",
+          "value": 0.00233039
+        },
+        {
+          "formula": "pf_nozzle_from_shear_limit",
+          "equation": "D_nz_pf = 2*(Q_pk_pf*(3*n_pl_pf + 1)/(gdot_max_pf*n_pl_pf))**(1/3)/pi**(1/3)",
+          "output": "D_nz_pf",
+          "value": 0.02536493
+        },
+        {
+          "formula": "pf_flow_rate",
+          "equation": "Q_pf = V_net_pf/t_disch_pf",
+          "output": "Q_pf",
+          "value": 0.00155359
+        },
+        {
+          "formula": "pf_apparent_wall_shear_rate",
+          "equation": "gdot_app_pf = 32*Q_pf/(pi*D_nz_pf**3)",
+          "output": "gdot_app_pf",
+          "value": 969.6969697
+        },
+        {
+          "formula": "pf_rabinowitsch_correction",
+          "equation": "gdot_w_pf = gdot_app_pf*(3*n_pl_pf + 1)/(4*n_pl_pf)",
+          "output": "gdot_w_pf",
+          "value": 1333.33333333
+        },
+        {
+          "formula": "pf_power_law_wall_stress",
+          "equation": "tau_w_pf = K_pl_pf*gdot_w_pf**n_pl_pf",
+          "output": "tau_w_pf",
+          "value": 266.72686084
+        },
+        {
+          "formula": "pf_nozzle_pressure_drop",
+          "equation": "dP_nz_pf = 4*L_nz_pf*tau_w_pf/D_nz_pf",
+          "output": "dP_nz_pf",
+          "value": 6309.34670276
+        },
+        {
+          "formula": "pf_pressure_force",
+          "equation": "F_press_pf = A_piston_pf*dP_nz_pf",
+          "output": "F_press_pf",
+          "value": 45.00920593
+        },
+        {
+          "formula": "pf_total_thrust",
+          "equation": "F_thrust_pf = F_inertia_pf + F_press_pf + F_seal_pf",
+          "output": "F_thrust_pf",
+          "value": 153.0723327
+        },
+        {
+          "formula": "pf_ballscrew_torque",
+          "equation": "T_screw_pf = F_thrust_pf*p_lead_pf/(2*pi*eta_screw_pf)",
+          "output": "T_screw_pf",
+          "value": 0.27069132
+        },
+        {
+          "formula": "pf_reflected_load_inertia",
+          "equation": "J_load_pf = m_piston_pf*p_lead_pf**2/(4*pi**2)",
+          "output": "J_load_pf",
+          "value": 1.14e-05
+        },
+        {
+          "formula": "pf_screw_inertia",
+          "equation": "J_screw_pf = pi*D_screw_pf**4*L_screw_pf*rho_steel_pf/32",
+          "output": "J_screw_pf",
+          "value": 0.00012042
+        },
+        {
+          "formula": "pf_total_inertia",
+          "equation": "J_tot_pf = J_load_pf + J_rotor_pf + J_screw_pf",
+          "output": "J_tot_pf",
+          "value": 0.00017382
+        },
+        {
+          "formula": "pf_screw_angular_accel",
+          "equation": "alpha_pf = 2*pi*a_pk_pf/p_lead_pf",
+          "output": "alpha_pf",
+          "value": 1041.89681315
+        },
+        {
+          "formula": "pf_accel_torque",
+          "equation": "T_acc_pf = J_tot_pf*alpha_pf",
+          "output": "T_acc_pf",
+          "value": 0.18109847
+        },
+        {
+          "formula": "pf_peak_motor_torque",
+          "equation": "T_pk_pf = T_acc_pf + T_screw_pf",
+          "output": "T_pk_pf",
+          "value": 0.45178978
+        }
+      ]
+    },
+    "N_screw_pf": {
+      "value": 1989.87633605,
+      "unit": "rpm",
+      "label": "Peak servo speed",
+      "confidence": 0.8406,
+      "path": [
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_optimal_bore",
+        "pf_piston_bore_area",
+        "pf_stroke_required",
+        "pf_peak_velocity",
+        "pf_screw_rpm"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_piston_bore_area",
+          "equation": "A_piston_pf = pi*D_bore_pf**2/4",
+          "output": "A_piston_pf",
+          "value": 0.00713373
+        },
+        {
+          "formula": "pf_stroke_required",
+          "equation": "S_stroke_pf = V_disp_pf/A_piston_pf",
+          "output": "S_stroke_pf",
+          "value": 0.13265842
+        },
+        {
+          "formula": "pf_peak_velocity",
+          "equation": "v_pk_pf = 1.5*S_stroke_pf/t_disch_pf",
+          "output": "v_pk_pf",
+          "value": 0.33164606
+        },
+        {
+          "formula": "pf_screw_rpm",
+          "equation": "N_screw_pf = 60*v_pk_pf/p_lead_pf",
+          "output": "N_screw_pf",
+          "value": 1989.87633605
+        }
+      ]
+    },
+    "J_tot_pf": {
+      "value": 0.00017382,
+      "unit": "kg*m^2",
+      "label": "Total reflected inertia",
+      "confidence": 0.9476,
+      "path": [
+        "pf_reflected_load_inertia",
+        "pf_screw_inertia",
+        "pf_total_inertia"
+      ],
+      "trace": [
+        {
+          "formula": "pf_reflected_load_inertia",
+          "equation": "J_load_pf = m_piston_pf*p_lead_pf**2/(4*pi**2)",
+          "output": "J_load_pf",
+          "value": 1.14e-05
+        },
+        {
+          "formula": "pf_screw_inertia",
+          "equation": "J_screw_pf = pi*D_screw_pf**4*L_screw_pf*rho_steel_pf/32",
+          "output": "J_screw_pf",
+          "value": 0.00012042
+        },
+        {
+          "formula": "pf_total_inertia",
+          "equation": "J_tot_pf = J_load_pf + J_rotor_pf + J_screw_pf",
+          "output": "J_tot_pf",
+          "value": 0.00017382
+        }
+      ]
+    },
+    "R_inertia_pf": {
+      "value": 3.13847917,
+      "unit": "-",
+      "label": "Inertia ratio (load:rotor)",
+      "confidence": 0.9476,
+      "path": [
+        "pf_reflected_load_inertia",
+        "pf_screw_inertia",
+        "pf_inertia_ratio"
+      ],
+      "trace": [
+        {
+          "formula": "pf_reflected_load_inertia",
+          "equation": "J_load_pf = m_piston_pf*p_lead_pf**2/(4*pi**2)",
+          "output": "J_load_pf",
+          "value": 1.14e-05
+        },
+        {
+          "formula": "pf_screw_inertia",
+          "equation": "J_screw_pf = pi*D_screw_pf**4*L_screw_pf*rho_steel_pf/32",
+          "output": "J_screw_pf",
+          "value": 0.00012042
+        },
+        {
+          "formula": "pf_inertia_ratio",
+          "equation": "R_inertia_pf = (J_load_pf + J_screw_pf)/J_rotor_pf",
+          "output": "R_inertia_pf",
+          "value": 3.13847917
+        }
+      ]
+    },
+    "P_servo_pf": {
+      "value": 94.14366687,
+      "unit": "W",
+      "label": "Peak servo shaft power, one head",
+      "confidence": 0.5507,
+      "path": [
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_optimal_bore",
+        "pf_piston_bore_area",
+        "pf_stroke_required",
+        "pf_peak_acceleration",
+        "pf_inertia_force",
+        "pf_seal_friction_force",
+        "pf_net_fill_volume",
+        "pf_peak_flow",
+        "pf_nozzle_from_shear_limit",
+        "pf_flow_rate",
+        "pf_apparent_wall_shear_rate",
+        "pf_rabinowitsch_correction",
+        "pf_power_law_wall_stress",
+        "pf_nozzle_pressure_drop",
+        "pf_pressure_force",
+        "pf_total_thrust",
+        "pf_ballscrew_torque",
+        "pf_reflected_load_inertia",
+        "pf_screw_inertia",
+        "pf_total_inertia",
+        "pf_screw_angular_accel",
+        "pf_accel_torque",
+        "pf_peak_motor_torque",
+        "pf_peak_velocity",
+        "pf_screw_angular_velocity",
+        "pf_servo_power"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_piston_bore_area",
+          "equation": "A_piston_pf = pi*D_bore_pf**2/4",
+          "output": "A_piston_pf",
+          "value": 0.00713373
+        },
+        {
+          "formula": "pf_stroke_required",
+          "equation": "S_stroke_pf = V_disp_pf/A_piston_pf",
+          "output": "S_stroke_pf",
+          "value": 0.13265842
+        },
+        {
+          "formula": "pf_peak_acceleration",
+          "equation": "a_pk_pf = 4.5*S_stroke_pf/t_disch_pf**2",
+          "output": "a_pk_pf",
+          "value": 1.65823028
+        },
+        {
+          "formula": "pf_inertia_force",
+          "equation": "F_inertia_pf = a_pk_pf*m_piston_pf",
+          "output": "F_inertia_pf",
+          "value": 7.46203626
+        },
+        {
+          "formula": "pf_seal_friction_force",
+          "equation": "F_seal_pf = pi*D_bore_pf*P_seal_pf*mu_seal_pf*w_seal_pf",
+          "output": "F_seal_pf",
+          "value": 100.60109051
+        },
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_peak_flow",
+          "equation": "Q_pk_pf = 1.5*V_net_pf/t_disch_pf",
+          "output": "Q_pk_pf",
+          "value": 0.00233039
+        },
+        {
+          "formula": "pf_nozzle_from_shear_limit",
+          "equation": "D_nz_pf = 2*(Q_pk_pf*(3*n_pl_pf + 1)/(gdot_max_pf*n_pl_pf))**(1/3)/pi**(1/3)",
+          "output": "D_nz_pf",
+          "value": 0.02536493
+        },
+        {
+          "formula": "pf_flow_rate",
+          "equation": "Q_pf = V_net_pf/t_disch_pf",
+          "output": "Q_pf",
+          "value": 0.00155359
+        },
+        {
+          "formula": "pf_apparent_wall_shear_rate",
+          "equation": "gdot_app_pf = 32*Q_pf/(pi*D_nz_pf**3)",
+          "output": "gdot_app_pf",
+          "value": 969.6969697
+        },
+        {
+          "formula": "pf_rabinowitsch_correction",
+          "equation": "gdot_w_pf = gdot_app_pf*(3*n_pl_pf + 1)/(4*n_pl_pf)",
+          "output": "gdot_w_pf",
+          "value": 1333.33333333
+        },
+        {
+          "formula": "pf_power_law_wall_stress",
+          "equation": "tau_w_pf = K_pl_pf*gdot_w_pf**n_pl_pf",
+          "output": "tau_w_pf",
+          "value": 266.72686084
+        },
+        {
+          "formula": "pf_nozzle_pressure_drop",
+          "equation": "dP_nz_pf = 4*L_nz_pf*tau_w_pf/D_nz_pf",
+          "output": "dP_nz_pf",
+          "value": 6309.34670276
+        },
+        {
+          "formula": "pf_pressure_force",
+          "equation": "F_press_pf = A_piston_pf*dP_nz_pf",
+          "output": "F_press_pf",
+          "value": 45.00920593
+        },
+        {
+          "formula": "pf_total_thrust",
+          "equation": "F_thrust_pf = F_inertia_pf + F_press_pf + F_seal_pf",
+          "output": "F_thrust_pf",
+          "value": 153.0723327
+        },
+        {
+          "formula": "pf_ballscrew_torque",
+          "equation": "T_screw_pf = F_thrust_pf*p_lead_pf/(2*pi*eta_screw_pf)",
+          "output": "T_screw_pf",
+          "value": 0.27069132
+        },
+        {
+          "formula": "pf_reflected_load_inertia",
+          "equation": "J_load_pf = m_piston_pf*p_lead_pf**2/(4*pi**2)",
+          "output": "J_load_pf",
+          "value": 1.14e-05
+        },
+        {
+          "formula": "pf_screw_inertia",
+          "equation": "J_screw_pf = pi*D_screw_pf**4*L_screw_pf*rho_steel_pf/32",
+          "output": "J_screw_pf",
+          "value": 0.00012042
+        },
+        {
+          "formula": "pf_total_inertia",
+          "equation": "J_tot_pf = J_load_pf + J_rotor_pf + J_screw_pf",
+          "output": "J_tot_pf",
+          "value": 0.00017382
+        },
+        {
+          "formula": "pf_screw_angular_accel",
+          "equation": "alpha_pf = 2*pi*a_pk_pf/p_lead_pf",
+          "output": "alpha_pf",
+          "value": 1041.89681315
+        },
+        {
+          "formula": "pf_accel_torque",
+          "equation": "T_acc_pf = J_tot_pf*alpha_pf",
+          "output": "T_acc_pf",
+          "value": 0.18109847
+        },
+        {
+          "formula": "pf_peak_motor_torque",
+          "equation": "T_pk_pf = T_acc_pf + T_screw_pf",
+          "output": "T_pk_pf",
+          "value": 0.45178978
+        },
+        {
+          "formula": "pf_peak_velocity",
+          "equation": "v_pk_pf = 1.5*S_stroke_pf/t_disch_pf",
+          "output": "v_pk_pf",
+          "value": 0.33164606
+        },
+        {
+          "formula": "pf_screw_angular_velocity",
+          "equation": "omega_screw_pf = 2*pi*v_pk_pf/p_lead_pf",
+          "output": "omega_screw_pf",
+          "value": 208.37936263
+        },
+        {
+          "formula": "pf_servo_power",
+          "equation": "P_servo_pf = T_pk_pf*omega_screw_pf",
+          "output": "P_servo_pf",
+          "value": 94.14366687
+        }
+      ]
+    },
+    "P_loss_pf": {
+      "value": 9.41436669,
+      "unit": "W",
+      "label": "Servo heat loss",
+      "confidence": 0.5843,
+      "path": [
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_optimal_bore",
+        "pf_piston_bore_area",
+        "pf_stroke_required",
+        "pf_peak_acceleration",
+        "pf_inertia_force",
+        "pf_seal_friction_force",
+        "pf_net_fill_volume",
+        "pf_peak_flow",
+        "pf_nozzle_from_shear_limit",
+        "pf_flow_rate",
+        "pf_apparent_wall_shear_rate",
+        "pf_rabinowitsch_correction",
+        "pf_power_law_wall_stress",
+        "pf_nozzle_pressure_drop",
+        "pf_pressure_force",
+        "pf_total_thrust",
+        "pf_ballscrew_torque",
+        "pf_reflected_load_inertia",
+        "pf_screw_inertia",
+        "pf_total_inertia",
+        "pf_screw_angular_accel",
+        "pf_accel_torque",
+        "pf_peak_motor_torque",
+        "pf_peak_velocity",
+        "pf_screw_angular_velocity",
+        "pf_servo_power",
+        "pf_servo_heat_loss"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_piston_bore_area",
+          "equation": "A_piston_pf = pi*D_bore_pf**2/4",
+          "output": "A_piston_pf",
+          "value": 0.00713373
+        },
+        {
+          "formula": "pf_stroke_required",
+          "equation": "S_stroke_pf = V_disp_pf/A_piston_pf",
+          "output": "S_stroke_pf",
+          "value": 0.13265842
+        },
+        {
+          "formula": "pf_peak_acceleration",
+          "equation": "a_pk_pf = 4.5*S_stroke_pf/t_disch_pf**2",
+          "output": "a_pk_pf",
+          "value": 1.65823028
+        },
+        {
+          "formula": "pf_inertia_force",
+          "equation": "F_inertia_pf = a_pk_pf*m_piston_pf",
+          "output": "F_inertia_pf",
+          "value": 7.46203626
+        },
+        {
+          "formula": "pf_seal_friction_force",
+          "equation": "F_seal_pf = pi*D_bore_pf*P_seal_pf*mu_seal_pf*w_seal_pf",
+          "output": "F_seal_pf",
+          "value": 100.60109051
+        },
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_peak_flow",
+          "equation": "Q_pk_pf = 1.5*V_net_pf/t_disch_pf",
+          "output": "Q_pk_pf",
+          "value": 0.00233039
+        },
+        {
+          "formula": "pf_nozzle_from_shear_limit",
+          "equation": "D_nz_pf = 2*(Q_pk_pf*(3*n_pl_pf + 1)/(gdot_max_pf*n_pl_pf))**(1/3)/pi**(1/3)",
+          "output": "D_nz_pf",
+          "value": 0.02536493
+        },
+        {
+          "formula": "pf_flow_rate",
+          "equation": "Q_pf = V_net_pf/t_disch_pf",
+          "output": "Q_pf",
+          "value": 0.00155359
+        },
+        {
+          "formula": "pf_apparent_wall_shear_rate",
+          "equation": "gdot_app_pf = 32*Q_pf/(pi*D_nz_pf**3)",
+          "output": "gdot_app_pf",
+          "value": 969.6969697
+        },
+        {
+          "formula": "pf_rabinowitsch_correction",
+          "equation": "gdot_w_pf = gdot_app_pf*(3*n_pl_pf + 1)/(4*n_pl_pf)",
+          "output": "gdot_w_pf",
+          "value": 1333.33333333
+        },
+        {
+          "formula": "pf_power_law_wall_stress",
+          "equation": "tau_w_pf = K_pl_pf*gdot_w_pf**n_pl_pf",
+          "output": "tau_w_pf",
+          "value": 266.72686084
+        },
+        {
+          "formula": "pf_nozzle_pressure_drop",
+          "equation": "dP_nz_pf = 4*L_nz_pf*tau_w_pf/D_nz_pf",
+          "output": "dP_nz_pf",
+          "value": 6309.34670276
+        },
+        {
+          "formula": "pf_pressure_force",
+          "equation": "F_press_pf = A_piston_pf*dP_nz_pf",
+          "output": "F_press_pf",
+          "value": 45.00920593
+        },
+        {
+          "formula": "pf_total_thrust",
+          "equation": "F_thrust_pf = F_inertia_pf + F_press_pf + F_seal_pf",
+          "output": "F_thrust_pf",
+          "value": 153.0723327
+        },
+        {
+          "formula": "pf_ballscrew_torque",
+          "equation": "T_screw_pf = F_thrust_pf*p_lead_pf/(2*pi*eta_screw_pf)",
+          "output": "T_screw_pf",
+          "value": 0.27069132
+        },
+        {
+          "formula": "pf_reflected_load_inertia",
+          "equation": "J_load_pf = m_piston_pf*p_lead_pf**2/(4*pi**2)",
+          "output": "J_load_pf",
+          "value": 1.14e-05
+        },
+        {
+          "formula": "pf_screw_inertia",
+          "equation": "J_screw_pf = pi*D_screw_pf**4*L_screw_pf*rho_steel_pf/32",
+          "output": "J_screw_pf",
+          "value": 0.00012042
+        },
+        {
+          "formula": "pf_total_inertia",
+          "equation": "J_tot_pf = J_load_pf + J_rotor_pf + J_screw_pf",
+          "output": "J_tot_pf",
+          "value": 0.00017382
+        },
+        {
+          "formula": "pf_screw_angular_accel",
+          "equation": "alpha_pf = 2*pi*a_pk_pf/p_lead_pf",
+          "output": "alpha_pf",
+          "value": 1041.89681315
+        },
+        {
+          "formula": "pf_accel_torque",
+          "equation": "T_acc_pf = J_tot_pf*alpha_pf",
+          "output": "T_acc_pf",
+          "value": 0.18109847
+        },
+        {
+          "formula": "pf_peak_motor_torque",
+          "equation": "T_pk_pf = T_acc_pf + T_screw_pf",
+          "output": "T_pk_pf",
+          "value": 0.45178978
+        },
+        {
+          "formula": "pf_peak_velocity",
+          "equation": "v_pk_pf = 1.5*S_stroke_pf/t_disch_pf",
+          "output": "v_pk_pf",
+          "value": 0.33164606
+        },
+        {
+          "formula": "pf_screw_angular_velocity",
+          "equation": "omega_screw_pf = 2*pi*v_pk_pf/p_lead_pf",
+          "output": "omega_screw_pf",
+          "value": 208.37936263
+        },
+        {
+          "formula": "pf_servo_power",
+          "equation": "P_servo_pf = T_pk_pf*omega_screw_pf",
+          "output": "P_servo_pf",
+          "value": 94.14366687
+        },
+        {
+          "formula": "pf_servo_heat_loss",
+          "equation": "P_loss_pf = P_servo_pf*(1 - eta_motor_pf)",
+          "output": "P_loss_pf",
+          "value": 9.41436669
+        }
+      ]
+    },
+    "dT_motor_pf": {
+      "value": 11.29724002,
+      "unit": "C",
+      "label": "Motor temperature rise",
+      "confidence": 0.5851,
+      "path": [
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_optimal_bore",
+        "pf_piston_bore_area",
+        "pf_stroke_required",
+        "pf_peak_acceleration",
+        "pf_inertia_force",
+        "pf_seal_friction_force",
+        "pf_net_fill_volume",
+        "pf_peak_flow",
+        "pf_nozzle_from_shear_limit",
+        "pf_flow_rate",
+        "pf_apparent_wall_shear_rate",
+        "pf_rabinowitsch_correction",
+        "pf_power_law_wall_stress",
+        "pf_nozzle_pressure_drop",
+        "pf_pressure_force",
+        "pf_total_thrust",
+        "pf_ballscrew_torque",
+        "pf_reflected_load_inertia",
+        "pf_screw_inertia",
+        "pf_total_inertia",
+        "pf_screw_angular_accel",
+        "pf_accel_torque",
+        "pf_peak_motor_torque",
+        "pf_peak_velocity",
+        "pf_screw_angular_velocity",
+        "pf_servo_power",
+        "pf_servo_heat_loss",
+        "pf_motor_temp_rise"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_piston_bore_area",
+          "equation": "A_piston_pf = pi*D_bore_pf**2/4",
+          "output": "A_piston_pf",
+          "value": 0.00713373
+        },
+        {
+          "formula": "pf_stroke_required",
+          "equation": "S_stroke_pf = V_disp_pf/A_piston_pf",
+          "output": "S_stroke_pf",
+          "value": 0.13265842
+        },
+        {
+          "formula": "pf_peak_acceleration",
+          "equation": "a_pk_pf = 4.5*S_stroke_pf/t_disch_pf**2",
+          "output": "a_pk_pf",
+          "value": 1.65823028
+        },
+        {
+          "formula": "pf_inertia_force",
+          "equation": "F_inertia_pf = a_pk_pf*m_piston_pf",
+          "output": "F_inertia_pf",
+          "value": 7.46203626
+        },
+        {
+          "formula": "pf_seal_friction_force",
+          "equation": "F_seal_pf = pi*D_bore_pf*P_seal_pf*mu_seal_pf*w_seal_pf",
+          "output": "F_seal_pf",
+          "value": 100.60109051
+        },
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_peak_flow",
+          "equation": "Q_pk_pf = 1.5*V_net_pf/t_disch_pf",
+          "output": "Q_pk_pf",
+          "value": 0.00233039
+        },
+        {
+          "formula": "pf_nozzle_from_shear_limit",
+          "equation": "D_nz_pf = 2*(Q_pk_pf*(3*n_pl_pf + 1)/(gdot_max_pf*n_pl_pf))**(1/3)/pi**(1/3)",
+          "output": "D_nz_pf",
+          "value": 0.02536493
+        },
+        {
+          "formula": "pf_flow_rate",
+          "equation": "Q_pf = V_net_pf/t_disch_pf",
+          "output": "Q_pf",
+          "value": 0.00155359
+        },
+        {
+          "formula": "pf_apparent_wall_shear_rate",
+          "equation": "gdot_app_pf = 32*Q_pf/(pi*D_nz_pf**3)",
+          "output": "gdot_app_pf",
+          "value": 969.6969697
+        },
+        {
+          "formula": "pf_rabinowitsch_correction",
+          "equation": "gdot_w_pf = gdot_app_pf*(3*n_pl_pf + 1)/(4*n_pl_pf)",
+          "output": "gdot_w_pf",
+          "value": 1333.33333333
+        },
+        {
+          "formula": "pf_power_law_wall_stress",
+          "equation": "tau_w_pf = K_pl_pf*gdot_w_pf**n_pl_pf",
+          "output": "tau_w_pf",
+          "value": 266.72686084
+        },
+        {
+          "formula": "pf_nozzle_pressure_drop",
+          "equation": "dP_nz_pf = 4*L_nz_pf*tau_w_pf/D_nz_pf",
+          "output": "dP_nz_pf",
+          "value": 6309.34670276
+        },
+        {
+          "formula": "pf_pressure_force",
+          "equation": "F_press_pf = A_piston_pf*dP_nz_pf",
+          "output": "F_press_pf",
+          "value": 45.00920593
+        },
+        {
+          "formula": "pf_total_thrust",
+          "equation": "F_thrust_pf = F_inertia_pf + F_press_pf + F_seal_pf",
+          "output": "F_thrust_pf",
+          "value": 153.0723327
+        },
+        {
+          "formula": "pf_ballscrew_torque",
+          "equation": "T_screw_pf = F_thrust_pf*p_lead_pf/(2*pi*eta_screw_pf)",
+          "output": "T_screw_pf",
+          "value": 0.27069132
+        },
+        {
+          "formula": "pf_reflected_load_inertia",
+          "equation": "J_load_pf = m_piston_pf*p_lead_pf**2/(4*pi**2)",
+          "output": "J_load_pf",
+          "value": 1.14e-05
+        },
+        {
+          "formula": "pf_screw_inertia",
+          "equation": "J_screw_pf = pi*D_screw_pf**4*L_screw_pf*rho_steel_pf/32",
+          "output": "J_screw_pf",
+          "value": 0.00012042
+        },
+        {
+          "formula": "pf_total_inertia",
+          "equation": "J_tot_pf = J_load_pf + J_rotor_pf + J_screw_pf",
+          "output": "J_tot_pf",
+          "value": 0.00017382
+        },
+        {
+          "formula": "pf_screw_angular_accel",
+          "equation": "alpha_pf = 2*pi*a_pk_pf/p_lead_pf",
+          "output": "alpha_pf",
+          "value": 1041.89681315
+        },
+        {
+          "formula": "pf_accel_torque",
+          "equation": "T_acc_pf = J_tot_pf*alpha_pf",
+          "output": "T_acc_pf",
+          "value": 0.18109847
+        },
+        {
+          "formula": "pf_peak_motor_torque",
+          "equation": "T_pk_pf = T_acc_pf + T_screw_pf",
+          "output": "T_pk_pf",
+          "value": 0.45178978
+        },
+        {
+          "formula": "pf_peak_velocity",
+          "equation": "v_pk_pf = 1.5*S_stroke_pf/t_disch_pf",
+          "output": "v_pk_pf",
+          "value": 0.33164606
+        },
+        {
+          "formula": "pf_screw_angular_velocity",
+          "equation": "omega_screw_pf = 2*pi*v_pk_pf/p_lead_pf",
+          "output": "omega_screw_pf",
+          "value": 208.37936263
+        },
+        {
+          "formula": "pf_servo_power",
+          "equation": "P_servo_pf = T_pk_pf*omega_screw_pf",
+          "output": "P_servo_pf",
+          "value": 94.14366687
+        },
+        {
+          "formula": "pf_servo_heat_loss",
+          "equation": "P_loss_pf = P_servo_pf*(1 - eta_motor_pf)",
+          "output": "P_loss_pf",
+          "value": 9.41436669
+        },
+        {
+          "formula": "pf_motor_temp_rise",
+          "equation": "dT_motor_pf = P_loss_pf*Rth_motor_pf",
+          "output": "dT_motor_pf",
+          "value": 11.29724002
+        }
+      ]
+    },
+    "e_stroke_pf": {
+      "value": 0.01884539,
+      "unit": "%",
+      "label": "Stroke repeatability error term",
+      "confidence": 0.8825,
+      "path": [
+        "pf_optimal_bore",
+        "pf_piston_bore_area",
+        "pf_stroke_required",
+        "pf_stroke_position_error"
+      ],
+      "trace": [
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_piston_bore_area",
+          "equation": "A_piston_pf = pi*D_bore_pf**2/4",
+          "output": "A_piston_pf",
+          "value": 0.00713373
+        },
+        {
+          "formula": "pf_stroke_required",
+          "equation": "S_stroke_pf = V_disp_pf/A_piston_pf",
+          "output": "S_stroke_pf",
+          "value": 0.13265842
+        },
+        {
+          "formula": "pf_stroke_position_error",
+          "equation": "e_stroke_pf = 100*dS_pos_pf/S_stroke_pf",
+          "output": "e_stroke_pf",
+          "value": 0.01884539
+        }
+      ]
+    },
+    "e_bore_pf": {
+      "value": 0.02665141,
+      "unit": "%",
+      "label": "Bore tolerance error term",
+      "confidence": 0.9508,
+      "path": [
+        "pf_optimal_bore",
+        "pf_bore_tolerance_error"
+      ],
+      "trace": [
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_bore_tolerance_error",
+          "equation": "e_bore_pf = 200*dD_bore_pf/D_bore_pf",
+          "output": "e_bore_pf",
+          "value": 0.02665141
+        }
+      ]
+    },
+    "e_fixed_pf": {
+      "value": 0.13747727,
+      "unit": "%",
+      "label": "Process error terms (valve+thermal+load cell)",
+      "confidence": 0.98,
+      "path": [
+        "pf_fixed_error_terms"
+      ],
+      "trace": [
+        {
+          "formula": "pf_fixed_error_terms",
+          "equation": "e_fixed_pf = sqrt(e_loadcell_pf**2 + e_thermal_pf**2 + e_valve_pf**2)",
+          "output": "e_fixed_pf",
+          "value": 0.13747727
+        }
+      ]
+    },
+    "e_tot_pf": {
+      "value": 0.14129914,
+      "unit": "%",
+      "label": "RSS total fill accuracy",
+      "confidence": 0.8738,
+      "path": [
+        "pf_optimal_bore",
+        "pf_piston_bore_area",
+        "pf_stroke_required",
+        "pf_stroke_position_error",
+        "pf_bore_tolerance_error",
+        "pf_rss_fill_accuracy"
+      ],
+      "trace": [
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_piston_bore_area",
+          "equation": "A_piston_pf = pi*D_bore_pf**2/4",
+          "output": "A_piston_pf",
+          "value": 0.00713373
+        },
+        {
+          "formula": "pf_stroke_required",
+          "equation": "S_stroke_pf = V_disp_pf/A_piston_pf",
+          "output": "S_stroke_pf",
+          "value": 0.13265842
+        },
+        {
+          "formula": "pf_stroke_position_error",
+          "equation": "e_stroke_pf = 100*dS_pos_pf/S_stroke_pf",
+          "output": "e_stroke_pf",
+          "value": 0.01884539
+        },
+        {
+          "formula": "pf_bore_tolerance_error",
+          "equation": "e_bore_pf = 200*dD_bore_pf/D_bore_pf",
+          "output": "e_bore_pf",
+          "value": 0.02665141
+        },
+        {
+          "formula": "pf_rss_fill_accuracy",
+          "equation": "e_tot_pf = sqrt(e_bore_pf**2 + e_loadcell_pf**2 + e_stroke_pf**2 + e_thermal_pf**2 + e_valve_pf**2)",
+          "output": "e_tot_pf",
+          "value": 0.14129914
+        }
+      ]
+    },
+    "dm_fill_pf": {
+      "value": 0.00144884,
+      "unit": "kg",
+      "label": "Fill mass tolerance band",
+      "confidence": 0.8081,
+      "path": [
+        "pf_optimal_bore",
+        "pf_piston_bore_area",
+        "pf_stroke_required",
+        "pf_stroke_position_error",
+        "pf_bore_tolerance_error",
+        "pf_rss_fill_accuracy",
+        "pf_net_fill_volume",
+        "pf_fill_mass",
+        "pf_fill_mass_tolerance"
+      ],
+      "trace": [
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_piston_bore_area",
+          "equation": "A_piston_pf = pi*D_bore_pf**2/4",
+          "output": "A_piston_pf",
+          "value": 0.00713373
+        },
+        {
+          "formula": "pf_stroke_required",
+          "equation": "S_stroke_pf = V_disp_pf/A_piston_pf",
+          "output": "S_stroke_pf",
+          "value": 0.13265842
+        },
+        {
+          "formula": "pf_stroke_position_error",
+          "equation": "e_stroke_pf = 100*dS_pos_pf/S_stroke_pf",
+          "output": "e_stroke_pf",
+          "value": 0.01884539
+        },
+        {
+          "formula": "pf_bore_tolerance_error",
+          "equation": "e_bore_pf = 200*dD_bore_pf/D_bore_pf",
+          "output": "e_bore_pf",
+          "value": 0.02665141
+        },
+        {
+          "formula": "pf_rss_fill_accuracy",
+          "equation": "e_tot_pf = sqrt(e_bore_pf**2 + e_loadcell_pf**2 + e_stroke_pf**2 + e_thermal_pf**2 + e_valve_pf**2)",
+          "output": "e_tot_pf",
+          "value": 0.14129914
+        },
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_fill_mass",
+          "equation": "m_fill_pf = V_net_pf*rho_prod_pf",
+          "output": "m_fill_pf",
+          "value": 1.02537022
+        },
+        {
+          "formula": "pf_fill_mass_tolerance",
+          "equation": "dm_fill_pf = e_tot_pf*m_fill_pf/100",
+          "output": "dm_fill_pf",
+          "value": 0.00144884
+        }
+      ]
+    },
+    "gdot_in_pf": {
+      "value": 151.10438871,
+      "unit": "1/s",
+      "label": "Inlet-port wall shear rate on suction",
+      "confidence": 0.8943,
+      "path": [
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_net_fill_volume",
+        "pf_peak_flow",
+        "pf_suction_shear_rate"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_peak_flow",
+          "equation": "Q_pk_pf = 1.5*V_net_pf/t_disch_pf",
+          "output": "Q_pk_pf",
+          "value": 0.00233039
+        },
+        {
+          "formula": "pf_suction_shear_rate",
+          "equation": "gdot_in_pf = 8*Q_pk_pf*(3*n_pl_pf + 1)/(pi*D_in_pf**3*n_pl_pf)",
+          "output": "gdot_in_pf",
+          "value": 151.10438871
+        }
+      ]
+    },
+    "dP_in_pf": {
+      "value": 1116.35440493,
+      "unit": "Pa",
+      "label": "Suction pressure drop required",
+      "confidence": 0.8481,
+      "path": [
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_net_fill_volume",
+        "pf_peak_flow",
+        "pf_suction_shear_rate",
+        "pf_suction_wall_stress",
+        "pf_suction_pressure_drop"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_peak_flow",
+          "equation": "Q_pk_pf = 1.5*V_net_pf/t_disch_pf",
+          "output": "Q_pk_pf",
+          "value": 0.00233039
+        },
+        {
+          "formula": "pf_suction_shear_rate",
+          "equation": "gdot_in_pf = 8*Q_pk_pf*(3*n_pl_pf + 1)/(pi*D_in_pf**3*n_pl_pf)",
+          "output": "gdot_in_pf",
+          "value": 151.10438871
+        },
+        {
+          "formula": "pf_suction_wall_stress",
+          "equation": "tau_in_pf = K_pl_pf*gdot_in_pf**n_pl_pf",
+          "output": "tau_in_pf",
+          "value": 111.63544049
+        },
+        {
+          "formula": "pf_suction_pressure_drop",
+          "equation": "dP_in_pf = 4*L_in_pf*tau_in_pf/D_in_pf",
+          "output": "dP_in_pf",
+          "value": 1116.35440493
+        }
+      ]
+    },
+    "dP_avail_pf": {
+      "value": 104561.1945,
+      "unit": "Pa",
+      "label": "Suction pressure available (atm + head)",
+      "confidence": 0.9508,
+      "path": [
+        "pf_hopper_static_head",
+        "pf_suction_available"
+      ],
+      "trace": [
+        {
+          "formula": "pf_hopper_static_head",
+          "equation": "P_head_pf = H_cyl_pf*g_pf*rho_prod_pf",
+          "output": "P_head_pf",
+          "value": 3236.1945
+        },
+        {
+          "formula": "pf_suction_available",
+          "equation": "dP_avail_pf = P_atm_pf + P_head_pf",
+          "output": "dP_avail_pf",
+          "value": 104561.1945
+        }
+      ]
+    },
+    "SM_pf": {
+      "value": 93.6630823,
+      "unit": ":1",
+      "label": "Suction margin -- >1 means no starvation",
+      "confidence": 0.7808,
+      "path": [
+        "pf_hopper_static_head",
+        "pf_suction_available",
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_net_fill_volume",
+        "pf_peak_flow",
+        "pf_suction_shear_rate",
+        "pf_suction_wall_stress",
+        "pf_suction_pressure_drop",
+        "pf_suction_margin"
+      ],
+      "trace": [
+        {
+          "formula": "pf_hopper_static_head",
+          "equation": "P_head_pf = H_cyl_pf*g_pf*rho_prod_pf",
+          "output": "P_head_pf",
+          "value": 3236.1945
+        },
+        {
+          "formula": "pf_suction_available",
+          "equation": "dP_avail_pf = P_atm_pf + P_head_pf",
+          "output": "dP_avail_pf",
+          "value": 104561.1945
+        },
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_peak_flow",
+          "equation": "Q_pk_pf = 1.5*V_net_pf/t_disch_pf",
+          "output": "Q_pk_pf",
+          "value": 0.00233039
+        },
+        {
+          "formula": "pf_suction_shear_rate",
+          "equation": "gdot_in_pf = 8*Q_pk_pf*(3*n_pl_pf + 1)/(pi*D_in_pf**3*n_pl_pf)",
+          "output": "gdot_in_pf",
+          "value": 151.10438871
+        },
+        {
+          "formula": "pf_suction_wall_stress",
+          "equation": "tau_in_pf = K_pl_pf*gdot_in_pf**n_pl_pf",
+          "output": "tau_in_pf",
+          "value": 111.63544049
+        },
+        {
+          "formula": "pf_suction_pressure_drop",
+          "equation": "dP_in_pf = 4*L_in_pf*tau_in_pf/D_in_pf",
+          "output": "dP_in_pf",
+          "value": 1116.35440493
+        },
+        {
+          "formula": "pf_suction_margin",
+          "equation": "SM_pf = dP_avail_pf/dP_in_pf",
+          "output": "SM_pf",
+          "value": 93.6630823
+        }
+      ]
+    },
+    "I_rod_pf": {
+      "value": 5e-08,
+      "unit": "m^4",
+      "label": "Rod second moment of area",
+      "confidence": 0.98,
+      "path": [
+        "pf_rod_second_moment"
+      ],
+      "trace": [
+        {
+          "formula": "pf_rod_second_moment",
+          "equation": "I_rod_pf = pi*D_rod_pf**4/64",
+          "output": "I_rod_pf",
+          "value": 5e-08
+        }
+      ]
+    },
+    "P_crit_pf": {
+      "value": 612783.2472881,
+      "unit": "N",
+      "label": "Rod Euler buckling load",
+      "confidence": 0.954,
+      "path": [
+        "pf_rod_second_moment",
+        "pf_rod_buckling_load"
+      ],
+      "trace": [
+        {
+          "formula": "pf_rod_second_moment",
+          "equation": "I_rod_pf = pi*D_rod_pf**4/64",
+          "output": "I_rod_pf",
+          "value": 5e-08
+        },
+        {
+          "formula": "pf_rod_buckling_load",
+          "equation": "P_crit_pf = pi**2*E_rod_pf*I_rod_pf/Le_rod_pf**2",
+          "output": "P_crit_pf",
+          "value": 612783.2472881
+        }
+      ]
+    },
+    "n_buckling_pf": {
+      "value": 4003.22668681,
+      "unit": "-",
+      "label": "Rod buckling safety factor",
+      "confidence": 0.6555,
+      "path": [
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_optimal_bore",
+        "pf_piston_bore_area",
+        "pf_stroke_required",
+        "pf_peak_acceleration",
+        "pf_inertia_force",
+        "pf_seal_friction_force",
+        "pf_net_fill_volume",
+        "pf_peak_flow",
+        "pf_nozzle_from_shear_limit",
+        "pf_flow_rate",
+        "pf_apparent_wall_shear_rate",
+        "pf_rabinowitsch_correction",
+        "pf_power_law_wall_stress",
+        "pf_nozzle_pressure_drop",
+        "pf_pressure_force",
+        "pf_total_thrust",
+        "pf_rod_second_moment",
+        "pf_rod_buckling_load",
+        "pf_rod_buckling_safety"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_piston_bore_area",
+          "equation": "A_piston_pf = pi*D_bore_pf**2/4",
+          "output": "A_piston_pf",
+          "value": 0.00713373
+        },
+        {
+          "formula": "pf_stroke_required",
+          "equation": "S_stroke_pf = V_disp_pf/A_piston_pf",
+          "output": "S_stroke_pf",
+          "value": 0.13265842
+        },
+        {
+          "formula": "pf_peak_acceleration",
+          "equation": "a_pk_pf = 4.5*S_stroke_pf/t_disch_pf**2",
+          "output": "a_pk_pf",
+          "value": 1.65823028
+        },
+        {
+          "formula": "pf_inertia_force",
+          "equation": "F_inertia_pf = a_pk_pf*m_piston_pf",
+          "output": "F_inertia_pf",
+          "value": 7.46203626
+        },
+        {
+          "formula": "pf_seal_friction_force",
+          "equation": "F_seal_pf = pi*D_bore_pf*P_seal_pf*mu_seal_pf*w_seal_pf",
+          "output": "F_seal_pf",
+          "value": 100.60109051
+        },
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_peak_flow",
+          "equation": "Q_pk_pf = 1.5*V_net_pf/t_disch_pf",
+          "output": "Q_pk_pf",
+          "value": 0.00233039
+        },
+        {
+          "formula": "pf_nozzle_from_shear_limit",
+          "equation": "D_nz_pf = 2*(Q_pk_pf*(3*n_pl_pf + 1)/(gdot_max_pf*n_pl_pf))**(1/3)/pi**(1/3)",
+          "output": "D_nz_pf",
+          "value": 0.02536493
+        },
+        {
+          "formula": "pf_flow_rate",
+          "equation": "Q_pf = V_net_pf/t_disch_pf",
+          "output": "Q_pf",
+          "value": 0.00155359
+        },
+        {
+          "formula": "pf_apparent_wall_shear_rate",
+          "equation": "gdot_app_pf = 32*Q_pf/(pi*D_nz_pf**3)",
+          "output": "gdot_app_pf",
+          "value": 969.6969697
+        },
+        {
+          "formula": "pf_rabinowitsch_correction",
+          "equation": "gdot_w_pf = gdot_app_pf*(3*n_pl_pf + 1)/(4*n_pl_pf)",
+          "output": "gdot_w_pf",
+          "value": 1333.33333333
+        },
+        {
+          "formula": "pf_power_law_wall_stress",
+          "equation": "tau_w_pf = K_pl_pf*gdot_w_pf**n_pl_pf",
+          "output": "tau_w_pf",
+          "value": 266.72686084
+        },
+        {
+          "formula": "pf_nozzle_pressure_drop",
+          "equation": "dP_nz_pf = 4*L_nz_pf*tau_w_pf/D_nz_pf",
+          "output": "dP_nz_pf",
+          "value": 6309.34670276
+        },
+        {
+          "formula": "pf_pressure_force",
+          "equation": "F_press_pf = A_piston_pf*dP_nz_pf",
+          "output": "F_press_pf",
+          "value": 45.00920593
+        },
+        {
+          "formula": "pf_total_thrust",
+          "equation": "F_thrust_pf = F_inertia_pf + F_press_pf + F_seal_pf",
+          "output": "F_thrust_pf",
+          "value": 153.0723327
+        },
+        {
+          "formula": "pf_rod_second_moment",
+          "equation": "I_rod_pf = pi*D_rod_pf**4/64",
+          "output": "I_rod_pf",
+          "value": 5e-08
+        },
+        {
+          "formula": "pf_rod_buckling_load",
+          "equation": "P_crit_pf = pi**2*E_rod_pf*I_rod_pf/Le_rod_pf**2",
+          "output": "P_crit_pf",
+          "value": 612783.2472881
+        },
+        {
+          "formula": "pf_rod_buckling_safety",
+          "equation": "n_buckling_pf = P_crit_pf/F_thrust_pf",
+          "output": "n_buckling_pf",
+          "value": 4003.22668681
+        }
+      ]
+    },
+    "V_hop_pf": {
+      "value": 0.131511,
+      "unit": "m^3",
+      "label": "Hopper capacity",
+      "confidence": 0.9412,
+      "path": [
+        "pf_hopper_cone_volume",
+        "pf_hopper_cyl_volume",
+        "pf_hopper_total_volume"
+      ],
+      "trace": [
+        {
+          "formula": "pf_hopper_cone_volume",
+          "equation": "V_cone_pf = pi*D_hop_pf**2*H_cone_pf/12",
+          "output": "V_cone_pf",
+          "value": 0.043837
+        },
+        {
+          "formula": "pf_hopper_cyl_volume",
+          "equation": "V_hcyl_pf = pi*D_hop_pf**2*H_cyl_pf/4",
+          "output": "V_hcyl_pf",
+          "value": 0.087674
+        },
+        {
+          "formula": "pf_hopper_total_volume",
+          "equation": "V_hop_pf = V_cone_pf + V_hcyl_pf",
+          "output": "V_hop_pf",
+          "value": 0.131511
+        }
+      ]
+    },
+    "Qdot_mach_pf": {
+      "value": 0.00248575,
+      "unit": "m^3/s",
+      "label": "Whole-machine product consumption",
+      "confidence": 0.954,
+      "path": [
+        "pf_net_fill_volume",
+        "pf_machine_consumption"
+      ],
+      "trace": [
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_machine_consumption",
+          "equation": "Qdot_mach_pf = V_net_pf*n_cycles_pf*n_heads_pf/60",
+          "output": "Qdot_mach_pf",
+          "value": 0.00248575
+        }
+      ]
+    },
+    "t_refill_pf": {
+      "value": 52.90604731,
+      "unit": "s",
+      "label": "Hopper refill interval",
+      "confidence": 0.8919,
+      "path": [
+        "pf_hopper_cone_volume",
+        "pf_hopper_cyl_volume",
+        "pf_hopper_total_volume",
+        "pf_net_fill_volume",
+        "pf_machine_consumption",
+        "pf_hopper_refill_interval"
+      ],
+      "trace": [
+        {
+          "formula": "pf_hopper_cone_volume",
+          "equation": "V_cone_pf = pi*D_hop_pf**2*H_cone_pf/12",
+          "output": "V_cone_pf",
+          "value": 0.043837
+        },
+        {
+          "formula": "pf_hopper_cyl_volume",
+          "equation": "V_hcyl_pf = pi*D_hop_pf**2*H_cyl_pf/4",
+          "output": "V_hcyl_pf",
+          "value": 0.087674
+        },
+        {
+          "formula": "pf_hopper_total_volume",
+          "equation": "V_hop_pf = V_cone_pf + V_hcyl_pf",
+          "output": "V_hop_pf",
+          "value": 0.131511
+        },
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_machine_consumption",
+          "equation": "Qdot_mach_pf = V_net_pf*n_cycles_pf*n_heads_pf/60",
+          "output": "Qdot_mach_pf",
+          "value": 0.00248575
+        },
+        {
+          "formula": "pf_hopper_refill_interval",
+          "equation": "t_refill_pf = V_hop_pf/Qdot_mach_pf",
+          "output": "t_refill_pf",
+          "value": 52.90604731
+        }
+      ]
+    },
+    "P_head_pf": {
+      "value": 3236.1945,
+      "unit": "Pa",
+      "label": "Hopper static head at the cylinder inlet",
+      "confidence": 0.98,
+      "path": [
+        "pf_hopper_static_head"
+      ],
+      "trace": [
+        {
+          "formula": "pf_hopper_static_head",
+          "equation": "P_head_pf = H_cyl_pf*g_pf*rho_prod_pf",
+          "output": "P_head_pf",
+          "value": 3236.1945
+        }
+      ]
+    },
+    "N_cph_pf": {
+      "value": 9600.0,
+      "unit": "1/h",
+      "label": "Containers per hour",
+      "confidence": 0.98,
+      "path": [
+        "pf_containers_per_hour"
+      ],
+      "trace": [
+        {
+          "formula": "pf_containers_per_hour",
+          "equation": "N_cph_pf = 60*n_cycles_pf*n_heads_pf",
+          "output": "N_cph_pf",
+          "value": 9600.0
+        }
+      ]
+    },
+    "Vdot_hr_pf": {
+      "value": 8.9486856,
+      "unit": "m^3/h",
+      "label": "Product throughput per hour",
+      "confidence": 0.954,
+      "path": [
+        "pf_net_fill_volume",
+        "pf_volume_per_hour"
+      ],
+      "trace": [
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_volume_per_hour",
+          "equation": "Vdot_hr_pf = 60*V_net_pf*n_cycles_pf*n_heads_pf",
+          "output": "Vdot_hr_pf",
+          "value": 8.9486856
+        }
+      ]
+    },
+    "P_mach_pf": {
+      "value": 409.32029075,
+      "unit": "W",
+      "label": "Whole-machine electrical demand",
+      "confidence": 0.6408,
+      "path": [
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_optimal_bore",
+        "pf_piston_bore_area",
+        "pf_stroke_required",
+        "pf_peak_acceleration",
+        "pf_inertia_force",
+        "pf_seal_friction_force",
+        "pf_net_fill_volume",
+        "pf_peak_flow",
+        "pf_nozzle_from_shear_limit",
+        "pf_flow_rate",
+        "pf_apparent_wall_shear_rate",
+        "pf_rabinowitsch_correction",
+        "pf_power_law_wall_stress",
+        "pf_nozzle_pressure_drop",
+        "pf_pressure_force",
+        "pf_total_thrust",
+        "pf_ballscrew_torque",
+        "pf_reflected_load_inertia",
+        "pf_screw_inertia",
+        "pf_total_inertia",
+        "pf_screw_angular_accel",
+        "pf_accel_torque",
+        "pf_peak_motor_torque",
+        "pf_peak_velocity",
+        "pf_screw_angular_velocity",
+        "pf_servo_power",
+        "pf_machine_power"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_piston_bore_area",
+          "equation": "A_piston_pf = pi*D_bore_pf**2/4",
+          "output": "A_piston_pf",
+          "value": 0.00713373
+        },
+        {
+          "formula": "pf_stroke_required",
+          "equation": "S_stroke_pf = V_disp_pf/A_piston_pf",
+          "output": "S_stroke_pf",
+          "value": 0.13265842
+        },
+        {
+          "formula": "pf_peak_acceleration",
+          "equation": "a_pk_pf = 4.5*S_stroke_pf/t_disch_pf**2",
+          "output": "a_pk_pf",
+          "value": 1.65823028
+        },
+        {
+          "formula": "pf_inertia_force",
+          "equation": "F_inertia_pf = a_pk_pf*m_piston_pf",
+          "output": "F_inertia_pf",
+          "value": 7.46203626
+        },
+        {
+          "formula": "pf_seal_friction_force",
+          "equation": "F_seal_pf = pi*D_bore_pf*P_seal_pf*mu_seal_pf*w_seal_pf",
+          "output": "F_seal_pf",
+          "value": 100.60109051
+        },
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_peak_flow",
+          "equation": "Q_pk_pf = 1.5*V_net_pf/t_disch_pf",
+          "output": "Q_pk_pf",
+          "value": 0.00233039
+        },
+        {
+          "formula": "pf_nozzle_from_shear_limit",
+          "equation": "D_nz_pf = 2*(Q_pk_pf*(3*n_pl_pf + 1)/(gdot_max_pf*n_pl_pf))**(1/3)/pi**(1/3)",
+          "output": "D_nz_pf",
+          "value": 0.02536493
+        },
+        {
+          "formula": "pf_flow_rate",
+          "equation": "Q_pf = V_net_pf/t_disch_pf",
+          "output": "Q_pf",
+          "value": 0.00155359
+        },
+        {
+          "formula": "pf_apparent_wall_shear_rate",
+          "equation": "gdot_app_pf = 32*Q_pf/(pi*D_nz_pf**3)",
+          "output": "gdot_app_pf",
+          "value": 969.6969697
+        },
+        {
+          "formula": "pf_rabinowitsch_correction",
+          "equation": "gdot_w_pf = gdot_app_pf*(3*n_pl_pf + 1)/(4*n_pl_pf)",
+          "output": "gdot_w_pf",
+          "value": 1333.33333333
+        },
+        {
+          "formula": "pf_power_law_wall_stress",
+          "equation": "tau_w_pf = K_pl_pf*gdot_w_pf**n_pl_pf",
+          "output": "tau_w_pf",
+          "value": 266.72686084
+        },
+        {
+          "formula": "pf_nozzle_pressure_drop",
+          "equation": "dP_nz_pf = 4*L_nz_pf*tau_w_pf/D_nz_pf",
+          "output": "dP_nz_pf",
+          "value": 6309.34670276
+        },
+        {
+          "formula": "pf_pressure_force",
+          "equation": "F_press_pf = A_piston_pf*dP_nz_pf",
+          "output": "F_press_pf",
+          "value": 45.00920593
+        },
+        {
+          "formula": "pf_total_thrust",
+          "equation": "F_thrust_pf = F_inertia_pf + F_press_pf + F_seal_pf",
+          "output": "F_thrust_pf",
+          "value": 153.0723327
+        },
+        {
+          "formula": "pf_ballscrew_torque",
+          "equation": "T_screw_pf = F_thrust_pf*p_lead_pf/(2*pi*eta_screw_pf)",
+          "output": "T_screw_pf",
+          "value": 0.27069132
+        },
+        {
+          "formula": "pf_reflected_load_inertia",
+          "equation": "J_load_pf = m_piston_pf*p_lead_pf**2/(4*pi**2)",
+          "output": "J_load_pf",
+          "value": 1.14e-05
+        },
+        {
+          "formula": "pf_screw_inertia",
+          "equation": "J_screw_pf = pi*D_screw_pf**4*L_screw_pf*rho_steel_pf/32",
+          "output": "J_screw_pf",
+          "value": 0.00012042
+        },
+        {
+          "formula": "pf_total_inertia",
+          "equation": "J_tot_pf = J_load_pf + J_rotor_pf + J_screw_pf",
+          "output": "J_tot_pf",
+          "value": 0.00017382
+        },
+        {
+          "formula": "pf_screw_angular_accel",
+          "equation": "alpha_pf = 2*pi*a_pk_pf/p_lead_pf",
+          "output": "alpha_pf",
+          "value": 1041.89681315
+        },
+        {
+          "formula": "pf_accel_torque",
+          "equation": "T_acc_pf = J_tot_pf*alpha_pf",
+          "output": "T_acc_pf",
+          "value": 0.18109847
+        },
+        {
+          "formula": "pf_peak_motor_torque",
+          "equation": "T_pk_pf = T_acc_pf + T_screw_pf",
+          "output": "T_pk_pf",
+          "value": 0.45178978
+        },
+        {
+          "formula": "pf_peak_velocity",
+          "equation": "v_pk_pf = 1.5*S_stroke_pf/t_disch_pf",
+          "output": "v_pk_pf",
+          "value": 0.33164606
+        },
+        {
+          "formula": "pf_screw_angular_velocity",
+          "equation": "omega_screw_pf = 2*pi*v_pk_pf/p_lead_pf",
+          "output": "omega_screw_pf",
+          "value": 208.37936263
+        },
+        {
+          "formula": "pf_servo_power",
+          "equation": "P_servo_pf = T_pk_pf*omega_screw_pf",
+          "output": "P_servo_pf",
+          "value": 94.14366687
+        },
+        {
+          "formula": "pf_machine_power",
+          "equation": "P_mach_pf = P_servo_pf*n_heads_pf/eta_drive_pf",
+          "output": "P_mach_pf",
+          "value": 409.32029075
+        }
+      ]
+    },
+    "I_mach_pf": {
+      "value": 0.57921858,
+      "unit": "A",
+      "label": "Line current draw",
+      "confidence": 0.6501,
+      "path": [
+        "pf_cycle_time",
+        "pf_discharge_time",
+        "pf_optimal_bore",
+        "pf_piston_bore_area",
+        "pf_stroke_required",
+        "pf_peak_acceleration",
+        "pf_inertia_force",
+        "pf_seal_friction_force",
+        "pf_net_fill_volume",
+        "pf_peak_flow",
+        "pf_nozzle_from_shear_limit",
+        "pf_flow_rate",
+        "pf_apparent_wall_shear_rate",
+        "pf_rabinowitsch_correction",
+        "pf_power_law_wall_stress",
+        "pf_nozzle_pressure_drop",
+        "pf_pressure_force",
+        "pf_total_thrust",
+        "pf_ballscrew_torque",
+        "pf_reflected_load_inertia",
+        "pf_screw_inertia",
+        "pf_total_inertia",
+        "pf_screw_angular_accel",
+        "pf_accel_torque",
+        "pf_peak_motor_torque",
+        "pf_peak_velocity",
+        "pf_screw_angular_velocity",
+        "pf_servo_power",
+        "pf_machine_power",
+        "pf_machine_current"
+      ],
+      "trace": [
+        {
+          "formula": "pf_cycle_time",
+          "equation": "t_cycle_pf = 60/n_cycles_pf",
+          "output": "t_cycle_pf",
+          "value": 1.5
+        },
+        {
+          "formula": "pf_discharge_time",
+          "equation": "t_disch_pf = f_disch_pf*t_cycle_pf",
+          "output": "t_disch_pf",
+          "value": 0.6
+        },
+        {
+          "formula": "pf_optimal_bore",
+          "equation": "D_bore_pf = 2**(5/6)*(V_disp_pf*dD_bore_pf/dS_pos_pf)**(1/3)/pi**(1/3)",
+          "output": "D_bore_pf",
+          "value": 0.09530453
+        },
+        {
+          "formula": "pf_piston_bore_area",
+          "equation": "A_piston_pf = pi*D_bore_pf**2/4",
+          "output": "A_piston_pf",
+          "value": 0.00713373
+        },
+        {
+          "formula": "pf_stroke_required",
+          "equation": "S_stroke_pf = V_disp_pf/A_piston_pf",
+          "output": "S_stroke_pf",
+          "value": 0.13265842
+        },
+        {
+          "formula": "pf_peak_acceleration",
+          "equation": "a_pk_pf = 4.5*S_stroke_pf/t_disch_pf**2",
+          "output": "a_pk_pf",
+          "value": 1.65823028
+        },
+        {
+          "formula": "pf_inertia_force",
+          "equation": "F_inertia_pf = a_pk_pf*m_piston_pf",
+          "output": "F_inertia_pf",
+          "value": 7.46203626
+        },
+        {
+          "formula": "pf_seal_friction_force",
+          "equation": "F_seal_pf = pi*D_bore_pf*P_seal_pf*mu_seal_pf*w_seal_pf",
+          "output": "F_seal_pf",
+          "value": 100.60109051
+        },
+        {
+          "formula": "pf_net_fill_volume",
+          "equation": "V_net_pf = V_disp_pf*eta_vol_pf",
+          "output": "V_net_pf",
+          "value": 0.00093215
+        },
+        {
+          "formula": "pf_peak_flow",
+          "equation": "Q_pk_pf = 1.5*V_net_pf/t_disch_pf",
+          "output": "Q_pk_pf",
+          "value": 0.00233039
+        },
+        {
+          "formula": "pf_nozzle_from_shear_limit",
+          "equation": "D_nz_pf = 2*(Q_pk_pf*(3*n_pl_pf + 1)/(gdot_max_pf*n_pl_pf))**(1/3)/pi**(1/3)",
+          "output": "D_nz_pf",
+          "value": 0.02536493
+        },
+        {
+          "formula": "pf_flow_rate",
+          "equation": "Q_pf = V_net_pf/t_disch_pf",
+          "output": "Q_pf",
+          "value": 0.00155359
+        },
+        {
+          "formula": "pf_apparent_wall_shear_rate",
+          "equation": "gdot_app_pf = 32*Q_pf/(pi*D_nz_pf**3)",
+          "output": "gdot_app_pf",
+          "value": 969.6969697
+        },
+        {
+          "formula": "pf_rabinowitsch_correction",
+          "equation": "gdot_w_pf = gdot_app_pf*(3*n_pl_pf + 1)/(4*n_pl_pf)",
+          "output": "gdot_w_pf",
+          "value": 1333.33333333
+        },
+        {
+          "formula": "pf_power_law_wall_stress",
+          "equation": "tau_w_pf = K_pl_pf*gdot_w_pf**n_pl_pf",
+          "output": "tau_w_pf",
+          "value": 266.72686084
+        },
+        {
+          "formula": "pf_nozzle_pressure_drop",
+          "equation": "dP_nz_pf = 4*L_nz_pf*tau_w_pf/D_nz_pf",
+          "output": "dP_nz_pf",
+          "value": 6309.34670276
+        },
+        {
+          "formula": "pf_pressure_force",
+          "equation": "F_press_pf = A_piston_pf*dP_nz_pf",
+          "output": "F_press_pf",
+          "value": 45.00920593
+        },
+        {
+          "formula": "pf_total_thrust",
+          "equation": "F_thrust_pf = F_inertia_pf + F_press_pf + F_seal_pf",
+          "output": "F_thrust_pf",
+          "value": 153.0723327
+        },
+        {
+          "formula": "pf_ballscrew_torque",
+          "equation": "T_screw_pf = F_thrust_pf*p_lead_pf/(2*pi*eta_screw_pf)",
+          "output": "T_screw_pf",
+          "value": 0.27069132
+        },
+        {
+          "formula": "pf_reflected_load_inertia",
+          "equation": "J_load_pf = m_piston_pf*p_lead_pf**2/(4*pi**2)",
+          "output": "J_load_pf",
+          "value": 1.14e-05
+        },
+        {
+          "formula": "pf_screw_inertia",
+          "equation": "J_screw_pf = pi*D_screw_pf**4*L_screw_pf*rho_steel_pf/32",
+          "output": "J_screw_pf",
+          "value": 0.00012042
+        },
+        {
+          "formula": "pf_total_inertia",
+          "equation": "J_tot_pf = J_load_pf + J_rotor_pf + J_screw_pf",
+          "output": "J_tot_pf",
+          "value": 0.00017382
+        },
+        {
+          "formula": "pf_screw_angular_accel",
+          "equation": "alpha_pf = 2*pi*a_pk_pf/p_lead_pf",
+          "output": "alpha_pf",
+          "value": 1041.89681315
+        },
+        {
+          "formula": "pf_accel_torque",
+          "equation": "T_acc_pf = J_tot_pf*alpha_pf",
+          "output": "T_acc_pf",
+          "value": 0.18109847
+        },
+        {
+          "formula": "pf_peak_motor_torque",
+          "equation": "T_pk_pf = T_acc_pf + T_screw_pf",
+          "output": "T_pk_pf",
+          "value": 0.45178978
+        },
+        {
+          "formula": "pf_peak_velocity",
+          "equation": "v_pk_pf = 1.5*S_stroke_pf/t_disch_pf",
+          "output": "v_pk_pf",
+          "value": 0.33164606
+        },
+        {
+          "formula": "pf_screw_angular_velocity",
+          "equation": "omega_screw_pf = 2*pi*v_pk_pf/p_lead_pf",
+          "output": "omega_screw_pf",
+          "value": 208.37936263
+        },
+        {
+          "formula": "pf_servo_power",
+          "equation": "P_servo_pf = T_pk_pf*omega_screw_pf",
+          "output": "P_servo_pf",
+          "value": 94.14366687
+        },
+        {
+          "formula": "pf_machine_power",
+          "equation": "P_mach_pf = P_servo_pf*n_heads_pf/eta_drive_pf",
+          "output": "P_mach_pf",
+          "value": 409.32029075
+        },
+        {
+          "formula": "pf_machine_current",
+          "equation": "I_mach_pf = sqrt(3)*P_mach_pf/(3*V_line_pf*pf_pf)",
+          "output": "I_mach_pf",
+          "value": 0.57921858
+        }
+      ]
+    }
+  },
+  "formulas_added": [
+    {
+      "name": "pf_optimal_bore",
+      "equation": "D_bore_pf = (8*dD_bore_pf*V_disp_pf/(sqrt(2)*pi*dS_pos_pf))**(1/3)",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_peak_flow",
+      "equation": "Q_pk_pf = 1.5 * V_net_pf / t_disch_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_nozzle_from_shear_limit",
+      "equation": "D_nz_pf = (32*Q_pk_pf*((3*n_pl_pf+1)/(4*n_pl_pf))/(pi*gdot_max_pf))**(1/3)",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_fixed_error_terms",
+      "equation": "e_fixed_pf = sqrt(e_valve_pf**2 + e_thermal_pf**2 + e_loadcell_pf**2)",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_geometric_error_budget",
+      "equation": "e_geo_pf = sqrt(e_spec_pf**2 - e_fixed_pf**2)",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_min_stroke_allowance",
+      "equation": "e_smin_pf = sqrt(e_geo_pf**2 - e_bore_pf**2)",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_minimum_stroke",
+      "equation": "S_min_pf = 100 * dS_pos_pf / e_smin_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_minimum_volume",
+      "equation": "V_min_pf = A_piston_pf * S_min_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_turndown_ratio",
+      "equation": "TD_pf = S_stroke_pf / S_min_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_piston_bore_area",
+      "equation": "A_piston_pf = pi/4 * D_bore_pf**2",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_stroke_required",
+      "equation": "S_stroke_pf = V_disp_pf / A_piston_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_net_fill_volume",
+      "equation": "V_net_pf = V_disp_pf * eta_vol_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_fill_mass",
+      "equation": "m_fill_pf = rho_prod_pf * V_net_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_cycle_time",
+      "equation": "t_cycle_pf = 60 / n_cycles_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_discharge_time",
+      "equation": "t_disch_pf = t_cycle_pf * f_disch_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_flow_rate",
+      "equation": "Q_pf = V_net_pf / t_disch_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_containers_per_hour",
+      "equation": "N_cph_pf = n_cycles_pf * 60 * n_heads_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_volume_per_hour",
+      "equation": "Vdot_hr_pf = n_cycles_pf * 60 * V_net_pf * n_heads_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_peak_velocity",
+      "equation": "v_pk_pf = 1.5 * S_stroke_pf / t_disch_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_peak_acceleration",
+      "equation": "a_pk_pf = 4.5 * S_stroke_pf / t_disch_pf**2",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_nozzle_area",
+      "equation": "A_nz_pf = pi/4 * D_nz_pf**2",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_nozzle_velocity",
+      "equation": "v_nz_pf = Q_pf / A_nz_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_apparent_wall_shear_rate",
+      "equation": "gdot_app_pf = 32 * Q_pf / (pi * D_nz_pf**3)",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_rabinowitsch_correction",
+      "equation": "gdot_w_pf = gdot_app_pf * (3*n_pl_pf + 1) / (4*n_pl_pf)",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_power_law_wall_stress",
+      "equation": "tau_w_pf = K_pl_pf * gdot_w_pf**n_pl_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_apparent_viscosity",
+      "equation": "mu_app_pf = tau_w_pf / gdot_w_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_nozzle_pressure_drop",
+      "equation": "dP_nz_pf = 4 * tau_w_pf * L_nz_pf / D_nz_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_generalized_reynolds",
+      "equation": "Re_gen_pf = rho_prod_pf * v_nz_pf**(2-n_pl_pf) * D_nz_pf**n_pl_pf / (K_pl_pf * ((3*n_pl_pf+1)/(4*n_pl_pf))**n_pl_pf * 8**(n_pl_pf-1))",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_pressure_force",
+      "equation": "F_press_pf = dP_nz_pf * A_piston_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_seal_friction_force",
+      "equation": "F_seal_pf = mu_seal_pf * P_seal_pf * pi * D_bore_pf * w_seal_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_inertia_force",
+      "equation": "F_inertia_pf = m_piston_pf * a_pk_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_total_thrust",
+      "equation": "F_thrust_pf = F_press_pf + F_seal_pf + F_inertia_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_ballscrew_torque",
+      "equation": "T_screw_pf = F_thrust_pf * p_lead_pf / (2*pi*eta_screw_pf)",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_screw_angular_velocity",
+      "equation": "omega_screw_pf = 2*pi*v_pk_pf / p_lead_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_screw_rpm",
+      "equation": "N_screw_pf = 60 * v_pk_pf / p_lead_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_screw_angular_accel",
+      "equation": "alpha_pf = 2*pi*a_pk_pf / p_lead_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_reflected_load_inertia",
+      "equation": "J_load_pf = m_piston_pf * (p_lead_pf/(2*pi))**2",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_screw_inertia",
+      "equation": "J_screw_pf = pi * rho_steel_pf * L_screw_pf * D_screw_pf**4 / 32",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_total_inertia",
+      "equation": "J_tot_pf = J_load_pf + J_screw_pf + J_rotor_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_accel_torque",
+      "equation": "T_acc_pf = J_tot_pf * alpha_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_peak_motor_torque",
+      "equation": "T_pk_pf = T_screw_pf + T_acc_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_servo_power",
+      "equation": "P_servo_pf = T_pk_pf * omega_screw_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_inertia_ratio",
+      "equation": "R_inertia_pf = (J_load_pf + J_screw_pf) / J_rotor_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_suction_shear_rate",
+      "equation": "gdot_in_pf = 32*Q_pk_pf/(pi*D_in_pf**3) * ((3*n_pl_pf+1)/(4*n_pl_pf))",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_suction_wall_stress",
+      "equation": "tau_in_pf = K_pl_pf * gdot_in_pf**n_pl_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_suction_pressure_drop",
+      "equation": "dP_in_pf = 4 * tau_in_pf * L_in_pf / D_in_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_suction_available",
+      "equation": "dP_avail_pf = P_atm_pf + P_head_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_suction_margin",
+      "equation": "SM_pf = dP_avail_pf / dP_in_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_stroke_position_error",
+      "equation": "e_stroke_pf = 100 * dS_pos_pf / S_stroke_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_bore_tolerance_error",
+      "equation": "e_bore_pf = 200 * dD_bore_pf / D_bore_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_rss_fill_accuracy",
+      "equation": "e_tot_pf = sqrt(e_stroke_pf**2 + e_bore_pf**2 + e_valve_pf**2 + e_thermal_pf**2 + e_loadcell_pf**2)",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_fill_mass_tolerance",
+      "equation": "dm_fill_pf = m_fill_pf * e_tot_pf / 100",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_servo_heat_loss",
+      "equation": "P_loss_pf = P_servo_pf * (1 - eta_motor_pf)",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_motor_temp_rise",
+      "equation": "dT_motor_pf = P_loss_pf * Rth_motor_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_rod_second_moment",
+      "equation": "I_rod_pf = pi * D_rod_pf**4 / 64",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_rod_buckling_load",
+      "equation": "P_crit_pf = pi**2 * E_rod_pf * I_rod_pf / Le_rod_pf**2",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_rod_buckling_safety",
+      "equation": "n_buckling_pf = P_crit_pf / F_thrust_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_hopper_cone_volume",
+      "equation": "V_cone_pf = pi * D_hop_pf**2 * H_cone_pf / 12",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_hopper_cyl_volume",
+      "equation": "V_hcyl_pf = pi * D_hop_pf**2 * H_cyl_pf / 4",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_hopper_total_volume",
+      "equation": "V_hop_pf = V_cone_pf + V_hcyl_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_machine_consumption",
+      "equation": "Qdot_mach_pf = V_net_pf * n_cycles_pf * n_heads_pf / 60",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_hopper_refill_interval",
+      "equation": "t_refill_pf = V_hop_pf / Qdot_mach_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_hopper_static_head",
+      "equation": "P_head_pf = rho_prod_pf * g_pf * H_cyl_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_machine_power",
+      "equation": "P_mach_pf = n_heads_pf * P_servo_pf / eta_drive_pf",
+      "domain": "piston_filler"
+    },
+    {
+      "name": "pf_machine_current",
+      "equation": "I_mach_pf = P_mach_pf / (V_line_pf * sqrt(3) * pf_pf)",
+      "domain": "piston_filler"
+    }
+  ],
+  "brain": {
+    "base_formulas": 333,
+    "added_formulas": 65,
+    "total_nodes": 910,
+    "total_edges": 398
+  }
+}

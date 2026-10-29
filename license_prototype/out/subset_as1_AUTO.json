@@ -1,0 +1,116 @@
+{
+  "machine": "AS1 Bracket Assembly (NIST/pythonocc test model)",
+  "input_components": [
+    {
+      "name": "nut_1",
+      "type": "fastener"
+    },
+    {
+      "name": "nut_2",
+      "type": "fastener"
+    },
+    {
+      "name": "nut_3",
+      "type": "fastener"
+    },
+    {
+      "name": "rod_1",
+      "type": "shaft"
+    },
+    {
+      "name": "bolt_1",
+      "type": "fastener"
+    },
+    {
+      "name": "l-bracket_1",
+      "type": "structure_frame"
+    },
+    {
+      "name": "plate_1",
+      "type": "structure_frame"
+    }
+  ],
+  "domains_identified": [
+    "civil_structural",
+    "fault_pattern",
+    "materials",
+    "mechanical",
+    "universal",
+    "welding_joints"
+  ],
+  "unrecognized_component_types": [],
+  "formula_count": "71 of 333 total",
+  "formulas": {
+    "torque": "T = I*Kt",
+    "power_mechanical": "P = T*omega",
+    "angular_velocity": "omega = (-I*R + V)/Ke",
+    "bearing_friction_torque": "Tf = F*mu*r",
+    "rpm_conversion": "RPM = 30*omega/pi",
+    "mass_from_volume": "m = Vol*rho",
+    "moment_of_inertia_cylinder": "J = m*r**2/2",
+    "kinetic_energy": "KE = J*omega**2/2",
+    "polar_moment": "J_polar = pi*d**4/32",
+    "shear_stress": "tau = T*r/J_polar",
+    "bearing_power_loss": "Pf = Tf*omega",
+    "bearing_life_l10": "L10 = 1000000*(C/P)**p_life",
+    "shaft_torsion": "T = pi*d**3*tau/16",
+    "commutator_peripheral_velocity": "v_comm = pi*D_comm*RPM/60",
+    "severity_growth_asymptotic": "R = R0/(1 - s_sev)",
+    "severity_growth_linear": "R = R0*(k_growth*s_sev + 1)",
+    "torque_ripple": "T_ripple = T_nom*(k_unbal*sin(omega_t*t_ripple) + 1)",
+    "bending_stress": "sigma_bend = M_bend*c_dist/I_area",
+    "section_modulus": "Z_section = I_area/c_dist",
+    "beam_deflection_center_load": "delta_beam = F_beam*Lspan_beam**3/(48*E_mod*I_area)",
+    "euler_buckling_load": "P_euler = pi**2*E_mod*I_area/Le_col**2",
+    "radius_of_gyration": "k_gyr = sqrt(I_area/A)",
+    "von_mises_stress": "sigma_vm = sqrt(sigma_x**2 - sigma_x*sigma_y + sigma_y**2 + 3*tau_xy**2)",
+    "stress_concentration": "sigma_principal = Kt_stress*sigma_bend",
+    "hookes_law": "sigma_bend = E_mod*epsilon_strain",
+    "poissons_ratio": "nu_poisson = -E_mod*epsilon_strain/sigma_bend",
+    "thermal_expansion": "dL_therm = Lspan_beam*alpha_therm*(-T0_therm + T_temp)",
+    "shaft_deflection_bending": "delta_shaft = F_beam*Lspan_beam**3/(48*E_mod*J_polar)",
+    "shaft_critical_speed": "N_crit_shaft = 30*sqrt(k_stiff/m_sys)/pi",
+    "asme_shaft_combined_stress": "tau_m_shaft = 16*sqrt(Kf_shaft**2*M_bend**2 + T**2)/(pi*d**3)",
+    "key_shear_stress": "tau_key = F_key/A_key",
+    "miners_rule": "D_miner = n_cycles_i/N_cycles_i",
+    "sn_curve_life": "Nf_life = (Sf_life/a_sn)**(1/b_sn)",
+    "marin_corrected_endurance": "Se_corrected = Se_endurance*ka_surf*kb_size",
+    "natural_frequency": "omega_n = sqrt(k_stiff/m_sys)",
+    "damping_ratio": "zeta_damp = c_damp/(2*sqrt(k_stiff*m_sys))",
+    "goodman_fatigue_criterion": "n_safety = 1/(sigma_m/Sut_ultimate + sigma_a/Se_endurance)",
+    "convection_heat_transfer": "Q = A*h_conv*(-T_amb + T_temp)",
+    "nusselt_number": "Nu_nusselt = Lc_char*h_conv/k_thermal_cond",
+    "biot_number": "Bi_biot = Lc_char*h_conv/k_thermal_cond",
+    "fouriers_law_conduction": "q_fourier = -A_cond_area*dT_dx*k_cond",
+    "stefan_boltzmann_radiation": "q_rad = A*eps_rad*sigma_sb*(-T_cold_rad**4 + T_hot_rad**4)",
+    "thermal_resistance_series": "R_th_series = R_regulator + R_th",
+    "thermal_resistance_parallel": "R_th_parallel = R_regulator*R_th/(R_regulator + R_th)",
+    "log_mean_temp_difference": "LMTD_hx = (dT1_hx - dT2_hx)/log(dT1_hx/dT2_hx)",
+    "forced_vibration_amplitude": "X_forced = F0_forced/(k_stiff*sqrt(4*r_freq_ratio**2*zeta_damp**2 + (1 - r_freq_ratio**2)**2))",
+    "transmissibility_ratio": "TR_transmis = sqrt((4*r_freq_ratio**2*zeta_damp**2 + 1)/(4*r_freq_ratio**2*zeta_damp**2 + (1 - r_freq_ratio**2)**2))",
+    "logarithmic_decrement": "delta_log = log(x1_log/x2_log)",
+    "critical_damping_coefficient": "c_crit_damp = 2*sqrt(k_stiff*m_sys)",
+    "principal_stress_transform": "sigma_1_transform = sigma_x/2 + sigma_y/2 + sqrt(tau_xy**2 + (sigma_x/2 - sigma_y/2)**2)",
+    "principal_stress_transform_min": "sigma_2_transform = sigma_x/2 + sigma_y/2 - sqrt(tau_xy**2 + (sigma_x/2 - sigma_y/2)**2)",
+    "principal_stress_angle": "theta_transform = atan(2*tau_xy/(sigma_x - sigma_y))/2",
+    "heat_exchanger_effectiveness": "eps_hx = Qactual_hx/Qmax_hx",
+    "heat_exchanger_qmax": "Qmax_hx = Cmin_hx*(-T_cold_rad + T_hot_rad)",
+    "heat_exchanger_ntu": "NTU_hx = UA_hx/Cmin_hx",
+    "rotating_unbalance_response": "X_unbalance = me_unbalance*r_freq_ratio**2/(M_total_unbalance*sqrt(4*r_freq_ratio**2*zeta_damp**2 + (1 - r_freq_ratio**2)**2))",
+    "concrete_moment_capacity": "M_conc = As_conc*fy_conc*(-a_conc/2 + d_conc)",
+    "concrete_stress_block_depth": "a_conc = 20*As_conc*fy_conc/(17*b_conc*fc_conc)",
+    "reinforcement_ratio": "rho_conc = As_conc/(b_conc*d_conc)",
+    "rankine_active_pressure_coeff": "ka_rankine = (1 - sin(phi_soil))/(sin(phi_soil) + 1)",
+    "rankine_active_force": "Pa_rankine = H_wall**2*gamma_soil*ka_rankine/2",
+    "column_axial_stress": "sigma_allow_col = F_axial_col/A_col",
+    "udl_max_moment": "M_max_udl = L_beam**2*w_udl/8",
+    "udl_max_shear": "V_max_udl = L_beam*w_udl/2",
+    "udl_max_deflection": "delta_udl = 5*L_beam**4*w_udl/(384*E_mod*I_area)",
+    "fillet_weld_stress": "tau_weld = F_weld/(L_weld*throat_weld)",
+    "weld_throat_thickness": "throat_weld = 707*t_weld/1000",
+    "butt_weld_stress": "sigma_butt = F_butt/(L_butt*t_butt)",
+    "rivet_shear_stress": "tau_rivet = 4*F_rivet/(pi*d_rivet**2*n_rivets)",
+    "bolt_joint_stiffness_ratio": "C_bolt = k_bolt/(k_bolt + k_member)",
+    "bolt_total_load": "F_bolt_total = C_bolt*F_ext_bolt + F_bolt_preload"
+  }
+}

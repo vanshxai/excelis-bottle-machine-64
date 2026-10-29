@@ -1,0 +1,32 @@
+{
+ "name": "mini_sorter",
+ "built_seconds": 4.56,
+ "parts": 10,
+ "simulated_parts": 5,
+ "motors": [
+  "MS00301",
+  "MS00201"
+ ],
+ "workers": 5,
+ "undetectable": [
+  "MS00202"
+ ],
+ "assumptions": [
+  "Each fault is simulated alone: one part carrying extra load at a time.",
+  "No losses are modelled between parts (transmission efficiency taken as 100%).",
+  "Round-part radii are measured from the bounding box of the part in the STEP file.",
+  "Shaft bearing friction acts at the shaft's measured radius."
+ ],
+ "tree": [
+  "machine/MS00001_Mini_Sorter_Assembly/MS00101_Base_Plate",
+  "machine/MS00001_Mini_Sorter_Assembly/MS00401_Photoeye_Bracket",
+  "machine/MS00200_Disk_Section/MS00201_Disk_Drive_Motor_DC_gearmotor_90VDC",
+  "machine/MS00200_Disk_Section/MS00202_Disk_Shaft",
+  "machine/MS00200_Disk_Section/MS00203_Rotary_Disk_180mm",
+  "machine/MS00300_Belt_Section/MS00301_Belt_Drive_Motor_brushless_gearmotor",
+  "machine/MS00300_Belt_Section/MS00302_Drive_Pulley",
+  "machine/MS00300_Belt_Section/MS00303_Idler_Pulley",
+  "machine/MS00300_Belt_Section/MS00304_Timing_Belt",
+  "machine/MS00300_Belt_Section/MS00305_Flipper_Arm"
+ ]
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "id": "packet-builder-v1",
+    "name": "Faulter Software Packet Builder",
+    "version": "v1",
+    "file": "Faulter-Software-Packet-Builder-v1.zip",
+    "description": "Standalone Mac app. Install it, feed it a real assembly (STEP) file, and it builds an encrypted, signed, machine-specific formula packet from the core engine -- then packages the executable fault-detection app for that machine.",
+    "released": "2026-09-18"
+  }
+]

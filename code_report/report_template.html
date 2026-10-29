@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Faulter / Yanthros code report</title>
+<style>
+:root{--bg:#f6f5f1;--panel:#ffffff;--ink:#1f2328;--mute:#5d646c;--line:#dedbd2;--accent:#1d4e89;--accent-soft:#e3ecf7;--code:#f0eee8;
+--cur:#1f7a4d;--cur-bg:#dff3e7;--froz:#8a5a00;--froz-bg:#fbefd0;--copy:#6b6f76;--copy-bg:#e7e7e4;--old:#4a4f9c;--old-bg:#e6e7fa;--tool:#7a3b6b;--tool-bg:#f5e1f0;--warn:#a1301f;--warn-bg:#fbe3df}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#15171a;--panel:#1d2024;--ink:#e6e6e3;--mute:#9aa1a9;--line:#32363c;--accent:#8db7ee;--accent-soft:#22324a;--code:#262a2f;
+--cur:#7fd6a6;--cur-bg:#173524;--froz:#e8c273;--froz-bg:#3a2e12;--copy:#aeb3ba;--copy-bg:#2c2f33;--old:#aab0ff;--old-bg:#25274a;--tool:#e6a8d7;--tool-bg:#3b2336;--warn:#ff9d8f;--warn-bg:#3d1f1b}}
+:root[data-theme=dark]{--bg:#15171a;--panel:#1d2024;--ink:#e6e6e3;--mute:#9aa1a9;--line:#32363c;--accent:#8db7ee;--accent-soft:#22324a;--code:#262a2f;
+--cur:#7fd6a6;--cur-bg:#173524;--froz:#e8c273;--froz-bg:#3a2e12;--copy:#aeb3ba;--copy-bg:#2c2f33;--old:#aab0ff;--old-bg:#25274a;--tool:#e6a8d7;--tool-bg:#3b2336;--warn:#ff9d8f;--warn-bg:#3d1f1b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px}
+header{padding:28px 24px 8px;max-width:1320px;margin:0 auto}
+h1{font-size:26px;margin:0 0 4px;letter-spacing:-.01em}
+h2{font-size:19px;margin:34px 0 10px}
+.sub{color:var(--mute);margin:0}
+main{max-width:1320px;margin:0 auto;padding:0 24px 80px}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 0;margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.bar input[type=search]{flex:1 1 320px;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);font:inherit}
+.chip{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12px;font-weight:600;white-space:nowrap}
+.chip.current{background:var(--cur-bg);color:var(--cur)}.chip.frozen{background:var(--froz-bg);color:var(--froz)}.chip.copy{background:var(--copy-bg);color:var(--copy)}.chip.old{background:var(--old-bg);color:var(--old)}.chip.tool{background:var(--tool-bg);color:var(--tool)}
+.chip.warn{background:var(--warn-bg);color:var(--warn)}
+button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:7px;padding:5px 10px;cursor:pointer}
+button:hover{border-color:var(--accent)}button:focus-visible,summary:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button.f.on{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+table{border-collapse:collapse;width:100%}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--mute);background:var(--bg);position:sticky;top:0}
+tr:last-child td{border-bottom:none}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.path{color:var(--mute);word-break:break-all}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.card h3{margin:0 0 6px;font-size:15px}
+.card li{margin:2px 0}
+details.folder{background:var(--panel);border:1px solid var(--line);border-radius:10px;margin:12px 0}
+details.folder>summary{cursor:pointer;padding:12px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;list-style:none}
+details.folder>summary::-webkit-details-marker{display:none}
+details.folder>summary::before{content:"▸";color:var(--mute);width:14px}
+details.folder[open]>summary::before{content:"▾"}
+.fid{font-weight:700;color:var(--accent)}
+.fbody{padding:0 14px 14px}
+.kv{display:grid;grid-template-columns:130px 1fr;gap:4px 12px;margin:8px 0 12px}
+.kv div:nth-child(odd){color:var(--mute)}
+.read ol{margin:6px 0 10px 20px;padding:0}.read li{margin:3px 0}
+a.jump{color:var(--accent);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+tr.file{cursor:pointer}tr.file:hover td{background:var(--accent-soft)}
+tr.detail td{background:var(--code)}
+.dets{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;padding:6px 2px}
+.dets h4{margin:0 0 4px;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--mute)}
+.dets ul{margin:0;padding-left:16px}.dets li{margin:1px 0}
+.small{font-size:13px;color:var(--mute)}
+.note{background:var(--warn-bg);color:var(--ink);border-left:4px solid var(--warn);padding:8px 12px;border-radius:6px;margin:10px 0}
+.hide{display:none!important}
+mark{background:#ffe27a;color:#000;border-radius:2px}
+footer{margin-top:40px;color:var(--mute)}
+@media (max-width:700px){.kv{grid-template-columns:1fr}.kv div:nth-child(odd){margin-top:6px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Faulter / Yanthros code report</h1>
+  <p class="sub" id="sub"></p>
+</header>
+<main>
+  <div class="bar">
+    <input type="search" id="q" placeholder="Search every file: name, what it does, function, route, library…" aria-label="Search files">
+    <span id="filters"></span>
+    <button id="expand">Open all folders</button><button id="collapse">Close all</button>
+    <span class="small" id="count"></span>
+  </div>
+
+  <h2>1. All code locations</h2>
+  <p class="small">One row per folder of code. Click a folder name to jump to its file-by-file report. “Exact copy” folders hold files that are byte-for-byte the same as another folder.</p>
+  <div class="tablewrap"><table id="ftable"></table></div>
+
+  <h2>2. The same machine, rebuilt again and again</h2>
+  <p class="small">How many code files in each folder are about each machine (found by machine names in file paths and descriptions). A machine that shows up in several folders was rebuilt rather than reused.</p>
+  <div class="cards" id="machines"></div>
+
+  <h2>3. File-by-file report</h2>
+  <p class="small">Click any file row to see its functions and classes (with line numbers), web routes, libraries, which files in the same folder it uses or is used by, and its full path. “What it does” is taken from the file's own docstring, leading comment or page title; where the file has none, the report says so and lists what the file defines instead.</p>
+  <div id="folders"></div>
+
+  <h2>4. Copies between folders</h2>
+  <p class="small">Files whose content is the same (exact) or mostly the same (near, by shared lines) as a file in an earlier folder in this report.</p>
+  <div class="tablewrap"><table id="dtable"></table></div>
+
+  <footer>
+    <h2>What this report leaves out</h2>
+    <ul>
+      <li>Generated code (per-part <code>part_code.py</code> files under <code>bottle_machine_64/projects</code>), app bundles and build output, virtual environments, <code>node_modules</code>.</li>
+      <li>Third-party libraries (three.js, OrbitControls, the BitNet repository, Node-RED defaults inside its own folders).</li>
+      <li>Data and notes: JSON, CSV, databases, markdown, PDFs, images, videos. They are not code, but several folders depend on them.</li>
+      <li>Files bigger than 3 MB, and anything in folders not listed in section 1. iCloud, other computers and devices were not scanned.</li>
+    </ul>
+    <p class="small">Built by reading the files' structure (nothing was run or changed). Descriptions come from the code's own words, so a file with no docstring is described only by what it defines.</p>
+  </footer>
+</main>
+<script>
+const DATA = /*__DATA__*/null;
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt = n => n.toLocaleString("en-US");
+const fidName = Object.fromEntries(DATA.folders.map(f => [f.id, f.name]));
+DATA.files.forEach((f, i) => f.i = i);
+const folderFiles = {};
+DATA.files.forEach(f => (folderFiles[f.folder] ||= []).push(f));
+
+$("#sub").textContent = `${DATA.totals.folders} folders · ${fmt(DATA.totals.files)} code files · ${fmt(DATA.totals.lines)} lines · generated ${DATA.generated}`;
+
+async function copy(text, btn){
+  try{ await navigator.clipboard.writeText(text); }
+  catch(e){ const t=document.createElement("textarea"); t.value=text; document.body.appendChild(t); t.select(); try{document.execCommand("copy")}catch(_){} t.remove(); }
+  const old=btn.textContent; btn.textContent="Copied"; setTimeout(()=>btn.textContent=old,1200);
+}
+document.addEventListener("click", e => { const b = e.target.closest("button[data-copy]"); if(b){ e.stopPropagation(); copy(b.dataset.copy, b); } });
+
+// ---------- folder table
+(function(){
+  let h = "<thead><tr><th>ID</th><th>Status</th><th>Folder (click to open)</th><th>What it is</th><th>Machine / use</th><th>Languages</th><th class='n'>Files</th><th class='n'>Lines</th><th>Last changed</th><th>GitHub</th></tr></thead><tbody>";
+  for(const f of DATA.folders){
+    h += `<tr><td class="fid">${f.id}</td><td><span class="chip ${f.status}">${esc(f.status_label)}</span>${f.copy_of?`<div class="small">copy of ${f.copy_of}</div>`:""}</td>
+    <td><a class="jump" data-folder="${f.id}"><b>${esc(f.name)}</b></a><div class="path mono">${esc(f.short)} <button data-copy="${esc(f.path)}" title="Copy full path">copy</button></div></td>
+    <td>${esc(f.what)}</td><td>${esc(f.machine)}</td><td class="small">${esc(f.langs)}</td><td class="n">${fmt(f.files)}</td><td class="n">${fmt(f.lines)}</td><td class="n">${esc(f.updated)}</td>
+    <td class="small">${f.git?esc(f.git):"—"}</td></tr>`;
+  }
+  $("#ftable").innerHTML = h + "</tbody>";
+})();
+document.addEventListener("click", e => { const a = e.target.closest("a.jump[data-folder]"); if(a){ openFolder(a.dataset.folder, true); } });
+
+// ---------- machines
+(function(){
+  $("#machines").innerHTML = DATA.machines.map(m => `<div class="card"><h3>${esc(m.machine)}</h3>
+    ${m.places.length?`<p class="small">${m.places.length} folder${m.places.length>1?"s":""}</p><ul>${m.places.map(p=>`<li><a class="jump" data-folder="${p.id}">${p.id}</a> ${esc(p.name)} — ${p.files} file${p.files>1?"s":""}</li>`).join("")}</ul>`:"<p class='small'>none found</p>"}</div>`).join("");
+})();
+
+// ---------- folders and files
+const foldersEl = $("#folders");
+function fileRow(f){
+  const tags = [];
+  if(f.dup) tags.push(`<span class="chip ${f.dup.kind==="exact"?"copy":"froz"}" title="${esc(f.dup.of)}">${f.dup.kind==="exact"?"exact copy":"near copy "+f.dup.pct+"%"}</span>`);
+  if(!f.has_doc) tags.push(`<span class="chip warn" title="The file has no docstring, comment or title of its own">no description in file</span>`);
+  return `<tr class="file" data-i="${f.i}"><td class="mono">${esc(f.rel)}</td><td>${esc(f.lang)}</td><td class="n">${fmt(f.lines)}</td><td class="n">${esc(f.mod)}</td><td>${esc(f.desc)} ${tags.join(" ")}</td></tr>`;
+}
+function detailRow(f){
+  const defs = f.defs.length ? `<ul>${f.defs.slice(0,40).map(d=>`<li><code>${esc(d.n)}</code> <span class="small">${esc(d.k)} · line ${d.l}${d.m!=null?` · ${d.m} methods`:""}${d.d?` — ${esc(d.d)}`:""}</span></li>`).join("")}${f.defs.length>40?`<li class="small">… and ${f.defs.length-40} more</li>`:""}</ul>` : "<span class='small'>none found at the top level</span>";
+  const routes = f.routes.length ? `<ul>${f.routes.slice(0,40).map(r=>`<li><code>${esc(r.m)} ${esc(r.p)}</code> <span class="small">line ${r.l}${r.f?` · ${esc(r.f)}()`:""}</span></li>`).join("")}${f.routes.length>40?`<li class="small">… and ${f.routes.length-40} more</li>`:""}</ul>` : "";
+  const li = f.local_imports?.length ? f.local_imports.map(x=>`<code>${esc(x)}</code>`).join(", ") : "";
+  const ub = f.used_by?.length ? [...new Set(f.used_by)].map(x=>`<code>${esc(x)}</code>`).join(", ") : "";
+  const ext = f.ext_imports?.length ? f.ext_imports.map(x=>`<code>${esc(x)}</code>`).join(", ") : "";
+  return `<tr class="detail hide" data-for="${f.i}"><td colspan="5"><div class="dets">
+    <div><h4>Defines (${f.defs.length})</h4>${defs}</div>
+    ${routes?`<div><h4>Web routes (${f.routes.length})</h4>${routes}</div>`:""}
+    <div><h4>Connections</h4>
+      ${f.entry.length?`<div>How it runs: ${esc(f.entry.join("; "))}</div>`:""}
+      ${li?`<div>Uses (same folder): ${li}</div>`:""}${ub?`<div>Used by: ${ub}</div>`:""}${ext?`<div>Libraries: ${ext}</div>`:""}
+      ${f.dup?`<div>Duplicate: ${esc(f.dup.kind)} ${f.dup.pct}% of <code>${esc(f.dup.of)}</code></div>`:""}</div>
+    <div><h4>Where it is</h4><div class="mono path">${esc(f.abs)}</div><div class="small">${fmt(f.lines)} lines · ${f.kb} KB · last changed ${esc(f.mod)}</div><button data-copy="${esc(f.abs)}">Copy full path</button></div>
+  </div></td></tr>`;
+}
+for(const fo of DATA.folders){
+  const fl = folderFiles[fo.id] || [];
+  const readOl = fo.read.length ? `<div class="read"><b>Read these first, in this order</b><ol>${fo.read.map(([r,why])=>`<li><a class="jump" data-goto="${fo.id}|${esc(r)}"><code>${esc(r)}</code></a> — ${esc(why)}</li>`).join("")}</ol></div>` : "";
+  foldersEl.insertAdjacentHTML("beforeend", `<details class="folder" id="${fo.id}" data-id="${fo.id}">
+    <summary><span class="fid">${fo.id}</span><b>${esc(fo.name)}</b><span class="chip ${fo.status}">${esc(fo.status_label)}</span>
+      <span class="small">${fmt(fo.files)} files · ${fmt(fo.lines)} lines · last changed ${esc(fo.updated)}</span></summary>
+    <div class="fbody">
+      <div class="kv"><div>Location</div><div class="mono path">${esc(fo.path)} <button data-copy="${esc(fo.path)}">Copy path</button></div>
+        <div>Machine / use</div><div>${esc(fo.machine)}</div><div>What it is</div><div>${esc(fo.what)}</div><div>How to run</div><div><code>${esc(fo.run)}</code></div>
+        <div>GitHub</div><div>${fo.git?esc(fo.git):"No git history in this folder."}</div>
+        ${fo.copy_of?`<div>Copy of</div><div><a class="jump" data-folder="${fo.copy_of}">${fo.copy_of} ${esc(fidName[fo.copy_of])}</a></div>`:""}
+        <div>Undescribed files</div><div>${fo.undocumented} of ${fo.files} have no docstring/comment/title</div></div>
+      ${fo.note?`<div class="note">${esc(fo.note)}</div>`:""}
+      ${readOl}
+      <div class="tablewrap"><table><thead><tr><th>File</th><th>Language</th><th class="n">Lines</th><th class="n">Changed</th><th>What it does</th></tr></thead><tbody>
+      ${fl.map(f=>fileRow(f)+detailRow(f)).join("")||"<tr><td colspan=5 class='small'>No code files found.</td></tr>"}</tbody></table></div>
+    </div></details>`);
+}
+foldersEl.addEventListener("click", e => {
+  if(e.target.closest("button,a")) return;
+  const tr = e.target.closest("tr.file"); if(!tr) return;
+  const d = foldersEl.querySelector(`tr.detail[data-for="${tr.dataset.i}"]`); d.classList.toggle("hide");
+});
+document.addEventListener("click", e => {
+  const a = e.target.closest("a.jump[data-goto]"); if(!a) return;
+  const [fid, rel] = a.dataset.goto.split("|");
+  const f = (folderFiles[fid]||[]).find(x => x.rel === rel); if(!f) return;
+  openFolder(fid, false);
+  const tr = foldersEl.querySelector(`tr.file[data-i="${f.i}"]`); const d = foldersEl.querySelector(`tr.detail[data-for="${f.i}"]`);
+  d.classList.remove("hide"); tr.scrollIntoView({block:"center", behavior:"smooth"});
+});
+function openFolder(id, scroll){ const d = document.getElementById(id); d.open = true; if(scroll) d.scrollIntoView({behavior:"smooth", block:"start"}); }
+
+// ---------- duplicates
+(function(){
+  let h = "<thead><tr><th>Original (first place it appears)</th><th>Also appears as</th></tr></thead><tbody>";
+  for(const g of DATA.dups){
+    h += `<tr><td class="mono">${esc(g.original)}</td><td>${g.copies.map(c=>`<div class="mono">${esc(c.in)}: ${esc(c.rel)} <span class="chip ${c.kind==="exact"?"copy":"froz"}">${c.kind==="exact"?"exact":"near "+c.pct+"%"}</span></div>`).join("")}</td></tr>`;
+  }
+  $("#dtable").innerHTML = h + "</tbody>";
+})();
+
+// ---------- search / filters
+let statusFilter = "all";
+(function(){
+  const kinds = [["all","All"],["current","Current"],["frozen","Frozen"],["old","Older"],["copy","Copies"],["tool","Other"]];
+  $("#filters").innerHTML = kinds.map(([k,l])=>`<button class="f ${k==="all"?"on":""}" data-k="${k}">${l}</button>`).join(" ");
+  $("#filters").addEventListener("click", e => { const b=e.target.closest("button.f"); if(!b) return; statusFilter=b.dataset.k; document.querySelectorAll("#filters .f").forEach(x=>x.classList.toggle("on",x===b)); apply(); });
+})();
+function apply(){
+  const q = $("#q").value.trim().toLowerCase();
+  let shown = 0, folders = 0;
+  for(const fo of DATA.folders){
+    const el = document.getElementById(fo.id);
+    const okStatus = statusFilter==="all" || fo.status===statusFilter;
+    let any = false;
+    for(const f of folderFiles[fo.id]||[]){
+      const hay = (f.rel+" "+f.desc+" "+f.lang+" "+f.defs.map(d=>d.n).join(" ")+" "+f.routes.map(r=>r.p).join(" ")+" "+f.imports.join(" ")+" "+f.entry.join(" ")).toLowerCase();
+      const hit = !q || hay.includes(q);
+      const tr = el.querySelector(`tr.file[data-i="${f.i}"]`); tr.classList.toggle("hide", !hit);
+      if(!hit) el.querySelector(`tr.detail[data-for="${f.i}"]`).classList.add("hide");
+      if(hit){ any = true; shown++; }
+    }
+    const meta = !q || (fo.name+" "+fo.what+" "+fo.machine+" "+fo.path).toLowerCase().includes(q);
+    const vis = okStatus && (any || (meta && !q));
+    el.classList.toggle("hide", !vis);
+    if(vis){ folders++; if(q && any) el.open = true; }
+  }
+  $("#count").textContent = q ? `${shown} file${shown===1?"":"s"} in ${folders} folder${folders===1?"":"s"}` : "";
+  document.querySelectorAll("#ftable tbody tr").forEach((tr,i)=>{ const fo=DATA.folders[i]; const okS = statusFilter==="all"||fo.status===statusFilter; tr.classList.toggle("hide", !okS); });
+}
+let t; $("#q").addEventListener("input", () => { clearTimeout(t); t = setTimeout(apply, 120); });
+$("#expand").onclick = () => document.querySelectorAll("details.folder:not(.hide)").forEach(d=>d.open=true);
+$("#collapse").onclick = () => document.querySelectorAll("details.folder").forEach(d=>d.open=false);
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+ "part_number": "MS00305",
+ "description": "Flipper Arm",
+ "material": "Steel 1018",
+ "type": "flipper_arm",
+ "type_label": "Flipper arm",
+ "role": "passive",
+ "section": "MS00300",
+ "section_name": "Belt Section",
+ "parent": "MS00304",
+ "motor": "MS00301",
+ "chain": [
+  "MS00305",
+  "MS00304",
+  "MS00302",
+  "MS00301"
+ ],
+ "step_instances": [
+  "MS00305"
+ ],
+ "values": {
+  "R_MS00302": {
+   "value": 0.021962,
+   "unit": "m",
+   "source": "measured from the STEP file (MS00302, round part)"
+  }
+ },
+ "effort": {
+  "label": "Extra force a bottle puts on the belt through the flipper",
+  "unit": "N",
+  "ok_max": 5.0,
+  "warning": 20.0,
+  "critical": 40.0
+ }
+}

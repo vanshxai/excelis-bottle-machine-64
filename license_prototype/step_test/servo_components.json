@@ -1,0 +1,17 @@
+{
+  "root_product": "1143 MicroServo High Torque Metal Gear",
+  "unique_part_types": 2,
+  "total_instances": 2,
+  "components": [
+    {
+      "name": "body",
+      "type": "servo",
+      "instances_found": 1
+    },
+    {
+      "name": "spline",
+      "type": "servo",
+      "instances_found": 1
+    }
+  ]
+}

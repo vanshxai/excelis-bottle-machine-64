@@ -1,0 +1,157 @@
+{
+ "part_number": "MS00305",
+ "motor": "MS00301",
+ "effort_label": "Extra force a bottle puts on the belt through the flipper",
+ "effort_unit": "N",
+ "levels": {
+  "ok_max": {
+   "effort": 5.0,
+   "motor_torque_Nm": 0.10980999999999999,
+   "delta_current_A": 0.04612019999999999
+  },
+  "warning": {
+   "effort": 20.0,
+   "motor_torque_Nm": 0.43923999999999996,
+   "delta_current_A": 0.18448079999999997
+  },
+  "critical": {
+   "effort": 40.0,
+   "motor_torque_Nm": 0.8784799999999999,
+   "delta_current_A": 0.36896159999999995
+  }
+ },
+ "sweep": [
+  {
+   "effort": 0.0,
+   "motor_torque_Nm": 0.0,
+   "delta_current_A": 0.0
+  },
+  {
+   "effort": 2.0,
+   "motor_torque_Nm": 0.043924,
+   "delta_current_A": 0.01844808
+  },
+  {
+   "effort": 4.0,
+   "motor_torque_Nm": 0.087848,
+   "delta_current_A": 0.03689616
+  },
+  {
+   "effort": 6.0,
+   "motor_torque_Nm": 0.131772,
+   "delta_current_A": 0.055344239999999996
+  },
+  {
+   "effort": 8.0,
+   "motor_torque_Nm": 0.175696,
+   "delta_current_A": 0.07379232
+  },
+  {
+   "effort": 10.0,
+   "motor_torque_Nm": 0.21961999999999998,
+   "delta_current_A": 0.09224039999999999
+  },
+  {
+   "effort": 12.0,
+   "motor_torque_Nm": 0.263544,
+   "delta_current_A": 0.11068847999999999
+  },
+  {
+   "effort": 14.0,
+   "motor_torque_Nm": 0.30746799999999996,
+   "delta_current_A": 0.12913655999999998
+  },
+  {
+   "effort": 16.0,
+   "motor_torque_Nm": 0.351392,
+   "delta_current_A": 0.14758464
+  },
+  {
+   "effort": 18.0,
+   "motor_torque_Nm": 0.395316,
+   "delta_current_A": 0.16603272
+  },
+  {
+   "effort": 20.0,
+   "motor_torque_Nm": 0.43923999999999996,
+   "delta_current_A": 0.18448079999999997
+  },
+  {
+   "effort": 22.0,
+   "motor_torque_Nm": 0.483164,
+   "delta_current_A": 0.20292887999999998
+  },
+  {
+   "effort": 24.0,
+   "motor_torque_Nm": 0.527088,
+   "delta_current_A": 0.22137695999999998
+  },
+  {
+   "effort": 26.0,
+   "motor_torque_Nm": 0.571012,
+   "delta_current_A": 0.23982504
+  },
+  {
+   "effort": 28.0,
+   "motor_torque_Nm": 0.6149359999999999,
+   "delta_current_A": 0.25827311999999997
+  },
+  {
+   "effort": 30.0,
+   "motor_torque_Nm": 0.65886,
+   "delta_current_A": 0.2767212
+  },
+  {
+   "effort": 32.0,
+   "motor_torque_Nm": 0.702784,
+   "delta_current_A": 0.29516928
+  },
+  {
+   "effort": 34.0,
+   "motor_torque_Nm": 0.7467079999999999,
+   "delta_current_A": 0.31361735999999996
+  },
+  {
+   "effort": 36.0,
+   "motor_torque_Nm": 0.790632,
+   "delta_current_A": 0.33206544
+  },
+  {
+   "effort": 38.0,
+   "motor_torque_Nm": 0.834556,
+   "delta_current_A": 0.35051351999999997
+  },
+  {
+   "effort": 40.0,
+   "motor_torque_Nm": 0.8784799999999999,
+   "delta_current_A": 0.36896159999999995
+  },
+  {
+   "effort": 42.0,
+   "motor_torque_Nm": 0.922404,
+   "delta_current_A": 0.38740968
+  },
+  {
+   "effort": 44.0,
+   "motor_torque_Nm": 0.966328,
+   "delta_current_A": 0.40585775999999996
+  },
+  {
+   "effort": 46.0,
+   "motor_torque_Nm": 1.010252,
+   "delta_current_A": 0.42430583999999993
+  },
+  {
+   "effort": 48.0,
+   "motor_torque_Nm": 1.054176,
+   "delta_current_A": 0.44275391999999997
+  },
+  {
+   "effort": 50.0,
+   "motor_torque_Nm": 1.0980999999999999,
+   "delta_current_A": 0.46120199999999995
+  }
+ ],
+ "detectable_at_critical": true,
+ "critical_over_tolerance": 18.448079999999997
+}

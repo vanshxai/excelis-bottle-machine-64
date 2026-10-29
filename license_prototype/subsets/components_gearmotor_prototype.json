@@ -1,0 +1,9 @@
+[
+  {"name": "150 RPM DC gearmotor", "type": "dc_motor"},
+  {"name": "Output gearbox stage", "type": "gearbox"},
+  {"name": "Output shaft + coupling", "type": "shaft"},
+  {"name": "ESP32 controller board", "type": "microcontroller"},
+  {"name": "WiFi/BLE radio (onboard ESP32)", "type": "rf_module"},
+  {"name": "Current sense sensor", "type": "sensor"},
+  {"name": "Li-ion battery pack", "type": "battery"}
+]

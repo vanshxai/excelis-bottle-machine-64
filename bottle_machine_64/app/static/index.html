@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Faulter Builder - trial</title>
+<style>
+:root{--bg:#07090d;--panel:#0f1319;--panel2:#141b24;--line:#1c232d;--txt:#c9d6e4;--dim:#6d8199;--accent:#4fc3f7;--amb:#e0a940;--ok:#5ec269;--bad:#e5534b}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--txt);font:14px/1.5 ui-sans-serif,-apple-system,Segoe UI,Roboto,sans-serif}
+header{height:54px;display:flex;align-items:center;gap:18px;padding:0 20px;background:var(--panel);border-bottom:1px solid var(--line)}
+header h1{font-size:15px;margin:0;color:#fff;letter-spacing:.02em}header h1 span{color:var(--accent)}
+.steps{display:flex;gap:6px;margin-left:auto}
+.st{padding:5px 10px;border-radius:14px;background:var(--panel2);color:var(--dim);font-size:12px;border:1px solid var(--line)}
+.st.on{background:#12354a;color:#fff;border-color:var(--accent)}.st.done{color:var(--ok)}
+#wrap{display:grid;grid-template-columns:minmax(520px,46%) 1fr;height:calc(100% - 54px)}
+#main{overflow:auto;padding:22px 24px 60px;border-right:1px solid var(--line)}
+#viewbox{position:relative}#viewer{position:absolute;inset:0}
+#vinfo{position:absolute;left:12px;top:10px;color:var(--dim);font-size:12px;pointer-events:none;max-width:60%}
+#legend{position:absolute;left:12px;bottom:10px;font-size:12px;color:var(--dim);display:flex;gap:12px;flex-wrap:wrap}
+#legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
+h2{font-size:18px;margin:0 0 4px;color:#fff}h3{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p.sub{color:var(--dim);margin:0 0 16px}
+button{background:var(--accent);color:#04121b;border:0;border-radius:6px;padding:8px 14px;font-weight:600;cursor:pointer;font-size:13px}
+button:disabled{opacity:.35;cursor:not-allowed}button.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+button.small{padding:4px 9px;font-size:12px}
+input,select{background:#0a0e13;border:1px solid var(--line);color:var(--txt);padding:6px 8px;border-radius:5px;font:inherit;font-size:13px}
+input[type=number]{width:96px}input[type=file]{max-width:100%}
+table{width:100%;border-collapse:collapse;font-size:13px}th{text-align:left;color:var(--dim);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.06em;padding:6px 6px;border-bottom:1px solid var(--line)}
+td{padding:7px 6px;border-bottom:1px solid #131a22;vertical-align:top}tr.hl td{background:#12202d}
+.pn{color:#fff;font-weight:600;white-space:nowrap}.hint{color:var(--dim);font-size:12px}
+.ok{color:var(--ok)}.bad{color:var(--bad)}.amb{color:var(--amb)}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:12px 0}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.field{display:grid;grid-template-columns:1fr 130px;gap:8px;align-items:center;margin:6px 0}.field label{color:var(--txt)}
+.ribbon{background:#3a2d0c;color:var(--amb);border:1px solid #5c4710;border-radius:6px;padding:8px 12px;margin:10px 0;font-size:13px}
+.err{background:#2a1214;border:1px solid #5a2024;color:#ffb3ad;border-radius:6px;padding:10px 12px;margin:10px 0;font-size:13px}
+.err li{margin-left:16px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 12px}.card b{display:block;font-size:20px;color:#fff}.card span{color:var(--dim);font-size:12px}
+pre{background:#0a0e13;border:1px solid var(--line);border-radius:6px;padding:10px;overflow:auto;max-height:300px;font-size:12px;color:#b9c8d8;margin:8px 0}
+.tree .sec{margin-top:8px;color:var(--amb);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.tree .it{padding:3px 8px;cursor:pointer;border-radius:4px;font-size:13px}.tree .it:hover{background:#16202c}.tree .it.on{background:#12354a;color:#fff}
+.files button{margin:2px 4px 2px 0}
+.bar{height:10px;background:#0a0e13;border-radius:5px;position:relative;margin-top:4px;border:1px solid var(--line)}.bar i{position:absolute;left:0;top:0;bottom:0;border-radius:5px}
+.pill{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;font-weight:600}
+.p-fine{background:#16311d;color:var(--ok)}.p-elevated{background:#3a3210;color:#e8cf5a}.p-warning{background:#4a2e0c;color:var(--amb)}.p-critical{background:#4a1519;color:#ff8a82}
+</style></head><body>
+<header><h1>Faulter <span>Builder</span> &nbsp;<small style="color:#6d8199;font-weight:400">trial run</small></h1><div class="steps" id="stepper"></div></header>
+<div id="wrap"><div id="main"></div>
+<div id="viewbox"><div id="viewer"></div><div id="vinfo">Upload files to see the machine.</div><div id="legend"></div></div></div>
+<script src="/static/three.min.js"></script>
+<script>
+const $=s=>document.querySelector(s);
+const api=async(path,body)=>{const r=await fetch(path,body===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});return r.json();};
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const S={step:1,max:1,an:null,types:{},links:{},answers:{settings:{},motors:{},parts:{}},req:null,proj:null,idToPn:{},pnIds:{},test:false,secColor:{}};
+const STEPS=['Files','Parts','Links','Inputs','Build','Result'];
+const PAL=['#4fc3f7','#8a8fb8','#5ec269','#d4537e','#1d9e75','#7f77dd'];
+
+/* ---------- 3D viewer ---------- */
+const V=(()=>{
+ const el=$('#viewer'),renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(devicePixelRatio);el.appendChild(renderer.domElement);
+ const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(40,1,1,200000),ray=new THREE.Raycaster();
+ let root=new THREE.Group(),lines={},ctr=new THREE.Vector3(),dist=500,yaw=.8,pitch=.5,pick=null,down=null;scene.add(root);
+ const size=()=>{const w=el.clientWidth,h=el.clientHeight;renderer.setSize(w,h);cam.aspect=w/h;cam.updateProjectionMatrix();};
+ const place=()=>{cam.position.set(ctr.x+dist*Math.cos(pitch)*Math.sin(yaw),ctr.y+dist*Math.sin(pitch),ctr.z+dist*Math.cos(pitch)*Math.cos(yaw));cam.up.set(0,0,1);cam.lookAt(ctr);};
+ const draw=()=>{renderer.setClearColor(0x0b0f14);renderer.render(scene,cam);};
+ addEventListener('resize',()=>{size();place();draw();});
+ el.addEventListener('mousedown',e=>down={x:e.clientX,y:e.clientY,moved:false,px:e.clientX,py:e.clientY});
+ addEventListener('mouseup',e=>{if(down&&!down.moved&&pick){const r=el.getBoundingClientRect();const m=new THREE.Vector2(((e.clientX-r.left)/r.width)*2-1,-((e.clientY-r.top)/r.height)*2+1);ray.setFromCamera(m,cam);ray.params.Line.threshold=dist*.004;const h=ray.intersectObjects(Object.values(lines));if(h.length)pick(h[0].object.userData.id);}down=null;});
+ addEventListener('mousemove',e=>{if(!down)return;if(Math.abs(e.clientX-down.x)+Math.abs(e.clientY-down.y)>4)down.moved=true;yaw-=(e.clientX-down.px)*.01;pitch=Math.max(-1.5,Math.min(1.5,pitch+(e.clientY-down.py)*.01));down.px=e.clientX;down.py=e.clientY;place();draw();});
+ el.addEventListener('wheel',e=>{e.preventDefault();dist*=e.deltaY>0?1.1:.9;place();draw();},{passive:false});
+ return{
+  load(geo){scene.remove(root);root=new THREE.Group();scene.add(root);lines={};
+   geo.parts.forEach(p=>{const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(p.edges,3));
+    const l=new THREE.LineSegments(g,new THREE.LineBasicMaterial({color:0x4a5a6b}));l.userData.id=p.id;root.add(l);lines[p.id]=l;});
+   const b=geo.bounds_mm;ctr.set((b[0][0]+b[1][0])/2,(b[0][1]+b[1][1])/2,(b[0][2]+b[1][2])/2);
+   dist=Math.max(b[1][0]-b[0][0],b[1][1]-b[0][1],b[1][2]-b[0][2])*1.5;size();place();draw();},
+  paint(fn){for(const id in lines){const s=fn(id)||{};const m=lines[id].material;m.color.set(s.color||'#4a5a6b');m.opacity=s.opacity??1;m.transparent=m.opacity<1;}draw();},
+  onPick(f){pick=f;},resize(){size();place();draw();}};
+})();
+
+/* ---------- helpers ---------- */
+function ids(pns){return pns.flatMap(p=>S.pnIds[p]||[]);}
+function paintBase(hot){ // colour by section; `hot` = {pn:[color,opacity]} overrides
+ V.paint(id=>{const pn=S.idToPn[id];if(!pn)return{color:'#4a5a6b',opacity:.5};
+  if(hot&&hot[pn])return{color:hot[pn][0],opacity:hot[pn][1]};
+  const t=S.types[pn]||(S.proj&&S.proj.index.parts[pn]&&S.proj.index.parts[pn].type);
+  if(hot)return{color:'#33404d',opacity:.35};
+  return{color:t==='static'?'#56677a':(S.secColor[S.an?S.an.parts[pn].section:S.proj.index.parts[pn].section]||'#4fc3f7'),opacity:1};});
+}
+function stepper(){ $('#stepper').innerHTML=STEPS.map((n,i)=>`<span class="st ${S.step===i+1?'on':''} ${i+1<S.step?'done':''}">${i+1} ${n}</span>`).join('');}
+function go(n){S.step=n;S.max=Math.max(S.max,n);render();}
+function problems(list){return list&&list.length?`<div class="err"><b>Fix these first:</b><ul>${list.map(p=>`<li>${esc(p)}</li>`).join('')}</ul></div>`:'';}
+function setGeometry(geo,an){
+ S.idToPn={};S.pnIds={};const parts=an?Object.values(an.parts):[];
+ (an?Object.values(an.parts):[]).forEach(p=>{S.pnIds[p.part_number]=p.instances;p.instances.forEach(i=>S.idToPn[i]=p.part_number);});
+ V.load(geo);
+}
+function legend(items){$('#legend').innerHTML=items.map(([c,t])=>`<span><i style="background:${c}"></i>${esc(t)}</span>`).join('');}
+
+/* ---------- step 1: files ---------- */
+function s1(){
+ $('#main').innerHTML=`<h2>1. Upload your files</h2><p class="sub">The machine as a STEP file (saved from your CAD) and its parts list (BOM) as CSV or Excel.</p>
+ <div class="box"><div class="row"><label>STEP file</label><input type="file" id="fStep" accept=".step,.stp"></div>
+ <div class="row"><label>BOM file</label><input type="file" id="fBom" accept=".csv,.xlsx"></div>
+ <div class="row"><button id="chk">Check files</button><button class="ghost" id="tst">Use the 10-part mini-sorter test files</button></div></div>
+ <div id="res"></div>`;
+ const run=async fd=>{$('#res').innerHTML='<p class="hint">Reading the files...</p>';const r=await (await fetch('/api/analyze',{method:'POST',body:fd})).json();
+  if(!r.ok){$('#res').innerHTML=`<div class="err"><b>Could not read the files</b><br>${esc(r.error)}<br><span class="hint">Fix the file and upload it again.</span></div>`;return;}
+  S.an={parts:Object.fromEntries(r.parts.map(p=>[p.part_number,p])),list:r.parts,types:r.types};S.test=r.test_files;
+  const geo=await api('/api/geometry');setGeometry(geo,S.an);
+  [...new Set(r.parts.map(p=>p.section))].forEach((s,i)=>S.secColor[s]=PAL[i%PAL.length]);paintBase();
+  $('#vinfo').textContent=`${r.step.file} - ${r.step.parts} parts`;legend([['#4fc3f7','section colours'],['#56677a','fixed parts']]);
+  $('#res').innerHTML=`<div class="box"><div class="${r.match.ok?'ok':'bad'}"><b>${r.match.ok?'Files agree':'Files do not agree'}</b></div>
+   <div class="hint">STEP: ${r.step.parts} parts &nbsp;|&nbsp; BOM: ${r.bom.rows} rows (columns: ${esc(r.bom.columns.join(', '))}) &nbsp;|&nbsp; matched: ${r.match.matched}</div>
+   ${problems(r.match.problems)}</div>${r.match.ok?'<button id="n1">Next: name the parts</button>':'<p class="hint">Upload corrected files to continue.</p>'}`;
+  if(r.match.ok)$('#n1').onclick=()=>go(2);};
+ $('#chk').onclick=()=>{const fd=new FormData();fd.append('step',$('#fStep').files[0]||'');fd.append('bom',$('#fBom').files[0]||'');if(!$('#fStep').files[0]||!$('#fBom').files[0]){$('#res').innerHTML='<div class="err">Choose both files first.</div>';return;}run(fd);};
+ $('#tst').onclick=()=>{const fd=new FormData();fd.append('use_test','1');run(fd);};
+}
+
+/* ---------- step 2: part types ---------- */
+function s2(){
+ const L=S.an.list,T=S.an.types;
+ const opts=sel=>`<option value="">- choose -</option>`+T.map(t=>`<option value="${t.id}" ${sel===t.id?'selected':''}>${esc(t.label)}</option>`).join('');
+ $('#main').innerHTML=`<h2>2. What is each part?</h2><p class="sub">The software suggests a kind of part from the BOM description. You decide: nothing is used until you pick or accept it.</p>
+ <div class="row"><button class="ghost small" id="acc">Accept all suggestions</button><span class="hint">or choose each one yourself</span></div>
+ <table><tr><th>Part</th><th>Description</th><th>Kind of part</th><th>Suggestion</th></tr>
+ ${L.map(p=>`<tr data-pn="${p.part_number}"><td class="pn">${p.part_number}</td><td>${esc(p.description)}<div class="hint">${esc(p.section_name||'')}</div></td>
+ <td><select data-pn="${p.part_number}">${opts(S.types[p.part_number])}</select></td>
+ <td class="hint">${p.suggested_type?esc(T.find(t=>t.id===p.suggested_type).label)+'<br>('+esc(p.suggest_reason)+')':'none - choose it yourself'}</td></tr>`).join('')}</table>
+ <div class="row"><button id="n2" disabled>Next: how parts drive each other</button></div>`;
+ const check=()=>{$('#n2').disabled=!L.every(p=>S.types[p.part_number]);};
+ document.querySelectorAll('select[data-pn]').forEach(s=>s.onchange=()=>{S.types[s.dataset.pn]=s.value;check();});
+ document.querySelectorAll('tr[data-pn]').forEach(tr=>{tr.onmouseenter=()=>{tr.classList.add('hl');paintBase(Object.fromEntries([[tr.dataset.pn,['#ffffff',1]]]));};tr.onmouseleave=()=>{tr.classList.remove('hl');paintBase();};});
+ $('#acc').onclick=()=>{L.forEach(p=>{if(p.suggested_type)S.types[p.part_number]=p.suggested_type;});s2();};
+ $('#n2').onclick=async()=>{S.links=S.links||{};go(3);};check();
+}
+
+/* ---------- step 3: links ---------- */
+async function s3(){
+ const L=S.an.list,T=Object.fromEntries(S.an.types.map(t=>[t.id,t]));
+ const r=await api('/api/links',{types:S.types});
+ const parents=L.filter(p=>T[S.types[p.part_number]].kind!=='static');
+ const driven=L.filter(p=>T[S.types[p.part_number]].kind==='driven');
+ $('#main').innerHTML=`<h2>3. What drives what?</h2><p class="sub">Every moving part is driven by a motor or by another part. A part driven straight by a motor is <b>active</b>; one driven through another part is <b>passive</b>. Suggestions are shown; you confirm.</p>
+ <div class="row"><button class="ghost small" id="acc">Accept all suggestions</button></div>
+ <table><tr><th>Part</th><th>Driven by</th><th>Suggestion</th></tr>
+ ${driven.map(p=>{const pn=p.part_number,sg=r.suggest[pn];return `<tr data-pn="${pn}"><td class="pn">${pn}<div class="hint">${esc(p.description)}</div></td>
+ <td><select data-pn="${pn}"><option value="">- choose -</option>${parents.filter(q=>q.part_number!==pn).map(q=>`<option value="${q.part_number}" ${S.links[pn]===q.part_number?'selected':''}>${q.part_number} ${esc(q.description)}</option>`).join('')}</select></td>
+ <td class="hint">${sg&&sg.parent?esc(sg.parent)+' ('+esc(sg.reason)+')':esc(sg?sg.reason:'')}</td></tr>`;}).join('')}</table>
+ <div id="lp"></div><div class="row"><button id="n3" disabled>Next: your numbers</button></div>`;
+ const check=async()=>{const full=driven.every(p=>S.links[p.part_number]);let pr=[];
+  if(full){pr=(await api('/api/validate',{answers:{types:S.types,links:S.links},upto:'links'})).problems;}
+  $('#lp').innerHTML=problems(pr);$('#n3').disabled=!(full&&!pr.length);};
+ document.querySelectorAll('select[data-pn]').forEach(s=>s.onchange=()=>{S.links[s.dataset.pn]=s.value;check();});
+ document.querySelectorAll('tr[data-pn]').forEach(tr=>{tr.onmouseenter=()=>{tr.classList.add('hl');const pn=tr.dataset.pn,hot={};hot[pn]=['#ffffff',1];if(S.links[pn])hot[S.links[pn]]=['#e0a940',1];paintBase(hot);};tr.onmouseleave=()=>{tr.classList.remove('hl');paintBase();};});
+ $('#acc').onclick=()=>{for(const pn in r.suggest)if(r.suggest[pn].parent)S.links[pn]=r.suggest[pn].parent;s3();};
+ $('#n3').onclick=()=>go(4);check();
+}
+
+/* ---------- step 4: inputs ---------- */
+async function s4(){
+ S.req=await api('/api/requirements',{types:S.types,links:S.links});const A=S.answers,q=S.req;
+ const val=(o,k)=>o&&o[k]!==undefined&&o[k]!==null?o[k]:'';
+ const inp=(path,unit)=>`<input type="number" step="any" data-path="${path}" value="${val(path.split('.').reduce((o,k)=>o&&o[k],A),'')}"> <span class="hint">${esc(unit||'')}</span>`;
+ const get=(path)=>{const v=path.split('.').reduce((o,k)=>o&&o[k],A);return v===undefined||v===null?'':v;};
+ const f=(label,path,unit,opt)=>`<div class="field"><label>${esc(label)}${opt?' <span class="hint">(optional)</span>':''}</label><div><input type="number" step="any" data-path="${path}" value="${get(path)}"> <span class="hint">${esc(unit||'')}</span></div></div>`;
+ let h=`<h2>4. Your numbers</h2><p class="sub">Type the values you know. The software never fills in a missing one: the Build button stays locked until everything is answered.</p>
+ <div class="row"><button class="ghost small" id="tst">Load TEST answers</button><span class="hint">made-up values so you can see the whole flow</span></div><div id="ribbon"></div>`;
+ h+=`<h3>Sensor</h3>`+q.settings.map(s=>f(s.label,'settings.'+s.key,s.unit)).join('');
+ for(const pn in q.motors){h+=`<h3>Motor ${pn}: ${esc(S.an.parts[pn].description)}</h3>`+q.motors[pn].fields.map(x=>f(x.label,`motors.${pn}.${x.key}`,x.unit,x.optional)).join('');}
+ for(const pn in q.parts){const p=q.parts[pn];if(!p.params.length&&!p.effort&&!(p.needs_radius&&p.radius_from_step===null))continue;
+  h+=`<h3>${pn}: ${esc(S.an.parts[pn].description)}</h3><div class="hint">${esc(p.type_label)}${p.needs_radius&&p.radius_from_step!==null?' - radius '+p.radius_from_step+' mm measured from the STEP file':''}</div>`;
+  p.params.forEach(x=>h+=f(x.label+(x.hint?' ('+x.hint+')':''),`parts.${pn}.${x.key}`,x.unit));
+  if(p.needs_radius&&p.radius_from_step===null)h+=f('Radius of this round part','parts.'+pn+'.radius_mm','mm');
+  if(p.effort){h+=`<div class="hint" style="margin-top:8px">${esc(p.effort.ask)} (${esc(p.effort.label)})</div>`+
+   f('Still fine up to','parts.'+pn+'.effort.ok_max',p.effort.unit)+f('Warning at','parts.'+pn+'.effort.warning',p.effort.unit)+f('Critical at','parts.'+pn+'.effort.critical',p.effort.unit);}}
+ h+=`<div id="vp"></div><div class="row" style="margin-top:20px"><button id="n4">Build the machine</button></div>`;
+ $('#main').innerHTML=h;
+ if(S.testLoaded)$('#ribbon').innerHTML='<div class="ribbon"><b>TEST values loaded</b> - these numbers are made up for this trial, not data from a real machine.</div>';
+ document.querySelectorAll('input[data-path]').forEach(i=>i.oninput=()=>{const ks=i.dataset.path.split('.');let o=A;ks.slice(0,-1).forEach(k=>o=o[k]=o[k]||{});o[ks[ks.length-1]]=i.value===''?null:Number(i.value);});
+ $('#tst').onclick=async()=>{const t=await api('/api/test_answers');['settings','motors','parts'].forEach(k=>{S.answers[k]=JSON.parse(JSON.stringify(t[k]||{}));});S.testLoaded=true;s4();};
+ $('#n4').onclick=async()=>{const r=await api('/api/validate',{answers:{...S.answers,types:S.types,links:S.links}});$('#vp').innerHTML=problems(r.problems);if(!r.problems.length)go(5);};
+}
+
+/* ---------- step 5: build ---------- */
+async function s5(){
+ $('#main').innerHTML=`<h2>5. Building</h2><p class="sub">Writing one folder per part, generating each part's code, and simulating every part on its own processor core.</p><div id="bl" class="box">Working...</div>`;
+ const r=await api('/api/build',{name:'mini_sorter',answers:{...S.answers,types:S.types,links:S.links}});
+ if(!r.ok){$('#bl').innerHTML=problems(r.problems);return;}
+ const s=r.summary;
+ $('#bl').innerHTML=`<div class="ok"><b>Done in ${s.built_seconds} s</b></div><ul>${r.log.map(l=>`<li>${esc(l)}</li>`).join('')}</ul>
+ <div class="hint">Saved in: bottle_machine_64/projects/${esc(r.name)}/</div><div class="row"><button id="n5">Open the result</button></div>`;
+ S.projName=r.name;$('#n5').onclick=()=>go(6);
+}
+
+/* ---------- step 6: result ---------- */
+const BANDC={fine:'#5ec269',elevated:'#e8cf5a',warning:'#e0a940',critical:'#e5534b'};
+async function s6(){
+ S.proj=await api('/api/project?name='+S.projName);const P=S.proj,I=P.index,SG=P.signatures;
+ const geo=await api('/api/project_geometry?name='+S.projName);setGeometry(geo,S.an);paintBase();
+ const sims=Object.keys(SG.parts),motors=Object.keys(SG.motors);
+ const secs={};Object.entries(I.parts).forEach(([pn,d])=>{(secs[d.section]=secs[d.section]||{name:d.section_name,parts:[]}).parts.push(pn);});
+ let h=`<h2>6. Result</h2><p class="sub">The machine is built. Below: what was written, what each fault looks like in the motor current, and a live check you can try.</p>
+ <div class="cards"><div class="card"><b>${P.summary.parts}</b><span>parts</span></div><div class="card"><b>${P.summary.simulated_parts}</b><span>simulated in parallel</span></div>
+ <div class="card"><b>${motors.length}</b><span>motor channels</span></div><div class="card"><b>${P.summary.built_seconds}s</b><span>build time</span></div></div>
+ <div class="row"><a href="/flow?name=${S.projName}" target="_blank"><button class="ghost">Open the formula flow dashboard</button></a><span class="hint">watch every formula recalculate when you change a value</span></div>
+ <h3>Live check (replay)</h3><div class="box"><div class="hint">No sensor is connected in this trial, so the software replays what a sensor would show if a part were overloaded.</div>
+ <div class="row"><select id="rp"><option value="">Healthy machine (no fault)</option>${sims.map(pn=>`<option value="${pn}">${pn} ${esc(I.parts[pn].description)}</option>`).join('')}</select>
+ <select id="rl"><option value="ok_max">fine level</option><option value="warning" selected>warning level</option><option value="critical">critical level</option></select>
+ <label class="hint">sensor noise <input type="number" id="rn" step="0.001" value="0.004" style="width:70px"> A</label><button id="inj">Inject</button></div>
+ <div class="row hint">or type a current change yourself: ${motors.map(m=>`${m} <input type="number" step="0.01" data-m="${m}" value="0" style="width:70px"> A`).join(' &nbsp; ')} <button class="ghost small" id="man">Match</button></div>
+ <div id="live"></div></div>
+ <h3>What the software wrote</h3><div class="box tree" id="tree"></div><div class="files" id="files"></div><pre id="fv" style="display:none"></pre>
+ <h3>How each fault shows in the motor current</h3><table><tr><th>Part</th><th>Motor</th><th>Fine</th><th>Warning</th><th>Critical</th><th>Seen by sensor?</th></tr>
+ ${sims.map(pn=>{const r=SG.parts[pn],L=r.levels,f=x=>x.delta_current_A.toFixed(3);return `<tr><td class="pn">${pn}<div class="hint">${esc(I.parts[pn].description)}</div></td><td>${r.motor}</td>
+  <td>${f(L.ok_max)} A<div class="hint">${L.ok_max.effort} ${esc(r.effort_unit)}</div></td><td>${f(L.warning)} A<div class="hint">${L.warning.effort} ${esc(r.effort_unit)}</div></td><td>${f(L.critical)} A<div class="hint">${L.critical.effort} ${esc(r.effort_unit)}</div></td>
+  <td>${r.detectable_at_critical?'<span class="ok">yes</span>':'<span class="bad">NO - below the sensor limit</span>'}<div class="hint">${r.critical_over_tolerance.toFixed(1)}x the limit</div></td></tr>`;}).join('')}</table>
+ <div class="hint" style="margin-top:6px">Sensor limit: ${SG.tolerance_A} A. A part marked NO can only be noticed through the area around it.</div>
+ <h3>Assumptions the model makes (shown, not hidden)</h3><ul>${P.assumptions.map(a=>`<li>${esc(a)}</li>`).join('')}</ul>`;
+ $('#main').innerHTML=h;
+ // tree
+ let t='';Object.entries(secs).forEach(([s,d])=>{t+=`<div class="sec">${esc(d.name||'Machine')}</div>`+d.parts.map(pn=>`<div class="it" data-pn="${pn}">${pn} <span class="hint">${esc(I.parts[pn].description)} - ${I.parts[pn].role}</span></div>`).join('');});
+ t+=`<div class="sec">Project files</div>`+['answers.json','assumptions.json','formulas_stock.json','machine_index.json','signatures.json','project.json'].map(f=>`<div class="it" data-f="${f}">${f}</div>`).join('');
+ $('#tree').innerHTML=t;
+ const show=async path=>{const r=await api(`/api/file?name=${S.projName}&path=${encodeURIComponent(path)}`);$('#fv').style.display='block';$('#fv').textContent=r.ok?r.text:r.error;};
+ document.querySelectorAll('#tree .it').forEach(el=>el.onclick=async()=>{document.querySelectorAll('#tree .it').forEach(x=>x.classList.remove('on'));el.classList.add('on');
+  if(el.dataset.f){$('#files').innerHTML='';show(el.dataset.f);return;}
+  const pn=el.dataset.pn,dir=I.parts[pn].dir;paintBase(Object.fromEntries([[pn,['#ffffff',1]]]));
+  const fl=(await api(`/api/files?name=${S.projName}&dir=${encodeURIComponent(dir)}`)).files;
+  $('#files').innerHTML=`<div class="hint">Folder: ${esc(dir)}</div>`+fl.map(f=>`<button class="ghost small" data-p="${dir}/${f}">${f}</button>`).join('');
+  document.querySelectorAll('#files button').forEach(b=>b.onclick=()=>show(b.dataset.p));});
+ V.onPick(id=>{const pn=S.idToPn[id];const el=document.querySelector(`#tree .it[data-pn="${pn}"]`);if(el){el.click();el.scrollIntoView({block:'center'});}});
+ legend([['#e0a940','area to look at'],['#e5534b','could be the cause'],['#33404d','not involved']]);
+ const showMatch=r=>{const m=r.match;let o='';
+  o+=Object.entries(m.channels).map(([mo,c])=>`<div style="margin:8px 0"><b>${mo}</b> <span class="hint">normal ${c.normal_A.toFixed(2)} A &rarr; now ${c.now_A.toFixed(3)} A</span> ${c.quiet?'<span class="pill p-fine">quiet</span>':`<span class="pill p-warning">+${c.delta_A.toFixed(3)} A</span>`}</div>`).join('');
+  if(!m.findings.length)o+='<div class="ok" style="margin-top:8px"><b>Nothing detected.</b> Every channel is within the sensor limit.</div>';
+  const hot={};
+  m.findings.forEach(f=>{
+   o+=`<div class="box" style="border-color:#5c4710"><b class="amb">Motor ${f.motor} is drawing ${f.observed_A.toFixed(3)} A more than normal</b>
+   <div>Look at: <b>${esc(f.area.name)}</b> <span class="hint">(${f.area.kind==='part'?'one part':f.area.kind==='section'?'a whole section':'the whole motor branch'})</span></div>
+   ${f.candidates.length?`<table><tr><th>Could be</th><th>Extra load</th><th>Level</th></tr>${f.candidates.map(c=>`<tr><td class="pn">${c.part}<div class="hint">${esc(c.description)}</div></td><td>about ${c.effort_estimate.toFixed(2)} ${esc(c.unit)}<div class="hint">${c.effort_label}</div></td><td><span class="pill p-${c.band}">${c.band}</span></td></tr>`).join('')}</table>`:`<div class="hint">${esc(f.note||'')}</div>`}</div>`;
+   f.area.parts.forEach(p=>hot[p]=['#e0a940',1]);f.candidates.forEach(c=>hot[c.part]=['#e5534b',1]);hot[f.motor]=['#4fc3f7',1];});
+  $('#live').innerHTML=o;paintBase(m.findings.length?hot:null);};
+ $('#inj').onclick=async()=>showMatch(await api('/api/replay',{name:S.projName,part:$('#rp').value||null,level:$('#rl').value,noise_A:Number($('#rn').value)}));
+ $('#man').onclick=async()=>{const obs={};document.querySelectorAll('input[data-m]').forEach(i=>obs[i.dataset.m]=Number(i.value));showMatch(await api('/api/match',{name:S.projName,observed:obs}));};
+ $('#vinfo').textContent='Click a part in the picture or in the list to open its folder.';
+}
+
+function render(){stepper();[null,s1,s2,s3,s4,s5,s6][S.step]();}
+V.resize();render();
+</script></body></html>

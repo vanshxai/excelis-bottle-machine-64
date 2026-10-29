@@ -1,0 +1,32 @@
+{
+ "part_number": "MS00302",
+ "description": "Drive Pulley",
+ "material": "Aluminum 6061",
+ "type": "drive_pulley",
+ "type_label": "Drive pulley (on the motor shaft)",
+ "role": "active",
+ "section": "MS00300",
+ "section_name": "Belt Section",
+ "parent": "MS00301",
+ "motor": "MS00301",
+ "chain": [
+  "MS00302",
+  "MS00301"
+ ],
+ "step_instances": [
+  "MS00302"
+ ],
+ "values": {
+  "R_SELF": {
+   "value": 0.021962,
+   "unit": "m",
+   "source": "measured from the STEP file (MS00302, round part)"
+  },
+  "R_MS00302": {
+   "value": 0.021962,
+   "unit": "m",
+   "source": "measured from the STEP file (MS00302, round part)"
+  }
+ },
+ "effort": null
+}

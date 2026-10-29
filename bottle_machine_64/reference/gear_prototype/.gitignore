@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.DS_Store
+openai.key
+company_info.txt
+gearsystem_roulette_metal_state.json
+gearsystem_metal_verified_twin.json
+gearsystem_recordings.db
+esp32_gearbox_sender/.pio/

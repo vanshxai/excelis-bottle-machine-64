@@ -1,0 +1,9 @@
+{
+  "machine": "Bottle Unscrambler (Excelis)",
+  "formulas": {
+    "resistance_temperature": "R = R0*(1 + alpha_temp*(T_temp - T0_temp))",
+    "severity_growth_asymptotic": "R = R0/(1 - s_sev)",
+    "torque_ripple": "T_ripple = T_nom*(1 + k_unbal*sin(omega_t*t_ripple))"
+  },
+  "note": "the 3-formula slice actually relevant to this customer's disk/gripper/paddle motors -- not the other 330"
+}

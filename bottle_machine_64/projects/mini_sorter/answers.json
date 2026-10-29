@@ -1,0 +1,79 @@
+{
+ "_note": "TEST VALUES ONLY - made up so the trial can run end to end. They are not data from any real machine. (Disk motor rating is the real Bison nameplate: 100 in-lb = 11.3 N*m, 2.61 A.)",
+ "settings": {
+  "tolerance_A": 0.02
+ },
+ "motors": {
+  "MS00201": {
+   "T_rated": 11.3,
+   "I_rated": 2.61,
+   "I_noload": 0.4,
+   "I_normal": 1.1
+  },
+  "MS00301": {
+   "T_rated": 5.0,
+   "I_rated": 2.4,
+   "I_noload": 0.3,
+   "I_normal": 0.9
+  }
+ },
+ "parts": {
+  "MS00202": {
+   "mu": 0.002,
+   "effort": {
+    "ok_max": 100,
+    "warning": 400,
+    "critical": 800
+   }
+  },
+  "MS00203": {
+   "mu": 0.3,
+   "effort": {
+    "ok_max": 5,
+    "warning": 20,
+    "critical": 40
+   }
+  },
+  "MS00303": {
+   "effort": {
+    "ok_max": 0.05,
+    "warning": 0.2,
+    "critical": 0.5
+   }
+  },
+  "MS00304": {
+   "effort": {
+    "ok_max": 15,
+    "warning": 40,
+    "critical": 80
+   }
+  },
+  "MS00305": {
+   "effort": {
+    "ok_max": 5,
+    "warning": 20,
+    "critical": 40
+   }
+  }
+ },
+ "types": {
+  "MS00401": "static",
+  "MS00305": "flipper_arm",
+  "MS00304": "belt",
+  "MS00303": "idler_pulley",
+  "MS00302": "drive_pulley",
+  "MS00301": "motor_bldc",
+  "MS00203": "rotary_disk",
+  "MS00202": "shaft",
+  "MS00201": "motor_dc",
+  "MS00101": "static"
+ },
+ "links": {
+  "MS00305": "MS00304",
+  "MS00304": "MS00302",
+  "MS00303": "MS00304",
+  "MS00302": "MS00301",
+  "MS00203": "MS00202",
+  "MS00202": "MS00201"
+ }
+}

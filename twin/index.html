@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Servo Piston Filler / Depositor — Digital Twin</title>
+<style>
+  :root{
+    --bg:#070a0f; --panel:rgba(13,19,28,.88); --line:#1d2836;
+    --txt:#c9d6e4; --dim:#6d8199; --accent:#4fc3f7;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--txt);
+    font:13px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  #stage{position:fixed;inset:0}
+  .panel{position:fixed;background:var(--panel);border:1px solid var(--line);
+    border-radius:8px;backdrop-filter:blur(12px);z-index:10}
+  h1{font-size:14px;font-weight:600;letter-spacing:.04em;color:#fff}
+  h1 small{display:block;font-size:10.5px;font-weight:400;color:var(--dim);margin-top:3px}
+  h2{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 7px;padding-bottom:5px;border-bottom:1px solid var(--line)}
+
+  #left{top:14px;left:14px;width:318px;padding:14px}
+  #left .oem{margin-top:10px;font-size:11px;color:var(--dim)}
+  #left .oem b{color:var(--txt);font-weight:500}
+  .live{display:grid;grid-template-columns:1fr auto;gap:2px 10px;font-size:11.5px}
+  .live .k{color:var(--dim)}
+  .live .v{text-align:right;color:#fff;font-variant-numeric:tabular-nums}
+  .bar{height:3px;background:#16202c;border-radius:2px;overflow:hidden;margin-top:8px}
+  .bar i{display:block;height:100%;background:linear-gradient(90deg,#26c6da,#4fc3f7);width:0}
+  .phase{margin-top:9px;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase}
+  .phase span{display:inline-block;padding:2px 6px;border-radius:3px;background:#16202c;
+    color:var(--dim);margin:1px 2px 1px 0}
+  .phase span.on{background:var(--accent);color:#05080d;font-weight:600}
+
+  #right{top:14px;right:14px;width:352px;max-height:calc(100vh - 190px);
+    padding:14px;overflow-y:auto}
+  #right::-webkit-scrollbar,#chain::-webkit-scrollbar{width:7px}
+  #right::-webkit-scrollbar-thumb,#chain::-webkit-scrollbar-thumb{background:#22303f;border-radius:4px}
+  .grp{margin-bottom:13px}
+  .row{display:grid;grid-template-columns:1fr auto;gap:9px;padding:3px 5px;
+    border-radius:4px;cursor:pointer;font-size:11.5px}
+  .row:hover{background:#16202c}
+  .row.sel{background:#16202c;box-shadow:inset 2px 0 0 var(--accent)}
+  .row .k{color:var(--dim);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .row.drv .k{color:#c98ee0}
+  .row .v{color:#fff;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .row .v u{color:var(--dim);text-decoration:none;font-size:10px;margin-left:3px}
+
+  #chain{bottom:14px;left:14px;width:calc(100vw - 398px);max-width:740px;
+    padding:12px 14px;max-height:31vh;overflow-y:auto}
+  .step{display:grid;grid-template-columns:20px 1fr;gap:9px;padding:4px 0;
+    border-top:1px solid #131c26;font-size:11px}
+  .step:first-of-type{border-top:0}
+  .step .n{color:var(--accent);font-size:10px;padding-top:1px}
+  .step .nm{color:#fff;font-size:10.5px}
+  .step .eq{color:var(--dim);word-break:break-all;margin-top:1px}
+  .step .out{color:#8fd98f}
+  .hint{color:var(--dim);font-size:11px}
+  .tag{display:inline-block;font-size:9px;letter-spacing:.08em;text-transform:uppercase;
+    padding:1px 5px;border-radius:3px;margin-left:6px;vertical-align:1px}
+  .tag.brain{background:#12352a;color:#5ec269}
+  .tag.new{background:#2a1838;color:#c98ee0}
+
+  #ctl{bottom:14px;right:14px;width:352px;padding:11px 14px}
+  .btns{display:flex;gap:6px;flex-wrap:wrap}
+  button{flex:1;min-width:58px;background:#16202c;color:var(--txt);border:1px solid var(--line);
+    border-radius:5px;padding:6px 4px;font:inherit;font-size:10.5px;cursor:pointer}
+  button:hover{border-color:var(--accent);color:#fff}
+  button.on{background:var(--accent);color:#05080d;border-color:var(--accent);font-weight:600}
+  .leg{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:10px;font-size:10px;color:var(--dim)}
+  .leg i{display:inline-block;width:8px;height:2px;margin-right:5px;vertical-align:3px}
+  #err{position:fixed;inset:0;display:none;place-items:center;background:#070a0f;
+    color:#ef5350;font-size:13px;padding:40px;text-align:center;z-index:99}
+
+  /* narrow viewports: shrink the panels so they never swallow the 3D view */
+  @media (max-width:1150px){
+    #left,#right,#ctl{width:262px}
+    #chain{width:calc(100vw - 300px);max-height:26vh}
+    #left .oem{display:none}
+    body{font-size:11px}
+  }
+  @media (max-width:820px){
+    #left{max-height:44vh;overflow-y:auto}
+    #right{max-height:38vh}
+    #chain{display:none}
+  }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<div id="err"></div>
+
+<div class="panel" id="left">
+  <h1>Servo Piston Filler / Depositor<small id="mfr"></small></h1>
+  <div class="oem" id="oem"></div>
+  <div style="margin-top:13px"><h2>Live cycle</h2>
+    <div class="live" id="livegrid"></div>
+    <div class="bar"><i id="bar"></i></div>
+    <div class="phase" id="phase"></div>
+  </div>
+</div>
+
+<div class="panel" id="right"><div id="groups"></div></div>
+
+<div class="panel" id="chain">
+  <h2>Formula chain <span id="chainfor" style="color:var(--dim);letter-spacing:0;text-transform:none;font-weight:400"></span></h2>
+  <div id="chainbody" class="hint">Click any solved value on the right to see the chain the Formula Brain walked to reach it. Purple labels are geometry the Brain <em>derived</em> rather than was told.</div>
+</div>
+
+<div class="panel" id="ctl">
+  <h2>View</h2>
+  <div class="btns">
+    <button id="bPlay" class="on">❚❚ Pause</button>
+    <button id="bSlow">0.15×</button>
+    <button id="bExp">Explode</button>
+    <button id="bCut">Section</button>
+    <button id="bHome">Reset</button>
+  </div>
+  <div class="leg">
+    <span><i style="background:#3d5166"></i>Frame</span>
+    <span><i style="background:#4fc3f7"></i>Hopper</span>
+    <span><i style="background:#ffb74d"></i>Cylinder</span>
+    <span><i style="background:#ff7043"></i>Piston</span>
+    <span><i style="background:#b473d6"></i>Servo/screw</span>
+    <span><i style="background:#5ec269"></i>Valve</span>
+    <span><i style="background:#26c6da"></i>Nozzle</span>
+    <span><i style="background:#ef5350"></i>Product</span>
+  </div>
+</div>
+
+<script src="vendor/three.min.js"></script>
+<script src="vendor/OrbitControls.js"></script>
+<script>
+const C={frame:0x3d5166,hopper:0x4fc3f7,barrel:0xffb74d,piston:0xff7043,
+         drive:0xb473d6,valve:0x5ec269,nozzle:0x26c6da,conv:0x7b8fa3,prod:0xef5350};
+
+fetch('twin_data.json').then(r=>r.json()).then(boot).catch(e=>{
+  const d=document.getElementById('err');
+  d.style.display='grid'; d.textContent='Could not load twin_data.json — '+e.message;
+});
+
+function boot(D){
+  const IN=k=>D.inputs[k].value;
+  const OUT=k=>D.outputs[k]?D.outputs[k].value:null;
+
+  /* ===== every dimension below is solved, none is typed in by hand ===== */
+  const BORE=OUT('D_bore_pf'), STROKE=OUT('S_stroke_pf'), A_PIS=OUT('A_piston_pf');
+  const D_NZ=OUT('D_nz_pf'), L_NZ=IN('L_nz_pf');
+  const D_IN=IN('D_in_pf'), DP_IN=OUT('dP_in_pf');
+  const T_CYC=OUT('t_cycle_pf'), T_DIS=OUT('t_disch_pf'), HEADS=IN('n_heads_pf');
+  const K_PL=IN('K_pl_pf'), N_PL=IN('n_pl_pf'), M_PIS=IN('m_piston_pf');
+  const F_SEAL=OUT('F_seal_pf'), V_NET=OUT('V_net_pf'), T_REFILL=OUT('t_refill_pf');
+  const P_LEAD=IN('p_lead_pf'), H_CYL=IN('H_cyl_pf'), H_CONE=IN('H_cone_pf');
+  const D_CONT=IN('D_cont_pf'), H_CONT=IN('H_cont_pf'), BELT=IN('H_belt_pf');
+  const RAB=(3*N_PL+1)/(4*N_PL);
+  const T_DWELL=(T_CYC-2*T_DIS)/2;
+
+  /* ===== scene ===== */
+  const scene=new THREE.Scene();
+  scene.background=new THREE.Color(0x070a0f);
+  scene.fog=new THREE.Fog(0x070a0f,5.2,12);
+
+  const cam=new THREE.PerspectiveCamera(42,innerWidth/innerHeight,0.05,60);
+  const HOME={p:new THREE.Vector3(2.35,2.15,2.95),t:new THREE.Vector3(-0.30,1.20,0)};
+  cam.position.copy(HOME.p);
+
+  const rend=new THREE.WebGLRenderer({antialias:true});
+  rend.setPixelRatio(Math.min(devicePixelRatio,2));
+  rend.setSize(innerWidth,innerHeight);
+  rend.localClippingEnabled=true;
+  document.getElementById('stage').appendChild(rend.domElement);
+
+  const ctrl=new THREE.OrbitControls(cam,rend.domElement);
+  ctrl.enableDamping=true; ctrl.dampingFactor=0.07;
+  ctrl.target.copy(HOME.t); ctrl.update();
+
+  const grid=new THREE.GridHelper(8,32,0x16222f,0x0e1720);
+  grid.material.transparent=true; grid.material.opacity=0.5; scene.add(grid);
+
+  /* ===== helpers =====
+     bakeX() rotates the GEOMETRY onto the X axis instead of setting
+     object.rotation.z. That matters: anything that has to spin about its own
+     axis (ball screw, servo rotor, rotary valve) would otherwise carry a
+     compound Euler (rx, 0, pi/2), where "rotation.x" is no longer the part's
+     own axis. Baking keeps every spin a single clean rotation.x. */
+  const clipPlane=new THREE.Plane(new THREE.Vector3(0,0,-1),0.02);
+  const mats=[];
+  function lineMat(c,o){
+    const m=new THREE.LineBasicMaterial({color:c,transparent:true,opacity:o});
+    mats.push(m); return m;
+  }
+  const wire=(geo,c,o=0.85)=>new THREE.LineSegments(new THREE.EdgesGeometry(geo,1),lineMat(c,o));
+  const box=(w,h,d)=>new THREE.BoxGeometry(w,h,d);
+  const cyl=(r1,r2,h,s=20,open=false)=>new THREE.CylinderGeometry(r1,r2,h,s,1,open);
+  const bakeX=g=>{g.rotateZ(Math.PI/2);return g;};
+  const put=(o,x,y,z)=>{o.position.set(x,y,z);return o;};
+  const fluid=(geo,c,o=0.3)=>new THREE.Mesh(geo,new THREE.MeshBasicMaterial(
+    {color:c,transparent:true,opacity:o,depthWrite:false,side:THREE.DoubleSide}));
+
+  function frustum(wT,dT,wB,dB,h){
+    const g=new THREE.BufferGeometry(), y0=-h/2, y1=h/2;
+    g.setAttribute('position',new THREE.Float32BufferAttribute([
+      -wT/2,y1,-dT/2, wT/2,y1,-dT/2, wT/2,y1,dT/2, -wT/2,y1,dT/2,
+      -wB/2,y0,-dB/2, wB/2,y0,-dB/2, wB/2,y0,dB/2, -wB/2,y0,dB/2],3));
+    g.setIndex([0,1,2,0,2,3, 4,6,5,4,7,6, 0,4,5,0,5,1,
+                1,5,6,1,6,2, 2,6,7,2,7,3, 3,7,4,3,4,0]);
+    g.computeVertexNormals(); return g;
+  }
+
+  /* ===== vertical stack, built UP from the container =====
+     The conveyor height is an ergonomic standard and the jar is a standard
+     part; together they fix nozzle height, which fixes valve height, which
+     fixes the cylinder axis, which fixes the hopper. Nothing here is a
+     free choice -- that is the whole point. */
+  const PITCH   = D_CONT + IN('clr_cont_pf');       // head pitch from container Ø
+  const Y_JARTOP= BELT + H_CONT;
+  const Y_NZTIP = Y_JARTOP + 0.020;                 // 20 mm standoff over the mouth
+  const L_NZBODY= L_NZ*0.62;
+  const Y_SHROUD= Y_NZTIP + L_NZBODY;
+  const H_SHROUD= 0.075;
+  const YAX     = Y_SHROUD + H_SHROUD + 0.075;      // valve half-height above shroud
+  const Y_HOP0  = YAX + 0.075 + 0.080;              // hopper cone bottom
+
+  const ZS=[...Array(HEADS)].map((_,i)=>(i-(HEADS-1)/2)*PITCH);
+  const R_BAR=BORE/2+0.026;
+  const X_BAR0=-0.13, X_BAR1=0.13, X_VALVE=0.235;
+  const X_PIS_HOME=-0.086, X_CROSS_HOME=-0.46;
+  const DECK=1.15;
+  const ROD_L =(X_PIS_HOME-0.034)-(X_CROSS_HOME+0.0275);
+  const ROD_DX=((X_PIS_HOME-0.034)+(X_CROSS_HOME+0.0275))/2-X_PIS_HOME;
+
+  const root=new THREE.Group(); scene.add(root);
+  const G={};
+  for(const k of ['frame','hopper','barrel','piston','drive','valve','nozzle','conv']){
+    G[k]=new THREE.Group(); root.add(G[k]);
+  }
+  const add=(o,g)=>{G[g].add(o);return o;};
+
+  /* ---- frame: set back in X so the nozzle overhangs onto the conveyor ---- */
+  const X_FRAME=-0.28;
+  {
+    const W=0.62, Dz=HEADS*PITCH+0.30;
+    for(const sx of[-1,1])for(const sz of[-1,1]){
+      add(put(wire(box(0.05,DECK,0.05),C.frame),X_FRAME+sx*W/2,DECK/2,sz*Dz/2),'frame');
+      add(put(wire(bakeX(cyl(0.05,0.05,0.03,12)),C.frame,0.6),X_FRAME+sx*W/2,0.05,sz*Dz/2),'frame');
+    }
+    add(put(wire(box(W+0.05,0.05,Dz+0.05),C.frame),X_FRAME,DECK,0),'frame');
+    add(put(wire(box(W+0.05,0.04,Dz+0.05),C.frame),X_FRAME,0.14,0),'frame');
+    add(put(wire(box(0.20,0.32,0.26),C.frame),X_FRAME,1.62,-(Dz/2+0.17)),'frame');       // PLC
+    add(put(wire(box(0.15,0.11,0.012),C.nozzle,0.9),X_FRAME,1.68,-(Dz/2+0.305)),'frame'); // HMI
+  }
+
+  /* ---- hopper ---- */
+  const hopW=0.34, hopD=HEADS*PITCH+0.12;
+  let agitator, hopProd;
+  {
+    add(put(wire(frustum(hopW,hopD,0.12,hopD*0.55,H_CONE),C.hopper),X_VALVE,Y_HOP0+H_CONE/2,0),'hopper');
+    add(put(wire(box(hopW,H_CYL,hopD),C.hopper),X_VALVE,Y_HOP0+H_CONE+H_CYL/2,0),'hopper');
+    add(put(wire(box(hopW+0.03,0.015,hopD+0.03),C.hopper,0.55),X_VALVE,Y_HOP0+H_CONE+H_CYL+0.01,0),'hopper');
+
+    agitator=new THREE.Group();
+    agitator.position.set(X_VALVE,Y_HOP0+H_CONE+0.03,0);
+    agitator.add(wire(bakeX(cyl(0.014,0.014,hopD*0.94,10)),C.hopper,0.75));
+    ZS.forEach((z,i)=>{
+      const p=wire(box(0.006,0.13,0.055),C.hopper,0.6);
+      p.position.set(0,0.055,z); p.rotation.x=i*0.9; agitator.add(p);
+    });
+    add(agitator,'hopper');
+
+    hopProd=fluid(box(hopW*0.88,H_CYL,hopD*0.90),C.prod,0.11);
+    add(hopProd,'hopper');
+
+    // inlet drop tubes -- bore is the DERIVED D_in, 2.4x the nozzle, which is
+    // exactly why suction never starves this machine (margin 94:1)
+    ZS.forEach(z=>add(put(wire(bakeX(cyl(D_IN/2,D_IN/2,Y_HOP0-YAX-0.075,12,true)),C.hopper,0.5),
+      X_VALVE,(Y_HOP0+YAX+0.075)/2,z),'hopper'));
+  }
+
+  /* ---- per head ---- */
+  const heads=ZS.map(z=>{
+    const h={z}, L=X_BAR1-X_BAR0, xm=(X_BAR0+X_BAR1)/2;
+
+    add(put(wire(bakeX(cyl(R_BAR,R_BAR,L,20)),C.barrel),xm,YAX,z),'barrel');
+    add(put(wire(bakeX(cyl(BORE/2,BORE/2,L,20,true)),C.barrel,0.35),xm,YAX,z),'barrel');
+    for(const x of[X_BAR0,X_BAR1])
+      add(put(wire(bakeX(cyl(R_BAR+0.014,R_BAR+0.014,0.018,20)),C.barrel,0.7),x,YAX,z),'barrel');
+
+    h.charge=fluid(bakeX(cyl(BORE/2*0.97,BORE/2*0.97,1,18)),C.prod,0.34);
+    add(h.charge,'barrel');
+
+    h.piston=add(wire(bakeX(cyl(BORE/2,BORE/2,0.034,20)),C.piston,0.95),'piston');
+    h.seal  =add(wire(bakeX(cyl(BORE/2+0.002,BORE/2+0.002,IN('w_seal_pf'),20)),C.piston,0.6),'piston');
+    h.rod   =add(wire(bakeX(cyl(IN('D_rod_pf')/2,IN('D_rod_pf')/2,ROD_L,14)),C.piston,0.9),'piston');
+
+    // ---- rotary L-port plug valve ----
+    // Axial leg sits ON the spin axis (always open to the cylinder); the
+    // radial leg swings 180 deg between the nozzle port (down) and the
+    // hopper port (up). Both legs are children of the plug, so they can
+    // only ever move together -- the port cannot drift off the plug.
+    add(put(wire(box(0.10,0.15,0.11),C.valve),X_VALVE,YAX,z),'valve');
+    const plug=new THREE.Group(); plug.position.set(X_VALVE,YAX,z);
+    plug.add(wire(bakeX(cyl(0.042,0.042,0.115,16)),C.valve,0.95));
+    plug.add(put(wire(bakeX(cyl(D_NZ/2,D_NZ/2,0.042,10)),C.prod,0.95),-0.021,0,0));  // axial leg
+    plug.add(put(wire(cyl(D_NZ/2,D_NZ/2,0.042,10),C.prod,0.95),0,-0.021,0));         // radial leg
+    add(plug,'valve'); h.plug=plug;
+
+    add(put(wire(frustum(0.085,0.085,D_NZ*1.6,D_NZ*1.6,H_SHROUD),C.nozzle,0.75),
+      X_VALVE,Y_SHROUD+H_SHROUD/2,z),'nozzle');
+    add(put(wire(cyl(D_NZ/2,D_NZ/2,L_NZBODY,14),C.nozzle),X_VALVE,Y_NZTIP+L_NZBODY/2,z),'nozzle');
+    h.jet=fluid(cyl(D_NZ/2*0.94,D_NZ/2*0.94,1,12),C.prod,0.55); add(h.jet,'nozzle');
+
+    add(put(wire(cyl(D_CONT/2,D_CONT/2,H_CONT,18,true),C.conv,0.8),X_VALVE,BELT+H_CONT/2,z),'conv');
+    h.fill=fluid(cyl(D_CONT/2*0.94,D_CONT/2*0.94,1,18),C.prod,0.42); add(h.fill,'conv');
+    return h;
+  });
+
+  /* ---- drive: one servo + ball screw + crosshead yoke drives every head --- */
+  const cross=add(wire(box(0.055,0.20,HEADS*PITCH+0.10),C.piston,0.95),'piston');
+  const screw=new THREE.Group(), rotor=new THREE.Group();
+  let nut;
+  {
+    const X0=-0.95, X1=-0.31, LS=X1-X0;
+    // screw shaft + an axial flute stripe, so the rotation is actually VISIBLE
+    screw.add(wire(bakeX(cyl(IN('D_screw_pf')/2,IN('D_screw_pf')/2,LS,14)),C.drive));
+    screw.add(put(wire(box(LS*0.97,0.004,0.004),0xffffff,0.9),0,IN('D_screw_pf')/2,0));
+    screw.position.set((X0+X1)/2,YAX,0); add(screw,'drive');
+
+    rotor.add(wire(bakeX(cyl(0.052,0.052,0.19,16)),C.drive));
+    rotor.add(put(wire(box(0.185,0.004,0.004),0xffffff,0.9),0,0.052,0));
+    rotor.position.set(-1.10,YAX,0); add(rotor,'drive');
+
+    add(put(wire(box(0.05,0.16,0.16),C.drive,0.8),X0-0.03,YAX,0),'drive');            // bearing
+    add(put(wire(bakeX(cyl(0.036,0.036,0.05,14)),C.drive,0.7),-0.99,YAX,0),'drive');  // coupling
+    add(put(wire(box(0.05,0.075,0.075),C.drive,0.7),-1.21,YAX,0),'drive');            // encoder
+    for(const sz of[-1,1])
+      add(put(wire(bakeX(cyl(0.010,0.010,0.66,10)),C.frame,0.65),-0.64,YAX-0.11,sz*(HEADS*PITCH/2+0.05)),'drive');
+    nut=add(wire(bakeX(cyl(0.036,0.036,0.07,14)),C.drive,0.95),'drive');
+  }
+
+  /* ---- conveyor ---- */
+  {
+    const Lz=HEADS*PITCH+1.05;
+    add(put(wire(box(0.26,0.022,Lz),C.conv,0.8),X_VALVE,BELT,0),'conv');
+    for(const sz of[-1,1]){
+      const r=wire(cyl(0.030,0.030,0.26,12),C.conv,0.7);
+      r.rotation.x=Math.PI/2; add(put(r,X_VALVE,BELT,sz*Lz/2),'conv');
+    }
+    for(const sx of[-1,1])for(const sz of[-1,1])
+      add(put(wire(box(0.03,BELT-0.02,0.03),C.conv,0.55),
+        X_VALVE+sx*0.11,(BELT-0.02)/2,sz*(Lz/2-0.10)),'conv');
+  }
+
+  /* ===== physics ===== */
+  const trap=u=>{                       // 1/3-1/3-1/3 trapezoid
+    if(u<=0)return{s:0,v:0,a:0};
+    if(u>=1)return{s:1,v:0,a:0};
+    if(u<1/3)return{s:2.25*u*u,v:4.5*u,a:4.5};
+    if(u<2/3)return{s:0.25+1.5*(u-1/3),v:1.5,a:0};
+    const w=u-2/3;
+    return{s:0.75+1.5*w-2.25*w*w,v:1.5-4.5*w,a:-4.5};
+  };
+  const smooth=x=>x*x*(3-2*x);
+  function nozzlePhysics(Q){            // power law + Rabinowitsch-Mooney
+    if(Q<=1e-9)return{gdot:0,tau:0,dP:0,mu:0,v:0};
+    const gW=32*Q/(Math.PI*Math.pow(D_NZ,3))*RAB;
+    const tau=K_PL*Math.pow(gW,N_PL);
+    return{gdot:gW,tau,dP:4*tau*L_NZ/D_NZ,mu:tau/gW,v:Q/(Math.PI/4*D_NZ*D_NZ)};
+  }
+
+  /* ===== loop ===== */
+  let playing=true, rate=1, t=0, tMach=0, cycles=0, exploded=false, sectioned=false;
+  let screwAngle=0;
+  const clock=new THREE.Clock();
+  const PHASES=['Fast fill','Valve→hopper','Suction','Valve→nozzle'];
+
+  function phaseOf(tc){
+    if(tc<T_DIS)           return{p:0,u:tc/T_DIS};
+    if(tc<T_DIS+T_DWELL)   return{p:1,u:(tc-T_DIS)/T_DWELL};
+    if(tc<2*T_DIS+T_DWELL) return{p:2,u:(tc-T_DIS-T_DWELL)/T_DIS};
+    return{p:3,u:(tc-2*T_DIS-T_DWELL)/T_DWELL};
+  }
+  // plug is STATIONARY through both strokes and only swings during the dwells
+  const plugAngle=(p,u)=> p===0?0 : p===1?Math.PI*smooth(u) : p===2?Math.PI
+                                 : Math.PI*(1-smooth(u));
+
+  function tick(){
+    requestAnimationFrame(tick);
+    const dt=Math.min(clock.getDelta(),0.05);
+    const dtm=playing?dt*rate:0;                 // elapsed MACHINE time
+    if(playing){ t+=dtm; tMach+=dtm; if(t>=T_CYC){t-=T_CYC;cycles++;} }
+
+    const {p,u}=phaseOf(t);
+    let ext=0,vel=0,acc=0;
+    if(p===0){const k=trap(u); ext=k.s*STROKE; vel=k.v*STROKE/T_DIS; acc=k.a*STROKE/(T_DIS*T_DIS);}
+    else if(p===1){ext=STROKE;}
+    else if(p===2){const k=trap(u); ext=(1-k.s)*STROKE; vel=-k.v*STROKE/T_DIS; acc=-k.a*STROKE/(T_DIS*T_DIS);}
+
+    const firing=p===0, sucking=p===2;
+    const Q=Math.abs(vel)*A_PIS;
+    const nz=firing?nozzlePhysics(Q):{gdot:0,tau:0,dP:0,mu:0,v:0};
+    // suction drag scales with flow^n through the inlet, discharge through the nozzle
+    const dpSuction=sucking?DP_IN*Math.pow(Math.abs(vel)*A_PIS/(1.5*V_NET/T_DIS),N_PL):0;
+    const F=(firing?nz.dP:dpSuction)*A_PIS+F_SEAL+M_PIS*Math.abs(acc);
+
+    // --- drive train: the screw ACTUALLY turns, and reverses with the stroke
+    screwAngle+=2*Math.PI*vel/P_LEAD*dtm;
+    screw.rotation.x=screwAngle;
+    rotor.rotation.x=screwAngle;                 // direct-coupled to the screw
+    cross.position.set(X_CROSS_HOME+ext,YAX,0);
+    nut.position.set(X_CROSS_HOME+ext-0.045,YAX,0);
+    agitator.rotation.x+=dtm*1.7;                // ~16 rpm hopper agitator
+
+    // hopper drains at the machine's real consumption, on the derived interval
+    const frac=1-(tMach%T_REFILL)/T_REFILL;
+    hopProd.scale.y=Math.max(frac,0.02);
+    hopProd.position.set(X_VALVE,Y_HOP0+H_CONE+H_CYL*hopProd.scale.y/2,0);
+
+    heads.forEach(h=>{
+      const xf=X_PIS_HOME+ext;
+      h.piston.position.set(xf-0.017,YAX,h.z);
+      h.seal.position.set(xf-0.034,YAX,h.z);
+      h.rod.position.set(xf+ROD_DX,YAX,h.z);
+
+      const rem=Math.max(X_VALVE-0.055-xf,0.001);
+      h.charge.scale.set(rem,1,1);                // baked to X, so scale X
+      h.charge.position.set(xf+rem/2,YAX,h.z);
+      h.charge.material.opacity=firing?0.34:0.22;
+
+      h.plug.rotation.x=plugAngle(p,u);
+
+      // stream runs continuously from nozzle tip down to the product surface
+      const lvl=(firing?trap(u).s:1)*(H_CONT*0.86);
+      const surf=BELT+0.012+lvl;
+      h.jet.visible=firing&&Q>1e-6;
+      if(h.jet.visible){
+        const jl=Math.max(Y_NZTIP-surf,0.002);
+        h.jet.scale.set(1,jl,1);
+        h.jet.position.set(X_VALVE,Y_NZTIP-jl/2,h.z);
+      }
+      h.fill.visible=lvl>0.001;
+      h.fill.scale.set(1,Math.max(lvl,0.001),1);
+      h.fill.position.set(X_VALVE,BELT+0.012+lvl/2,h.z);
+    });
+
+    hud({ext,vel,acc,Q,F,nz,p,cycles,firing,sucking,dpSuction});
+    ctrl.update(); rend.render(scene,cam);
+  }
+
+  /* ===== HUD ===== */
+  function hud(s){
+    const rpm=Math.abs(s.vel)*60/P_LEAD;
+    document.getElementById('livegrid').innerHTML=[
+      ['Stroke position',(s.ext*1000).toFixed(1)+' mm'],
+      ['Piston velocity',s.vel.toFixed(3)+' m/s'],
+      ['Screw speed',    rpm.toFixed(0)+' rpm'],
+      ['Flow rate',      (s.Q*1e6).toFixed(0)+' mL/s'],
+      ['Wall shear rate',s.firing?s.nz.gdot.toFixed(0)+' s⁻¹':'—'],
+      ['Apparent visc.', s.firing&&s.nz.mu?s.nz.mu.toFixed(3)+' Pa·s':'—'],
+      ['Δp across port', ((s.firing?s.nz.dP:s.dpSuction)/1000).toFixed(2)+' kPa'],
+      ['Piston thrust',  s.F.toFixed(1)+' N'],
+      ['Cycles done',    s.cycles],
+    ].map(r=>`<div class="k">${r[0]}</div><div class="v">${r[1]}</div>`).join('');
+    document.getElementById('bar').style.width=(s.ext/STROKE*100).toFixed(1)+'%';
+    document.getElementById('phase').innerHTML=
+      PHASES.map((p,i)=>`<span class="${i===s.p?'on':''}">${p}</span>`).join('');
+  }
+
+  document.getElementById('mfr').textContent=D.machine.manufacturer;
+  document.getElementById('oem').innerHTML=
+    `<b>OEM published:</b> ${D.machine.oem_published.accuracy} · `+
+    `${D.machine.oem_published.deposit_volume} · ${D.machine.oem_published.heads} heads<br><br>`+
+    `<b>Derived from the ±0.25% spec:</b> ${(BORE*1000).toFixed(1)} mm bore · `+
+    `${(STROKE*1000).toFixed(1)} mm stroke · ${(D_NZ*1000).toFixed(1)} mm nozzle · `+
+    `turndown ${OUT('TD_pf').toFixed(1)}:1<br>`+
+    `<b>Given:</b> ${HEADS} heads · ${(V_NET*1e6).toFixed(0)} mL/deposit · `+
+    `${IN('n_cycles_pf')} cyc/min · ${(D_CONT*1000).toFixed(0)}×${(H_CONT*1000).toFixed(0)} mm jar`;
+
+  const GROUPS=[
+    ['Derived geometry',['D_bore_pf','S_stroke_pf','D_nz_pf','S_min_pf','V_min_pf','TD_pf','A_piston_pf']],
+    ['Displacement & throughput',['V_net_pf','m_fill_pf','N_cph_pf','Vdot_hr_pf']],
+    ['Cycle & kinematics',['t_cycle_pf','t_disch_pf','Q_pf','v_pk_pf','a_pk_pf']],
+    ['Product rheology at nozzle',['v_nz_pf','gdot_w_pf','tau_w_pf','mu_app_pf','dP_nz_pf','Re_gen_pf']],
+    ['Suction side',['gdot_in_pf','dP_in_pf','dP_avail_pf','SM_pf']],
+    ['Thrust',['F_press_pf','F_seal_pf','F_inertia_pf','F_thrust_pf']],
+    ['Servo & ball screw',['T_screw_pf','T_acc_pf','T_pk_pf','N_screw_pf','J_tot_pf','R_inertia_pf','P_servo_pf','P_loss_pf','dT_motor_pf']],
+    ['Accuracy budget (RSS)',['e_stroke_pf','e_bore_pf','e_fixed_pf','e_tot_pf','dm_fill_pf']],
+    ['Structure',['I_rod_pf','P_crit_pf','n_buckling_pf']],
+    ['Hopper',['V_hop_pf','Qdot_mach_pf','t_refill_pf','P_head_pf']],
+    ['Machine electrical',['P_mach_pf','I_mach_pf']],
+  ];
+  const DERIVED=new Set(['D_bore_pf','S_stroke_pf','D_nz_pf','S_min_pf','V_min_pf','TD_pf']);
+  const fmt=v=>{
+    const a=Math.abs(v);
+    if(a===0)return'0';
+    if(a<1e-4||a>=1e6)return v.toExponential(3);
+    return String(+v.toPrecision(a<1?3:5));
+  };
+  document.getElementById('groups').innerHTML=GROUPS.map(([title,keys])=>
+    `<div class="grp"><h2>${title}</h2>`+keys.filter(k=>D.outputs[k]).map(k=>{
+      const o=D.outputs[k];
+      return `<div class="row ${DERIVED.has(k)?'drv':''}" data-k="${k}">`+
+             `<div class="k" title="${o.label}">${o.label}</div>`+
+             `<div class="v">${fmt(o.value)}<u>${o.unit}</u></div></div>`;
+    }).join('')+'</div>').join('');
+
+  const ADDED=new Set(D.formulas_added.map(f=>f.name));
+  document.getElementById('groups').addEventListener('click',e=>{
+    const row=e.target.closest('.row'); if(!row)return;
+    document.querySelectorAll('.row.sel').forEach(r=>r.classList.remove('sel'));
+    row.classList.add('sel');
+    const o=D.outputs[row.dataset.k];
+    document.getElementById('chainfor').textContent=
+      `— ${o.label} = ${fmt(o.value)} ${o.unit} · ${o.trace.length} steps · confidence ${o.confidence}`;
+    document.getElementById('chainbody').innerHTML=o.trace.map((s,i)=>
+      `<div class="step"><div class="n">${String(i+1).padStart(2,'0')}</div><div>`+
+      `<div class="nm">${s.formula}<span class="tag ${ADDED.has(s.formula)?'new':'brain'}">`+
+      `${ADDED.has(s.formula)?'added':'brain'}</span></div>`+
+      `<div class="eq">${s.equation}</div>`+
+      `<div class="out">→ ${s.output} = ${fmt(s.value)}</div></div></div>`).join('');
+  });
+
+  const bPlay=document.getElementById('bPlay'), bSlow=document.getElementById('bSlow'),
+        bExp=document.getElementById('bExp'), bCut=document.getElementById('bCut');
+  bPlay.onclick=()=>{playing=!playing;bPlay.textContent=playing?'❚❚ Pause':'▶ Play';bPlay.classList.toggle('on',playing);};
+  bSlow.onclick=()=>{rate=rate===1?0.15:1;bSlow.textContent=rate===1?'0.15×':'1×';bSlow.classList.toggle('on',rate!==1);};
+  bExp.onclick=()=>{
+    exploded=!exploded; bExp.classList.toggle('on',exploded);
+    const off={frame:[0,-0.24,0],hopper:[0,0.30,0],barrel:[0,0.14,0],piston:[-0.26,0,0],
+               drive:[-0.38,0,0],valve:[0.24,0.10,0],nozzle:[0.32,-0.12,0],conv:[0,-0.24,0]};
+    Object.entries(G).forEach(([k,g])=>{
+      const d=exploded?off[k]:[0,0,0]; g.position.set(d[0],d[1],d[2]);
+    });
+  };
+  bCut.onclick=()=>{
+    sectioned=!sectioned; bCut.classList.toggle('on',sectioned);
+    mats.forEach(m=>{m.clippingPlanes=sectioned?[clipPlane]:null;m.needsUpdate=true;});
+  };
+  document.getElementById('bHome').onclick=()=>{
+    cam.position.copy(HOME.p); ctrl.target.copy(HOME.t); ctrl.update();
+  };
+
+  addEventListener('resize',()=>{
+    cam.aspect=innerWidth/innerHeight; cam.updateProjectionMatrix();
+    rend.setSize(innerWidth,innerHeight);
+  });
+
+  // debug handle -- lets the kinematics be asserted from the console rather
+  // than eyeballed, and lets a cycle be scrubbed to any instant
+  window.__twin={scene,heads,screw,rotor,cross,nut,phaseOf,plugAngle,trap,
+    consts:{STROKE,T_CYC,T_DIS,T_DWELL,P_LEAD,YAX,BELT,Y_NZTIP,PITCH},
+    get t(){return t}, set t(v){t=v}, get screwAngle(){return screwAngle},
+    step(dtm){ t=(t+dtm)%T_CYC; }};
+
+  tick();
+}
+</script>
+</body>
+</html>

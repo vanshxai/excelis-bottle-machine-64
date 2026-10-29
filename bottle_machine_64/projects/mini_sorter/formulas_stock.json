@@ -1,0 +1,39 @@
+{
+ "torque": {
+  "equation": "T = I*Kt",
+  "domain": "mechanical",
+  "origin": "core engine"
+ },
+ "bearing_friction_torque": {
+  "equation": "Tf = F*mu*r",
+  "domain": "mechanical",
+  "origin": "core engine"
+ },
+ "disc_brake_torque": {
+  "equation": "T_brake = F_brake*R_brake*mu_brake",
+  "domain": "mechanical_drives",
+  "origin": "core engine"
+ },
+ "angular_velocity": {
+  "equation": "omega = (-I*R + V)/Ke",
+  "domain": "mechanical",
+  "origin": "core engine"
+ },
+ "gear_module": {
+  "equation": "m_gear = Dp_gear/Np_gear",
+  "domain": "mechanical_drives",
+  "origin": "core engine"
+ },
+ "lever_torque": {
+  "equation": "T_lever = F_tan*r_arm",
+  "domain": "mechanical",
+  "origin": "local",
+  "status": "textbook definition of torque (force times perpendicular lever arm); citation still to be fetched and the formula added to the core engine"
+ },
+ "gear_reflected_torque": {
+  "equation": "T_in = T_out/(GR*eta)",
+  "domain": "mechanical_drives",
+  "origin": "local",
+  "status": "torque a driving shaft must supply to deliver T_out through one gear mesh with speed ratio GR (driver turns GR times faster than the driven shaft) and efficiency eta. Follows from core 'efficiency' (eta = P_out/P_in) and 'power_mechanical' (P = T*omega) with omega_in = GR*omega_out; citation still to be fetched and the formula added to the core engine"
+ }
+}
